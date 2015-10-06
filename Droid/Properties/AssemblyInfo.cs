@@ -6,12 +6,12 @@ using Android.App;
 // Change them to the values specific to your project.
 
 [assembly: AssemblyTitle ("TreeWatch.Droid")]
-[assembly: AssemblyDescription ("")]
+[assembly: AssemblyDescription ("Application for data managment of Treenurseries")]
 [assembly: AssemblyConfiguration ("")]
-[assembly: AssemblyCompany ("")]
-[assembly: AssemblyProduct ("")]
-[assembly: AssemblyCopyright ("jankerkenhoff")]
-[assembly: AssemblyTrademark ("")]
+[assembly: AssemblyCompany ("TreeWatch")]
+[assembly: AssemblyProduct ("TreeWatch")]
+[assembly: AssemblyCopyright ("GreenTechLab Fontys Venlo")]
+[assembly: AssemblyTrademark ("TreeWatch")]
 [assembly: AssemblyCulture ("")]
 
 // The assembly version has the format "{Major}.{Minor}.{Build}.{Revision}".
