@@ -34,7 +34,7 @@
 	<key>CFBundleVersion</key>
 	<string>0.1</string>
 	<key>UIMainStoryboardFile</key>
-	<string>LaunchScreen</string>
+	<string>IPhoneLaunchScreen</string>
 	<key>CFBundleDocumentTypes</key>
 	<array>
 		<dict>
@@ -57,11 +57,10 @@
 		<string>location</string>
 	</array>
 	<key>UIMainStoryboardFile~ipad</key>
-	<string>LaunchScreen</string>
+	<string>IPadLaunchScreen</string>
 	<key>UIStatusBarStyle</key>
 	<string>UIStatusBarStyleLightContent</string>
 	<key>UIPrerenderedIcon</key>
 	<true/>
->>>>>>> Stash
 </dict>
 </plist>

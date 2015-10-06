@@ -7,47 +7,78 @@
         <!--View Controller-->
         <scene sceneID="48">
             <objects>
-                <navigationController definesPresentationContext="YES" id="49" sceneMemberID="viewController">
+                <navigationController definesPresentationContext="YES" id="49" sceneMemberID="viewController" storyboardIdentifier="UINavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="52">
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     </navigationBar>
                     <connections>
-                        <segue id="282" destination="256" kind="relationship" relationship="rootViewController"/>
+                        <segue id="344" destination="295" kind="relationship" relationship="rootViewController"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="53" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-28" y="-47"/>
         </scene>
-        <scene sceneID="255">
+        <scene sceneID="294">
             <objects>
-                <viewController id="256" sceneMemberID="viewController">
+                <tabBarController definesPresentationContext="YES" id="295" sceneMemberID="viewController" storyboardIdentifier="UITabBarController" useStoryboardIdentifierAsRestorationIdentifier="YES">
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="300">
+                        <rect key="frame" x="0.0" y="551" width="600" height="49"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="297" kind="relationship" relationship="viewControllers" id="296"/>
+                        <segue destination="299" kind="relationship" relationship="viewControllers" id="298"/>
+                    </connections>
+                    <navigationItem title="Title" id="343" key="navigationItem"/>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="301" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1211" y="-44"/>
+        </scene>
+        <scene sceneID="302">
+            <objects>
+                <viewController id="297" sceneMemberID="viewController" storyboardIdentifier="UIMapViewController" useStoryboardIdentifierAsRestorationIdentifier="YES">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="253"/>
-                        <viewControllerLayoutGuide type="bottom" id="254"/>
+                        <viewControllerLayoutGuide type="top" id="290"/>
+                        <viewControllerLayoutGuide type="bottom" id="291"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="257">
+                    <view key="view" contentMode="scaleToFill" id="303">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="This is a Test" lineBreakMode="tailTruncation" minimumFontSize="10" id="285" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="218" y="232" width="268" height="260"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="346" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="0.0" y="65" width="600" height="486"/>
+                            </mapView>
                         </subviews>
                     </view>
-                    <navigationItem title="Title" id="281" key="navigationItem"/>
-                    <connections>
-                        <outlet property="Mainframe" destination="257" id="name-outlet-257"/>
-                    </connections>
+                    <tabBarItem key="tabBarItem" title="Map" id="304"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="258" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="305" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="692" y="-46"/>
+            <point key="canvasLocation" x="2376" y="-1035"/>
+        </scene>
+        <scene sceneID="306">
+            <objects>
+                <viewController id="299" sceneMemberID="viewController" storyboardIdentifier="UISettingsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="292"/>
+                        <viewControllerLayoutGuide type="bottom" id="293"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="307">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Settings" id="308"/>
+                    <connections/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="309" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2381" y="592"/>
         </scene>
     </scenes>
     <resources>
@@ -56,7 +87,8 @@
         <image name="Default-568h.png" width="640" height="1136"/>
         <image name="Default-Portrait.png" width="768" height="1004"/>
         <image name="Icon-76.png" width="76" height="76"/>
-        <image name="Icon-Small.png" width="29" height="29"/>
-        <image name="Icon-Small-40.png" width="40" height="40"/>
+        <image name="Icon-Small.png" width="87" height="87"/>
+        <image name="Icon-Small-40.png" width="120" height="120"/>
+        <image name="Default-Landscape.png" width="2048" height="1496"/>
     </resources>
 </document>
