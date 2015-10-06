@@ -34,7 +34,7 @@
 	<key>CFBundleVersion</key>
 	<string>0.1</string>
 	<key>UIMainStoryboardFile</key>
-	<string>IPhoneLaunchScreen</string>
+	<string>LaunchScreen</string>
 	<key>CFBundleDocumentTypes</key>
 	<array>
 		<dict>
@@ -57,7 +57,7 @@
 		<string>location</string>
 	</array>
 	<key>UIMainStoryboardFile~ipad</key>
-	<string>IPadLaunchScreen</string>
+	<string>LaunchScreen</string>
 	<key>UIStatusBarStyle</key>
 	<string>UIStatusBarStyleLightContent</string>
 	<key>UIPrerenderedIcon</key>

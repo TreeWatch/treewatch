@@ -1,14 +1,17 @@
 ﻿using System;
-
+using System.Collections.Generic;
 using Xamarin.Forms;
 
 namespace TreeWatch
 {
 	public class App : Application
 	{
+
+		public static List<string> PhoneNumbers { get; set; }
+
 		public App ()
 		{
-			MainPage = new TreeWatch.MainPage ();
+			MainPage = new TabbedPage();
 		}
 
 		protected override void OnStart ()

@@ -82,8 +82,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <InterfaceDefinition Include="Resources\IPhoneLaunchScreen.storyboard" />
-    <InterfaceDefinition Include="Resources\IPadLaunchScreen.storyboard" />
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
   </ItemGroup>
   <ItemGroup>
