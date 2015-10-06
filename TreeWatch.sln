@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "TreeWatch", "TreeWatch.shproj", "{0F2770AC-8AE1-494E-9F3D-42EE192B31B3}"
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "TreeWatch", "TreeWatch.shproj", "{CA7B216D-8C37-4B5B-B681-D341217FD49E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TreeWatch.iOS", "iOS\TreeWatch.iOS.csproj", "{87CEE4AF-3179-4094-8F48-3D75C3C973DD}"
 EndProject
