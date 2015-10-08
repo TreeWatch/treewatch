@@ -5,6 +5,7 @@ using System.Linq;
 using Foundation;
 using UIKit;
 using Google.Maps;
+using TreeWatch;
 
 namespace TreeWatch.iOS
 {
@@ -23,7 +24,7 @@ namespace TreeWatch.iOS
 
 			LoadApplication (new App ());
 
-			MapServices.ProvideAPIKey ("Your API Key");
+			MapServices.ProvideAPIKey (Keys.iOSMapsAPIKey);
 
 			return base.FinishedLaunching (app, options);
 		}
