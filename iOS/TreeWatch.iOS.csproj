@@ -80,6 +80,9 @@
     <Reference Include="Xamarin.Forms.Platform">
       <HintPath>..\packages\Xamarin.Forms.1.5.0.6447\lib\Xamarin.iOS10\Xamarin.Forms.Platform.dll</HintPath>
     </Reference>
+    <Reference Include="GoogleMaps">
+      <HintPath>..\Components\googlemapsios-1.9.2\lib\ios-unified\GoogleMaps.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
@@ -92,6 +95,7 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="MapProvider.cs" />
   </ItemGroup>
   <Import Project="..\TreeWatch.projitems" Label="Shared" Condition="Exists('..\TreeWatch.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
@@ -105,5 +109,11 @@
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-Small%402x.png" />
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-Small-40.png" />
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-Small-40%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <XamarinComponentReference Include="googlemapsios">
+      <Version>1.9.2</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
   </ItemGroup>
 </Project>

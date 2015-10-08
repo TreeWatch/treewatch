@@ -10,6 +10,9 @@ namespace TreeWatch
 		public MapPage ()
 		{
 			InitializeComponent ();
+
+
+
 		}
 	}
 }
