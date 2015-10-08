@@ -6,12 +6,10 @@ namespace TreeWatch
 {
 	public class App : Application
 	{
-
-		public static List<string> PhoneNumbers { get; set; }
-
+		
 		public App ()
 		{
-			MainPage = new TabbedPage();
+			MainPage = new CustomTabbedPage();
 		}
 
 		protected override void OnStart ()
