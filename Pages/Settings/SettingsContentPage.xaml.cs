@@ -10,6 +10,13 @@ namespace TreeWatch
 		public SettingsContentPage ()
 		{
 			InitializeComponent ();
+
+			//site configurations
+			Title = "Settings";
+
+			//filler
+			BackgroundColor = Color.Aqua;
+			siteLabel.Text = "Settings";
 		}
 	}
 }

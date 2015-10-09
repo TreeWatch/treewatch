@@ -10,6 +10,13 @@ namespace TreeWatch
 		public ToDoContentPage ()
 		{
 			InitializeComponent ();
+
+			//site configurations
+			Title = "ToDo";
+
+			//filler
+			BackgroundColor = Color.Aqua;
+			siteLabel.Text = "ToDo";
 		}
 	}
 }

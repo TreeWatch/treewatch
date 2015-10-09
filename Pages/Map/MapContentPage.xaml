@@ -5,7 +5,8 @@
 	</ContentPage.Padding>
 	<ContentPage.Content>
 		<StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Orientation="Vertical" Spacing="15">
-			<Label Text="Here you will see the map" />
+			<Label x:Name="siteLabel" />
+			<Button x:Name="siteButton" />
 		</StackLayout>
 	</ContentPage.Content>
 </ContentPage>

@@ -5,18 +5,19 @@ using Xamarin.Forms;
 
 namespace TreeWatch
 {
-	public partial class NoteContentPage : ContentPage
+	public partial class OverlayContentPage : ContentPage
 	{
-		public NoteContentPage ()
+		public OverlayContentPage ()
 		{
 			InitializeComponent ();
 
 			//site configurations
-			Title = "Note";
+			Title = "Overlay";
+			NavigationPage.SetBackButtonTitle (this, "Back");
 
 			//filler
 			BackgroundColor = Color.Aqua;
-			siteLabel.Text = "Note";
+			siteLabel.Text = "Overlay";
 		}
 	}
 }
