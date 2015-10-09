@@ -10,6 +10,13 @@ namespace TreeWatch
 		public HistoryContentPage ()
 		{
 			InitializeComponent ();
+
+			//site configurations
+			Title = "History";
+
+			//filler
+			BackgroundColor = Color.Aqua;
+			siteLabel.Text = "History";
 		}
 	}
 }

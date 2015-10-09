@@ -10,6 +10,13 @@ namespace TreeWatch
 		public NoteContentPage ()
 		{
 			InitializeComponent ();
+
+			//site configurations
+			Title = "Note";
+
+			//filler
+			BackgroundColor = Color.Aqua;
+			siteLabel.Text = "Note";
 		}
 	}
 }

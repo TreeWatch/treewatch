@@ -10,6 +10,13 @@ namespace TreeWatch
 		public OverlayContentPage ()
 		{
 			InitializeComponent ();
+
+			//site configurations
+			Title = "Overlay";
+
+			//filler
+			BackgroundColor = Color.Aqua;
+			siteLabel.Text = "Overlay";
 		}
 	}
 }
