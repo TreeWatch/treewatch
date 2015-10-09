@@ -6,7 +6,7 @@ using CoreLocation;
 using CoreGraphics;
 using Xamarin.Forms;
 
-[assembly:ExportRenderer(typeof(TreeWatch.MapPage), typeof(TreeWatch.MapProvider))]
+[assembly:ExportRenderer(typeof(TreeWatch.MapContentPage), typeof(TreeWatch.MapProvider))]
 
 namespace TreeWatch
 {

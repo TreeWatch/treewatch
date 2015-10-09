@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 
 using Xamarin.Forms;
-
+#if __ANDROID__
+using Xamarin.Forms.Maps;
+#endif
 namespace TreeWatch
 {
 	public partial class MapContentPage : ContentPage
@@ -10,6 +12,11 @@ namespace TreeWatch
 		public MapContentPage ()
 		{
 			InitializeComponent ();
+
+
+			#if __ANDROID__
+			this.Content = new ExtendedMap ();
+			#endif
 
 			//site configurations
 			Title = "Map";
@@ -25,5 +32,20 @@ namespace TreeWatch
 			};
 		}
 	}
+
+	#if __ANDROID__
+	public class ExtendedMap : Map
+	{
+		public ExtendedMap ()
+		{
+
+		}
+
+		public ExtendedMap (MapSpan region) : base (region)
+		{
+
+		}
+	}
+	#endif
 }
 
