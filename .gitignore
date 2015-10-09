@@ -1,5 +1,9 @@
 # Created by https://www.gitignore.io/api/xamarinstudio,linux,osx,windows
 
+# Dont add API Keys
+Keys.cs
+Components/
+
 ### XamarinStudio ###
 bin/
 obj/

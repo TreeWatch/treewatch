@@ -34,6 +34,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Pages\Map\OverlayContentPage.xaml.cs">
       <DependentUpon>OverlayContentPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Keys.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\History\HistoryContentPage.xaml">

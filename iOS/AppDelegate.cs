@@ -4,12 +4,15 @@ using System.Linq;
 
 using Foundation;
 using UIKit;
+using Google.Maps;
+using TreeWatch;
 
 namespace TreeWatch.iOS
 {
 	[Register ("AppDelegate")]
 	public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate
 	{
+		
 		public override bool FinishedLaunching (UIApplication app, NSDictionary options)
 		{
 			global::Xamarin.Forms.Forms.Init ();
@@ -20,6 +23,8 @@ namespace TreeWatch.iOS
 			#endif
 
 			LoadApplication (new App ());
+
+			MapServices.ProvideAPIKey (Keys.iOSMapsAPIKey);
 
 			return base.FinishedLaunching (app, options);
 		}
