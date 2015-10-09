@@ -5,9 +5,9 @@ using Xamarin.Forms;
 
 namespace TreeWatch
 {
-	public partial class SettingsPage : ContentPage
+	public partial class ToDoContentPage : ContentPage
 	{
-		public SettingsPage ()
+		public ToDoContentPage ()
 		{
 			InitializeComponent ();
 		}
