@@ -35,6 +35,16 @@
 	<string>0.1</string>
 	<key>UIMainStoryboardFile</key>
 	<string>LaunchScreen</string>
+	<key>UIMainStoryboardFile~ipad</key>
+	<string>LaunchScreen</string>
+	<key>UIStatusBarStyle</key>
+	<string>UIStatusBarStyleLightContent</string>
+	<key>UIPrerenderedIcon</key>
+	<true/>
+	<key>XSAppIconAssets</key>
+	<string>Resources/Images.xcassets/AppIcons.appiconset</string>
+	<key>XSLaunchImageAssets</key>
+	<string>Resources/Images.xcassets/LaunchImage.launchimage</string>
 	<key>CFBundleDocumentTypes</key>
 	<array>
 		<dict>
@@ -46,21 +56,9 @@
 			</array>
 		</dict>
 	</array>
-	<key>MKDirectionsApplicationSupportedModes</key>
-	<array>
-		<string>MKDirectionsModeBike</string>
-		<string>MKDirectionsModeCar</string>
-		<string>MKDirectionsModeOther</string>
-	</array>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>location</string>
 	</array>
-	<key>UIMainStoryboardFile~ipad</key>
-	<string>LaunchScreen</string>
-	<key>UIStatusBarStyle</key>
-	<string>UIStatusBarStyleLightContent</string>
-	<key>UIPrerenderedIcon</key>
-	<true/>
 </dict>
 </plist>

@@ -1,11 +1,12 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="TreeWatch.ToDoPage">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="TreeWatch.MapContentPage">
 	<ContentPage.Padding>
 		<OnPlatform x:TypeArguments="Thickness" iOS="20, 40, 20, 20" Android="20, 20, 20, 20" WinPhone="20, 20, 20, 20" />
 	</ContentPage.Padding>
 	<ContentPage.Content>
 		<StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Orientation="Vertical" Spacing="15">
-			<Label Text="Here is a list of todos" />
+			<Label x:Name="siteLabel" />
+			<Button x:Name="siteButton" />
 		</StackLayout>
 	</ContentPage.Content>
 </ContentPage>

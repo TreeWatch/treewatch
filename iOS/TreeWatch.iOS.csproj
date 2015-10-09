@@ -25,6 +25,7 @@
     <MtouchUseRefCounting>true</MtouchUseRefCounting>
     <MtouchI18n>
     </MtouchI18n>
+    <MtouchSdkVersion>9.0</MtouchSdkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>full</DebugType>
@@ -109,6 +110,22 @@
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-Small%402x.png" />
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-Small-40.png" />
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-Small-40%402x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Contents.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Icons\Map\MapTabBarIcon.png" />
+    <BundleResource Include="Resources\Icons\History\HistoryTabBarIcon.png" />
+    <BundleResource Include="Resources\Icons\Note\NoteTabBarIcon.png" />
+    <BundleResource Include="Resources\Icons\Settings\SettingsTabBarIcon.png" />
+    <BundleResource Include="Resources\Icons\ToDo\ToDoTabBarIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\Icons\" />
+    <Folder Include="Resources\Icons\Map\" />
+    <Folder Include="Resources\Icons\History\" />
+    <Folder Include="Resources\Icons\Note\" />
+    <Folder Include="Resources\Icons\Settings\" />
+    <Folder Include="Resources\Icons\ToDo\" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="googlemapsios">
