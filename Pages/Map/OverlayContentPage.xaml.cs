@@ -13,6 +13,7 @@ namespace TreeWatch
 
 			//site configurations
 			Title = "Overlay";
+			NavigationPage.SetBackButtonTitle (this, "Back");
 
 			//filler
 			BackgroundColor = Color.Aqua;
