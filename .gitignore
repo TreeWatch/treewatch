@@ -2,6 +2,7 @@
 
 # Dont add API Keys
 Keys.cs
+Components/
 
 ### XamarinStudio ###
 bin/
