@@ -35,6 +35,7 @@
       <DependentUpon>OverlayContentPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Keys.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MapViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\History\HistoryContentPage.xaml">
@@ -63,5 +64,6 @@
     <Folder Include="$(MSBuildThisFileDirectory)Pages\ToDo\" />
     <Folder Include="$(MSBuildThisFileDirectory)Pages\Note\" />
     <Folder Include="$(MSBuildThisFileDirectory)Pages\Settings\" />
+    <Folder Include="$(MSBuildThisFileDirectory)ViewModels\" />
   </ItemGroup>
 </Project>

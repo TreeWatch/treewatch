@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 
 using Xamarin.Forms;
-#if __ANDROID__
 using Xamarin.Forms.Maps;
-#endif
+using ExtendedMap.Forms.Plugin.Abstractions;
+
+
 namespace TreeWatch
 {
 	public partial class MapContentPage : ContentPage
@@ -13,35 +14,30 @@ namespace TreeWatch
 		{
 			InitializeComponent ();
 
-			#if __ANDROID__
-			this.Content = new ExtendedMap ();
-			#endif
+			NavigationPage.SetBackButtonTitle (this, "Back");
 
-			//site configurations
-			Title = "Map";
-			NavigationPage.SetBackButtonTitle (this, Title);
+			BindingContext = new MapViewModel ();
 
-			//action after a field is clicked
-//			siteButton.Clicked += async (object sender, EventArgs e) => 
-//			{
-//				await this.Navigation.PushAsync(new OverlayContentPage());
-//			};
+			this.Content = CreateMapContentView ();
+		}
+
+		View CreateMapContentView ()
+		{
+			//Coordinates for the starting point of the map
+
+			MapViewModel model = (MapViewModel)BindingContext;
+			Position location = model.getCurrentDevicePosition ();
+
+			var _map = new ExtendedMap.Forms.Plugin.Abstractions.ExtendedMap (MapSpan.FromCenterAndRadius (location, Distance.FromKilometers (1))) { IsShowingUser = true };
+
+			_map.MapType = MapType.Hybrid;
+
+			_map.BindingContext = BindingContext;
+
+			var createMapContentView = new CustomMapContentView (_map);
+
+			return createMapContentView;
 		}
 	}
-
-	#if __ANDROID__
-	public class ExtendedMap : Map
-	{
-		public ExtendedMap ()
-		{
-
-		}
-
-		public ExtendedMap (MapSpan region) : base (region)
-		{
-
-		}
-	}
-	#endif
 }
 
