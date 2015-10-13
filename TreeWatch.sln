@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TreeWatch.Droid", "Droid\Tr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TreeWatch.UITests", "UITests\TreeWatch.UITests.csproj", "{08A12389-07EF-4CBB-81D2-CF91755AA223}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FC983C39-275C-4C2C-90FF-6811C2C72E45}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|iPhoneSimulator = Debug|iPhoneSimulator
@@ -57,8 +55,6 @@ Global
 		{A58DAE5E-5B5F-425A-A138-BB760893E9DF}.Release|iPhone.Build.0 = Release|Any CPU
 		{A58DAE5E-5B5F-425A-A138-BB760893E9DF}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{A58DAE5E-5B5F-425A-A138-BB760893E9DF}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		Policies = $0
