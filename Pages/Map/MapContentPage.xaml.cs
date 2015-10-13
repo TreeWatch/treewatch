@@ -13,23 +13,19 @@ namespace TreeWatch
 		{
 			InitializeComponent ();
 
-
 			#if __ANDROID__
 			this.Content = new ExtendedMap ();
 			#endif
 
 			//site configurations
 			Title = "Map";
-			NavigationPage.SetBackButtonTitle (this, "Back");
+			NavigationPage.SetBackButtonTitle (this, Title);
 
-			//filler
-			BackgroundColor = Color.Aqua;
-			siteLabel.Text = "Map";
-			siteButton.Text = "Show Overlay";
-			siteButton.Clicked += async (object sender, EventArgs e) => 
-			{
-				await this.Navigation.PushAsync(new OverlayContentPage());
-			};
+			//action after a field is clicked
+//			siteButton.Clicked += async (object sender, EventArgs e) => 
+//			{
+//				await this.Navigation.PushAsync(new OverlayContentPage());
+//			};
 		}
 	}
 

@@ -5,8 +5,6 @@
 	</ContentPage.Padding>
 	<ContentPage.Content>
 		<StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Orientation="Vertical" Spacing="15">
-			<Label x:Name="siteLabel" />
-			<Button x:Name="siteButton" />
 		</StackLayout>
 	</ContentPage.Content>
 </ContentPage>
