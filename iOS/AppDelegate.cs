@@ -4,8 +4,11 @@ using System.Linq;
 
 using Foundation;
 using UIKit;
-using Google.Maps;
 using TreeWatch;
+using Xamarin;
+using SVG.Forms.Plugin.iOS;
+
+using ExtendedCells.Forms.Plugin.iOSUnified;
 
 namespace TreeWatch.iOS
 {
@@ -19,15 +22,16 @@ namespace TreeWatch.iOS
 
 			// Code for starting up the Xamarin Test Cloud Agent
 			#if ENABLE_TEST_CLOUD
-			Xamarin.Calabash.Start();
+			Xamarin.Calabash.Start ();
 			#endif
 
-			LoadApplication (new App ());
+			FormsMaps.Init ();
+			SvgImageRenderer.Init ();
+			ExtendedTextCellRenderer.Init ();
 
-			MapServices.ProvideAPIKey (Keys.iOSMapsAPIKey);
+			LoadApplication (new App ());
 
 			return base.FinishedLaunching (app, options);
 		}
 	}
 }
-
