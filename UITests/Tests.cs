@@ -26,11 +26,20 @@ namespace TreeWatch.UITests
 		}
 
 		[Test]
-		public void WelcomeTextIsDisplayed ()
+		public void MapDisplayed ()
 		{
-			AppResult[] results = app.WaitForElement (c => c.Marked ("Welcome to Xamarin Forms!"));
-			app.Screenshot ("Welcome screen.");
+			app.Tap ("Map");
+			AppResult[] results = app.WaitForElement (c => c.Marked ("MapView"));
+			app.Screenshot ("Map screen");
+			Assert.IsTrue (results.Any ());
+		}
 
+		[Test]
+		public void HistoryDisplayed ()
+		{
+			app.Tap ("History");
+			AppResult[] results = app.WaitForElement (c => c.Marked ("HistoryLabel"));
+			app.Screenshot ("Map screen");
 			Assert.IsTrue (results.Any ());
 		}
 	}
