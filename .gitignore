@@ -8,10 +8,6 @@ Components/
 bin/
 obj/
 *.userprefs
-Droid/TreeWatch.Droid.csproj
-Droid/Resources/Resource.designer.cs
-Droid/packages.config
-iOS/TreeWatch.iOS.csproj
 
 # KDE directory preferences
 .directory
