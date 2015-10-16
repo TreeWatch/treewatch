@@ -28,13 +28,13 @@ namespace TreeWatch
 			MapViewModel model = (MapViewModel)BindingContext;
 			Position location = model.getCurrentDevicePosition ();
 
-			var _map = new ExtendedMap.Forms.Plugin.Abstractions.ExtendedMap (MapSpan.FromCenterAndRadius (location, Distance.FromKilometers (1))) { IsShowingUser = true };
+			var map = new ExtendedMap.Forms.Plugin.Abstractions.ExtendedMap (MapSpan.FromCenterAndRadius (location, Distance.FromKilometers (1))) { IsShowingUser = true };
 
-			_map.MapType = MapType.Hybrid;
+			map.MapType = MapType.Hybrid;
 
-			_map.BindingContext = BindingContext;
+			map.BindingContext = BindingContext;
 
-			var createMapContentView = new CustomMapContentView (_map);
+			var createMapContentView = new CustomMapContentView (map);
 
 			return createMapContentView;
 		}
