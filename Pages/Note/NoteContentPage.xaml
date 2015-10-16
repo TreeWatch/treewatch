@@ -5,7 +5,7 @@
 	</ContentPage.Padding>
 	<ContentPage.Content>
 		<StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Orientation="Vertical" Spacing="15">
-			<Label x:Name="siteLabel" />
+			<Label x:Name="siteLabel" StyleId="NoteLabel"/>
 		</StackLayout>
 	</ContentPage.Content>
 </ContentPage>

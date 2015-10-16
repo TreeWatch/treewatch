@@ -11,7 +11,7 @@ namespace TreeWatch.UITests
 		public static IApp StartApp (Platform platform)
 		{
 			if (platform == Platform.Android) {
-				return ConfigureApp.Android.StartApp ();
+				return ConfigureApp.Android.ApiKey("YOUR_API_KEY_HERE").StartApp ();
 			}
 
 			return ConfigureApp.iOS.StartApp ();

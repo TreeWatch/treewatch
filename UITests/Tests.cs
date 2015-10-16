@@ -11,7 +11,7 @@ namespace TreeWatch.UITests
 	[TestFixture (Platform.iOS)]
 	public class Tests
 	{
-		IApp app;
+		protected IApp _app;
 		Platform platform;
 
 		public Tests (Platform platform)
@@ -22,24 +22,48 @@ namespace TreeWatch.UITests
 		[SetUp]
 		public void BeforeEachTest ()
 		{
-			app = AppInitializer.StartApp (platform);
+			_app = AppInitializer.StartApp (platform);
 		}
 
 		[Test]
 		public void MapDisplayed ()
 		{
-			app.Tap ("Map");
-			AppResult[] results = app.WaitForElement (c => c.Marked ("MapView"));
-			app.Screenshot ("Map screen");
+			_app.Tap ("Map");
+			AppResult[] results = _app.WaitForElement (c => c.Marked ("MapView"));
+			_app.Screenshot ("Map screen");
 			Assert.IsTrue (results.Any ());
 		}
 
 		[Test]
 		public void HistoryDisplayed ()
 		{
-			app.Tap ("History");
-			AppResult[] results = app.WaitForElement (c => c.Marked ("HistoryLabel"));
-			app.Screenshot ("Map screen");
+			_app.Tap ("History");
+			AppResult[] results = _app.WaitForElement (c => c.Marked ("HistoryLabel"));
+			_app.Screenshot ("history screen");
+			Assert.IsTrue (results.Any ());
+		}
+
+		public void TodoDisplayed ()
+		{
+			_app.Tap ("Todo");
+			AppResult[] results = _app.WaitForElement (c => c.Marked ("TodoLabel"));
+			_app.Screenshot ("Todo screen");
+			Assert.IsTrue (results.Any ());
+		}
+
+		public void SettingsDisplayed ()
+		{
+			_app.Tap ("Settings");
+			AppResult[] results = _app.WaitForElement (c => c.Marked ("SettingsLabel"));
+			_app.Screenshot ("Settings screen");
+			Assert.IsTrue (results.Any ());
+		}
+
+		public void NoteDisplayed ()
+		{
+			_app.Tap ("Note");
+			AppResult[] results = _app.WaitForElement (c => c.Marked ("NoteLabel"));
+			_app.Screenshot ("Note screen");
 			Assert.IsTrue (results.Any ());
 		}
 	}
