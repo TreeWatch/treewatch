@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" package="nl.gtl.treewatch" android:versionName="0.1">
-	<uses-sdk android:minSdkVersion="19" android:targetSdkVersion="22" />
+	<uses-sdk android:minSdkVersion="19" android:targetSdkVersion="21" />
 	<!-- Google Maps for Android v2 requires OpenGL ES v2 -->
 	<uses-feature android:glEsVersion="0x00020000" android:required="true" />
 	<!-- We need to be able to download map tiles and access Google Play Services-->
