@@ -23,8 +23,8 @@ namespace TreeWatch
 		public Position getCurrentDevicePosition ()
 		{
 			// Todo: make this not static
-			const double latitude = 51.335573;
-			const double longitude = 6.099319;
+			const double latitude = 51.39202;
+			const double longitude = 6.04745;
 
 			return new Position (latitude, longitude);
 		}

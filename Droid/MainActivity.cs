@@ -7,9 +7,6 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using ExtendedCells.Forms.Plugin.Android;
-using ExtendedMap.Forms.Plugin.Droid;
-using SVG.Forms.Plugin.Droid;
 using Xamarin;
 
 namespace TreeWatch.Droid
@@ -23,9 +20,6 @@ namespace TreeWatch.Droid
 
 			global::Xamarin.Forms.Forms.Init (this, bundle);
 			FormsMaps.Init (this, bundle);
-			SvgImageRenderer.Init ();
-			ExtendedTextCellRenderer.Init ();
-			ExtendedMapRenderer.Init ();
 
 			// http://forums.xamarin.com/discussion/21148/calabash-and-xamarin-forms-what-am-i-missing
 			Xamarin.Forms.Forms.ViewInitialized += (object sender, Xamarin.Forms.ViewInitializedEventArgs e) => {

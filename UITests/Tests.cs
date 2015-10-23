@@ -39,18 +39,20 @@ namespace TreeWatch.UITests
 		{
 			app.Tap ("History");
 			AppResult[] results = app.WaitForElement (c => c.Marked ("HistoryLabel"));
-			app.Screenshot ("history screen");
+			app.Screenshot ("History screen");
 			Assert.IsTrue (results.Any ());
 		}
 
+		[Test]
 		public void TodoDisplayed ()
 		{
-			app.Tap ("Todo");
+			app.Tap ("ToDo");
 			AppResult[] results = app.WaitForElement (c => c.Marked ("TodoLabel"));
 			app.Screenshot ("Todo screen");
 			Assert.IsTrue (results.Any ());
 		}
 
+		[Test]
 		public void SettingsDisplayed ()
 		{
 			app.Tap ("Settings");
@@ -59,6 +61,7 @@ namespace TreeWatch.UITests
 			Assert.IsTrue (results.Any ());
 		}
 
+		[Test]
 		public void NoteDisplayed ()
 		{
 			app.Tap ("Note");
