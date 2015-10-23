@@ -36,6 +36,8 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Keys.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MapViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Field.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\Map\FieldMap.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\History\HistoryContentPage.xaml">
@@ -65,5 +67,6 @@
     <Folder Include="$(MSBuildThisFileDirectory)Pages\Note\" />
     <Folder Include="$(MSBuildThisFileDirectory)Pages\Settings\" />
     <Folder Include="$(MSBuildThisFileDirectory)ViewModels\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Models\" />
   </ItemGroup>
 </Project>

@@ -3,8 +3,6 @@ using System.Collections.Generic;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
-using ExtendedMap.Forms.Plugin.Abstractions;
-
 
 namespace TreeWatch
 {
@@ -19,6 +17,7 @@ namespace TreeWatch
 			BindingContext = new MapViewModel ();
 
 			this.Content = CreateMapContentView ();
+
 		}
 
 		View CreateMapContentView ()
@@ -28,13 +27,23 @@ namespace TreeWatch
 			MapViewModel model = (MapViewModel)BindingContext;
 			Position location = model.getCurrentDevicePosition ();
 
-			var map = new ExtendedMap.Forms.Plugin.Abstractions.ExtendedMap (MapSpan.FromCenterAndRadius (location, Distance.FromKilometers (1))) { IsShowingUser = true };
+			var map = new FieldMap (MapSpan.FromCenterAndRadius (location, Distance.FromKilometers (1)));
 
 			map.MapType = MapType.Hybrid;
 
+			var field = new Field();
+			var fieldcords = new List<Position>();
+
+			fieldcords.Add (new Position (51.39202, 6.04745));
+			fieldcords.Add (new Position (51.39202, 6.05116));
+			fieldcords.Add (new Position (51.38972, 6.05116));
+			fieldcords.Add (new Position (51.38972, 6.04745));
+			field.BoundingCordinates = fieldcords;
+			map.Fields.Add (field);
+
 			map.BindingContext = BindingContext;
 
-			var createMapContentView = new CustomMapContentView (map);
+			var createMapContentView = map;
 
 			return createMapContentView;
 		}

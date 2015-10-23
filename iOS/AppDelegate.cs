@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 
-using ExtendedCells.Forms.Plugin.iOSUnified;
 using Foundation;
 using ObjCRuntime;
-using SVG.Forms.Plugin.iOS;
 using TreeWatch;
 
 using UIKit;
@@ -34,8 +32,7 @@ namespace TreeWatch.iOS
 			};
 
 			FormsMaps.Init ();
-			SvgImageRenderer.Init ();
-			ExtendedTextCellRenderer.Init ();
+
 
 			// Code for starting up the Xamarin Test Cloud Agent
 			#if ENABLE_TEST_CLOUD

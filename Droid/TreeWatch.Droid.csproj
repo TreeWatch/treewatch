@@ -12,10 +12,10 @@
     <AndroidResgenClass>Resource</AndroidResgenClass>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidApplication>True</AndroidApplication>
-    <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
+    <AndroidUseLatestPlatformSdk>False</AndroidUseLatestPlatformSdk>
     <AssemblyName>TreeWatch.Droid</AssemblyName>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
-    <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v5.1</TargetFrameworkVersion>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -66,24 +66,6 @@
     <Reference Include="Xamarin.Android.Support.v7.MediaRouter">
       <HintPath>..\packages\Xamarin.Android.Support.v7.MediaRouter.23.0.1.1\lib\MonoAndroid403\Xamarin.Android.Support.v7.MediaRouter.dll</HintPath>
     </Reference>
-    <Reference Include="NGraphics.Android.Custom">
-      <HintPath>..\packages\Xam.Plugins.Forms.Svg.1.0.0.25\lib\MonoAndroid10\NGraphics.Android.Custom.dll</HintPath>
-    </Reference>
-    <Reference Include="NGraphics.Custom">
-      <HintPath>..\packages\Xam.Plugins.Forms.Svg.1.0.0.25\lib\MonoAndroid10\NGraphics.Custom.dll</HintPath>
-    </Reference>
-    <Reference Include="SVG.Forms.Plugin.Abstractions">
-      <HintPath>..\packages\Xam.Plugins.Forms.Svg.1.0.0.25\lib\MonoAndroid10\SVG.Forms.Plugin.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="SVG.Forms.Plugin.Android">
-      <HintPath>..\packages\Xam.Plugins.Forms.Svg.1.0.0.25\lib\MonoAndroid10\SVG.Forms.Plugin.Android.dll</HintPath>
-    </Reference>
-    <Reference Include="ExtendedCells.Forms.Plugin.Abstractions">
-      <HintPath>..\packages\Xam.Plugins.Forms.ExtendedCell.1.0.0.19\lib\MonoAndroid10\ExtendedCells.Forms.Plugin.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="ExtendedCells.Forms.Plugin.Android">
-      <HintPath>..\packages\Xam.Plugins.Forms.ExtendedCell.1.0.0.19\lib\MonoAndroid10\ExtendedCells.Forms.Plugin.Android.dll</HintPath>
-    </Reference>
     <Reference Include="GooglePlayServicesLib">
       <HintPath>..\packages\Xamarin.GooglePlayServices.22.0.0.0\lib\MonoAndroid41\GooglePlayServicesLib.dll</HintPath>
     </Reference>
@@ -93,17 +75,12 @@
     <Reference Include="Xamarin.Forms.Maps">
       <HintPath>..\packages\Xamarin.Forms.Maps.1.4.4.6449\lib\MonoAndroid10\Xamarin.Forms.Maps.dll</HintPath>
     </Reference>
-    <Reference Include="ExtendedMap.Forms.Plugin.Abstractions">
-      <HintPath>..\packages\Xam.Plugins.Forms.ExtendedMap.1.5.0.0\lib\MonoAndroid10\ExtendedMap.Forms.Plugin.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="ExtendedMap.Forms.Plugin.Android">
-      <HintPath>..\packages\Xam.Plugins.Forms.ExtendedMap.1.5.0.0\lib\MonoAndroid10\ExtendedMap.Forms.Plugin.Android.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="FieldMapRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
