@@ -10,11 +10,14 @@ using TreeWatch;
 [assembly: ExportRenderer (typeof(FieldMap), typeof(FieldMapRenderer))]
 namespace TreeWatch.Droid
 {
-	public class FieldMapRenderer : MapRenderer
+	public class FieldMapRenderer : MapRenderer, IOnMapReadyCallback
 	{
 		MapView mapView;
-		GoogleMap map;
 		FieldMap myMap;
+
+		new public GoogleMap Map { get; private set; }
+
+		public event EventHandler MapReady;
 
 		public FieldMapRenderer ()
 		{
@@ -27,26 +30,41 @@ namespace TreeWatch.Droid
 			if (e.OldElement == null) {
 
 				mapView = Control as MapView;
-				map = mapView.Map;
+
+				mapView.GetMapAsync (this);
 
 				myMap = e.NewElement as FieldMap;
 
-				PolygonOptions polygon = new PolygonOptions ();
-				polygon.InvokeFillColor (myMap.OverLayColor.ToAndroid ());
-				polygon.InvokeStrokeWidth (0);
-
-				foreach (var Field in myMap.Fields) {
-
-					foreach (var pos in Field.BoundingCordinates) {
-						polygon.Add (new LatLng (pos.Latitude, pos.Longitude));
-					}
-					polygon.Add (new LatLng (Field.BoundingCordinates [0].Latitude, Field.BoundingCordinates [0].Longitude));
-
-					map.AddPolygon (polygon);
-				}
 			}
 		}
+
+		public void addFields ()
+		{
+			PolygonOptions polygon = new PolygonOptions ();
+			polygon.InvokeFillColor (myMap.OverLayColor.ToAndroid ());
+			polygon.InvokeStrokeWidth (0);
+
+			foreach (var Field in myMap.Fields) {
+
+				foreach (var pos in Field.BoundingCordinates) {
+					polygon.Add (new LatLng (pos.Latitude, pos.Longitude));
+				}
+				polygon.Add (new LatLng (Field.BoundingCordinates [0].Latitude, Field.BoundingCordinates [0].Longitude));
+
+				Map.AddPolygon (polygon);
+			}
+		}
+			
+		public void OnMapReady(GoogleMap googleMap)
+		{
+			Map = googleMap;
+			addFields ();
+			var handler = MapReady;
+			if (handler != null)
+				handler(this, EventArgs.Empty);
+		}
 	}
+		
 }
 
 
