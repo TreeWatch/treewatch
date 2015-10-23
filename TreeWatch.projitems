@@ -34,7 +34,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Pages\Map\OverlayContentPage.xaml.cs">
       <DependentUpon>OverlayContentPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Keys.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MapViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Field.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\Map\FieldMap.cs" />
