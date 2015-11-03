@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{08A12389-07EF-4CBB-81D2-CF91755AA223}</ProjectGuid>
+    <ProjectGuid>{73AB1AB1-68FA-441D-90EA-3CEC1BB33FBB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>TreeWatch.UITests</RootNamespace>
     <AssemblyName>TreeWatch.UITests</AssemblyName>
@@ -15,6 +15,7 @@
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug</OutputPath>
     <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
@@ -22,13 +23,14 @@
     <DebugType>full</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="Xamarin.UITest">
-      <HintPath>..\packages\Xamarin.UITest.1.1.1\lib\Xamarin.UITest.dll</HintPath>
+      <HintPath>..\packages\Xamarin.UITest.1.2.0\lib\Xamarin.UITest.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
       <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
@@ -36,13 +38,13 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\iOS\TreeWatch.iOS.csproj">
-      <Project>{87CEE4AF-3179-4094-8F48-3D75C3C973DD}</Project>
+      <Project>{77D61D95-C12E-454D-B5F1-9C6391DDA41D}</Project>
       <Name>TreeWatch.iOS</Name>
       <ReferenceOutputAssembly>False</ReferenceOutputAssembly>
       <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\Droid\TreeWatch.Droid.csproj">
-      <Project>{A58DAE5E-5B5F-425A-A138-BB760893E9DF}</Project>
+      <Project>{47160693-92B1-4AC0-9B0D-943733F41043}</Project>
       <Name>TreeWatch.Droid</Name>
       <ReferenceOutputAssembly>False</ReferenceOutputAssembly>
       <Private>False</Private>
