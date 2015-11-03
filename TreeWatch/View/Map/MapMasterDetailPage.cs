@@ -15,7 +15,10 @@ namespace TreeWatch
 			this.Detail = new MapNavigationPage (new MapContentPage ());
 
 			Title = Detail.Title;
-			//Icon = Detail.Icon;
+			if (Device.OS == TargetPlatform.iOS) {
+				Icon = Detail.Icon;
+			}
+
 		}
 	}
 }

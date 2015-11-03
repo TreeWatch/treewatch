@@ -16,7 +16,7 @@ namespace TreeWatch
 			InitializeComponent ();
 
 			Title = "Menu";
-			//Icon = "HamburgerMenuIcon.png";
+			Icon = "HamburgerMenuIcon.png";
 
 			FieldView.ItemsSource = fields;
 		}

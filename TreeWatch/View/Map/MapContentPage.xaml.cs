@@ -14,7 +14,7 @@ namespace TreeWatch
 
 			Title = "Map";
 			if (Device.OS == TargetPlatform.iOS) {
-				//Icon = "MapTabBarIcon.png";
+				Icon = "MapTabBarIcon.png";
 			}
 
 			BindingContext = new MapViewModel ();

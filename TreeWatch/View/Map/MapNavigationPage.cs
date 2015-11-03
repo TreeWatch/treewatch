@@ -9,7 +9,10 @@ namespace TreeWatch
 		public MapNavigationPage (Page root) : base (root)
 		{
 			Title = root.Title;
-			//Icon = root.Icon;
+
+			if (Device.OS == TargetPlatform.iOS) {
+				Icon = root.Icon;
+			}
 		}
 		
 	}
