@@ -8,6 +8,8 @@ namespace TreeWatch
 	{
 		public static Boolean isInsideCoords(List<Position> coords, Position position){
 			Position p1, p2;
+			int i, j;
+			int nvert = coords.Count;
 
 			bool inside = false;
 
@@ -16,12 +18,16 @@ namespace TreeWatch
 				return inside;
 			}
 
-			var oldPos = new Position(
-				coords[coords.Count -1].Latitude, coords[coords.Count - 1].Longitude);
+			for (i = 0, j = nvert - 1; i < nvert; j = i++)
+			{
+				if (((coords[i].Latitude > position.Latitude) != (coords[j].Latitude > position.Latitude)) &&
+					(position.Longitude < (coords[j].Longitude - coords[i].Longitude) * (position.Latitude - coords[i].Latitude) / (coords[j].Latitude - coords[i].Latitude) + coords[i].Longitude))
+					inside = !inside; 
+			}
+			return inside;
 
-			foreach(var pos in coords){
-
-				if (pos.Latitude > oldPos.Latitude) {
+				/*
+				if (pos.Longitude > oldPos.Longitude) {
 					p1 = oldPos;
 					p2 = pos;
 
@@ -30,17 +36,15 @@ namespace TreeWatch
 					p2 = oldPos;
 				}
 
-				if ((pos.Latitude < position.Latitude) == (position.Latitude <= oldPos.Latitude)
-					&& (pos.Longitude - (long) p1.Longitude)*(p2.Latitude - p1.Latitude)
-					< (p2.Longitude - (long) p1.Longitude)*(pos.Latitude - p1.Latitude))
+				if ((pos.Longitude < position.Longitude) == (position.Longitude <= oldPos.Longitude)
+				    && (pos.Latitude - (long)p1.Latitude) * (p2.Longitude - p1.Longitude)
+				    < (p2.Latitude - (long)p1.Latitude) * (pos.Longitude - p1.Longitude))
 				{
 					inside = !inside;
 				}
 
 				oldPos = pos;
-			}
-
-			return inside;
+				*/
 		}
 	}
 }
