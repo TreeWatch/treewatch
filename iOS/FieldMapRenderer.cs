@@ -1,12 +1,15 @@
 ﻿using System;
-using Xamarin.Forms;
-using Xamarin.Forms.Platform.iOS;
-using Xamarin.Forms.Maps.iOS;
-using MapKit;
-using UIKit;
+
 using CoreLocation;
+
+using MapKit;
+
 using TreeWatch;
 using TreeWatch.iOS;
+
+using Xamarin.Forms;
+using Xamarin.Forms.Maps.iOS;
+using Xamarin.Forms.Platform.iOS;
 
 [assembly: ExportRenderer (typeof(FieldMap), typeof(FieldMapRenderer))]
 

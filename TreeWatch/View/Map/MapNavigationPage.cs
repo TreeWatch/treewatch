@@ -1,6 +1,4 @@
-﻿using System;
-
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace TreeWatch
 {
@@ -10,7 +8,8 @@ namespace TreeWatch
 		{
 			Title = root.Title;
 
-			if (Device.OS == TargetPlatform.iOS) {
+			if (root.Icon != null)
+			{
 				Icon = root.Icon;
 			}
 		}

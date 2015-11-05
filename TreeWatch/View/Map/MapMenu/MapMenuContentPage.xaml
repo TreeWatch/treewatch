@@ -4,7 +4,8 @@
 				x:Class="TreeWatch.MapMenuContentPage"
 				xmlns:local="clr-namespace:TreeWatch;assembly=TreeWatch"
 				Title = "Menu"
-				Icon = "HamburgerMenuIcon.png">
+				Icon = "HamburgerMenuIcon.png"
+				StyleId="MapView">
 	<ContentPage.Padding>
 		<OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" />
 	</ContentPage.Padding>

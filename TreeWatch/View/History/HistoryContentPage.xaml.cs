@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace TreeWatch
 {
@@ -13,8 +10,9 @@ namespace TreeWatch
 
 			//site configurations
 			Title = "History";
-			if (Device.OS == TargetPlatform.iOS) {
-				//Icon = "HistoryTabBarIcon.png";
+			if (Device.OS == TargetPlatform.iOS)
+			{
+				Icon = "HistoryTabBarIcon.png";
 			}
 		}
 	}

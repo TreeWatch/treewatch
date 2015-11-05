@@ -1,7 +1,7 @@
-﻿using System;
-using Xamarin.Forms.Maps;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
+
 using Xamarin.Forms;
+using Xamarin.Forms.Maps;
 
 namespace TreeWatch
 {
