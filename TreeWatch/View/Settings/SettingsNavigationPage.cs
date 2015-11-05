@@ -7,7 +7,10 @@ namespace TreeWatch
 		public SettingsNavigationPage (Page root) : base (root)
 		{
 			Title = root.Title;
-			Icon = root.Icon;
+			if (root.Icon != null)
+			{
+				Icon = root.Icon;
+			}
 		}
 	}
 }
