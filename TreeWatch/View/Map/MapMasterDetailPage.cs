@@ -1,5 +1,3 @@
-using System;
-
 using Xamarin.Forms;
 
 namespace TreeWatch
@@ -15,7 +13,8 @@ namespace TreeWatch
 			this.Detail = new MapNavigationPage (new MapContentPage ());
 
 			Title = Detail.Title;
-			if (Device.OS == TargetPlatform.iOS) {
+			if (Detail.Icon != null)
+			{
 				Icon = Detail.Icon;
 			}
 

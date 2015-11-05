@@ -1,9 +1,7 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 
 using Xamarin.Forms;
-using Xamarin.Forms.Maps;
 
 namespace TreeWatch
 {
@@ -35,9 +33,11 @@ namespace TreeWatch
 		{
 			FieldView.BeginRefresh ();
 
-			if (string.IsNullOrWhiteSpace (searchBarText)) {
+			if (string.IsNullOrWhiteSpace (searchBarText))
+			{
 				FieldView.ItemsSource = fields;
-			} else {
+			} else
+			{
 				FieldView.ItemsSource = fields.Where (x => x.Name.ToLower ().Contains (searchBarText.ToLower ()));
 			}
 
