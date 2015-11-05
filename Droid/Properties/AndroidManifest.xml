@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" package="nl.gtl.treewatch" android:versionName="0.1">
-	<uses-sdk android:minSdkVersion="22" android:targetSdkVersion="22" />
+	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="23" />
 	<!-- Google Maps for Android v2 requires OpenGL ES v2 -->
 	<uses-feature android:glEsVersion="0x00020000" android:required="true" />
 	<!-- We need to be able to download map tiles and access Google Play Services-->
@@ -18,7 +18,7 @@
 	<!-- These are optional, but recommended. They will allow Maps to use the My Location provider. -->
 	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-	<application android:label="TreeWatch">
+	<application android:label="TreeWatch" android:icon="@drawable/icon">
 		<!-- Put your Google Maps V2 API Key here. -->
 		<meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyCAfQBDmZHqbZ3BP9V27W8jI-jvfvLKHys" />
 		<meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />

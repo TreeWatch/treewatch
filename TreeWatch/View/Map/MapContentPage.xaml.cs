@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 
 using Xamarin.Forms;
@@ -13,7 +12,8 @@ namespace TreeWatch
 			InitializeComponent ();
 
 			Title = "Map";
-			if (Device.OS == TargetPlatform.iOS) {
+			if (Device.OS == TargetPlatform.iOS)
+			{
 				Icon = "MapTabBarIcon.png";
 			}
 
@@ -36,8 +36,8 @@ namespace TreeWatch
 
 			map.MapType = MapType.Hybrid;
 
-			var field = new Field("TestField");
-			var fieldcords = new List<Position>();
+			var field = new Field ("TestField");
+			var fieldcords = new List<Position> ();
 
 			fieldcords.Add (new Position (51.39202, 6.04745));
 			fieldcords.Add (new Position (51.39202, 6.05116));

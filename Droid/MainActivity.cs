@@ -1,12 +1,7 @@
-﻿using System;
-
-using Android.App;
-using Android.Content;
+﻿using Android.App;
 using Android.Content.PM;
 using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
+
 using Xamarin;
 
 namespace TreeWatch.Droid
