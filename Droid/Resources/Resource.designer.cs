@@ -324,6 +324,7 @@ namespace TreeWatch.Droid
 			global::Xamarin.Forms.Platform.Resource.Color.abc_input_method_navigation_guard = global::TreeWatch.Droid.Resource.Color.abc_input_method_navigation_guard;
 			global::Xamarin.Forms.Platform.Resource.Color.abc_primary_text_disable_only_material_dark = global::TreeWatch.Droid.Resource.Color.abc_primary_text_disable_only_material_dark;
 			global::Xamarin.Forms.Platform.Resource.Color.abc_primary_text_disable_only_material_light = global::TreeWatch.Droid.Resource.Color.abc_primary_text_disable_only_material_light;
+			global::Xamarin.Forms.Platform.Resource.Color.abc_primary_text_material_dark = global::TreeWatch.Droid.Resource.Color.abc_primary_text_material_dark;
 			global::Xamarin.Forms.Platform.Resource.Color.abc_primary_text_material_light = global::TreeWatch.Droid.Resource.Color.abc_primary_text_material_light;
 			global::Xamarin.Forms.Platform.Resource.Color.abc_search_url_text = global::TreeWatch.Droid.Resource.Color.abc_search_url_text;
 			global::Xamarin.Forms.Platform.Resource.Color.abc_search_url_text_normal = global::TreeWatch.Droid.Resource.Color.abc_search_url_text_normal;
@@ -523,6 +524,7 @@ namespace TreeWatch.Droid
 			global::Xamarin.Forms.Platform.Resource.Drawable.abc_dialog_material_background_dark = global::TreeWatch.Droid.Resource.Drawable.abc_dialog_material_background_dark;
 			global::Xamarin.Forms.Platform.Resource.Drawable.abc_dialog_material_background_light = global::TreeWatch.Droid.Resource.Drawable.abc_dialog_material_background_light;
 			global::Xamarin.Forms.Platform.Resource.Drawable.abc_edit_text_material = global::TreeWatch.Droid.Resource.Drawable.abc_edit_text_material;
+			global::Xamarin.Forms.Platform.Resource.Drawable.abc_ic_ab_back_mtrl_am_alpha = global::TreeWatch.Droid.Resource.Drawable.abc_ic_ab_back_mtrl_am_alpha;
 			global::Xamarin.Forms.Platform.Resource.Drawable.abc_ic_clear_mtrl_alpha = global::TreeWatch.Droid.Resource.Drawable.abc_ic_clear_mtrl_alpha;
 			global::Xamarin.Forms.Platform.Resource.Drawable.abc_ic_commit_search_api_mtrl_alpha = global::TreeWatch.Droid.Resource.Drawable.abc_ic_commit_search_api_mtrl_alpha;
 			global::Xamarin.Forms.Platform.Resource.Drawable.abc_ic_go_search_api_mtrl_alpha = global::TreeWatch.Droid.Resource.Drawable.abc_ic_go_search_api_mtrl_alpha;
@@ -839,6 +841,8 @@ namespace TreeWatch.Droid
 			global::Xamarin.Forms.Platform.Resource.Style.Base_V23_Theme_AppCompat_Light = global::TreeWatch.Droid.Resource.Style.Base_V23_Theme_AppCompat_Light;
 			global::Xamarin.Forms.Platform.Resource.Style.Base_V7_Theme_AppCompat = global::TreeWatch.Droid.Resource.Style.Base_V7_Theme_AppCompat;
 			global::Xamarin.Forms.Platform.Resource.Style.Base_V7_Theme_AppCompat_Dialog = global::TreeWatch.Droid.Resource.Style.Base_V7_Theme_AppCompat_Dialog;
+			global::Xamarin.Forms.Platform.Resource.Style.Base_V7_Theme_AppCompat_Light = global::TreeWatch.Droid.Resource.Style.Base_V7_Theme_AppCompat_Light;
+			global::Xamarin.Forms.Platform.Resource.Style.Base_V7_Theme_AppCompat_Light_Dialog = global::TreeWatch.Droid.Resource.Style.Base_V7_Theme_AppCompat_Light_Dialog;
 			global::Xamarin.Forms.Platform.Resource.Style.Base_V7_Widget_AppCompat_AutoCompleteTextView = global::TreeWatch.Droid.Resource.Style.Base_V7_Widget_AppCompat_AutoCompleteTextView;
 			global::Xamarin.Forms.Platform.Resource.Style.Base_V7_Widget_AppCompat_EditText = global::TreeWatch.Droid.Resource.Style.Base_V7_Widget_AppCompat_EditText;
 			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_AppCompat_ActionBar = global::TreeWatch.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar;
