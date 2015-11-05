@@ -61,7 +61,11 @@
     <Compile Include="View\ToDo\ToDoNavigationPage.cs" />
     <Compile Include="ViewModels\Map\MapViewModel.cs" />
     <Compile Include="View\Map\FieldMap.cs" />
+<<<<<<< HEAD
     <Compile Include="ViewModels\Note\NoteViewModel.cs" />
+=======
+    <Compile Include="Utils\GeoHelper.cs" />
+>>>>>>> #336 comment: added GeoHelper class to check if a position is within a List of positions time:5
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.1.5.1.6471\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.1.5.1.6471\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
@@ -75,7 +79,11 @@
     <Folder Include="Model\" />
     <Folder Include="View\" />
     <Folder Include="ViewModels\" />
+<<<<<<< HEAD
     <Folder Include="ViewModels\Note\" />
+=======
+    <Folder Include="Utils\" />
+>>>>>>> #336 comment: added GeoHelper class to check if a position is within a List of positions time:5
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">
