@@ -14,41 +14,6 @@ namespace TreeWatch
 		public MapMenuContentPage ()
 		{
 			InitializeComponent ();
-
-			Title = "Menu";
-			Icon = "HamburgerMenuIcon.png";
-
-			FieldView.ItemsSource = fields;
-		}
-
-		private void SearchBarTextChanged (object sender, EventArgs args)
-		{
-			FilterFields (searchBar.Text);
-		}
-
-		private void SearchBarSearchButtonPressed (object sender, EventArgs args)
-		{
-			FilterFields (searchBar.Text);
-		}
-
-		private void FilterFields (String searchBarText)
-		{
-			FieldView.BeginRefresh ();
-
-			if (string.IsNullOrWhiteSpace (searchBarText)) {
-				FieldView.ItemsSource = fields;
-			} else {
-				FieldView.ItemsSource = fields.Where (x => x.Name.ToLower ().Contains (searchBarText.ToLower ()));
-			}
-
-			FieldView.EndRefresh ();
-		}
-
-		private void FieldSelected (object sender, SelectedItemChangedEventArgs e)
-		{
-			if (e.SelectedItem == null)
-				return;
-			var selected = (Field)e.SelectedItem;
 		}
 	}
 }

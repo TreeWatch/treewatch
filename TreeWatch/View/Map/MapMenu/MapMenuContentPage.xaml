@@ -1,15 +1,36 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="TreeWatch.MapMenuContentPage"
- 			 Title = "Map"
-			 Padding = "0, 0, 0, 0"
-			 StyleId = "MapView">
+<ContentPage 	xmlns="http://xamarin.com/schemas/2014/forms" 
+				xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+				x:Class="TreeWatch.MapMenuContentPage"
+				xmlns:local="clr-namespace:TreeWatch;assembly=TreeWatch"
+				Title = "Menu"
+				Icon = "HamburgerMenuIcon.png">
+	<ContentPage.Padding>
+		<OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" />
+	</ContentPage.Padding>
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<local:MapViewModel x:Key="mapViewModel"/>
+		</ResourceDictionary>
+	</ContentPage.Resources>
 	<ContentPage.Content>
-		<StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" Orientation="Vertical" Spacing="15">
-			<SearchBar x:Name="searchBar" TextChanged="SearchBarTextChanged" SearchButtonPressed="SearchBarSearchButtonPressed" Placeholder="Search" />
-			<ListView x:Name="FieldView" ItemSelected="FieldSelected">
+		<StackLayout 	VerticalOptions="CenterAndExpand"
+						HorizontalOptions="FillAndExpand" 
+						Orientation="Vertical" 
+						Spacing="15"
+						BindingContext="{local:MapViewModel}">
+			<SearchBar 	x:Name="searchBar"
+						Placeholder="Search"
+						Text="{Binding SearchText}"
+						SearchCommand="{Binding SearchCommand}" />
+			<ListView x:Name="FieldView" ItemsSource="{Binding Fields}" >
 				<ListView.ItemTemplate>
 					<DataTemplate>
-						<TextCell Text="{Binding Name}" />
+						<TextCell 	x:Name="TextCell" 
+									Text="{Binding Name}" 
+									Command="{Binding Source={StaticResource mapViewModel}, Path=SelectFieldCommand}"
+                     				CommandParameter="{Binding Source={x:Reference TextCell}, Path=BindingContext}">
+                     	</TextCell>
 					</DataTemplate>
 				</ListView.ItemTemplate>
 			</ListView>
