@@ -1,4 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <ContentPage
 	xmlns ="http://xamarin.com/schemas/2014/forms"
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -10,6 +11,9 @@
 			x:TypeArguments="FileImageSource"
 			iOS            ="HistoryTabBarIcon.png" />
 	</ContentPage.Icon>
+=======
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="TreeWatch.HistoryContentPage" StyleId="HistoryView">
+>>>>>>> 5ac15a78c018a0791722caa5014642cd1adabed3
 	<ContentPage.Content>
 		<ScrollView>
 			<StackLayout

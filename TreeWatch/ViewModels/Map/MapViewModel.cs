@@ -12,7 +12,7 @@ using System;
 
 namespace TreeWatch
 {
-	public class MapViewModel: INotifyPropertyChanged
+	public class MapViewModel
 	{
 		public event PropertyChangedEventHandler PropertyChanged;
 
@@ -23,12 +23,9 @@ namespace TreeWatch
 
 		public MapViewModel ()
 		{
-			Debug.WriteLine ("Creating SelectFieldCommand");
-
 			SelectFieldCommand = new Command<Field> ((field) => {
 				if (typeof(Field) == field.GetType ()) {
 					selectedField = field;
-					Debug.WriteLine (">>>>>>>>>> " + field.Name);
 				}
 			});
 

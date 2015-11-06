@@ -48,7 +48,7 @@ namespace TreeWatch.Droid
 						var rowpoints = FieldMapRenderer.convertCordinates (row.BoundingRectangle);
 						polygon.InvokeFillColor (ColorHelper.GetTreeTypeColor(row.TreeType).ToAndroid ());
 						polygon.AddAll (rowpoints);
-						Map.AddPolygon (polygon);	
+						Map.AddPolygon (polygon);
 					}
 
 				}
@@ -71,7 +71,6 @@ namespace TreeWatch.Droid
 			cords.Add (new LatLng (cordinates [0].Latitude, cordinates [0].Longitude));
 			return cords;
 		}
-
 		public void OnMapReady (GoogleMap googleMap)
 		{
 			Map = googleMap;
@@ -81,10 +80,5 @@ namespace TreeWatch.Droid
 				handler (this, EventArgs.Empty);
 		}
 	}
-		
+
 }
-
-
-
-
-

@@ -19,15 +19,17 @@
 		</ResourceDictionary>
 	</ContentPage.Resources>
 	<ContentPage.Content>
-		<StackLayout 	VerticalOptions="CenterAndExpand"
-						HorizontalOptions="FillAndExpand"
-						Orientation="Vertical"
-						Spacing="15"
-						BindingContext="{local:MapViewModel}">
-			<SearchBar 	x:Name="searchBar"
-						Placeholder="Search"
-						Text="{Binding SearchText}"
-						SearchCommand="{Binding SearchCommand}" />
+		<StackLayout 	
+			VerticalOptions="CenterAndExpand"
+			HorizontalOptions="FillAndExpand"
+			Orientation="Vertical"
+			Spacing="15"
+			BindingContext="{local:MapViewModel}">
+			<SearchBar 	
+				x:Name="searchBar"
+				Placeholder="Search"
+				Text="{Binding SearchText}"
+				SearchCommand="{Binding SearchCommand}" />
 			<ListView x:Name="FieldView" ItemsSource="{Binding FilteredFields}" >
 				<ListView.Header>
 					<StackLayout>

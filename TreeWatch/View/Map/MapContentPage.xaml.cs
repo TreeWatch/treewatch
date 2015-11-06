@@ -30,6 +30,7 @@ namespace TreeWatch
 			map.Fields = model.Fields;
 
 			map.MapType = MapType.Hybrid;
+
 			map.BindingContext = BindingContext;
 
 			var createMapContentView = map;

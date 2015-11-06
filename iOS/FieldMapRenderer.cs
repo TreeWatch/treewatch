@@ -1,14 +1,10 @@
 ﻿using System;
-
 using CoreLocation;
-
 using MapKit;
-
 using TreeWatch;
 using TreeWatch.iOS;
 using System.Collections.Generic;
 using Xamarin.Forms.Maps;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Maps.iOS;
 using Xamarin.Forms.Platform.iOS;
@@ -26,7 +22,7 @@ namespace TreeWatch.iOS
 		MKPolygonRenderer polygonRenderer;
 
 		public FieldMapRenderer ()
-		{			
+		{
 			polygons = new List<MKPolygon> ();
 			renderers = new List<MKPolygonRenderer> ();
 		}
