@@ -7,12 +7,6 @@ namespace TreeWatch
 		public NoteContentPage ()
 		{
 			InitializeComponent ();
-
-			//site configurations
-			Title = "Note";
-			if (Device.OS == TargetPlatform.iOS) {
-				Icon = "NoteTabBarIcon.png";
-			}
 		}
 	}
 }

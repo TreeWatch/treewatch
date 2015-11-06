@@ -7,13 +7,6 @@ namespace TreeWatch
 		public HistoryContentPage ()
 		{
 			InitializeComponent ();
-
-			//site configurations
-			Title = "History";
-			if (Device.OS == TargetPlatform.iOS)
-			{
-				Icon = "HistoryTabBarIcon.png";
-			}
 		}
 	}
 }

@@ -7,12 +7,6 @@ namespace TreeWatch
 		public ToDoContentPage ()
 		{
 			InitializeComponent ();
-
-			//site configurations
-			Title = "ToDo";
-			if (Device.OS == TargetPlatform.iOS) {
-				Icon = "ToDoTabBarIcon.png";
-			}
 		}
 	}
 }

@@ -1,37 +1,46 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage 	xmlns="http://xamarin.com/schemas/2014/forms" 
-				xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-				x:Class="TreeWatch.MapMenuContentPage"
-				xmlns:local="clr-namespace:TreeWatch;assembly=TreeWatch"
-				Title = "Menu"
-				Icon = "HamburgerMenuIcon.png"
-				StyleId="MapView">
+<ContentPage
+	xmlns     ="http://xamarin.com/schemas/2014/forms"
+	xmlns:x    ="http://schemas.microsoft.com/winfx/2009/xaml"
+	x:Class    ="TreeWatch.MapMenuContentPage"
+	xmlns:local="clr-namespace:TreeWatch;assembly=TreeWatch"
+	Title      ="Menu"
+	Icon       ="HamburgerMenuIcon.png"
+	StyleId    ="MapView">
 	<ContentPage.Padding>
-		<OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" />
+		<OnPlatform
+			x:TypeArguments="Thickness"
+			iOS            ="0, 20, 0, 0" />
 	</ContentPage.Padding>
 	<ContentPage.Resources>
 		<ResourceDictionary>
-			<local:MapViewModel x:Key="mapViewModel"/>
+			<local:MapViewModel
+				x:Key="mapViewModel" />
 		</ResourceDictionary>
 	</ContentPage.Resources>
 	<ContentPage.Content>
-		<StackLayout 	VerticalOptions="CenterAndExpand"
-						HorizontalOptions="FillAndExpand" 
-						Orientation="Vertical" 
-						Spacing="15"
-						BindingContext="{local:MapViewModel}">
-			<SearchBar 	x:Name="searchBar"
-						Placeholder="Search"
-						Text="{Binding SearchText}"
-						SearchCommand="{Binding SearchCommand}" />
-			<ListView x:Name="FieldView" ItemsSource="{Binding Fields}" >
+		<StackLayout
+			VerticalOptions  ="CenterAndExpand"
+			HorizontalOptions="FillAndExpand"
+			Orientation      ="Vertical"
+			Spacing          ="15"
+			BindingContext   ="{local:MapViewModel}">
+			<SearchBar
+				x:Name       ="searchBar"
+				Placeholder  ="Search"
+				Text         ="{Binding SearchText}"
+				SearchCommand="{Binding SearchCommand}" />
+			<ListView
+				x:Name     ="FieldView"
+				ItemsSource="{Binding Fields}">
 				<ListView.ItemTemplate>
 					<DataTemplate>
-						<TextCell 	x:Name="TextCell" 
-									Text="{Binding Name}" 
-									Command="{Binding Source={StaticResource mapViewModel}, Path=SelectFieldCommand}"
-                     				CommandParameter="{Binding Source={x:Reference TextCell}, Path=BindingContext}">
-                     	</TextCell>
+						<TextCell
+							x:Name          ="TextCell"
+							Text            ="{Binding Name}"
+							Command         ="{Binding Source={StaticResource mapViewModel}, Path=SelectFieldCommand}"
+							CommandParameter="{Binding Source={x:Reference TextCell}, Path=BindingContext}">
+						</TextCell>
 					</DataTemplate>
 				</ListView.ItemTemplate>
 			</ListView>
