@@ -28,7 +28,7 @@
 						Placeholder="Search"
 						Text="{Binding SearchText}"
 						SearchCommand="{Binding SearchCommand}" />
-			<ListView x:Name="FieldView" ItemsSource="{Binding Fields}" >
+			<ListView x:Name="FieldView" ItemsSource="{Binding FilteredFields}" >
 				<ListView.Header>
 					<StackLayout>
 					</StackLayout>

@@ -51,16 +51,20 @@ namespace TreeWatch.iOS
 				foreach (var field in myMap.Fields) {
 
 					foreach (var row in field.Rows) {
-						var rowpoints = convertCordinates (row.BoundingRectangle);
-						var rowpolygon = MKPolygon.FromCoordinates (rowpoints);
-						rowpolygon.Title = ((int)row.TreeType).ToString();
-						polygons.Add (rowpolygon);
+						if (row.BoundingRectangle.Count != 0) {
+							var rowpoints = convertCordinates (row.BoundingRectangle);
+							var rowpolygon = MKPolygon.FromCoordinates (rowpoints);
+							rowpolygon.Title = ((int)row.TreeType).ToString ();
+							polygons.Add (rowpolygon);
+						}
 					}
 
-					var points = convertCordinates (field.BoundingCordinates);
-					var polygon = MKPolygon.FromCoordinates (points);
-					polygon.Title = "Field";
-					polygons.Add (polygon);
+					if (field.BoundingCordinates.Count != 0) {
+						var points = convertCordinates (field.BoundingCordinates);
+						var polygon = MKPolygon.FromCoordinates (points);
+						polygon.Title = "Field";
+						polygons.Add (polygon);
+					}
 				}
 				mapView.AddOverlays (polygons.ToArray ());
 

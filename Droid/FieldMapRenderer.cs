@@ -44,16 +44,20 @@ namespace TreeWatch.Droid
 			foreach (var Field in myMap.Fields) {
 
 				foreach (var row in Field.Rows) {
-					var rowpoints = FieldMapRenderer.convertCordinates (row.BoundingRectangle);
-					polygon.InvokeFillColor (ColorHelper.GetTreeTypeColor(row.TreeType).ToAndroid ());
-					polygon.AddAll (rowpoints);
+					if (row.BoundingRectangle.Count != 0) {
+						var rowpoints = FieldMapRenderer.convertCordinates (row.BoundingRectangle);
+						polygon.InvokeFillColor (ColorHelper.GetTreeTypeColor(row.TreeType).ToAndroid ());
+						polygon.AddAll (rowpoints);
+						Map.AddPolygon (polygon);	
+					}
+
+				}
+				if (Field.BoundingCordinates.Count != 0) {
+					var polygonpoints = FieldMapRenderer.convertCordinates (Field.BoundingCordinates);
+					polygon.InvokeFillColor (myMap.OverLayColor.ToAndroid ());
+					polygon.AddAll (polygonpoints);
 					Map.AddPolygon (polygon);
 				}
-
-				var polygonpoints = FieldMapRenderer.convertCordinates (Field.BoundingCordinates);
-				polygon.InvokeFillColor (myMap.OverLayColor.ToAndroid ());
-				polygon.AddAll (polygonpoints);
-				Map.AddPolygon (polygon);
 			}
 		}
 
