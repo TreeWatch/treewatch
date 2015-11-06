@@ -1,7 +1,49 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="TreeWatch.NoteContentPage">
+<ContentPage
+	xmlns     ="http://xamarin.com/schemas/2014/forms"
+	xmlns:x    ="http://schemas.microsoft.com/winfx/2009/xaml"
+	x:Class    ="TreeWatch.NoteContentPage"
+	xmlns:local="clr-namespace:TreeWatch;assembly=TreeWatch"
+	Title      ="Note"
+	StyleId    ="NoteView">
+	<ContentPage.Icon>
+		<OnPlatform
+			x:TypeArguments="FileImageSource"
+			iOS            ="NoteTabBarIcon.png" />
+	</ContentPage.Icon>
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<local:NoteViewModel
+				x:Key="noteViewModel" />
+		</ResourceDictionary>
+	</ContentPage.Resources>
 	<ContentPage.Content>
-		<StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Orientation="Vertical" Spacing="15">
-		</StackLayout>
+		<ScrollView>
+			<StackLayout
+				HorizontalOptions="FillAndExpand"
+				VerticalOptions  ="FillAndExpand"
+				Padding          ="20"
+				BindingContext   ="{local:NoteViewModel}">
+				<Entry
+					Placeholder="Title"
+					Keyboard   ="Default" />
+				<Button
+					Text           ="FOTO"
+					VerticalOptions="StartAndExpand" />
+				<Editor
+					Text           ="Description"
+					VerticalOptions="FillAndExpand" />
+				<StackLayout
+					HorizontalOptions="CenterAndExpand"
+					VerticalOptions  ="End"
+					Orientation      ="Horizontal"
+					Spacing          ="20">
+					<Button
+						Text="Save" />
+					<Button
+						Text="Cancel" />
+				</StackLayout>
+			</StackLayout>
+		</ScrollView>
 	</ContentPage.Content>
 </ContentPage>

@@ -7,12 +7,6 @@ namespace TreeWatch
 		public SettingsContentPage ()
 		{
 			InitializeComponent ();
-
-			//site configurations
-			Title = "Settings";
-			if (Device.OS == TargetPlatform.iOS) {
-				Icon = "SettingsTabBarIcon.png";
-			}
 		}
 	}
 }
