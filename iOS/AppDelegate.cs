@@ -18,7 +18,7 @@ namespace TreeWatch.iOS
 	{
 		static readonly IntPtr setAccessibilityIdentifier_Handle = Selector.GetHandle("setAccessibilityIdentifier:");
 			
-		public override bool FinishedLaunching (UIApplication app, NSDictionary options)
+		public override bool FinishedLaunching (UIApplication uiApplication, NSDictionary launchOptions)
 		{
 			global::Xamarin.Forms.Forms.Init ();
 
@@ -42,7 +42,7 @@ namespace TreeWatch.iOS
 
 			LoadApplication (new App ());
 
-			return base.FinishedLaunching (app, options);
+			return base.FinishedLaunching (uiApplication, launchOptions);
 		}
 	}
 }

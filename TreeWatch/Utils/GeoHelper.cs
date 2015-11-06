@@ -7,7 +7,6 @@ namespace TreeWatch
 	public static class GeoHelper
 	{
 		public static Boolean isInsideCoords(List<Position> coords, Position position){
-			Position p1, p2;
 			int i, j;
 			int nvert = coords.Count;
 
@@ -26,25 +25,6 @@ namespace TreeWatch
 			}
 			return inside;
 
-				/*
-				if (pos.Longitude > oldPos.Longitude) {
-					p1 = oldPos;
-					p2 = pos;
-
-				} else {
-					p1 = pos;
-					p2 = oldPos;
-				}
-
-				if ((pos.Longitude < position.Longitude) == (position.Longitude <= oldPos.Longitude)
-				    && (pos.Latitude - (long)p1.Latitude) * (p2.Longitude - p1.Longitude)
-				    < (p2.Latitude - (long)p1.Latitude) * (pos.Longitude - p1.Longitude))
-				{
-					inside = !inside;
-				}
-
-				oldPos = pos;
-				*/
 		}
 	}
 }

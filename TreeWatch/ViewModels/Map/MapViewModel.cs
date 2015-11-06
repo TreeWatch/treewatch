@@ -11,10 +11,9 @@ using Xamarin.Forms.Maps;
 
 namespace TreeWatch
 {
-	public class MapViewModel: INotifyPropertyChanged
+	public class MapViewModel
 	{
-
-		public event PropertyChangedEventHandler PropertyChanged;
+		ObservableCollection<Field> fields;
 
 		private string _searchText = string.Empty;
 		private Fields _fields = new TreeWatch.Fields();
@@ -32,6 +31,21 @@ namespace TreeWatch
 						Debug.WriteLine(">>>>>>>>>> " + field.Name);
 					}
 				});
+
+				fields = new ObservableCollection<Field>();
+				var testfield = new Field("TestField");
+				var fieldcords = new List<Position>();
+
+				fieldcords.Add (new Position (51.39202, 6.04745));
+				fieldcords.Add (new Position (51.39202, 6.05116));
+				fieldcords.Add (new Position (51.38972, 6.05116));
+				fieldcords.Add (new Position (51.38972, 6.04745));
+				testfield.BoundingCordinates = fieldcords;
+
+				var row = new List<Row> ();
+				row.Add (new Row(new Position (51.39082462477471, 6.050752777777778), new Position (51.3904837408623, 6.047676310228867), TreeType.APPLE));
+				testfield.Rows = row;
+				Fields.Add (testfield);
 		}
 
 		public ICommand SelectFieldCommand { private set; get; }
@@ -96,6 +110,7 @@ namespace TreeWatch
 			PropertyChangedEventHandler handler = PropertyChanged;
 			if (handler != null)
 				handler (this, new PropertyChangedEventArgs (propertyName));
+
 		}
 
 		public Position getCurrentDevicePosition ()
@@ -106,6 +121,12 @@ namespace TreeWatch
 
 			return new Position (latitude, longitude);
 		}
+
+		public ObservableCollection<Field> Fields {
+			get { return fields; }
+			private set { this.fields = value; }
+		}
+			
 	}
 }
 

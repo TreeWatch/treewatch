@@ -7,20 +7,27 @@ namespace TreeWatch
 {
 	public class Field
 	{
-		private List<Position> pos;
+
+		public List<Position> BoundingCordinates {
+			get;
+			set;
+		}
+
+		public List<Row> Rows {
+			get;
+			set;
+		}
 
 		public String Name { get; private set; }
 
 		public Field (String name)
 		{
 			this.Name = name;
-			pos = new List<Position>();
+			BoundingCordinates = new List<Position> ();
+			Rows = new List<Row> ();
 		}
 
-		public List<Position> BoundingCordinates {
-			get{ return pos;}
-			set{ this.pos = value; }
-		}
+
 	}
 }
 

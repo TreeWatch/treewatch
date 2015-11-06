@@ -12,8 +12,6 @@ namespace TreeWatch
 				Icon = root.Icon;
 			}
 		}
-		
+
 	}
 }
-
-

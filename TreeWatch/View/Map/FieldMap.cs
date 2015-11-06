@@ -2,6 +2,7 @@
 
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
+using System.Collections.Generic;
 
 namespace TreeWatch
 {
@@ -25,6 +26,7 @@ namespace TreeWatch
 		public ObservableCollection<Field> Fields {
 			get { return fields; }
 			set { this.fields = value; }
+
 		}
 	}
 }
