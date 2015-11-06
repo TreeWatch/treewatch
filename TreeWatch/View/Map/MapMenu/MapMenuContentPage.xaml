@@ -25,6 +25,10 @@
 						Text="{Binding SearchText}"
 						SearchCommand="{Binding SearchCommand}" />
 			<ListView x:Name="FieldView" ItemsSource="{Binding Fields}" >
+				<ListView.Header>
+					<StackLayout>
+					</StackLayout>
+				</ListView.Header>
 				<ListView.ItemTemplate>
 					<DataTemplate>
 						<TextCell 	x:Name="TextCell" 
