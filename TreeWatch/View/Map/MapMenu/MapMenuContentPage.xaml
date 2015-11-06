@@ -4,7 +4,7 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 	x:Class="TreeWatch.MapMenuContentPage"
 	Title  ="Map"
-	StyleId="MapView">
+	StyleId="MapMenu">
 	<ContentPage.Padding>
 		<OnPlatform
 			x:TypeArguments="Thickness"

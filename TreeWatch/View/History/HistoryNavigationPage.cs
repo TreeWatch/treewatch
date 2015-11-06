@@ -9,7 +9,7 @@ namespace TreeWatch
 		public HistoryNavigationPage (Page root) : base (root)
 		{
 			Title = root.Title;
-			//Icon = root.Icon;
+			Icon = root.Icon;
 		}
 		
 	}
