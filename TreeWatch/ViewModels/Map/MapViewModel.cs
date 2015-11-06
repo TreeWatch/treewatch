@@ -8,85 +8,99 @@ using System.Windows.Input;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
+using System;
 
 namespace TreeWatch
 {
-	public class MapViewModel: INotifyPropertyChanged
+	public class MapViewModel
 	{
-
 		public event PropertyChangedEventHandler PropertyChanged;
 
-		private string _searchText = string.Empty;
-		private Fields _fields = new TreeWatch.Fields();
-		private Command _searchCommand;
-		private Field _selectedField;
+		ObservableCollection<Field> fields;
+		String searchText = String.Empty;
+		Command searchCommand;
+		Field selectedField;
 
-		public MapViewModel()
+		public MapViewModel ()
 		{
-			Debug.WriteLine ("Creating SelectFieldCommand");
+			SelectFieldCommand = new Command<Field> ((field) => {
+				if (typeof(Field) == field.GetType ()) {
+					selectedField = field;
+				}
+			});
 
-			SelectFieldCommand = new Command<Field>((field) =>
-				{
-					if(typeof(Field) == field.GetType()){
-						_selectedField = field;
-						Debug.WriteLine(">>>>>>>>>> " + field.Name);
-					}
-				});
+			fields = new ObservableCollection<Field> ();
+
+			SetUpMockData ();
+		}
+
+		void SetUpMockData ()
+		{
+			Fields.Add (new Field ("Ajax"));
+			Fields.Add (new Field ("PSV"));
+			Fields.Add (new Field ("Roda jc"));
+			Fields.Add (new Field ("VVV"));
+			Fields.Add (new Field ("Hertog Jan"));
+			Fields.Add (new Field ("Twente"));
+
+			var testfield = new Field ("TestField");
+			var fieldcords = new List<Position> ();
+
+			fieldcords.Add (new Position (51.39202, 6.04745));
+			fieldcords.Add (new Position (51.39202, 6.05116));
+			fieldcords.Add (new Position (51.38972, 6.05116));
+			fieldcords.Add (new Position (51.38972, 6.04745));
+			testfield.BoundingCordinates = fieldcords;
+
+			var row = new List<Row> ();
+			row.Add (new Row (new Position (51.39082462477471, 6.050752777777778), new Position (51.3904837408623, 6.047676310228867), TreeType.APPLE));
+			testfield.Rows = row;
+			Fields.Add (testfield);
 		}
 
 		public ICommand SelectFieldCommand { private set; get; }
 
-		public string SearchText
-		{
-			get { return _searchText; }
-			set 
-			{ 
-				if(_searchText != value) 
-				{ 
-					_searchText = value ?? string.Empty;
-					OnPropertyChanged("SearchText");
-					if (SearchCommand.CanExecute(null))
-					{
-						SearchCommand.Execute(null);
+		public string SearchText {
+			get { return searchText; }
+			set { 
+				if (searchText != value) { 
+					searchText = value ?? string.Empty;
+					OnPropertyChanged ("SearchText");
+					if (SearchCommand.CanExecute (null)) {
+						SearchCommand.Execute (null);
 					}
 				}
 			}
 		}
 
-		public ObservableCollection<Field> Fields
-		{
-			get
-			{
-				ObservableCollection<Field> theCollection = new ObservableCollection<Field>();
+		public ObservableCollection<Field> FilteredFields {
+			get {
+				var theCollection = new ObservableCollection<Field> ();
 
-				if (_fields != null)
-				{
-					List<Field> entities = _fields.Where (x => x.Name.ToLower ().Contains (_searchText.ToLower())).ToList(); 
-					if (entities != null && entities.Any())
-					{
-						theCollection = new ObservableCollection<Field>(entities);
+				if (Fields != null) {
+					List<Field> entities = Fields.Where (x => x.Name.ToLower ().Contains (searchText.ToLower ())).ToList (); 
+					if (entities != null && entities.Any ()) {
+						theCollection = new ObservableCollection<Field> (entities);
 					}
 				}
 				return theCollection;
 			}
 		}
 
-		public ICommand SearchCommand
-		{
-			get
-			{
-				_searchCommand = _searchCommand ?? new Xamarin.Forms.Command(DoSearchCommand, CanExecuteSearchCommand);
-				return _searchCommand;
+		public ICommand SearchCommand {
+			get {
+				searchCommand = searchCommand ?? new Command (DoSearchCommand, CanExecuteSearchCommand);
+				return searchCommand;
 			}
 		}
 
-		private void DoSearchCommand()
+		void DoSearchCommand ()
 		{
 			// Refresh the list, which will automatically apply the search text
-			OnPropertyChanged("Fields");
+			OnPropertyChanged ("FilteredFields");
 		}
 
-		private bool CanExecuteSearchCommand()
+		static bool CanExecuteSearchCommand ()
 		{
 			return true;
 		}
@@ -96,6 +110,7 @@ namespace TreeWatch
 			PropertyChangedEventHandler handler = PropertyChanged;
 			if (handler != null)
 				handler (this, new PropertyChangedEventArgs (propertyName));
+
 		}
 
 		public Position getCurrentDevicePosition ()
@@ -106,6 +121,12 @@ namespace TreeWatch
 
 			return new Position (latitude, longitude);
 		}
+
+		public ObservableCollection<Field> Fields {
+			get { return fields; }
+			private set { this.fields = value; }
+		}
+			
 	}
 }
 

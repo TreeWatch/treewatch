@@ -27,18 +27,9 @@ namespace TreeWatch
 			Position location = model.getCurrentDevicePosition ();
 
 			var map = new FieldMap (MapSpan.FromCenterAndRadius (location, Distance.FromKilometers (1)));
+			map.Fields = model.Fields;
 
 			map.MapType = MapType.Hybrid;
-
-			var field = new Field ("TestField");
-			var fieldcords = new List<Position> ();
-
-			fieldcords.Add (new Position (51.39202, 6.04745));
-			fieldcords.Add (new Position (51.39202, 6.05116));
-			fieldcords.Add (new Position (51.38972, 6.05116));
-			fieldcords.Add (new Position (51.38972, 6.04745));
-			field.BoundingCordinates = fieldcords;
-			map.Fields.Add (field);
 
 			map.BindingContext = BindingContext;
 
@@ -48,4 +39,3 @@ namespace TreeWatch
 		}
 	}
 }
-

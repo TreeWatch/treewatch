@@ -1,6 +1,4 @@
-﻿using System;
-using System.IO;
-using System.Linq;
+﻿using System.Linq;
 using NUnit.Framework;
 using Xamarin.UITest;
 using Xamarin.UITest.Queries;
@@ -38,7 +36,7 @@ namespace TreeWatch.UITests
 		public void HistoryDisplayed ()
 		{
 			app.Tap ("History");
-			AppResult[] results = app.WaitForElement (c => c.Marked ("HistoryLabel"));
+			AppResult[] results = app.WaitForElement (c => c.Marked ("HistoryView"));
 			app.Screenshot ("History screen");
 			Assert.IsTrue (results.Any ());
 		}
@@ -47,7 +45,7 @@ namespace TreeWatch.UITests
 		public void TodoDisplayed ()
 		{
 			app.Tap ("ToDo");
-			AppResult[] results = app.WaitForElement (c => c.Marked ("TodoLabel"));
+			AppResult[] results = app.WaitForElement (c => c.Marked ("TodoView"));
 			app.Screenshot ("Todo screen");
 			Assert.IsTrue (results.Any ());
 		}
@@ -55,8 +53,11 @@ namespace TreeWatch.UITests
 		[Test]
 		public void SettingsDisplayed ()
 		{
+			if (platform == Platform.Android) {
+				app.Tap ("History"); // Workaround for Android to make Settingstab visible
+			} 
 			app.Tap ("Settings");
-			AppResult[] results = app.WaitForElement (c => c.Marked ("SettingsLabel"));
+			AppResult[] results = app.WaitForElement (c => c.Marked ("SettingsView"));
 			app.Screenshot ("Settings screen");
 			Assert.IsTrue (results.Any ());
 		}
@@ -65,7 +66,7 @@ namespace TreeWatch.UITests
 		public void NoteDisplayed ()
 		{
 			app.Tap ("Note");
-			AppResult[] results = app.WaitForElement (c => c.Marked ("NoteLabel"));
+			AppResult[] results = app.WaitForElement (c => c.Marked ("NoteView"));
 			app.Screenshot ("Note screen");
 			Assert.IsTrue (results.Any ());
 		}

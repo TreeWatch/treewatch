@@ -1,5 +1,5 @@
-﻿using System.Collections.ObjectModel;
-
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 
@@ -25,6 +25,7 @@ namespace TreeWatch
 		public ObservableCollection<Field> Fields {
 			get { return fields; }
 			set { this.fields = value; }
+
 		}
 	}
 }

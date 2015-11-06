@@ -1,11 +1,13 @@
 ﻿using System;
-using Xamarin.Forms;
-using Xamarin.Forms.Platform.Android;
-using Xamarin.Forms.Maps.Android;
+using System.Collections.Generic;
 using Android.Gms.Maps;
 using Android.Gms.Maps.Model;
-using TreeWatch.Droid;
 using TreeWatch;
+using TreeWatch.Droid;
+using Xamarin.Forms;
+using Xamarin.Forms.Maps;
+using Xamarin.Forms.Maps.Android;
+using Xamarin.Forms.Platform.Android;
 
 [assembly: ExportRenderer (typeof(FieldMap), typeof(FieldMapRenderer))]
 namespace TreeWatch.Droid
@@ -19,11 +21,7 @@ namespace TreeWatch.Droid
 
 		public event EventHandler MapReady;
 
-		public FieldMapRenderer ()
-		{
-		}
-
-		protected override void OnElementChanged (Xamarin.Forms.Platform.Android.ElementChangedEventArgs<Xamarin.Forms.View> e)
+		protected override void OnElementChanged (ElementChangedEventArgs<View> e)
 		{
 			base.OnElementChanged (e);
 
@@ -34,40 +32,53 @@ namespace TreeWatch.Droid
 				mapView.GetMapAsync (this);
 
 				myMap = e.NewElement as FieldMap;
-
 			}
 		}
 
 		public void addFields ()
 		{
-			PolygonOptions polygon = new PolygonOptions ();
+			var polygon = new PolygonOptions ();
 			polygon.InvokeFillColor (myMap.OverLayColor.ToAndroid ());
 			polygon.InvokeStrokeWidth (0);
 
 			foreach (var Field in myMap.Fields) {
 
-				foreach (var pos in Field.BoundingCordinates) {
-					polygon.Add (new LatLng (pos.Latitude, pos.Longitude));
-				}
-				polygon.Add (new LatLng (Field.BoundingCordinates [0].Latitude, Field.BoundingCordinates [0].Longitude));
+				foreach (var row in Field.Rows) {
+					if (row.BoundingRectangle.Count != 0) {
+						var rowpoints = FieldMapRenderer.convertCordinates (row.BoundingRectangle);
+						polygon.InvokeFillColor (ColorHelper.GetTreeTypeColor(row.TreeType).ToAndroid ());
+						polygon.AddAll (rowpoints);
+						Map.AddPolygon (polygon);
+					}
 
-				Map.AddPolygon (polygon);
+				}
+				if (Field.BoundingCordinates.Count != 0) {
+					var polygonpoints = FieldMapRenderer.convertCordinates (Field.BoundingCordinates);
+					polygon.InvokeFillColor (myMap.OverLayColor.ToAndroid ());
+					polygon.AddAll (polygonpoints);
+					Map.AddPolygon (polygon);
+				}
 			}
 		}
-			
-		public void OnMapReady(GoogleMap googleMap)
+
+		static Java.Util.ArrayList convertCordinates (List<Position> cordinates)
+		{
+
+			var cords = new Java.Util.ArrayList ();
+			foreach (var pos in cordinates) {
+				cords.Add (new LatLng (pos.Latitude, pos.Longitude));
+			}
+			cords.Add (new LatLng (cordinates [0].Latitude, cordinates [0].Longitude));
+			return cords;
+		}
+		public void OnMapReady (GoogleMap googleMap)
 		{
 			Map = googleMap;
 			addFields ();
 			var handler = MapReady;
 			if (handler != null)
-				handler(this, EventArgs.Empty);
+				handler (this, EventArgs.Empty);
 		}
 	}
-		
+
 }
-
-
-
-
-
