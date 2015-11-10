@@ -78,7 +78,7 @@ namespace TreeWatch.iOS
 			}
 		}
 
-		static CLLocationCoordinate2D[] convertCordinates (List<Position> Cordinates)
+		static CLLocationCoordinate2D[] convertCordinates (List<PositionModel> Cordinates)
 		{
 			var points = new CLLocationCoordinate2D[Cordinates.Count + 1];
 			var i = 0;

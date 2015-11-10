@@ -19,7 +19,6 @@ namespace TreeWatch
 		String searchText = string.Empty;
 		Command searchCommand;
 		Field selectedField;
-		FieldHelper fieldHelper;
 
 		public MapViewModel ()
 		{
@@ -84,11 +83,13 @@ namespace TreeWatch
 			fieldcords.Add (new Position (51.39511, 6.04745));
 			Fields [0].BoundingCordinates = fieldcords;
 
-			var row = new List<Row> ();
-			row.Add (new Row (new Position (51.39082462477471, 6.050752777777778), new Position (51.3904837408623, 6.047676310228867), TreeType.APPLE));
+			var row = new List<Block> ();
+			row.Add (new Block (new PositionModel (51.39082462477471, 6.050752777777778), new PositionModel (51.3904837408623, 6.047676310228867), TreeType.APPLE));
 			testfield.Rows = row;
 			Fields.Add (testfield);
 		}
+
+		public ICommand SelectFieldCommand { private set; get; }
 
 		public string SearchText {
 			get { return this.searchText; }
@@ -109,8 +110,7 @@ namespace TreeWatch
 			get {
 				var filteredFields = new ObservableCollection<Field> ();
 
-				if (Fields != null)
-				{
+				if (Fields != null) {
 					List<Field> entities = Fields.Where (x => x.Name.ToLower ().Contains (searchText.ToLower ())).ToList (); 
 					if (entities != null && entities.Any ())
 					{

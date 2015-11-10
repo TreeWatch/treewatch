@@ -6,7 +6,7 @@ namespace TreeWatch
 {
 	public static class GeoHelper
 	{
-		public static Boolean isInsideCoords(List<Position> coords, Position position){
+		public static Boolean isInsideCoords(List<PositionModel> coords, PositionModel position){
 			int i, j;
 			int nvert = coords.Count;
 
