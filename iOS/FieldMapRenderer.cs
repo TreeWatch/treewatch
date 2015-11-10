@@ -3,6 +3,9 @@ using CoreLocation;
 using MapKit;
 using TreeWatch;
 using TreeWatch.iOS;
+using UIKit;
+using Foundation;
+using CoreGraphics;
 using System.Collections.Generic;
 using Xamarin.Forms.Maps;
 using Xamarin.Forms;
@@ -20,11 +23,15 @@ namespace TreeWatch.iOS
 		List<MKPolygon> polygons;
 		List<MKPolygonRenderer> renderers;
 		MKPolygonRenderer polygonRenderer;
+		UITapGestureRecognizer tapGesture;
 
 		public FieldMapRenderer ()
 		{
 			polygons = new List<MKPolygon> ();
 			renderers = new List<MKPolygonRenderer> ();
+			tapGesture = new UITapGestureRecognizer (MapTapped);
+			tapGesture.NumberOfTapsRequired = 1;
+
 		}
 
 		protected override void OnElementChanged (ElementChangedEventArgs<View> e)
@@ -34,6 +41,7 @@ namespace TreeWatch.iOS
 			if (e.OldElement == null) {
 
 				mapView = Control as MKMapView;
+				mapView.AddGestureRecognizer (tapGesture);
 
 				myMap = e.NewElement as FieldMap;
 
@@ -44,7 +52,7 @@ namespace TreeWatch.iOS
 					return polygonRenderer;
 				};
 
-				foreach (var Field in myMap.Fields) 
+				foreach (var field in myMap.Fields) 
 				{
 
 					foreach (var row in field.Rows) {
@@ -64,7 +72,6 @@ namespace TreeWatch.iOS
 					}
 				}
 				mapView.AddOverlays (polygons.ToArray ());
-
 			}
 		}
 
@@ -79,6 +86,13 @@ namespace TreeWatch.iOS
 			points [i] = new CLLocationCoordinate2D (Cordinates [0].Latitude, Cordinates [0].Longitude);
 
 			return points;
+		}
+
+		private void MapTapped(UITapGestureRecognizer sender)
+		{
+			CGPoint pointInView = sender.LocationInView (mapView);
+			CLLocationCoordinate2D touchCoordinates = mapView.ConvertPoint (pointInView, this.mapView);
+			Console.WriteLine("Touched the map on lat: {0}, lon: {1}", touchCoordinates.Latitude, touchCoordinates.Longitude);
 		}
 	}
 }
