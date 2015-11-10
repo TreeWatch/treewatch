@@ -151,6 +151,7 @@
     <ImageAsset Include="Resources\Images.xcassets\HamburgerMenuIcon.imageset\HamburgerMenuIcon%401x.png" />
     <ImageAsset Include="Resources\Images.xcassets\HamburgerMenuIcon.imageset\HamburgerMenuIcon%402x.png" />
     <ImageAsset Include="Resources\Images.xcassets\HamburgerMenuIcon.imageset\HamburgerMenuIcon%403x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\HamburgerMenuIcon.imageset\HamburgerMenuIcon.pdf" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\HistoryTabBarIcon.png" />
