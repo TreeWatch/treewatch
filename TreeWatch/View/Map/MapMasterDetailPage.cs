@@ -7,7 +7,12 @@ namespace TreeWatch
 		public MapMasterDetailPage ()
 		{
 			// Create the master page with the ListView.
-			Master = new MapMenuContentPage ();
+			MapMenuContentPage mapMenuContentPage = new MapMenuContentPage ();
+			mapMenuContentPage.FieldSelected += (object sender, System.EventArgs e) => 
+			{
+				this.IsPresented = false;
+			};
+			this.Master = mapMenuContentPage;
 
 			// Create the detail page and wrap it in a navigation page to provide a NavigationBar and Toggle button
 			Detail = new MapNavigationPage (new MapContentPage ());
