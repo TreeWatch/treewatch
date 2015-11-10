@@ -27,9 +27,9 @@ namespace TreeWatch
 			get {
 				if (boundingRectangle == null) {
 					var list = new List<Position> ();
-					list.Add (this.StartingPoint);
+					list.Add (StartingPoint);
 					list.Add (new Position (StartingPoint.Latitude, EndPoint.Longitude));
-					list.Add (this.EndPoint);
+					list.Add (EndPoint);
 					list.Add (new Position (EndPoint.Latitude, StartingPoint.Longitude));
 					boundingRectangle = list;
 				}

@@ -16,15 +16,15 @@ namespace TreeWatch
 			//configurations for navigation bar
 			NavigationPage.SetBackButtonTitle (this, Title);
 
-			this.Content = CreateMapContentView ();
+			Content = CreateMapContentView ();
 		}
 
 		View CreateMapContentView ()
 		{
 			//Coordinates for the starting point of the map
 
-			MapViewModel model = (MapViewModel)BindingContext;
-			Position location = model.getCurrentDevicePosition ();
+			var model = (MapViewModel)BindingContext;
+			var location = model.getCurrentDevicePosition ();
 
 			var map = new FieldMap (MapSpan.FromCenterAndRadius (location, Distance.FromKilometers (1)));
 			map.Fields = model.Fields;

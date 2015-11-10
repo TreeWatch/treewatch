@@ -63,7 +63,6 @@ namespace TreeWatch.Droid
 
 		static Java.Util.ArrayList convertCordinates (List<Position> cordinates)
 		{
-
 			var cords = new Java.Util.ArrayList ();
 			foreach (var pos in cordinates) {
 				cords.Add (new LatLng (pos.Latitude, pos.Longitude));

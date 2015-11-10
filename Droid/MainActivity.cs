@@ -9,15 +9,15 @@ namespace TreeWatch.Droid
 	[Activity (Label = "TreeWatch.Droid", Icon = "@drawable/icon", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
 	public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsApplicationActivity
 	{
-		protected override void OnCreate (Bundle bundle)
+		protected override void OnCreate (Bundle savedInstanceState)
 		{
-			base.OnCreate (bundle);
+			base.OnCreate (savedInstanceState);
 
-			global::Xamarin.Forms.Forms.Init (this, bundle);
-			FormsMaps.Init (this, bundle);
+			global::Xamarin.Forms.Forms.Init (this, savedInstanceState);
+			FormsMaps.Init (this, savedInstanceState);
 
 			// http://forums.xamarin.com/discussion/21148/calabash-and-xamarin-forms-what-am-i-missing
-			Xamarin.Forms.Forms.ViewInitialized += (object sender, Xamarin.Forms.ViewInitializedEventArgs e) => {
+			Xamarin.Forms.Forms.ViewInitialized += (sender, e) => {
 				if (!string.IsNullOrWhiteSpace (e.View.StyleId)) {
 					e.NativeView.ContentDescription = e.View.StyleId;
 				}
