@@ -40,7 +40,8 @@ namespace TreeWatch.iOS
 					return polygonRenderer;
 				};
 
-				foreach (var Field in myMap.Fields) {
+				foreach (var Field in myMap.Fields) 
+				{
 
 					var points = new CLLocationCoordinate2D[Field.BoundingCordinates.Count + 1];
 					var i = 0;
@@ -54,7 +55,6 @@ namespace TreeWatch.iOS
 					polygon = MKPolygon.FromCoordinates (points);
 					mapView.AddOverlay (polygon);
 				}
-
 
 			}
 		}
