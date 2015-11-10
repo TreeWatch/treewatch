@@ -86,5 +86,5 @@ namespace TreeWatch.Droid
 			Console.WriteLine("Clicked map on Lat: {0} Lon: {1}", e.Point.Latitude, e.Point.Longitude);
 		}
 	}
-
+		
 }
