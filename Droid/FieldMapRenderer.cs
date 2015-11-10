@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Android.Gms.Maps;
 using Android.Gms.Maps.Model;
@@ -74,9 +74,15 @@ namespace TreeWatch.Droid
 		{
 			Map = googleMap;
 			addFields ();
+			Map.MapClick += MapClicked;
 			var handler = MapReady;
 			if (handler != null)
 				handler (this, EventArgs.Empty);
+		}
+
+		private void MapClicked(Object sender, GoogleMap.MapClickEventArgs e)
+		{
+			Console.WriteLine("Clicked map on Lat: {0} Lon: {1}", e.Point.Latitude, e.Point.Longitude);
 		}
 	}
 

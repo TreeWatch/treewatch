@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using CoreLocation;
 using MapKit;
 using TreeWatch;
@@ -44,7 +44,8 @@ namespace TreeWatch.iOS
 					return polygonRenderer;
 				};
 
-				foreach (var field in myMap.Fields) {
+				foreach (var Field in myMap.Fields) 
+				{
 
 					foreach (var row in field.Rows) {
 						if (row.BoundingRectangle.Count != 0) {
