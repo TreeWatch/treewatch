@@ -12,7 +12,7 @@ using System;
 
 namespace TreeWatch
 {
-	public class MapViewModel
+	public class MapViewModel : INotifyPropertyChanged
 	{
 		public event PropertyChangedEventHandler PropertyChanged;
 
