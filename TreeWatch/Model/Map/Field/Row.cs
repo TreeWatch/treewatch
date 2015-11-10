@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Xamarin.Forms.Maps;
 using System.Collections.Generic;
 

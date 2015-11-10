@@ -2,18 +2,21 @@
 using System.Collections.Generic;
 
 using Xamarin.Forms.Maps;
+using SQLite;
 
 namespace TreeWatch
 {
 	public class Field
 	{
+		[PrimaryKey, AutoIncrement]
+		public int ID { get; set; }
 
-		public List<Position> BoundingCordinates {
+		public List<PositionModel> BoundingCordinates {
 			get;
 			set;
 		}
 
-		public List<Row> Rows {
+		public List<Block> Rows {
 			get;
 			set;
 		}
@@ -23,8 +26,8 @@ namespace TreeWatch
 		public Field (String name)
 		{
 			this.Name = name;
-			BoundingCordinates = new List<Position> ();
-			Rows = new List<Row> ();
+			BoundingCordinates = new List<PositionModel> ();
+			Rows = new List<Block> ();
 		}
 
 

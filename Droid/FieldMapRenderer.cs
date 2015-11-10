@@ -61,7 +61,7 @@ namespace TreeWatch.Droid
 			}
 		}
 
-		static Java.Util.ArrayList convertCordinates (List<Position> cordinates)
+		static Java.Util.ArrayList convertCordinates (List<PositionModel> cordinates)
 		{
 			var cords = new Java.Util.ArrayList ();
 			foreach (var pos in cordinates) {

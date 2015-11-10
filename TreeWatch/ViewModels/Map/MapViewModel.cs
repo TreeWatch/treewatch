@@ -44,16 +44,16 @@ namespace TreeWatch
 			Fields.Add (new Field ("Twente"));
 
 			var testfield = new Field ("TestField");
-			var fieldcords = new List<Position> ();
+			var fieldcords = new List<PositionModel> ();
 
-			fieldcords.Add (new Position (51.39202, 6.04745));
-			fieldcords.Add (new Position (51.39202, 6.05116));
-			fieldcords.Add (new Position (51.38972, 6.05116));
-			fieldcords.Add (new Position (51.38972, 6.04745));
+			fieldcords.Add (new PositionModel (51.39202, 6.04745));
+			fieldcords.Add (new PositionModel (51.39202, 6.05116));
+			fieldcords.Add (new PositionModel (51.38972, 6.05116));
+			fieldcords.Add (new PositionModel (51.38972, 6.04745));
 			testfield.BoundingCordinates = fieldcords;
 
-			var row = new List<Row> ();
-			row.Add (new Row (new Position (51.39082462477471, 6.050752777777778), new Position (51.3904837408623, 6.047676310228867), TreeType.APPLE));
+			var row = new List<Block> ();
+			row.Add (new Block (new PositionModel (51.39082462477471, 6.050752777777778), new PositionModel (51.3904837408623, 6.047676310228867), TreeType.APPLE));
 			testfield.Rows = row;
 			Fields.Add (testfield);
 		}

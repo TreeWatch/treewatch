@@ -49,10 +49,15 @@
       <ReferenceOutputAssembly>False</ReferenceOutputAssembly>
       <Private>False</Private>
     </ProjectReference>
+    <ProjectReference Include="..\TreeWatch\TreeWatch.csproj">
+      <Project>{8C138565-9C93-4EBA-85A7-7A37861C2249}</Project>
+      <Name>TreeWatch</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Tests.cs" />
     <Compile Include="AppInitializer.cs" />
+    <Compile Include="DBTests.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
