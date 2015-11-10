@@ -9,6 +9,7 @@ using Xamarin.Forms.Maps;
 using Xamarin.Forms.Maps.Android;
 using Xamarin.Forms.Platform.Android;
 
+
 [assembly: ExportRenderer (typeof(FieldMap), typeof(FieldMapRenderer))]
 namespace TreeWatch.Droid
 {
