@@ -1,22 +1,23 @@
-﻿using System;
-using SQLite;
+﻿using SQLite;
 
 namespace TreeWatch
 {
 	public class ToDo
 	{
 		[PrimaryKey, AutoIncrement]
-		public int ID { get; private set; }
-		public string Title { get; private set; }
-		public string Desc { get; private set; }
+		public int ID { get; set; }
 
-		public ToDo ()
+		public string Title { get; set; }
+
+		public string Description { get; set; }
+
+		public ToDo (string title, string description)
 		{
+			Description = description;
+			Title = title;
 		}
 
-		public ToDo (string title, string desc){
-			this.Desc = desc;
-			this.Title = title;
+		public ToDo (){
 		}
 
 	}

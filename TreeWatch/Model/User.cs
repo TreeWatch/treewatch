@@ -1,20 +1,32 @@
-﻿using System;
-using SQLite;
+﻿using SQLite;
 
 namespace TreeWatch
 {
 	public class User
 	{
 		[PrimaryKey, AutoIncrement]
-		public int ID { get; private set; }
+		public int ID { get; set; }
 
-		public string firstName { get; private set; }
-		public string lastName { get; private set; }
-		public string username { get; private set; }
-		public string password { get; private set; }
-		public string email { get; private set; }
+		public string FirstName { get; set; }
 
-		public User ()
+		public string LastName { get; set; }
+
+		public string UserName { get; set; }
+
+		public string Password { get; set; }
+
+		public string Email { get; set; }
+
+		public User (string firstName, string lastName, string username, string password, string email)
+		{
+			FirstName = firstName;
+			LastName = lastName;
+			UserName = username;
+			Password = password;
+			Email = email;
+		}
+
+		public User()
 		{
 		}
 	}

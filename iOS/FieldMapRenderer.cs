@@ -4,7 +4,6 @@ using MapKit;
 using TreeWatch;
 using TreeWatch.iOS;
 using System.Collections.Generic;
-using Xamarin.Forms.Maps;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps.iOS;
 using Xamarin.Forms.Platform.iOS;
@@ -46,20 +45,13 @@ namespace TreeWatch.iOS
 
 				foreach (var field in myMap.Fields) {
 
-					foreach (var row in field.Rows) {
-						if (row.BoundingRectangle.Count != 0) {
-							var rowpoints = convertCordinates (row.BoundingRectangle);
+					foreach (var block in field.Blocks) {
+						if (block.BoundingCordinates.Count != 0) {
+							var rowpoints = convertCordinates (block.BoundingCordinates);
 							var rowpolygon = MKPolygon.FromCoordinates (rowpoints);
-							rowpolygon.Title = ((int)row.TreeType).ToString ();
+							rowpolygon.Title = ((int)block.TreeType).ToString ();
 							polygons.Add (rowpolygon);
 						}
-					}
-
-					if (field.BoundingCordinates.Count != 0) {
-						var points = convertCordinates (field.BoundingCordinates);
-						var polygon = MKPolygon.FromCoordinates (points);
-						polygon.Title = "Field";
-						polygons.Add (polygon);
 					}
 				}
 				mapView.AddOverlays (polygons.ToArray ());

@@ -1,6 +1,4 @@
-﻿using System;
-using Xamarin.Forms.Maps;
-using SQLite;
+﻿using SQLite;
 
 namespace TreeWatch
 {
@@ -10,18 +8,21 @@ namespace TreeWatch
 		[PrimaryKey, AutoIncrement]
 		public int ID { get; set; }
 
-		public double Latitude { get; private set; }
-		public double Longitude { get; private set; }
+		public double Latitude { get; set; }
 
-		public PositionModel ()
+		public double Longitude { get; set; }
+
+		public PositionModel (double latitude, double longitude)
+		{
+			Latitude = latitude;
+			Longitude = longitude;
+		}
+
+		public PositionModel()
 		{
 		}
 
-		public PositionModel (double longi, double lat)
-		{
-			this.Latitude = lat;
-			this.Longitude = longi;
-		}
+
 	}
 }
 
