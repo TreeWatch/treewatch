@@ -92,7 +92,7 @@ namespace TreeWatch.iOS
 		{
 			CGPoint pointInView = sender.LocationInView (mapView);
 			CLLocationCoordinate2D touchCoordinates = mapView.ConvertPoint (pointInView, this.mapView);
-			//MapViewModel.IsFieldClicked (new Position(touchCoordinates.Latitude, touchCoordinates.Longitude));
+			FieldHelper.Instance.FieldTappedEvent(new Position(touchCoordinates.Latitude, touchCoordinates.Longitude));
 		}
 	}
 }
