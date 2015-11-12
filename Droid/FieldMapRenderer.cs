@@ -36,33 +36,35 @@ namespace TreeWatch.Droid
 			}
 		}
 
-		public void addFields ()
+		public void AddFields ()
 		{
-			var polygon = new PolygonOptions ();
-			polygon.InvokeFillColor (myMap.OverLayColor.ToAndroid ());
-			polygon.InvokeStrokeWidth (0);
-
 			foreach (var Field in myMap.Fields) {
+				if (Field.Rows.Count != 0) {
+					foreach (var row in Field.Rows) {
+						if (row.BoundingRectangle.Count != 0) {
+							Map.AddPolygon (GetPolygon (FieldMapRenderer.ConvertCordinates (row.BoundingRectangle), 
+								ColorHelper.GetTreeTypeColor (row.TreeType).ToAndroid ()));
+						}
 
-				foreach (var row in Field.Rows) {
-					if (row.BoundingRectangle.Count != 0) {
-						var rowpoints = FieldMapRenderer.convertCordinates (row.BoundingRectangle);
-						polygon.InvokeFillColor (ColorHelper.GetTreeTypeColor(row.TreeType).ToAndroid ());
-						polygon.AddAll (rowpoints);
-						Map.AddPolygon (polygon);
 					}
-
 				}
 				if (Field.BoundingCordinates.Count != 0) {
-					var polygonpoints = FieldMapRenderer.convertCordinates (Field.BoundingCordinates);
-					polygon.InvokeFillColor (myMap.OverLayColor.ToAndroid ());
-					polygon.AddAll (polygonpoints);
-					Map.AddPolygon (polygon);
+					Map.AddPolygon (GetPolygon(FieldMapRenderer.ConvertCordinates (Field.BoundingCordinates),
+						myMap.OverLayColor.ToAndroid ()));
 				}
 			}
 		}
 
-		static Java.Util.ArrayList convertCordinates (List<Position> cordinates)
+		public PolygonOptions GetPolygon(Java.Util.ArrayList cordinates, Android.Graphics.Color color)
+		{
+			var polygonOptions = new PolygonOptions ();
+			polygonOptions.InvokeFillColor (color);
+			polygonOptions.InvokeStrokeWidth (0);
+			polygonOptions.AddAll (cordinates);
+			return polygonOptions;
+		}
+
+		static Java.Util.ArrayList ConvertCordinates (List<Position> cordinates)
 		{
 			var cords = new Java.Util.ArrayList ();
 			foreach (var pos in cordinates) {
@@ -74,7 +76,7 @@ namespace TreeWatch.Droid
 		public void OnMapReady (GoogleMap googleMap)
 		{
 			Map = googleMap;
-			addFields ();
+			AddFields ();
 			Map.MapClick += MapClicked;
 			var handler = MapReady;
 			if (handler != null)
