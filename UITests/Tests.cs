@@ -34,6 +34,15 @@ namespace TreeWatch.UITests
 		}
 
 		[Test]
+		public void HistoryDisplayed ()
+		{
+			app.Tap ("History");
+			AppResult[] results = app.WaitForElement (c => c.Marked ("HistoryView"));
+			app.Screenshot ("History screen");
+			Assert.IsTrue (results.Any ());
+		}
+
+		[Test]
 		public void TodoDisplayed ()
 		{
 			app.Tap ("ToDo");
