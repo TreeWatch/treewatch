@@ -8,10 +8,6 @@ using MapKit;
 using TreeWatch;
 using TreeWatch.iOS;
 using UIKit;
-using Foundation;
-using CoreGraphics;
-using System.Collections.Generic;
-using Xamarin.Forms.Maps;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using Xamarin.Forms.Maps.iOS;
@@ -46,6 +42,7 @@ namespace TreeWatch.iOS
 			if (e.OldElement == null) {
 				mapView = Control as MKMapView;
 				mapView.AddGestureRecognizer (tapGesture);
+
 
 
 				myMap = e.NewElement as FieldMap;

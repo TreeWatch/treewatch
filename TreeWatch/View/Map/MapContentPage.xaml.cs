@@ -9,10 +9,7 @@ namespace TreeWatch
 	{
 		public MapContentPage ()
 		{
-			InitializeComponent ();
-
-			//configurations for navigation bar
-			NavigationPage.SetBackButtonTitle (this, Title);
+			InitializeComponent ()
 
 			Content = CreateMapContentView ();
 		}

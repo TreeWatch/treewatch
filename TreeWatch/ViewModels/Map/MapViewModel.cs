@@ -23,12 +23,6 @@ namespace TreeWatch
 
 		public MapViewModel ()
 		{
-			SelectFieldCommand = new Command<Field> ((field) => {
-				if (typeof(Field) == field.GetType ()) {
-					SelectedField = field;
-				}
-			});
-			fields = new ObservableCollection<Field> ();
 			fieldHelper = FieldHelper.Instance;
 			fieldHelper.FieldTapped += FieldTapped;
 			fieldHelper.FieldSelected += FieldSelected;
