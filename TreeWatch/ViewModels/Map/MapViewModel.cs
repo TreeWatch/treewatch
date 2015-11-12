@@ -32,7 +32,6 @@ namespace TreeWatch
 			fields = new ObservableCollection<Field> ();
 
 			SetUpMockData ();
-			this.SearchText = "adasdasdasd";
 		}
 
 		void SetUpMockData ()
