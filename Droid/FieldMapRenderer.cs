@@ -5,7 +5,6 @@ using Android.Gms.Maps.Model;
 using TreeWatch;
 using TreeWatch.Droid;
 using Xamarin.Forms;
-using Xamarin.Forms.Maps;
 using Xamarin.Forms.Maps.Android;
 using Xamarin.Forms.Platform.Android;
 
@@ -43,10 +42,10 @@ namespace TreeWatch.Droid
 
 			foreach (var Field in myMap.Fields) {
 
-				foreach (var row in Field.Rows) {
-					if (row.BoundingRectangle.Count != 0) {
-						var rowpoints = FieldMapRenderer.convertCordinates (row.BoundingRectangle);
-						polygon.InvokeFillColor (ColorHelper.GetTreeTypeColor(row.TreeType).ToAndroid ());
+				foreach (var block in Field.Blocks) {
+					if (block.BoundingCordinates.Count != 0) {
+						var rowpoints = FieldMapRenderer.convertCordinates (block.BoundingCordinates);
+						polygon.InvokeFillColor (ColorHelper.GetTreeTypeColor(block.TreeType).ToAndroid ());
 						polygon.AddAll (rowpoints);
 						Map.AddPolygon (polygon);
 					}

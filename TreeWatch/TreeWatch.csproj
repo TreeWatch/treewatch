@@ -62,7 +62,6 @@
     <Compile Include="View\Map\FieldMap.cs" />
     <Compile Include="ViewModels\Note\NoteViewModel.cs" />
     <Compile Include="Utils\GeoHelper.cs" />
-    <Compile Include="Model\Map\Field\Row.cs" />
     <Compile Include="Model\Types\TreeType.cs" />
     <Compile Include="Utils\ColorHelper.cs" />
     <Compile Include="Database\ISQLite.cs" />
@@ -91,6 +90,7 @@
     <Folder Include="ViewModels\Note\" />
     <Folder Include="Utils\" />
     <Folder Include="Model\Types\" />
+    <Folder Include="Database\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">
@@ -104,6 +104,9 @@
     </Reference>
     <Reference Include="Xamarin.Forms.Maps">
       <HintPath>..\packages\Xamarin.Forms.Maps.1.5.1.6471\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Maps.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLite-net">
+      <HintPath>..\packages\sqlite-net-pcl.1.0.11\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10\SQLite-net.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

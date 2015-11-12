@@ -1,5 +1,4 @@
-﻿using System;
-using SQLite;
+﻿using SQLite;
 using Xamarin.Forms;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,25 +7,25 @@ namespace TreeWatch
 {
 	public class TreeWatchDatabase
 	{
-		private SQLiteConnection _connection;
+		readonly SQLiteConnection connection;
 
 		public TreeWatchDatabase ()
 		{
-			_connection = DependencyService.Get<ISQLite> ().GetConnection ();
-			_connection.CreateTable<ToDo> ();
+			connection = DependencyService.Get<ISQLite> ().GetConnection ();
+			connection.CreateTable<ToDo> ();
 		}
 
 		public IEnumerable<ToDo> GetToDos() {
-			return (from t in _connection.Table<ToDo> ()
+			return (from t in connection.Table<ToDo> ()
 				select t).ToList ();
 		}
 
 		public ToDo GetToDo(int id) {
-			return _connection.Table<ToDo> ().FirstOrDefault (t => t.ID == id);
+			return connection.Table<ToDo> ().FirstOrDefault (t => t.ID == id);
 		}
 
 		public void InsertToDo (ToDo item){
-			_connection.Insert (item);
+			connection.Insert (item);
 		}
 	}
 }

@@ -1,4 +1,3 @@
-
 ﻿using System;
 using System.Collections.Generic;
 using CoreGraphics;
@@ -55,14 +54,13 @@ namespace TreeWatch.iOS
 					return polygonRenderer;
 				};
 
-				foreach (var field in myMap.Fields) 
-				{
+				foreach (var field in myMap.Fields) {
 
-					foreach (var row in field.Rows) {
-						if (row.BoundingRectangle.Count != 0) {
-							var rowpoints = convertCordinates (row.BoundingRectangle);
+					foreach (var block in field.Blocks) {
+						if (block.BoundingCordinates.Count != 0) {
+							var rowpoints = convertCordinates (block.BoundingCordinates);
 							var rowpolygon = MKPolygon.FromCoordinates (rowpoints);
-							rowpolygon.Title = ((int)row.TreeType).ToString ();
+							rowpolygon.Title = ((int)block.TreeType).ToString ();
 							polygons.Add (rowpolygon);
 						}
 					}

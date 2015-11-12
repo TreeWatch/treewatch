@@ -83,9 +83,12 @@ namespace TreeWatch
 			fieldcords.Add (new Position (51.39511, 6.04745));
 			Fields [0].BoundingCordinates = fieldcords;
 
-			var row = new List<Block> ();
-			row.Add (new Block (new PositionModel (51.39082462477471, 6.050752777777778), new PositionModel (51.3904837408623, 6.047676310228867), TreeType.APPLE));
-			testfield.Rows = row;
+		        var blocks = new List<Block> ();
+			blocks.Add (new Block ( new  List<PositionModel> { new PositionModel (51.39082462477471, 6.050752777777778), 
+															   new PositionModel (51.3904837408623, 6.047676310228867)}, 
+				                   TreeType.APPLE));
+
+			var testfield = new Field ("TestField", fieldcords, blocks);
 			Fields.Add (testfield);
 		}
 

@@ -5,7 +5,7 @@ using Xamarin.UITest;
 using TreeWatch;
 using TreeWatch.UITests;
 
-namespace TreeWatch.Tests
+namespace TreeWatch.UITests
 {
 	[TestFixture ()]
 	public class DBTests
@@ -28,7 +28,7 @@ namespace TreeWatch.Tests
 			db.InsertToDo (newToDoOne);
 			var newToDoTwo = new ToDo("Harvest","Harvest the trees");
 			db.InsertToDo (newToDoTwo);
-			List<ToDo> list = (List<ToDo>) db.GetToDos ();
+			var list = (List<ToDo>) db.GetToDos ();
 
 			Assert.IsNotEmpty(list);
 			Assert.IsTrue(list.Contains (newToDoOne));
