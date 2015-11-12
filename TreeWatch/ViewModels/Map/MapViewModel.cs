@@ -21,8 +21,6 @@ namespace TreeWatch
 		Command searchCommand;
 		Field selectedField;
 		FieldHelper fieldHelper;
-		public static int ID = 0;
-		private int id = ID;
 
 		public MapViewModel ()
 		{
@@ -31,7 +29,6 @@ namespace TreeWatch
 					SelectedField = field;
 				}
 			});
-			ID++;
 			fields = new ObservableCollection<Field> ();
 			fieldHelper = FieldHelper.Instance;
 			fieldHelper.FieldTapped += FieldTapped;
@@ -48,7 +45,7 @@ namespace TreeWatch
 				{
 					selectedField = value;
 					SearchText = string.Empty;
-					fieldHelper.FieldSelectedEvent (id, selectedField);
+					fieldHelper.FieldSelectedEvent (selectedField);
 				}
 			}
 			get { return selectedField; }

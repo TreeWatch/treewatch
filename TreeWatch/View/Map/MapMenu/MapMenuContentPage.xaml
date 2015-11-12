@@ -6,7 +6,8 @@
 	xmlns:local="clr-namespace:TreeWatch;assembly=TreeWatch"
 	Title      ="Menu"
 	Icon       ="HamburgerMenuIcon.png"
-	StyleId    ="MapMenu">
+	StyleId    ="MapMenu"
+	BindingContext="{local:MapViewModel}">
 	<ContentPage.Padding>
 		<OnPlatform
 			x:TypeArguments="Thickness"
@@ -22,7 +23,7 @@
 			HorizontalOptions="FillAndExpand"
 			Orientation="Vertical"
 			Spacing="15"
-			BindingContext="{local:MapViewModel}">
+			>
 			<SearchBar 	
 				x:Name="searchBar"
 				Placeholder="Search"

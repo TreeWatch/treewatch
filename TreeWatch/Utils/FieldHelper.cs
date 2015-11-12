@@ -30,10 +30,11 @@ namespace TreeWatch
 			}
 		}
 
-		public void FieldSelectedEvent(int sender, Field field)
+		public void FieldSelectedEvent(Field field)
 		{
 			if (FieldSelected != null) 
 			{
+				Debug.WriteLine (sender);
 				FieldSelected (this, new FieldSelectedEventArgs (field));
 			}
 		}
