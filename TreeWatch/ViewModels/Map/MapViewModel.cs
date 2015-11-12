@@ -23,6 +23,7 @@ namespace TreeWatch
 
 		public MapViewModel ()
 		{
+<<<<<<< HEAD
 			fieldHelper = FieldHelper.Instance;
 			fieldHelper.FieldTapped += FieldTapped;
 			fieldHelper.FieldSelected += FieldSelected;
@@ -53,6 +54,9 @@ namespace TreeWatch
 				SelectedField = tappedField;
 			}
 		}
+=======
+			Fields = new ObservableCollection<Field> ();
+>>>>>>> master
 
 		public void FieldSelected(object sender, FieldSelectedEventArgs e)
 		{

@@ -28,8 +28,6 @@
 				x:Name      ="FieldView"
 				ItemsSource ="{Binding FilteredFields}"
 				SelectedItem="{Binding SelectedField}">
-<<<<<<< HEAD
->>>>>>> master
 				<ListView.Header>
 					<StackLayout>
 					</StackLayout>
@@ -37,8 +35,8 @@
 				<ListView.ItemTemplate>
 					<DataTemplate>
 						<TextCell
-							x:Name          ="TextCell"
-							Text            ="{Binding Name}">
+							x:Name="TextCell"
+							Text  ="{Binding Name}">
 						</TextCell>
 					</DataTemplate>
 				</ListView.ItemTemplate>
