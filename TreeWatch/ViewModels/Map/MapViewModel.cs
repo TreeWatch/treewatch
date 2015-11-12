@@ -17,7 +17,7 @@ namespace TreeWatch
 		public event PropertyChangedEventHandler PropertyChanged;
 
 		ObservableCollection<Field> fields;
-		String searchText = String.Empty;
+		String searchText = string.Empty;
 		Command searchCommand;
 		Field selectedField;
 
@@ -32,6 +32,7 @@ namespace TreeWatch
 			fields = new ObservableCollection<Field> ();
 
 			SetUpMockData ();
+			this.SearchText = "adasdasdasd";
 		}
 
 		void SetUpMockData ()
@@ -62,7 +63,7 @@ namespace TreeWatch
 
 		public string SearchText {
 			get { return searchText; }
-			set { 
+			set {
 				if (searchText != value) { 
 					searchText = value ?? string.Empty;
 					OnPropertyChanged ("SearchText");
@@ -107,6 +108,7 @@ namespace TreeWatch
 
 		protected virtual void OnPropertyChanged ([CallerMemberName] string propertyName = null)
 		{
+			Debug.WriteLine ("Property changed: {0}, {1}", propertyName, SearchText);
 			PropertyChangedEventHandler handler = PropertyChanged;
 			if (handler != null)
 				handler (this, new PropertyChangedEventArgs (propertyName));
