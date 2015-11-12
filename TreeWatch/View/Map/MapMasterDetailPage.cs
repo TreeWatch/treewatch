@@ -1,4 +1,5 @@
 using Xamarin.Forms;
+using System;
 
 namespace TreeWatch
 {
@@ -17,6 +18,7 @@ namespace TreeWatch
 			// Create the detail page and wrap it in a navigation page to provide a NavigationBar and Toggle button
 			Detail = new MapNavigationPage (new MapContentPage ());
 
+			this.MasterBehavior = MasterBehavior.Popover;
 			Title = Detail.Title;
 
 			if (Detail.Icon != null)
