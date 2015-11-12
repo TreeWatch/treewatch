@@ -1,11 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
+using CoreGraphics;
 using CoreLocation;
+using Foundation;
 using MapKit;
 using TreeWatch;
 using TreeWatch.iOS;
-using System.Collections.Generic;
-using Xamarin.Forms.Maps;
+using UIKit;
 using Xamarin.Forms;
+using Xamarin.Forms.Maps;
 using Xamarin.Forms.Maps.iOS;
 using Xamarin.Forms.Platform.iOS;
 
@@ -32,8 +35,8 @@ namespace TreeWatch.iOS
 			base.OnElementChanged (e);
 
 			if (e.OldElement == null) {
-
 				mapView = Control as MKMapView;
+
 
 				myMap = e.NewElement as FieldMap;
 

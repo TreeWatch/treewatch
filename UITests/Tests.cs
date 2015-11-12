@@ -2,6 +2,7 @@
 using NUnit.Framework;
 using Xamarin.UITest;
 using Xamarin.UITest.Queries;
+using System;
 
 namespace TreeWatch.UITests
 {
@@ -33,15 +34,6 @@ namespace TreeWatch.UITests
 		}
 
 		[Test]
-		public void HistoryDisplayed ()
-		{
-			app.Tap ("History");
-			AppResult[] results = app.WaitForElement (c => c.Marked ("HistoryView"));
-			app.Screenshot ("History screen");
-			Assert.IsTrue (results.Any ());
-		}
-
-		[Test]
 		public void TodoDisplayed ()
 		{
 			app.Tap ("ToDo");
@@ -68,6 +60,16 @@ namespace TreeWatch.UITests
 			app.Tap ("Note");
 			AppResult[] results = app.WaitForElement (c => c.Marked ("NoteView"));
 			app.Screenshot ("Note screen");
+			Assert.IsTrue (results.Any ());
+		}
+
+		[Test]
+		public void MapMasterDetailMenuIsDiplayed ()
+		{
+			app.Tap ("Map");
+			AppResult[] results = app.WaitForElement (c => c.Marked ("MapMasterDetailPage"));
+			app.Screenshot ("MapMasterDetailPage screen");
+			app.Tap ("Menu");
 			Assert.IsTrue (results.Any ());
 		}
 	}
