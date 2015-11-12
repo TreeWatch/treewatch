@@ -83,7 +83,7 @@ namespace TreeWatch.Droid
 
 		private void MapClicked(Object sender, GoogleMap.MapClickEventArgs e)
 		{
-			Console.WriteLine("Clicked map on Lat: {0} Lon: {1}", e.Point.Latitude, e.Point.Longitude);
+			MapViewModel.IsFieldClicked (new Position(e.Point.Latitude, e.Point.Longitude));
 		}
 	}
 		
