@@ -53,6 +53,13 @@ namespace TreeWatch.iOS
 							polygons.Add (rowpolygon);
 						}
 					}
+
+					if (field.BoundingCordinates.Count != 0) {
+						var points = convertCordinates (field.BoundingCordinates);
+						var polygon = MKPolygon.FromCoordinates (points);
+						polygon.Title = "Field";
+						polygons.Add (polygon);
+					}
 				}
 				mapView.AddOverlays (polygons.ToArray ());
 
