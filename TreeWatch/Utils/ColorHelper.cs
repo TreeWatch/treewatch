@@ -12,9 +12,11 @@ namespace TreeWatch
 			case TreeType.APPLE:
 				return Color.Lime;
 			case TreeType.CHERRY:
-				return Color.Purple;
+				return Color.Red;
 			case TreeType.PEAR:
 				return Color.Maroon;
+			case TreeType.PLUM:
+				return Color.Purple;
 			case TreeType.NOTDEFINED:
 				return Color.Black;
 			default:

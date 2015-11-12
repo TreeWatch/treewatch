@@ -5,6 +5,7 @@
 		APPLE,
 		PEAR,
 		CHERRY,
+		PLUM,
 		NOTDEFINED
 	}
 
