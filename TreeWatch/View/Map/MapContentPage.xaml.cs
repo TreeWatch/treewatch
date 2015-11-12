@@ -11,8 +11,6 @@ namespace TreeWatch
 		{
 			InitializeComponent ();
 
-			BindingContext = new MapViewModel ();
-
 			//configurations for navigation bar
 			NavigationPage.SetBackButtonTitle (this, Title);
 

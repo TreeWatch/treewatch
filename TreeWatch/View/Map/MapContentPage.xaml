@@ -3,8 +3,10 @@
 	xmlns ="http://xamarin.com/schemas/2014/forms"
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 	x:Class="TreeWatch.MapContentPage"
+	xmlns:local="clr-namespace:TreeWatch;assembly=TreeWatch"
 	Title="Map"
-	StyleId = "MapView">
+	StyleId = "MapView"
+	BindingContext="{local:MapViewModel}">
 	<ContentPage.Icon>
 		<OnPlatform x:TypeArguments="FileImageSource" iOS="MapTabBarIcon.png" />
 	</ContentPage.Icon>
@@ -13,7 +15,8 @@
 			VerticalOptions  ="CenterAndExpand"
 			HorizontalOptions="FillAndExpand"
 			Orientation      ="Vertical"
-			Spacing          ="15">
+			Spacing          ="15"
+			>
 		</StackLayout>
 	</ContentPage.Content>
 </ContentPage>
