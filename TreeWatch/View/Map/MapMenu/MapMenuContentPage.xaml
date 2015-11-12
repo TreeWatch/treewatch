@@ -1,26 +1,30 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage
-	xmlns     ="http://xamarin.com/schemas/2014/forms"
-	xmlns:x    ="http://schemas.microsoft.com/winfx/2009/xaml"
-	x:Class    ="TreeWatch.MapMenuContentPage"
-	xmlns:local="clr-namespace:TreeWatch;assembly=TreeWatch"
-	Title      ="Menu"
-	Icon       ="HamburgerMenuIcon.png"
-	StyleId    ="MapMenu"
+	xmlns        ="http://xamarin.com/schemas/2014/forms"
+	xmlns:x       ="http://schemas.microsoft.com/winfx/2009/xaml"
+	x:Class       ="TreeWatch.MapMenuContentPage"
+	xmlns:local   ="clr-namespace:TreeWatch;assembly=TreeWatch"
+	Title         ="Menu"
+	Icon          ="HamburgerMenuIcon.png"
+	StyleId       ="MapMenu"
 	BindingContext="{local:MapViewModel}">
 	<ContentPage.Padding>
 		<OnPlatform
 			x:TypeArguments="Thickness"
 			iOS            ="0, 20, 0, 0" />
 	</ContentPage.Padding>
+<<<<<<< HEAD
 	<ContentPage.Resources>
 		<ResourceDictionary>
 		</ResourceDictionary>
 	</ContentPage.Resources>
+=======
+>>>>>>> master
 	<ContentPage.Content>
-		<StackLayout 	
-			VerticalOptions="CenterAndExpand"
+		<StackLayout
+			VerticalOptions  ="CenterAndExpand"
 			HorizontalOptions="FillAndExpand"
+<<<<<<< HEAD
 			Orientation="Vertical"
 			Spacing="15"
 			>
@@ -30,6 +34,19 @@
 				Text="{Binding SearchText}"
 				SearchCommand="{Binding SearchCommand}" />
 			<ListView x:Name="FieldView" ItemsSource="{Binding FilteredFields}" SelectedItem="{Binding SelectedField, Mode=TwoWay}">
+=======
+			Orientation      ="Vertical"
+			Spacing          ="15">
+			<SearchBar
+				x:Name       ="searchBar"
+				Placeholder  ="Search"
+				Text         ="{Binding SearchText}"
+				SearchCommand="{Binding SearchCommand}" />
+			<ListView
+				x:Name      ="FieldView"
+				ItemsSource ="{Binding FilteredFields}"
+				SelectedItem="{Binding SelectedField}">
+>>>>>>> master
 				<ListView.Header>
 					<StackLayout>
 					</StackLayout>
@@ -37,8 +54,13 @@
 				<ListView.ItemTemplate>
 					<DataTemplate>
 						<TextCell
+<<<<<<< HEAD
 							x:Name          ="TextCell"
 							Text            ="{Binding Name}">
+=======
+							x:Name="TextCell"
+							Text  ="{Binding Name}">
+>>>>>>> master
 						</TextCell>
 					</DataTemplate>
 				</ListView.ItemTemplate>

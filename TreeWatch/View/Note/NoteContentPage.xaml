@@ -1,11 +1,12 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage
-	xmlns     ="http://xamarin.com/schemas/2014/forms"
-	xmlns:x    ="http://schemas.microsoft.com/winfx/2009/xaml"
-	x:Class    ="TreeWatch.NoteContentPage"
-	xmlns:local="clr-namespace:TreeWatch;assembly=TreeWatch"
-	Title      ="Note"
-	StyleId    ="NoteView">
+	xmlns        ="http://xamarin.com/schemas/2014/forms"
+	xmlns:x       ="http://schemas.microsoft.com/winfx/2009/xaml"
+	x:Class       ="TreeWatch.NoteContentPage"
+	xmlns:local   ="clr-namespace:TreeWatch;assembly=TreeWatch"
+	Title         ="Note"
+	StyleId       ="NoteView"
+	BindingContext="{local:NoteViewModel}">
 	<ContentPage.Icon>
 		<OnPlatform
 			x:TypeArguments="FileImageSource"
@@ -22,8 +23,7 @@
 			<StackLayout
 				HorizontalOptions="FillAndExpand"
 				VerticalOptions  ="FillAndExpand"
-				Padding          ="20"
-				BindingContext   ="{local:NoteViewModel}">
+				Padding          ="20">
 				<Entry
 					Placeholder="Title"
 					Keyboard   ="Default" />

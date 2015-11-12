@@ -16,8 +16,7 @@ namespace TreeWatch
 	{
 		public event PropertyChangedEventHandler PropertyChanged;
 
-		ObservableCollection<Field> fields;
-		String searchText = String.Empty;
+		String searchText = string.Empty;
 		Command searchCommand;
 		Field selectedField;
 		FieldHelper fieldHelper;
@@ -33,6 +32,7 @@ namespace TreeWatch
 			fieldHelper = FieldHelper.Instance;
 			fieldHelper.FieldTapped += FieldTapped;
 			fieldHelper.FieldSelected += FieldSelected;
+			Fields = new ObservableCollection<Field> ();
 			SetUpMockData ();
 			selectedField = new Field ("Dummy");
 		}
@@ -96,32 +96,47 @@ namespace TreeWatch
 			Fields.Add (testfield);
 		}
 
-		public ICommand SelectFieldCommand { private set; get; }
-
 		public string SearchText {
 			get { return searchText; }
-			set { 
-				if (searchText != value) { 
+			set {
+				if (searchText != value)
+				{ 
 					searchText = value ?? string.Empty;
 					OnPropertyChanged ("SearchText");
-					if (SearchCommand.CanExecute (null)) {
+					if (SearchCommand.CanExecute (null))
+					{
 						SearchCommand.Execute (null);
 					}
 				}
 			}
 		}
 
+		public Field SelectedField {
+			get {
+				return this.selectedField;
+			}
+			set {
+				if (selectedField != value)
+				{ 
+					selectedField = value;
+					SearchText = String.Empty;
+				}
+			}
+		}
+
 		public ObservableCollection<Field> FilteredFields {
 			get {
-				var theCollection = new ObservableCollection<Field> ();
+				var filteredFields = new ObservableCollection<Field> ();
 
-				if (Fields != null) {
+				if (Fields != null)
+				{
 					List<Field> entities = Fields.Where (x => x.Name.ToLower ().Contains (searchText.ToLower ())).ToList (); 
-					if (entities != null && entities.Any ()) {
-						theCollection = new ObservableCollection<Field> (entities);
+					if (entities != null && entities.Any ())
+					{
+						filteredFields = new ObservableCollection<Field> (entities);
 					}
 				}
-				return theCollection;
+				return filteredFields;
 			}
 		}
 
@@ -145,6 +160,7 @@ namespace TreeWatch
 
 		protected virtual void OnPropertyChanged ([CallerMemberName] string propertyName = null)
 		{
+//			Debug.WriteLine ("Property \"{0}\" changed to \"{1}\"", propertyName, SearchText);
 			PropertyChangedEventHandler handler = PropertyChanged;
 			if (handler != null)
 				handler (this, new PropertyChangedEventArgs (propertyName));
@@ -161,8 +177,8 @@ namespace TreeWatch
 		}
 
 		public ObservableCollection<Field> Fields {
-			get { return fields; }
-			private set { this.fields = value; }
+			get;
+			private set;
 		}
 
 		public Field CheckFieldClicked(Position touchPos)
