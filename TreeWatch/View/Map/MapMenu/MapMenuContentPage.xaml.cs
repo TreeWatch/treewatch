@@ -11,15 +11,15 @@ namespace TreeWatch
 		public MapMenuContentPage ()
 		{
 			InitializeComponent ();
-			ListView lv = this.FindByName<ListView> ("FieldView");
-			lv.ItemSelected += (object sender, SelectedItemChangedEventArgs e) => 
-			{
-				OnFieldSelected();
-			};
+
+			ListView listView = this.FindByName<ListView> ("FieldView");
+			listView.ItemSelected += (object sender, SelectedItemChangedEventArgs e) => OnFieldSelected ();
 		}
 
-		protected virtual void OnFieldSelected(){
-			if (FieldSelected != null) {
+		protected virtual void OnFieldSelected ()
+		{
+			if (FieldSelected != null)
+			{
 				FieldSelected (this, EventArgs.Empty);
 			}
 		}

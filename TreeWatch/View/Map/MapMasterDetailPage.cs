@@ -9,9 +9,8 @@ namespace TreeWatch
 			this.StyleId = "MapMasterDetailPage";
 
 			// Create the master page with the ListView.
-			MapMenuContentPage mapMenuContentPage = new MapMenuContentPage ();
-			mapMenuContentPage.FieldSelected += (object sender, System.EventArgs e) => 
-			{
+			var mapMenuContentPage = new MapMenuContentPage ();
+			mapMenuContentPage.FieldSelected += (sender, e) => {
 				this.IsPresented = false;
 			};
 			this.Master = mapMenuContentPage;
