@@ -2,6 +2,10 @@
 
 #!! ERROR: atex is undefined. Use list command to see defined gitignore types !!#
 
+### Custom ###
+Keys.cs		
+Components/
+
 ### XamarinStudio ###
 bin/
 obj/
