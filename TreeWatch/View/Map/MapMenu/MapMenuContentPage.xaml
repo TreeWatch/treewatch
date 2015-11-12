@@ -14,8 +14,6 @@
 	</ContentPage.Padding>
 	<ContentPage.Resources>
 		<ResourceDictionary>
-			<local:MapViewModel
-				x:Key="mapViewModel" />
 		</ResourceDictionary>
 	</ContentPage.Resources>
 	<ContentPage.Content>
@@ -30,7 +28,7 @@
 				Placeholder="Search"
 				Text="{Binding SearchText}"
 				SearchCommand="{Binding SearchCommand}" />
-			<ListView x:Name="FieldView" ItemsSource="{Binding FilteredFields}" >
+			<ListView x:Name="FieldView" ItemsSource="{Binding FilteredFields}" SelectedItem="{Binding SelectedField, Mode=TwoWay}">
 				<ListView.Header>
 					<StackLayout>
 					</StackLayout>
@@ -39,9 +37,7 @@
 					<DataTemplate>
 						<TextCell
 							x:Name          ="TextCell"
-							Text            ="{Binding Name}"
-							Command         ="{Binding Source={StaticResource mapViewModel}, Path=SelectFieldCommand}"
-							CommandParameter="{Binding Source={x:Reference TextCell}, Path=BindingContext}">
+							Text            ="{Binding Name}">
 						</TextCell>
 					</DataTemplate>
 				</ListView.ItemTemplate>

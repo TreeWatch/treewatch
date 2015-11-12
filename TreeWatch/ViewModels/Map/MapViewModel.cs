@@ -21,6 +21,8 @@ namespace TreeWatch
 		Command searchCommand;
 		Field selectedField;
 		FieldHelper fieldHelper;
+		public static int ID = 0;
+		private int id = ID;
 
 		public MapViewModel ()
 		{
@@ -29,22 +31,24 @@ namespace TreeWatch
 					SelectedField = field;
 				}
 			});
-
+			ID++;
 			fields = new ObservableCollection<Field> ();
 			fieldHelper = FieldHelper.Instance;
 			fieldHelper.FieldTapped += FieldTapped;
 			fieldHelper.FieldSelected += FieldSelected;
 			SetUpMockData ();
+			selectedField = new Field ("Dummy");
 		}
 
 		public Field SelectedField
 		{
-			private set 
+			set 
 			{
-				if (value != selectedField) 
+				if (!value.Name.Equals(SelectedField.Name)) 
 				{
 					selectedField = value;
-					fieldHelper.FieldSelectedEvent (selectedField);
+					SearchText = string.Empty;
+					fieldHelper.FieldSelectedEvent (id, selectedField);
 				}
 			}
 			get { return selectedField; }
@@ -53,13 +57,15 @@ namespace TreeWatch
 		private void FieldTapped(object sender, FieldTappedEventArgs e)
 		{
 			Field tappedField = CheckFieldClicked (e.Position);
-			if (tappedField != null)
+			if (tappedField != null) 
+			{
 				SelectedField = tappedField;
+			}
 		}
 
 		public void FieldSelected(object sender, FieldSelectedEventArgs e)
 		{
-			Debug.WriteLine ("{0} selected.", e.Field.Name);
+			SelectedField = e.Field;
 		}
 
 		void SetUpMockData ()

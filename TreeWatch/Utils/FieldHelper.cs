@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Dynamic;
 using Xamarin.Forms.Maps;
+using System.Diagnostics;
 
 namespace TreeWatch
 {
@@ -23,14 +24,18 @@ namespace TreeWatch
 
 		public void FieldTappedEvent(Position pos)
 		{
-			if (FieldTapped != null)
+			if (FieldTapped != null) 
+			{
 				FieldTapped (this, new FieldTappedEventArgs (pos));
+			}
 		}
 
-		public void FieldSelectedEvent(Field field)
+		public void FieldSelectedEvent(int sender, Field field)
 		{
-			if (FieldSelected != null)
+			if (FieldSelected != null) 
+			{
 				FieldSelected (this, new FieldSelectedEventArgs (field));
+			}
 		}
 	}
 }
