@@ -22,6 +22,7 @@ namespace TreeWatch
 			{
 				boundingCoordinates = value;
 				CalculatePinPosition ();
+				CalculateWidthHeight ();
 			}
 		}
 
@@ -54,13 +55,20 @@ namespace TreeWatch
 
 		private void CalculateWidthHeight()
 		{
-			double smallestLon = boundingCoordinates[0].Longitude;
-			double biggestLon = boundingCoordinates[0].Longitude;
-			double smallestLat = boundingCoordinates [0].Latitude;
-			double biggestLat = boundingCoordinates [0].Latitude;
+			double smallestLon = 0.0;
+			double biggestLon = 0.0;
+			double smallestLat = 0.0;
+			double biggestLat = 0.0;
 
 			foreach(Position fieldPoint in boundingCoordinates)
 			{
+				if (smallestLon == 0.0 && biggestLon == 0.0 && smallestLat == 0.0 && biggestLat == 0.0) 
+				{
+					smallestLon = fieldPoint.Longitude;
+					biggestLon = fieldPoint.Longitude;
+					smallestLat = fieldPoint.Latitude;
+					biggestLat = fieldPoint.Latitude;
+				}
 				if (fieldPoint.Longitude < smallestLon) 
 				{
 					smallestLon = fieldPoint.Longitude;
@@ -81,6 +89,7 @@ namespace TreeWatch
 
 			fieldWithLon = biggestLon - smallestLon;
 			fieldHeightLat = biggestLat - smallestLat;
+			Debug.WriteLine ("width: {0}, height: {1}", fieldWithLon, fieldHeightLat);
 		}
 
 		private void CalculatePinPosition()

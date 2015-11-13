@@ -76,6 +76,7 @@ namespace TreeWatch
 
 			var testfield = new Field ("TestField");
 			var fieldcords = new List<Position> ();
+	
 
 			fieldcords.Add (new Position (51.39202, 6.04745));
 			fieldcords.Add (new Position (51.39270, 6.04900));//
