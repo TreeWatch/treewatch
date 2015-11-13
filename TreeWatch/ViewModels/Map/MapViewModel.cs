@@ -91,7 +91,7 @@ namespace TreeWatch
 		}
 
 		public string SearchText {
-			get { return searchText; }
+			get { return this.searchText; }
 			set {
 				if (searchText != value)
 				{ 
@@ -141,7 +141,6 @@ namespace TreeWatch
 
 		protected virtual void OnPropertyChanged ([CallerMemberName] string propertyName = null)
 		{
-//			Debug.WriteLine ("Property \"{0}\" changed to \"{1}\"", propertyName, SearchText);
 			PropertyChangedEventHandler handler = PropertyChanged;
 			if (handler != null)
 				handler (this, new PropertyChangedEventArgs (propertyName));
