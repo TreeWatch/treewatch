@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using SQLiteNetExtensions.Attributes;
 
@@ -20,6 +20,7 @@ namespace TreeWatch
 			BoundingCoordinates = boundingCoordinates;
 			Blocks = blocks;
 		}
+		
 
 		public Field ()
 		{
