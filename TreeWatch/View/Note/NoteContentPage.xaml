@@ -28,10 +28,9 @@
 					Placeholder="Title"
 					Keyboard   ="Default" />
 				<Image
-				Aspect="AspectFill"
-				/>
-				<Button
-					Text           ="FOTO"
+					x:Name         ="picture"
+					Source         ="camera.png"
+					HeightRequest  ="250"
 					VerticalOptions="StartAndExpand" />
 				<Editor
 					Text           ="Description"
