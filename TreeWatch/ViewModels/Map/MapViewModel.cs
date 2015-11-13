@@ -60,15 +60,18 @@ namespace TreeWatch
 
 		void SetUpMockData ()
 		{
-			Fields.Add (new Field ("Ajax"));
-			Fields.Add (new Field ("PSV"));
-			Fields.Add (new Field ("Roda jc"));
-			Fields.Add (new Field ("VVV"));
-			Fields.Add (new Field ("Hertog Jan"));
-			Fields.Add (new Field ("Twente"));
+			Fields.Add (new Field ("Ajax", new List<PositionModel> (), new List<Block> ()));
+			Fields.Add (new Field ("PSV", new List<PositionModel> (), new List<Block> ()));
+			Fields.Add (new Field ("Roda jc", new List<PositionModel> (), new List<Block> ()));
+			Fields.Add (new Field ("VVV", new List<PositionModel> (), new List<Block> ()));
+			Fields.Add (new Field ("Hertog Jan", new List<PositionModel> (), new List<Block> ()));
+			Fields.Add (new Field ("Twente", new List<PositionModel> (), new List<Block> ()));
 
-			var testfield = new Field ("TestField");
-			var fieldcords = new List<Position> ();
+			var fieldcords = new List<PositionModel> ();
+			fieldcords.Add (new PositionModel (51.39202, 6.04745));
+			fieldcords.Add (new PositionModel (51.39202, 6.05116));
+			fieldcords.Add (new PositionModel (51.38972, 6.05116));
+			fieldcords.Add (new PositionModel (51.38972, 6.04745));
 
 			fieldcords.Add (new Position (51.39202, 6.04745));
 			fieldcords.Add (new Position (51.39202, 6.05116));
@@ -89,7 +92,11 @@ namespace TreeWatch
 				                   TreeType.APPLE));
 
 			var testfield = new Field ("TestField", fieldcords, blocks);
-			Fields.Add (testfield);
+			App.Database.InsertField(testfield);
+
+			foreach (Field field in App.Database.GetFields()) {
+				Fields.Add (field);
+			}
 		}
 
 		public ICommand SelectFieldCommand { private set; get; }

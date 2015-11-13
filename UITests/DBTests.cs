@@ -7,28 +7,42 @@ using TreeWatch.UITests;
 
 namespace TreeWatch.UITests
 {
-	[TestFixture ()]
+	[TestFixture (Platform.iOS)]
+	//[TestFixture (Platform.Android)]
 	public class DBTests
 	{
 
 		protected IApp app;
 		Platform platform;
+		private TreeWatchDatabase _database;
 
 		public DBTests (Platform platform)
 		{
 			this.platform = platform;
+		}
+
+		[SetUp]
+		public void BeforeEachTest ()
+		{
 			app = AppInitializer.StartApp (platform);
 		}
 
 		[Test]
 		public void TableToDoCreated ()
 		{
-			var db = new TreeWatchDatabase ();
+			
+			app.Tap ("ToDo");
+
 			var newToDoOne = new ToDo ("Soilscan", "Make a new Soilscan on Field XYZ");
-			db.InsertToDo (newToDoOne);
 			var newToDoTwo = new ToDo("Harvest","Harvest the trees");
+<<<<<<< HEAD
 			db.InsertToDo (newToDoTwo);
 			var list = (List<ToDo>) db.GetToDos ();
+=======
+			App.Database.InsertToDo (newToDoOne);
+			App.Database.InsertToDo (newToDoTwo);
+			List<ToDo> list = (List<ToDo>) App.Database.GetToDos ();
+>>>>>>> Stash
 
 			Assert.IsNotEmpty(list);
 			Assert.IsTrue(list.Contains (newToDoOne));

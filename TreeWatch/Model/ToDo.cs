@@ -1,4 +1,7 @@
 ﻿using SQLite;
+using SQLite.Net.Attributes;
+using System.Collections.Generic;
+using SQLiteNetExtensions.Attributes;
 
 namespace TreeWatch
 {
@@ -10,6 +13,9 @@ namespace TreeWatch
 		public string Title { get; set; }
 
 		public string Description { get; set; }
+
+		[ManyToMany (typeof(BlockToDo))]
+		public List<Block> Blocks { get; set; }
 
 		public ToDo (string title, string description)
 		{
