@@ -6,8 +6,11 @@ namespace TreeWatch
 	{
 		public MapNavigationPage (Page root) : base (root)
 		{
-			Title = root.Title;
+			// set style id for testing
 			this.StyleId = "MapNavigationPage";
+
+			// set default values
+			Title = root.Title;
 			if (root.Icon != null)
 			{
 				Icon = root.Icon;

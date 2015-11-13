@@ -7,7 +7,10 @@ namespace TreeWatch
 	{
 		public MapMasterDetailPage ()
 		{
+			// set testing style id
 			this.StyleId = "MapMasterDetailPage";
+
+			// set view model for all pages
 			MapViewModel mapViewModel = new MapViewModel ();
 
 			// Create the master page with the ListView.
@@ -16,15 +19,17 @@ namespace TreeWatch
 				this.IsPresented = false;
 			};
 			this.Master = mapMenuContentPage;
+
 			// Create the detail page and wrap it in a navigation page to provide a NavigationBar and Toggle button
-			Detail = new MapNavigationPage (new MapContentPage (mapViewModel));
+			var mapNavigationPage = new MapNavigationPage (new MapContentPage (mapViewModel));
+			this.Detail = mapNavigationPage;
 
+			// configuration of this page
 			this.MasterBehavior = MasterBehavior.Popover;
-			Title = Detail.Title;
-
+			this.Title = Detail.Title;
 			if (Detail.Icon != null)
 			{
-				Icon = Detail.Icon;
+				this.Icon = Detail.Icon;
 			}
 
 		}

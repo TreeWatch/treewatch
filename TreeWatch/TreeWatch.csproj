@@ -43,9 +43,6 @@
     </Compile>
     <Compile Include="View\Map\MapMasterDetailPage.cs" />
     <Compile Include="View\Map\MapNavigationPage.cs" />
-    <Compile Include="View\Map\Overlay\OverlayContentPage.xaml.cs">
-      <DependentUpon>OverlayContentPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\Note\NoteContentPage.xaml.cs">
       <DependentUpon>NoteContentPage.xaml</DependentUpon>
     </Compile>
@@ -68,6 +65,9 @@
     <Compile Include="Utils\FieldHelper.cs" />
     <Compile Include="Utils\FieldTappedEventArgs.cs" />
     <Compile Include="Utils\FieldSelectedEventArgs.cs" />
+    <Compile Include="View\Map\DetailedInformation\DetailedInformationContentPage.xaml.cs">
+      <DependentUpon>DetailedInformationContentPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.1.5.1.6471\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.1.5.1.6471\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
@@ -84,6 +84,7 @@
     <Folder Include="ViewModels\Note\" />
     <Folder Include="Utils\" />
     <Folder Include="Model\Types\" />
+    <Folder Include="View\Map\DetailedInformation\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">
@@ -103,10 +104,12 @@
     <EmbeddedResource Include="View\History\HistoryContentPage.xaml" />
     <EmbeddedResource Include="View\Map\MapContentPage.xaml" />
     <EmbeddedResource Include="View\Map\MapMenu\MapMenuContentPage.xaml" />
-    <EmbeddedResource Include="View\Map\Overlay\OverlayContentPage.xaml" />
     <EmbeddedResource Include="View\Note\NoteContentPage.xaml" />
     <EmbeddedResource Include="View\Settings\SettingsContentPage.xaml" />
     <EmbeddedResource Include="View\ToDo\ToDoContentPage.xaml" />
+    <EmbeddedResource Include="View\Map\DetailedInformation\DetailedInformationContentPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>

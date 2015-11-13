@@ -2,6 +2,7 @@ using System.Collections.Generic;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
+using System.Diagnostics;
 
 namespace TreeWatch
 {
@@ -9,9 +10,16 @@ namespace TreeWatch
 	{
 		public MapContentPage (MapViewModel mapViewModel)
 		{
+			// initialize this page
 			InitializeComponent ();
+
+			// add view model
 			this.BindingContext = mapViewModel;
+
+			// set content of page
 			Content = CreateMapContentView ();
+
+//			this.Navigation.PushAsync (new DetailedInformationContentPage (mapViewModel));
 		}
 
 		View CreateMapContentView ()
