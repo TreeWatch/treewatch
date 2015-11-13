@@ -23,6 +23,7 @@ namespace TreeWatch.iOS
 		List<MKPolygonRenderer> renderers;
 		MKPolygonRenderer polygonRenderer;
 		UITapGestureRecognizer tapGesture;
+		FieldHelper fieldHelper;
 
 		public FieldMapRenderer ()
 		{
@@ -30,7 +31,17 @@ namespace TreeWatch.iOS
 			renderers = new List<MKPolygonRenderer> ();
 			tapGesture = new UITapGestureRecognizer (MapTapped);
 			tapGesture.NumberOfTapsRequired = 1;
+			fieldHelper = FieldHelper.Instance;
+			fieldHelper.FieldSelected += FieldSelected;
+		}
 
+		protected void FieldSelected(object sender, FieldSelectedEventArgs e)
+		{
+			if (mapView != null) 
+			{
+				var coords = new CLLocationCoordinate2D (e.Field.FieldPinPosition.Latitude, e.Field.FieldPinPosition.Longitude);
+				mapView.SetCenterCoordinate (coords, true);
+			}
 		}
 
 		protected override void OnElementChanged (ElementChangedEventArgs<View> e)
@@ -40,10 +51,6 @@ namespace TreeWatch.iOS
 			if (e.OldElement == null) {
 				mapView = Control as MKMapView;
 				mapView.AddGestureRecognizer (tapGesture);
-
-
-
-
 				myMap = e.NewElement as FieldMap;
 
 				mapView.OverlayRenderer = (m, o) => {
@@ -75,6 +82,8 @@ namespace TreeWatch.iOS
 						var polygon = MKPolygon.FromCoordinates (points);
 						polygon.Title = "Field";
 						polygons.Add (polygon);
+						var annotation = new FieldMapAnnotation (field);
+						mapView.AddAnnotation (annotation);
 					}
 				}
 				mapView.AddOverlays (polygons.ToArray ());

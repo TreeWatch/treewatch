@@ -19,8 +19,7 @@ namespace TreeWatch
 			Name = name;
 			BoundingCoordinates = boundingCoordinates;
 			Blocks = blocks;
-		}
-		
+		}		
 
 		public Field ()
 		{
