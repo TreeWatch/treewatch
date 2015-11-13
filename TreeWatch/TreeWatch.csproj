@@ -43,9 +43,6 @@
     </Compile>
     <Compile Include="View\Map\MapMasterDetailPage.cs" />
     <Compile Include="View\Map\MapNavigationPage.cs" />
-    <Compile Include="View\Map\Overlay\OverlayContentPage.xaml.cs">
-      <DependentUpon>OverlayContentPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\Note\NoteContentPage.xaml.cs">
       <DependentUpon>NoteContentPage.xaml</DependentUpon>
     </Compile>
@@ -99,6 +96,7 @@
     <Folder Include="Model\Types\" />
     <Folder Include="Database\" />
     <Folder Include="Model\ToDo\" />
+    <Folder Include="View\Map\DetailedInformation\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">
@@ -127,10 +125,12 @@
     <EmbeddedResource Include="View\History\HistoryContentPage.xaml" />
     <EmbeddedResource Include="View\Map\MapContentPage.xaml" />
     <EmbeddedResource Include="View\Map\MapMenu\MapMenuContentPage.xaml" />
-    <EmbeddedResource Include="View\Map\Overlay\OverlayContentPage.xaml" />
     <EmbeddedResource Include="View\Note\NoteContentPage.xaml" />
     <EmbeddedResource Include="View\Settings\SettingsContentPage.xaml" />
     <EmbeddedResource Include="View\ToDo\ToDoContentPage.xaml" />
+    <EmbeddedResource Include="View\Map\DetailedInformation\DetailedInformationContentPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>
