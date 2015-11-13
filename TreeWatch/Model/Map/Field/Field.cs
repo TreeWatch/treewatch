@@ -24,7 +24,7 @@ namespace TreeWatch
 		}
 
 		public Position FieldPinPosition {
-			get;
+			get { return fieldPinPosition; }
 		}
 
 		public List<Row> Rows {
