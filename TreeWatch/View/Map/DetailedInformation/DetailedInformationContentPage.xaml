@@ -5,12 +5,69 @@
 	x:Class    ="TreeWatch.DetailedInformationContentPage"
 	xmlns:local="clr-namespace:TreeWatch;assembly=TreeWatch"
 	Title      ="Detailed Information"
-	StyleId    ="DetailedInformation">
+	StyleId    ="DetailedInformation"
+	Padding    ="10, 25, 10, 10">
 	<ContentPage.Content>
 		<ScrollView>
-			<StackLayout>
+			<StackLayout
+				Spacing="25">
 				<Label
-					Text="{Binding SelectedFieldName}" />
+					HorizontalOptions="CenterAndExpand"
+					FontSize         ="30"
+					FontAttributes   ="Bold"
+					Text             ="{Binding SelectedFieldName}" />
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition
+							Width="*" />
+						<ColumnDefinition
+							Width="*" />
+					</Grid.ColumnDefinitions>
+					<Label
+						FontAttributes="Bold"
+						Grid.Row      ="0"
+						Grid.Column   ="0"
+						Text          ="Width" />
+					<Label
+						Grid.Row   ="1"
+						Grid.Column="0"
+						Text       ="{Binding SelectedFieldWidth}" />
+					<Label
+						FontAttributes="Bold"
+						Grid.Row      ="0"
+						Grid.Column   ="1"
+						Text          ="Height" />
+					<Label
+						Grid.Row   ="1"
+						Grid.Column="1"
+						Text       ="{Binding SelectedFieldHeight}" />
+					<Label
+						FontAttributes="Bold"
+						Grid.Row      ="2"
+						Grid.Column   ="0"
+						Text          ="Latitude" />
+					<Label
+						Grid.Row   ="3"
+						Grid.Column="0"
+						Text       ="{Binding SelectedFieldLatitude}" />
+					<Label
+						FontAttributes="Bold"
+						Grid.Row      ="2"
+						Grid.Column   ="1"
+						Text          ="Longitude" />
+					<Label
+						Grid.Row   ="3"
+						Grid.Column="1"
+						Text       ="{Binding SelectedFieldLongitude}" />
+				</Grid>
+				<StackLayout
+					Orientation="Vertical">
+					<Label
+						FontAttributes="Bold"
+						Text          ="Block Count" />
+					<Label
+						Text="{Binding SelectedFieldBlockCount}" />
+				</StackLayout>
 			</StackLayout>
 		</ScrollView>
 	</ContentPage.Content>
