@@ -11,11 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TreeWatch.UITests", "UITest
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TreeWatch.Tests", "TreeWatch.Tests\TreeWatch.Tests.csproj", "{7534BBB4-7D17-444E-BA97-4E38B4EDB3C6}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F20D7090-8A43-4FF8-864A-A52B87FC2DF5}"
-	ProjectSection(SolutionItems) = preProject
-		TreeWatch.sln = TreeWatch.sln
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -86,7 +81,5 @@ Global
 		{8C138565-9C93-4EBA-85A7-7A37861C2249}.Release|iPhone.Build.0 = Release|Any CPU
 		{8C138565-9C93-4EBA-85A7-7A37861C2249}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{8C138565-9C93-4EBA-85A7-7A37861C2249}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection
 EndGlobal
