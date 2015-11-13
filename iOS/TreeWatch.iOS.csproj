@@ -113,6 +113,7 @@
     <Compile Include="FieldMapRenderer.cs" />
     <Compile Include="FieldMapAnnotation.cs" />
     <Compile Include="FieldMapDelegate.cs" />
+    <Compile Include="FieldMapAnnotationView.cs" />
   </ItemGroup>
   <ItemGroup>
     <ITunesArtwork Include="iTunesArtwork" />
