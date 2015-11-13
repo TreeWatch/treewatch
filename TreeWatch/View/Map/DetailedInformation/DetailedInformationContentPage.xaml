@@ -7,11 +7,11 @@
 	Title      ="Detailed Information"
 	StyleId    ="DetailedInformation">
 	<ContentPage.Content>
-		<StackLayout
-			VerticalOptions  ="CenterAndExpand"
-			HorizontalOptions="FillAndExpand"
-			Orientation      ="Vertical"
-			Spacing          ="15">
-		</StackLayout>
+		<ScrollView>
+			<StackLayout>
+				<Label
+					Text="{Binding SelectedField}" />
+			</StackLayout>
+		</ScrollView>
 	</ContentPage.Content>
 </ContentPage>
