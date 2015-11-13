@@ -46,6 +46,13 @@ namespace TreeWatch.iOS
 				//mapView.SetCenterCoordinate (coords, true);
 			}
 
+		protected void FieldSelected(object sender, FieldSelectedEventArgs e)
+		{
+			if (mapView != null) 
+			{
+				var coords = new CLLocationCoordinate2D (e.Field.FieldPinPosition.Latitude, e.Field.FieldPinPosition.Longitude);
+				mapView.SetCenterCoordinate (coords, true);
+			}
 		}
 
 		protected override void OnElementChanged (ElementChangedEventArgs<View> e)

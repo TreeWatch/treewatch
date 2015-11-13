@@ -20,8 +20,6 @@ namespace TreeWatch.iOS
 
 			return annotationView;
 		}
-
-
 	}
 }
 
