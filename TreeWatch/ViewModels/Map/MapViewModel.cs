@@ -36,12 +36,12 @@ namespace TreeWatch
 
 		void SetUpMockData ()
 		{
-			Fields.Add (new Field ("Ajax", new List<PositionModel> (), new List<Block> ()));
-			Fields.Add (new Field ("PSV", new List<PositionModel> (), new List<Block> ()));
-			Fields.Add (new Field ("Roda jc", new List<PositionModel> (), new List<Block> ()));
-			Fields.Add (new Field ("VVV", new List<PositionModel> (), new List<Block> ()));
-			Fields.Add (new Field ("Hertog Jan", new List<PositionModel> (), new List<Block> ()));
-			Fields.Add (new Field ("Twente", new List<PositionModel> (), new List<Block> ()));
+//			Fields.Add (new Field ("Ajax", new List<PositionModel> (), new List<Block> ()));
+//			Fields.Add (new Field ("PSV", new List<PositionModel> (), new List<Block> ()));
+//			Fields.Add (new Field ("Roda jc", new List<PositionModel> (), new List<Block> ()));
+//			Fields.Add (new Field ("VVV", new List<PositionModel> (), new List<Block> ()));
+//			Fields.Add (new Field ("Hertog Jan", new List<PositionModel> (), new List<Block> ()));
+//			Fields.Add (new Field ("Twente", new List<PositionModel> (), new List<Block> ()));
 
 			var fieldcords = new List<PositionModel> ();
 			fieldcords.Add (new PositionModel (51.39202, 6.04745));
@@ -50,12 +50,18 @@ namespace TreeWatch
 			fieldcords.Add (new PositionModel (51.38972, 6.04745));
 
 			var blocks = new List<Block> ();
-			blocks.Add (new Block ( new  List<PositionModel> { new PositionModel (51.39082462477471, 6.050752777777778), 
-															   new PositionModel (51.3904837408623, 6.047676310228867)}, 
+			blocks.Add (new Block ( new  List<PositionModel> {  new PositionModel (51.38972, 6.04745),
+																new PositionModel (51.38972, 6.05116),
+																new PositionModel (51.39082462477471, 6.050752777777778), 
+															    new PositionModel (51.3904837408623, 6.047676310228867)}, 
 				                   TreeType.APPLE));
 
 			var testfield = new Field ("TestField", fieldcords, blocks);
-			Fields.Add (testfield);
+			App.Database.InsertField(testfield);
+
+			foreach (Field field in App.Database.GetFields()) {
+				Fields.Add (field);
+			}
 		}
 
 		public ICommand SelectFieldCommand { private set; get; }

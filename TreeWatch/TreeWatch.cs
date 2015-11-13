@@ -4,10 +4,21 @@ namespace TreeWatch
 {
 	public class App : Application
 	{
+		static TreeWatchDatabase database;
+
 		public App ()
 		{
 			// The root page of your application
 			MainPage = new CustomTabbedPage();
+		}
+
+		public static TreeWatchDatabase Database {
+			get { 
+				if (database == null) {
+					database = new TreeWatchDatabase ();
+				}
+				return database; 
+			}
 		}
 
 		protected override void OnStart ()

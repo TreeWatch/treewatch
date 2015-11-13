@@ -44,13 +44,14 @@ namespace TreeWatch.iOS
 				};
 
 				foreach (var field in myMap.Fields) {
-
-					foreach (var block in field.Blocks) {
-						if (block.BoundingCordinates.Count != 0) {
-							var rowpoints = convertCordinates (block.BoundingCordinates);
-							var rowpolygon = MKPolygon.FromCoordinates (rowpoints);
-							rowpolygon.Title = ((int)block.TreeType).ToString ();
-							polygons.Add (rowpolygon);
+					if (field.Blocks.Count != 0) {
+						foreach (var block in field.Blocks) {
+							if (block.BoundingCordinates.Count != 0) {
+								var rowpoints = convertCordinates (block.BoundingCordinates);
+								var rowpolygon = MKPolygon.FromCoordinates (rowpoints);
+								rowpolygon.Title = ((int)block.TreeType).ToString ();
+								polygons.Add (rowpolygon);
+							}
 						}
 					}
 
