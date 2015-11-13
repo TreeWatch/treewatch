@@ -45,6 +45,7 @@ namespace TreeWatch.iOS
 
 
 
+
 				myMap = e.NewElement as FieldMap;
 
 				mapView.OverlayRenderer = (m, o) => {

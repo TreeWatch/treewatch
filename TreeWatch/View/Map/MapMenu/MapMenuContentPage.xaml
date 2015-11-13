@@ -35,8 +35,8 @@
 				<ListView.ItemTemplate>
 					<DataTemplate>
 						<TextCell
-							x:Name          ="TextCell"
-							Text            ="{Binding Name}">
+							x:Name="TextCell"
+							Text  ="{Binding Name}">
 						</TextCell>
 					</DataTemplate>
 				</ListView.ItemTemplate>
