@@ -126,6 +126,7 @@
     <Compile Include="SQLite_iOS.cs" />
     <Compile Include="FieldMapAnnotation.cs" />
     <Compile Include="FieldMapDelegate.cs" />
+    <Compile Include="FieldMapAnnotationView.cs" />
   </ItemGroup>
   <ItemGroup>
     <ITunesArtwork Include="iTunesArtwork" />
