@@ -78,6 +78,7 @@ namespace TreeWatch
 			var fieldcords = new List<Position> ();
 
 			fieldcords.Add (new Position (51.39202, 6.04745));
+			fieldcords.Add (new Position (51.39270, 6.04900));//
 			fieldcords.Add (new Position (51.39202, 6.05116));
 			fieldcords.Add (new Position (51.38972, 6.05116));
 			fieldcords.Add (new Position (51.38972, 6.04745));
