@@ -12,7 +12,7 @@ using System;
 
 namespace TreeWatch
 {
-	public class MapViewModel : INotifyPropertyChanged
+	public class MapMenuViewModel : INotifyPropertyChanged
 	{
 		public event PropertyChangedEventHandler PropertyChanged;
 
@@ -20,7 +20,7 @@ namespace TreeWatch
 		Command searchCommand;
 		Field selectedField;
 
-		public MapViewModel ()
+		public MapMenuViewModel ()
 		{
 			Fields = new ObservableCollection<Field> ();
 
@@ -52,7 +52,7 @@ namespace TreeWatch
 		}
 
 		public string SearchText {
-			get { return this.searchText; }
+			get { return searchText; }
 			set {
 				if (searchText != value)
 				{ 
@@ -115,8 +115,8 @@ namespace TreeWatch
 
 		protected virtual void OnPropertyChanged ([CallerMemberName] string propertyName = null)
 		{
-//			Debug.WriteLine ("Property \"{0}\" changed to \"{1}\"", propertyName, SearchText);
-//			Debug.WriteLine ("HashCode: {0}", this.GetHashCode());
+			Debug.WriteLine ("Property \"{0}\" changed to \"{1}\"", propertyName, SearchText);
+			Debug.WriteLine ("HashCode: {0}", this.GetHashCode());
 			PropertyChangedEventHandler handler = PropertyChanged;
 			if (handler != null)
 				handler (this, new PropertyChangedEventArgs (propertyName));

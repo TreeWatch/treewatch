@@ -7,7 +7,7 @@
 	Title         ="Menu"
 	Icon          ="HamburgerMenuIcon.png"
 	StyleId       ="MapMenu"
-	BindingContext="{local:MapViewModel}">
+	BindingContext="{local:MapMenuViewModel}">
 	<ContentPage.Padding>
 		<OnPlatform
 			x:TypeArguments="Thickness"

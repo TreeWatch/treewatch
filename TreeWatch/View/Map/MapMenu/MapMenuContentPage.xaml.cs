@@ -1,6 +1,7 @@
 using System;
 
 using Xamarin.Forms;
+using System.Diagnostics;
 
 namespace TreeWatch
 {
