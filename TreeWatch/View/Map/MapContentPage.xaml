@@ -5,8 +5,7 @@
 	x:Class       ="TreeWatch.MapContentPage"
 	xmlns:local   ="clr-namespace:TreeWatch;assembly=TreeWatch"
 	Title         ="Map"
-	StyleId       ="MapView"
-	BindingContext="{local:MapViewModel}">
+	StyleId       ="MapView">
 	<ContentPage.Icon>
 		<OnPlatform
 			x:TypeArguments="FileImageSource"
@@ -17,7 +16,8 @@
 			VerticalOptions  ="CenterAndExpand"
 			HorizontalOptions="FillAndExpand"
 			Orientation      ="Vertical"
-			Spacing          ="15">
+			Spacing          ="15"
+			>
 		</StackLayout>
 	</ContentPage.Content>
 </ContentPage>

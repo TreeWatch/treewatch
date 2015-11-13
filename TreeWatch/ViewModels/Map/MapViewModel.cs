@@ -19,12 +19,44 @@ namespace TreeWatch
 		String searchText = string.Empty;
 		Command searchCommand;
 		Field selectedField;
+		FieldHelper fieldHelper;
 
 		public MapViewModel ()
 		{
+			fieldHelper = FieldHelper.Instance;
+			fieldHelper.FieldTapped += FieldTapped;
+			fieldHelper.FieldSelected += FieldSelected;
 			Fields = new ObservableCollection<Field> ();
-
 			SetUpMockData ();
+			selectedField = new Field ("Dummy");
+		}
+
+		public Field SelectedField
+		{
+			set 
+			{
+				if (value != null && !value.Name.Equals(selectedField.Name)) 
+				{
+					selectedField = value;
+					SearchText = string.Empty;
+					fieldHelper.FieldSelectedEvent (selectedField);
+				}
+			}
+			get { return selectedField; }
+		}
+
+		private void FieldTapped(object sender, FieldTappedEventArgs e)
+		{
+			Field tappedField = CheckFieldClicked (e.Position);
+			if (tappedField != null) 
+			{
+				SelectedField = tappedField;
+			}
+		}
+
+		public void FieldSelected(object sender, FieldSelectedEventArgs e)
+		{
+			SelectedField = e.Field;
 		}
 
 		void SetUpMockData ()
@@ -45,6 +77,13 @@ namespace TreeWatch
 			fieldcords.Add (new Position (51.38972, 6.04745));
 			testfield.BoundingCordinates = fieldcords;
 
+			fieldcords = new List<Position> ();
+			fieldcords.Add (new Position (51.39302, 6.04745));
+			fieldcords.Add (new Position (51.39302, 6.05116));
+			fieldcords.Add (new Position (51.39511, 6.05116));
+			fieldcords.Add (new Position (51.39511, 6.04745));
+			Fields [0].BoundingCordinates = fieldcords;
+
 			var row = new List<Row> ();
 			row.Add (new Row (new Position (51.39082462477471, 6.050752777777778), new Position (51.3904837408623, 6.047676310228867), TreeType.APPLE));
 			testfield.Rows = row;
@@ -62,19 +101,6 @@ namespace TreeWatch
 					{
 						SearchCommand.Execute (null);
 					}
-				}
-			}
-		}
-
-		public Field SelectedField {
-			get {
-				return selectedField;
-			}
-			set {
-				if (selectedField != value)
-				{ 
-					selectedField = value;
-					SearchText = String.Empty;
 				}
 			}
 		}
@@ -133,6 +159,17 @@ namespace TreeWatch
 		public ObservableCollection<Field> Fields {
 			get;
 			private set;
+		}
+
+		public Field CheckFieldClicked(Position touchPos)
+		{
+			foreach(Field field in Fields){
+				if(GeoHelper.isInsideCoords(field.BoundingCordinates, touchPos))
+				{
+					return field;
+				}
+			}
+			return null;
 		}
 			
 	}
