@@ -28,8 +28,6 @@
 				x:Name      ="FieldView"
 				ItemsSource ="{Binding FilteredFields}"
 				SelectedItem="{Binding SelectedField}">
-<<<<<<< HEAD
->>>>>>> master
 				<ListView.Header>
 					<StackLayout>
 					</StackLayout>

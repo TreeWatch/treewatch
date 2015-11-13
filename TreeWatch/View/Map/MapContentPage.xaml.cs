@@ -9,7 +9,7 @@ namespace TreeWatch
 	{
 		public MapContentPage ()
 		{
-			InitializeComponent ()
+			InitializeComponent ();
 
 			Content = CreateMapContentView ();
 		}

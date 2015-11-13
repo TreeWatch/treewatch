@@ -34,7 +34,7 @@ namespace TreeWatch
 		{
 			if (FieldSelected != null) 
 			{
-				Debug.WriteLine (sender);
+				Debug.WriteLine (field.Name);
 				FieldSelected (this, new FieldSelectedEventArgs (field));
 			}
 		}

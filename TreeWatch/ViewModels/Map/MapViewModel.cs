@@ -35,7 +35,7 @@ namespace TreeWatch
 		{
 			set 
 			{
-				if (!value.Name.Equals(SelectedField.Name)) 
+				if (value != null && !value.Name.Equals(selectedField.Name)) 
 				{
 					selectedField = value;
 					SearchText = string.Empty;
@@ -105,19 +105,6 @@ namespace TreeWatch
 			}
 		}
 
-		public Field SelectedField {
-			get {
-				return this.selectedField;
-			}
-			set {
-				if (selectedField != value)
-				{ 
-					selectedField = value;
-					SearchText = String.Empty;
-				}
-			}
-		}
-
 		public ObservableCollection<Field> FilteredFields {
 			get {
 				var filteredFields = new ObservableCollection<Field> ();
@@ -177,7 +164,7 @@ namespace TreeWatch
 
 		public Field CheckFieldClicked(Position touchPos)
 		{
-			foreach(Field field in fields){
+			foreach(Field field in Fields){
 				if(GeoHelper.isInsideCoords(field.BoundingCordinates, touchPos))
 				{
 					return field;
