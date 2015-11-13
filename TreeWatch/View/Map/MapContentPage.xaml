@@ -5,8 +5,7 @@
 	x:Class       ="TreeWatch.MapContentPage"
 	xmlns:local   ="clr-namespace:TreeWatch;assembly=TreeWatch"
 	Title         ="Map"
-	StyleId       ="MapView"
-	BindingContext="{local:MapViewModel}">
+	StyleId       ="MapView">
 	<ContentPage.Icon>
 		<OnPlatform
 			x:TypeArguments="FileImageSource"

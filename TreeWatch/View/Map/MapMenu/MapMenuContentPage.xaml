@@ -6,8 +6,7 @@
 	xmlns:local   ="clr-namespace:TreeWatch;assembly=TreeWatch"
 	Title         ="Menu"
 	Icon          ="HamburgerMenuIcon.png"
-	StyleId       ="MapMenu"
-	BindingContext="{local:MapViewModel}">
+	StyleId       ="MapMenu">
 	<ContentPage.Padding>
 		<OnPlatform
 			x:TypeArguments="Thickness"

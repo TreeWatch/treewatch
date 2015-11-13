@@ -7,10 +7,10 @@ namespace TreeWatch
 {
 	public partial class MapContentPage : ContentPage
 	{
-		public MapContentPage ()
+		public MapContentPage (MapViewModel mapViewModel)
 		{
 			InitializeComponent ();
-
+			this.BindingContext = mapViewModel;
 			Content = CreateMapContentView ();
 		}
 
