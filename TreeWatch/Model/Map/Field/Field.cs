@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 
 using Xamarin.Forms.Maps;
+using System.Diagnostics;
 
 namespace TreeWatch
 {
@@ -18,7 +19,7 @@ namespace TreeWatch
 			set
 			{
 				boundingCoordinates = value;
-				fieldPinPosition = CalculatePinPosition ();
+				CalculatePinPosition ();
 			}
 		}
 
@@ -41,11 +42,11 @@ namespace TreeWatch
 			fieldPinPosition = new Position ();
 		}
 
-		private Position CalculatePinPosition()
+		private void CalculatePinPosition()
 		{
-			var coordinateCounter = 0;
-			var latSum = 0.0;
-			var lonSum = 0.0;
+			double coordinateCounter = 0.0;
+			double latSum = 0.0;
+			double lonSum = 0.0;
 
 			foreach(Position fieldPoint in boundingCoordinates)
 			{
@@ -53,8 +54,7 @@ namespace TreeWatch
 				latSum += fieldPoint.Latitude;
 				lonSum += fieldPoint.Longitude;
 			}
-
-			return new Position (latSum/coordinateCounter, lonSum/coordinateCounter);
+			fieldPinPosition = new Position (latSum/coordinateCounter, lonSum/coordinateCounter);
 
 		}
 	}
