@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
@@ -31,11 +30,9 @@ namespace TreeWatch
 			selectedField = new Field ("Dummy");
 		}
 
-		public Field SelectedField
-		{
-			set 
-			{
-				if (value != null && !value.Name.Equals(selectedField.Name)) 
+		public Field SelectedField {
+			set {
+				if (value != null && !value.Name.Equals (selectedField.Name))
 				{
 					selectedField = value;
 					SearchText = string.Empty;
@@ -45,16 +42,16 @@ namespace TreeWatch
 			get { return selectedField; }
 		}
 
-		private void FieldTapped(object sender, FieldTappedEventArgs e)
+		private void FieldTapped (object sender, FieldTappedEventArgs e)
 		{
 			Field tappedField = CheckFieldClicked (e.Position);
-			if (tappedField != null) 
+			if (tappedField != null)
 			{
 				SelectedField = tappedField;
 			}
 		}
 
-		public void FieldSelected(object sender, FieldSelectedEventArgs e)
+		public void FieldSelected (object sender, FieldSelectedEventArgs e)
 		{
 			SelectedField = e.Field;
 		}
@@ -62,6 +59,36 @@ namespace TreeWatch
 		public string SelectedFieldName {
 			get {
 				return SelectedField.Name;
+			}
+		}
+
+		public string SelectedFieldWidth {
+			get {
+				return SelectedField.FieldWidthLon.ToString();
+			}
+		}
+
+		public string SelectedFieldHeight {
+			get {
+				return SelectedField.FieldHeightLat.ToString();
+			}
+		}
+
+		public string SelectedFieldLatitude {
+			get {
+				return SelectedField.FieldPinPosition.Latitude.ToString();
+			}
+		}
+
+		public string SelectedFieldLongitude {
+			get {
+				return SelectedField.FieldPinPosition.Longitude.ToString();
+			}
+		}
+
+		public string SelectedFieldBlockCount {
+			get {
+				return SelectedField.Rows.Count.ToString();
 			}
 		}
 
@@ -169,10 +196,11 @@ namespace TreeWatch
 			private set;
 		}
 
-		public Field CheckFieldClicked(Position touchPos)
+		public Field CheckFieldClicked (Position touchPos)
 		{
-			foreach(Field field in Fields){
-				if(GeoHelper.isInsideCoords(field.BoundingCordinates, touchPos))
+			foreach (Field field in Fields)
+			{
+				if (GeoHelper.isInsideCoords (field.BoundingCordinates, touchPos))
 				{
 					return field;
 				}
