@@ -59,6 +59,12 @@ namespace TreeWatch
 			SelectedField = e.Field;
 		}
 
+		public string SelectedFieldName {
+			get {
+				return SelectedField.Name;
+			}
+		}
+
 		void SetUpMockData ()
 		{
 			Fields.Add (new Field ("Ajax"));
