@@ -161,5 +161,7 @@
     <BundleResource Include="Resources\NoteTabBarIcon.png" />
     <BundleResource Include="Resources\SettingsTabBarIcon.png" />
     <BundleResource Include="Resources\ToDoTabBarIcon.png" />
+    <BundleResource Include="Resources\camera.png" />
+    <BundleResource Include="Resources\HamburgerMenuIcon.png" />
   </ItemGroup>
 </Project>

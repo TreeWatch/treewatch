@@ -6,6 +6,7 @@ namespace TreeWatch
 	{
 		public NoteNavigationPage (Page root) : base (root)
 		{
+			// configure navigation page
 			Title = root.Title;
 			if (root.Icon != null)
 			{
