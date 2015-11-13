@@ -10,7 +10,7 @@
 		<ScrollView>
 			<StackLayout>
 				<Label
-					Text="{Binding SelectedField}" />
+					Text="{Binding SelectedFieldName}" />
 			</StackLayout>
 		</ScrollView>
 	</ContentPage.Content>
