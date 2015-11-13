@@ -51,8 +51,11 @@ namespace TreeWatch.iOS
 			if (mapView != null) 
 			{
 				var coords = new CLLocationCoordinate2D (e.Field.FieldPinPosition.Latitude, e.Field.FieldPinPosition.Longitude);
-				mapView.SetCenterCoordinate (coords, true);
+				var span = new MKCoordinateSpan (e.Field.FieldHeightLat * 1.1, e.Field.FieldWidthLon * 1.1);
+				mapView.Region = new MKCoordinateRegion (coords, span);
+				//mapView.SetCenterCoordinate (coords, true);
 			}
+
 		}
 
 		protected override void OnElementChanged (ElementChangedEventArgs<View> e)
@@ -63,7 +66,8 @@ namespace TreeWatch.iOS
 			{
 				mapView = Control as MKMapView;
 				mapView.AddGestureRecognizer (tapGesture);
-				mapView.GetViewForAnnotation = (mapview, anno) => {
+				mapView.GetViewForAnnotation = (mapview, anno) =>
+				{
 					try
 					{
 						const string annoId = "pin";
@@ -146,11 +150,20 @@ namespace TreeWatch.iOS
 			try
 			{
 				var ca = (FieldMapAnnotation)annotation;
+<<<<<<< a640ba36ad41742b5119bb25a0611cef6e1ee520
 				var aview = (MKPinAnnotationView)mapView.DequeueReusableAnnotation ("pin");
 				if (aview == null)
 				{
 					aview = new MKPinAnnotationView (ca, "pin");
 				} else
+=======
+				var aview = (MKPinAnnotationView)mapView.DequeueReusableAnnotation("pin");
+				if (aview == null)
+				{
+					aview = new MKPinAnnotationView(ca, "pin");
+				}
+				else 
+>>>>>>> Added info button to pin popup
 				{
 					aview.Annotation = ca;
 				}
