@@ -78,7 +78,7 @@ namespace TreeWatch.iOS
 						UIButton detailButton = UIButton.FromType(UIButtonType.DetailDisclosure);
 
 						detailButton.TouchUpInside += (s, ev) => { 
-							Console.WriteLine ("Clicked");
+							Console.WriteLine ("Clicked field: {0}", ca.Field.Name);
 						};
 
 						aview.RightCalloutAccessoryView = detailButton;
