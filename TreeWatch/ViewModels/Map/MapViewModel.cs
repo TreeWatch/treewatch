@@ -115,8 +115,6 @@ namespace TreeWatch
 
 		protected virtual void OnPropertyChanged ([CallerMemberName] string propertyName = null)
 		{
-//			Debug.WriteLine ("Property \"{0}\" changed to \"{1}\"", propertyName, SearchText);
-//			Debug.WriteLine ("HashCode: {0}", this.GetHashCode());
 			PropertyChangedEventHandler handler = PropertyChanged;
 			if (handler != null)
 				handler (this, new PropertyChangedEventArgs (propertyName));
