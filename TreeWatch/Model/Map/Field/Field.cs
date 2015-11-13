@@ -8,6 +8,8 @@ namespace TreeWatch
 	{
 		private List<Position> boundingCoordinates;
 		private Position fieldPinPosition;
+		private double fieldHeightLat;
+		private double fieldWithLon;
 
 		[OneToMany (CascadeOperations = CascadeOperation.CascadeInsert | CascadeOperation.CascadeRead)]
 		public List<Block> Blocks { get; set; }
