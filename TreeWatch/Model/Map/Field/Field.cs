@@ -6,6 +6,8 @@ namespace TreeWatch
 {
 	public class Field : PolygonModel
 	{
+		private List<Position> boundingCoordinates;
+		private Position fieldPinPosition;
 
 		[OneToMany (CascadeOperations = CascadeOperation.CascadeInsert | CascadeOperation.CascadeRead)]
 		public List<Block> Blocks { get; set; }
