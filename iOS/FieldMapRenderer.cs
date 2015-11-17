@@ -38,9 +38,9 @@ namespace TreeWatch.iOS
 			fieldHelper.FieldSelected += FieldSelected;
 		}
 
-		protected void FieldSelected(object sender, FieldSelectedEventArgs e)
+		protected void FieldSelected (object sender, FieldSelectedEventArgs e)
 		{
-			if (mapView != null) 
+			if (mapView != null)
 			{
 				var coords = new CLLocationCoordinate2D (e.Field.FieldPinPosition.Latitude, e.Field.FieldPinPosition.Longitude);
 				var span = new MKCoordinateSpan (e.Field.FieldHeightLat * 1.1, e.Field.FieldWidthLon * 1.1);
@@ -54,21 +54,20 @@ namespace TreeWatch.iOS
 		{
 			base.OnElementChanged (e);
 
-			if (e.OldElement == null) {
+			if (e.OldElement == null)
+			{
 				mapView = Control as MKMapView;
 				mapView.AddGestureRecognizer (tapGesture);
-				mapView.GetViewForAnnotation = (mapview, anno) => 
-				{
+				mapView.GetViewForAnnotation = (mapview, anno) => {
 					try
 					{
 						const string annoId = "pin";
 						var ca = (FieldMapAnnotation)anno;
-						var aview = (MKPinAnnotationView)mapview.DequeueReusableAnnotation(annoId);
+						var aview = (MKPinAnnotationView)mapview.DequeueReusableAnnotation (annoId);
 						if (aview == null)
 						{
-							aview = new MKPinAnnotationView(ca, annoId);
-						}
-						else 
+							aview = new MKPinAnnotationView (ca, annoId);
+						} else
 						{
 							aview.Annotation = ca;
 						}
@@ -77,10 +76,15 @@ namespace TreeWatch.iOS
 						aview.PinColor = MKPinAnnotationColor.Red;
 						aview.CanShowCallout = true;
 
-						UIButton detailButton = UIButton.FromType(UIButtonType.DetailDisclosure);
+						UIButton detailButton = UIButton.FromType (UIButtonType.DetailDisclosure);
 
-						detailButton.TouchUpInside += (s, ev) => { 
-							Console.WriteLine ("Clicked field: {0}", ca.Field.Name);
+						detailButton.TouchUpInside += (s, ev) => {
+							var customTabbedPage = (CustomTabbedPage)Xamarin.Forms.Application.Current.MainPage;
+							var masterDetailPage = (MasterDetailPage)customTabbedPage.CurrentPage;
+							var mapNavigationPage = (MapNavigationPage)masterDetailPage.Detail;
+							var mapContentPage = (MapContentPage)mapNavigationPage.CurrentPage;
+							var mapViewModel = (MapViewModel)mapContentPage.BindingContext;
+							mapNavigationPage.PushAsync (new DetailedInformationContentPage (mapViewModel));
 						};
 
 						aview.RightCalloutAccessoryView = detailButton;
@@ -99,11 +103,13 @@ namespace TreeWatch.iOS
 					return polygonRenderer;
 				};
 
-				foreach (var field in myMap.Fields) 
+				foreach (var field in myMap.Fields)
 				{
 
-					foreach (var row in field.Rows) {
-						if (row.BoundingRectangle.Count != 0) {
+					foreach (var row in field.Rows)
+					{
+						if (row.BoundingRectangle.Count != 0)
+						{
 							var rowpoints = convertCordinates (row.BoundingRectangle);
 							var rowpolygon = MKPolygon.FromCoordinates (rowpoints);
 							rowpolygon.Title = ((int)row.TreeType).ToString ();
@@ -111,7 +117,8 @@ namespace TreeWatch.iOS
 						}
 					}
 
-					if (field.BoundingCordinates.Count != 0) {
+					if (field.BoundingCordinates.Count != 0)
+					{
 						var points = convertCordinates (field.BoundingCordinates);
 						var polygon = MKPolygon.FromCoordinates (points);
 						polygon.Title = "Field";
@@ -129,12 +136,11 @@ namespace TreeWatch.iOS
 			try
 			{
 				var ca = (FieldMapAnnotation)annotation;
-				var aview = (MKPinAnnotationView)mapView.DequeueReusableAnnotation("pin");
+				var aview = (MKPinAnnotationView)mapView.DequeueReusableAnnotation ("pin");
 				if (aview == null)
 				{
-					aview = new MKPinAnnotationView(ca, "pin");
-				}
-				else 
+					aview = new MKPinAnnotationView (ca, "pin");
+				} else
 				{
 					aview.Annotation = ca;
 				}
@@ -162,7 +168,8 @@ namespace TreeWatch.iOS
 		{
 			var points = new CLLocationCoordinate2D[Cordinates.Count + 1];
 			var i = 0;
-			foreach (var pos in Cordinates) {
+			foreach (var pos in Cordinates)
+			{
 				points [i] = new CLLocationCoordinate2D (pos.Latitude, pos.Longitude);
 				i++;
 			}
@@ -171,11 +178,11 @@ namespace TreeWatch.iOS
 			return points;
 		}
 
-		private void MapTapped(UITapGestureRecognizer sender)
+		private void MapTapped (UITapGestureRecognizer sender)
 		{
 			CGPoint pointInView = sender.LocationInView (mapView);
 			CLLocationCoordinate2D touchCoordinates = mapView.ConvertPoint (pointInView, this.mapView);
-			FieldHelper.Instance.FieldTappedEvent(new Position(touchCoordinates.Latitude, touchCoordinates.Longitude));
+			FieldHelper.Instance.FieldTappedEvent (new Position (touchCoordinates.Latitude, touchCoordinates.Longitude));
 		}
 
 

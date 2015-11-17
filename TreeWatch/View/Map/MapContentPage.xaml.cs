@@ -18,8 +18,6 @@ namespace TreeWatch
 
 			// set content of page
 			Content = CreateMapContentView ();
-
-//			this.Navigation.PushAsync (new DetailedInformationContentPage (mapViewModel));
 		}
 
 		View CreateMapContentView ()
