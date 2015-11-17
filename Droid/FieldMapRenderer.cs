@@ -39,26 +39,20 @@ namespace TreeWatch.Droid
 
 		public void AddFields ()
 		{
-			var polygon = new PolygonOptions ();
-			polygon.InvokeFillColor (myMap.OverLayColor.ToAndroid ());
-			polygon.InvokeStrokeWidth (0);
-
 			foreach (var Field in myMap.Fields) {
+				if (Field.Blocks.Count != 0) {
+					foreach (var block in Field.Blocks) {
+						if (block.BoundingCoordinates.Count != 0 && block.BoundingCoordinates.Count >= 3) {
+							Map.AddPolygon (GetPolygon (FieldMapRenderer.ConvertCoordinates (block.BoundingCoordinates), 
+								ColorHelper.GetTreeTypeColor (block.TreeType).ToAndroid ()));
+						}
 
-				foreach (var block in Field.Blocks) {
-					if (block.BoundingCoordinates.Count != 0 && block.BoundingCoordinates.Count >= 3) {
-						var rowpoints = FieldMapRenderer.ConvertCordinates (block.BoundingCoordinates);
-						polygon.InvokeFillColor (ColorHelper.GetTreeTypeColor(block.TreeType).ToAndroid ());
-						polygon.AddAll (rowpoints);
-						Map.AddPolygon (polygon);
 					}
-
 				}
+
 				if (Field.BoundingCoordinates.Count != 0 && Field.BoundingCoordinates.Count >= 3) {
-					var polygonpoints = FieldMapRenderer.ConvertCordinates (Field.BoundingCoordinates);
-					polygon.InvokeFillColor (myMap.OverLayColor.ToAndroid ());
-					polygon.AddAll (polygonpoints);
-					Map.AddPolygon (polygon);
+					Map.AddPolygon (GetPolygon(FieldMapRenderer.ConvertCoordinates (Field.BoundingCoordinates),
+						myMap.OverLayColor.ToAndroid ()));
 				}
 
 				MarkerOptions marker = new MarkerOptions ();
@@ -69,24 +63,25 @@ namespace TreeWatch.Droid
 			}
 		}
 
-		public PolygonOptions GetPolygon(Java.Util.ArrayList cordinates, Android.Graphics.Color color)
+		public PolygonOptions GetPolygon(Java.Util.ArrayList coordinates, Android.Graphics.Color color)
 		{
 			var polygonOptions = new PolygonOptions ();
 			polygonOptions.InvokeFillColor (color);
 			polygonOptions.InvokeStrokeWidth (0);
-			polygonOptions.AddAll (cordinates);
+			polygonOptions.AddAll (coordinates);
 			return polygonOptions;
 		}
 
-		static Java.Util.ArrayList ConvertCordinates (List<Position> cordinates)
+		static Java.Util.ArrayList ConvertCoordinates (List<Position> coordinates)
 		{
 			var cords = new Java.Util.ArrayList ();
-			foreach (var pos in cordinates) {
+			foreach (var pos in coordinates) {
 				cords.Add (new LatLng (pos.Latitude, pos.Longitude));
 			}
-			cords.Add (new LatLng (cordinates [0].Latitude, cordinates [0].Longitude));
+			cords.Add (new LatLng (coordinates [0].Latitude, coordinates [0].Longitude));
 			return cords;
 		}
+
 		public void OnMapReady (GoogleMap googleMap)
 		{
 			Map = googleMap;
