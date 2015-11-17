@@ -55,9 +55,9 @@ namespace TreeWatch.Droid
 				}
 
 				MarkerOptions marker = new MarkerOptions ();
-				marker.SetTitle (field.Name);
-				marker.SetSnippet(string.Format("Number of rows: {0}", field.Rows.Count));
-				marker.SetPosition (new LatLng(field.FieldPinPosition.Latitude, field.FieldPinPosition.Longitude));
+				marker.SetTitle (Field.Name);
+				marker.SetSnippet(string.Format("Number of rows: {0}", Field.Blocks.Count));
+				marker.SetPosition (new LatLng(Field.CalculatePinPosition.Latitude, Field.CalculatePinPosition.Longitude));
 				Map.AddMarker (marker);
 			}
 		}
@@ -106,7 +106,7 @@ namespace TreeWatch.Droid
 		private void InfoWindowClicked(object sender, GoogleMap.InfoWindowClickEventArgs e)
 		{
 			Marker marker = e.Marker;
-			Field field = new Field("Dummy");
+			Field field = null;
 			foreach (Field f in myMap.Fields) 
 			{
 				if (f.Name.Equals (e.Marker.Title)) 
@@ -115,7 +115,14 @@ namespace TreeWatch.Droid
 					break;
 				}
 			}
-			Console.WriteLine ("Selected field: {0}", field.Name);
+			if (field != null) 
+			{
+				var customTabbedPage = (CustomTabbedPage)Xamarin.Forms.Application.Current.MainPage;
+				var masterDetailPage = (MasterDetailPage)customTabbedPage.CurrentPage;
+				var mapNavigationPage = (MapNavigationPage)masterDetailPage.Detail;
+
+				mapNavigationPage.PushAsync (new DetailedInformationContentPage (new DetailInformationViewModel (field)));
+			}
 		}
 
 		private void MapClicked(Object sender, GoogleMap.MapClickEventArgs e)
