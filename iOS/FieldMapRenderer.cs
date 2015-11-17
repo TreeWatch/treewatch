@@ -81,9 +81,7 @@ namespace TreeWatch.iOS
 							var customTabbedPage = (CustomTabbedPage)Xamarin.Forms.Application.Current.MainPage;
 							var masterDetailPage = (MasterDetailPage)customTabbedPage.CurrentPage;
 							var mapNavigationPage = (MapNavigationPage)masterDetailPage.Detail;
-							var mapContentPage = (MapContentPage)mapNavigationPage.CurrentPage;
-							var mapViewModel = (MapViewModel)mapContentPage.BindingContext;
-							mapNavigationPage.PushAsync (new DetailedInformationContentPage (mapViewModel));
+							mapNavigationPage.PushAsync (new DetailedInformationContentPage (new DetailInformationViewModel ((Field)s)));
 						};
 
 						aview.RightCalloutAccessoryView = detailButton;

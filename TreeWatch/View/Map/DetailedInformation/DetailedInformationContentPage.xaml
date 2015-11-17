@@ -31,7 +31,7 @@
 					<Label
 						Grid.Row   ="1"
 						Grid.Column="0"
-						Text       ="{Binding SelectedFieldWidth}" />
+						Text       ="{Binding FieldWidth}" />
 					<Label
 						FontAttributes="Bold"
 						Grid.Row      ="0"
@@ -40,7 +40,7 @@
 					<Label
 						Grid.Row   ="1"
 						Grid.Column="1"
-						Text       ="{Binding SelectedFieldHeight}" />
+						Text       ="{Binding FieldHeight}" />
 					<Label
 						FontAttributes="Bold"
 						Grid.Row      ="2"
@@ -49,7 +49,7 @@
 					<Label
 						Grid.Row   ="3"
 						Grid.Column="0"
-						Text       ="{Binding SelectedFieldLatitude}" />
+						Text       ="{Binding FieldLatitude}" />
 					<Label
 						FontAttributes="Bold"
 						Grid.Row      ="2"
@@ -58,7 +58,7 @@
 					<Label
 						Grid.Row   ="3"
 						Grid.Column="1"
-						Text       ="{Binding SelectedFieldLongitude}" />
+						Text       ="{Binding FieldLongitude}" />
 				</Grid>
 				<StackLayout
 					Orientation="Vertical">
@@ -66,7 +66,7 @@
 						FontAttributes="Bold"
 						Text          ="Block Count" />
 					<Label
-						Text="{Binding SelectedFieldBlockCount}" />
+						Text="{Binding FieldBlockCount}" />
 				</StackLayout>
 			</StackLayout>
 		</ScrollView>
