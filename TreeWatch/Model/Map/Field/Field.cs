@@ -14,12 +14,10 @@ namespace TreeWatch
 		private double fieldWithLon;
 
 		public List<Position> BoundingCordinates {
-			get
-			{
+			get {
 				return boundingCoordinates;
 			}
-			set
-			{
+			set {
 				boundingCoordinates = value;
 				CalculatePinPosition ();
 				CalculateWidthHeight ();
@@ -45,43 +43,50 @@ namespace TreeWatch
 
 		public String Name { get; private set; }
 
-		public Field (String name)
+		public Field (String name, List<Position> positions, List<Row> rows)
 		{
 			this.Name = name;
-			BoundingCordinates = new List<Position> ();
-			Rows = new List<Row> ();
-			fieldPinPosition = new Position ();
+			this.BoundingCordinates = positions;
+			this.Rows = rows;
 		}
 
-		private void CalculateWidthHeight()
+		public Field (String name, List<Position> positions) : this (name, positions, new List<Row> ())
+		{
+		}
+
+		public Field (String name) : this (name, new List<Position> ())
+		{
+		}
+
+		private void CalculateWidthHeight ()
 		{
 			double smallestLon = 0.0;
 			double biggestLon = 0.0;
 			double smallestLat = 0.0;
 			double biggestLat = 0.0;
 
-			foreach(Position fieldPoint in boundingCoordinates)
+			foreach (Position fieldPoint in boundingCoordinates)
 			{
-				if (smallestLon == 0.0 && biggestLon == 0.0 && smallestLat == 0.0 && biggestLat == 0.0) 
+				if (smallestLon == 0.0 && biggestLon == 0.0 && smallestLat == 0.0 && biggestLat == 0.0)
 				{
 					smallestLon = fieldPoint.Longitude;
 					biggestLon = fieldPoint.Longitude;
 					smallestLat = fieldPoint.Latitude;
 					biggestLat = fieldPoint.Latitude;
 				}
-				if (fieldPoint.Longitude < smallestLon) 
+				if (fieldPoint.Longitude < smallestLon)
 				{
 					smallestLon = fieldPoint.Longitude;
 				}
-				if (fieldPoint.Longitude > biggestLon) 
+				if (fieldPoint.Longitude > biggestLon)
 				{
 					biggestLon = fieldPoint.Longitude;
 				}
-				if (fieldPoint.Latitude < smallestLat) 
+				if (fieldPoint.Latitude < smallestLat)
 				{
 					smallestLat = fieldPoint.Latitude;
 				}
-				if (fieldPoint.Latitude > biggestLat) 
+				if (fieldPoint.Latitude > biggestLat)
 				{
 					biggestLat = fieldPoint.Latitude;
 				}
@@ -92,19 +97,19 @@ namespace TreeWatch
 			Debug.WriteLine ("width: {0}, height: {1}", fieldWithLon, fieldHeightLat);
 		}
 
-		private void CalculatePinPosition()
+		private void CalculatePinPosition ()
 		{
 			double coordinateCounter = 0.0;
 			double latSum = 0.0;
 			double lonSum = 0.0;
 
-			foreach(Position fieldPoint in boundingCoordinates)
+			foreach (Position fieldPoint in boundingCoordinates)
 			{
 				coordinateCounter++;
 				latSum += fieldPoint.Latitude;
 				lonSum += fieldPoint.Longitude;
 			}
-			fieldPinPosition = new Position (latSum/coordinateCounter, lonSum/coordinateCounter);
+			fieldPinPosition = new Position (latSum / coordinateCounter, lonSum / coordinateCounter);
 
 		}
 	}
