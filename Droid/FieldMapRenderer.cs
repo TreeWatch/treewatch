@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using Xamarin.Forms.Maps.Android;
 using Xamarin.Forms.Platform.Android;
+using Java.Security.Spec;
 
 [assembly: ExportRenderer (typeof(FieldMap), typeof(FieldMapRenderer))]
 namespace TreeWatch.Droid
@@ -28,6 +29,7 @@ namespace TreeWatch.Droid
 			if (e.OldElement == null) {
 
 				mapView = Control as MapView;
+
 
 				mapView.GetMapAsync (this);
 
@@ -58,6 +60,12 @@ namespace TreeWatch.Droid
 					polygon.AddAll (polygonpoints);
 					Map.AddPolygon (polygon);
 				}
+
+				MarkerOptions marker = new MarkerOptions ();
+				marker.SetTitle (field.Name);
+				marker.SetSnippet(string.Format("Number of rows: {0}", field.Rows.Count));
+				marker.SetPosition (new LatLng(field.FieldPinPosition.Latitude, field.FieldPinPosition.Longitude));
+				Map.AddMarker (marker);
 			}
 		}
 
@@ -82,10 +90,39 @@ namespace TreeWatch.Droid
 		public void OnMapReady (GoogleMap googleMap)
 		{
 			Map = googleMap;
+			Map.SetInfoWindowAdapter (new FieldInfoWindow ());
 			AddFields ();
+			Map.MarkerClick += MarkerClicked;
+			Map.MapClick += MapClicked;
+			Map.InfoWindowClick += InfoWindowClicked;
 			var handler = MapReady;
 			if (handler != null)
 				handler (this, EventArgs.Empty);
+		}
+        
+		private void InfoWindowClicked(object sender, GoogleMap.InfoWindowClickEventArgs e)
+		{
+			Marker marker = e.Marker;
+			Field field = new Field("Dummy");
+			foreach (Field f in myMap.Fields) 
+			{
+				if (f.Name.Equals (e.Marker.Title)) 
+				{
+					field = f;
+					break;
+				}
+			}
+			Console.WriteLine ("Selected field: {0}", field.Name);
+		}
+
+		private void MapClicked(Object sender, GoogleMap.MapClickEventArgs e)
+		{
+			FieldHelper.Instance.FieldTappedEvent (new Position(e.Point.Latitude, e.Point.Longitude));
+		}
+
+		private void MarkerClicked(object sender, GoogleMap.MarkerClickEventArgs e)
+		{
+			e.Marker.ShowInfoWindow ();
 		}
 	}
 
