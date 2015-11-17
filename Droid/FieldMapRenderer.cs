@@ -42,21 +42,19 @@ namespace TreeWatch.Droid
 			polygon.InvokeStrokeWidth (0);
 
 			foreach (var Field in myMap.Fields) {
+				if (Field.Blocks.Count != 0) {
+					foreach (var block in Field.Blocks) {
+						if (block.BoundingCoordinates.Count != 0 && block.BoundingCoordinates.Count >= 3) {
+							Map.AddPolygon (GetPolygon (FieldMapRenderer.ConvertCoordinates (block.BoundingCoordinates), 
+								ColorHelper.GetTreeTypeColor (block.TreeType).ToAndroid ()));
+						}
 
-				foreach (var block in Field.Blocks) {
-					if (block.BoundingCordinates.Count != 0 && block.BoundingCordinates.Count >= 3) {
-						var rowpoints = FieldMapRenderer.ConvertCordinates (block.BoundingCordinates);
-						polygon.InvokeFillColor (ColorHelper.GetTreeTypeColor(block.TreeType).ToAndroid ());
-						polygon.AddAll (rowpoints);
-						Map.AddPolygon (polygon);
 					}
-
 				}
-				if (Field.BoundingCordinates.Count != 0 && Field.BoundingCordinates.Count >= 3) {
-					var polygonpoints = FieldMapRenderer.ConvertCordinates (Field.BoundingCordinates);
-					polygon.InvokeFillColor (myMap.OverLayColor.ToAndroid ());
-					polygon.AddAll (polygonpoints);
-					Map.AddPolygon (polygon);
+
+				if (Field.BoundingCoordinates.Count != 0 && Field.BoundingCoordinates.Count >= 3) {
+					Map.AddPolygon (GetPolygon (FieldMapRenderer.ConvertCoordinates (Field.BoundingCoordinates),
+						myMap.OverLayColor.ToAndroid ()));
 				}
 			}
 		}
