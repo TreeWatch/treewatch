@@ -9,6 +9,7 @@ using Xamarin.Forms.Maps;
 using Xamarin.Forms.Maps.Android;
 using Xamarin.Forms.Platform.Android;
 using Java.Security.Spec;
+using Javax.Xml.Namespace;
 
 [assembly: ExportRenderer (typeof(FieldMap), typeof(FieldMapRenderer))]
 namespace TreeWatch.Droid
@@ -17,6 +18,13 @@ namespace TreeWatch.Droid
 	{
 		MapView mapView;
 		FieldMap myMap;
+		FieldHelper fieldHelper;
+
+		public FieldMapRenderer()
+		{
+			fieldHelper = FieldHelper.Instance;
+			fieldHelper.FieldSelected += FieldSelected;
+		}
 
 		new public GoogleMap Map { get; private set; }
 
@@ -125,6 +133,22 @@ namespace TreeWatch.Droid
 		private void MarkerClicked(object sender, GoogleMap.MarkerClickEventArgs e)
 		{
 			e.Marker.ShowInfoWindow ();
+		}
+
+		private void FieldSelected(object sender, FieldSelectedEventArgs e)
+		{
+			if (Map != null) 
+			{
+				Android.Gms.Maps.Model.LatLngBounds.Builder builder = new LatLngBounds.Builder ();
+				TreeWatch.Field.WidthHeight wh = e.Field.CalculateWidthHeight;
+				Position middle = e.Field.CalculatePinPosition;
+				double w = wh.Width / 1.9;//1.9 so 0.1 padding
+				double h = wh.Height / 1.9;
+				builder.Include (new LatLng (middle.Latitude - w, middle.Longitude - h));
+				builder.Include (new LatLng (middle.Latitude + w, middle.Longitude + h));
+				LatLngBounds bounds = builder.Build ();
+				Map.MoveCamera (CameraUpdateFactory.NewLatLngBounds (bounds, 0));
+			}
 		}
 	}
 
