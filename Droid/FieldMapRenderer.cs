@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using Android.Gms.Maps;
 using Android.Gms.Maps.Model;
@@ -8,7 +8,6 @@ using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using Xamarin.Forms.Maps.Android;
 using Xamarin.Forms.Platform.Android;
-
 
 [assembly: ExportRenderer (typeof(FieldMap), typeof(FieldMapRenderer))]
 namespace TreeWatch.Droid
@@ -38,19 +37,26 @@ namespace TreeWatch.Droid
 
 		public void AddFields ()
 		{
-			foreach (var Field in myMap.Fields) {
-				if (Field.Rows.Count != 0) {
-					foreach (var row in Field.Rows) {
-						if (row.BoundingRectangle.Count != 0) {
-							Map.AddPolygon (GetPolygon (FieldMapRenderer.ConvertCordinates (row.BoundingRectangle), 
-								ColorHelper.GetTreeTypeColor (row.TreeType).ToAndroid ()));
-						}
+			var polygon = new PolygonOptions ();
+			polygon.InvokeFillColor (myMap.OverLayColor.ToAndroid ());
+			polygon.InvokeStrokeWidth (0);
 
+			foreach (var Field in myMap.Fields) {
+
+				foreach (var block in Field.Blocks) {
+					if (block.BoundingCordinates.Count != 0 && block.BoundingCordinates.Count >= 3) {
+						var rowpoints = FieldMapRenderer.ConvertCordinates (block.BoundingCordinates);
+						polygon.InvokeFillColor (ColorHelper.GetTreeTypeColor(block.TreeType).ToAndroid ());
+						polygon.AddAll (rowpoints);
+						Map.AddPolygon (polygon);
 					}
+
 				}
-				if (Field.BoundingCordinates.Count != 0) {
-					Map.AddPolygon (GetPolygon(FieldMapRenderer.ConvertCordinates (Field.BoundingCordinates),
-						myMap.OverLayColor.ToAndroid ()));
+				if (Field.BoundingCordinates.Count != 0 && Field.BoundingCordinates.Count >= 3) {
+					var polygonpoints = FieldMapRenderer.ConvertCordinates (Field.BoundingCordinates);
+					polygon.InvokeFillColor (myMap.OverLayColor.ToAndroid ());
+					polygon.AddAll (polygonpoints);
+					Map.AddPolygon (polygon);
 				}
 			}
 		}
@@ -77,16 +83,10 @@ namespace TreeWatch.Droid
 		{
 			Map = googleMap;
 			AddFields ();
-			Map.MapClick += MapClicked;
 			var handler = MapReady;
 			if (handler != null)
 				handler (this, EventArgs.Empty);
 		}
-
-		private void MapClicked(Object sender, GoogleMap.MapClickEventArgs e)
-		{
-			FieldHelper.Instance.FieldTappedEvent (new Position(e.Point.Latitude, e.Point.Longitude));
-		}
 	}
-		
+
 }

@@ -4,114 +4,35 @@ using System.Collections.Generic;
 using Xamarin.Forms.Maps;
 using System.Diagnostics;
 
+using SQLiteNetExtensions.Attributes;
+
 namespace TreeWatch
 {
-	public class Field
+	public class Field : PolygonModel
 	{
 		private List<Position> boundingCoordinates;
 		private Position fieldPinPosition;
 		private double fieldHeightLat;
 		private double fieldWithLon;
 
-		public List<Position> BoundingCordinates {
-			get {
-				return boundingCoordinates;
-			}
-			set {
-				boundingCoordinates = value;
-				CalculatePinPosition ();
-				CalculateWidthHeight ();
-			}
-		}
 
-		public Position FieldPinPosition {
-			get{ return fieldPinPosition; }
-		}
+		[OneToMany (CascadeOperations = CascadeOperation.CascadeInsert | CascadeOperation.CascadeRead)]
+		public List<Block> Blocks { get; set; }
 
-		public double FieldWidthLon {
-			get{ return fieldWithLon; }
-		}
+		public String Name { get; set; }
 
-		public double FieldHeightLat {
-			get{ return fieldHeightLat; }
-		}
 
-		public List<Row> Rows {
-			get;
-			set;
-		}
-
-		public String Name { get; private set; }
-
-		public Field (String name, List<Position> positions, List<Row> rows)
+		public Field (string name, List<Position> boundingCordinates, List<Block> blocks)
 		{
-			this.Name = name;
-			this.BoundingCordinates = positions;
-			this.Rows = rows;
+			Name = name;
+			BoundingCordinates = boundingCordinates;
+			Blocks = blocks;
 		}
 
-		public Field (String name, List<Position> positions) : this (name, positions, new List<Row> ())
+		public Field ()
 		{
 		}
 
-		public Field (String name) : this (name, new List<Position> ())
-		{
-		}
-
-		private void CalculateWidthHeight ()
-		{
-			double smallestLon = 0.0;
-			double biggestLon = 0.0;
-			double smallestLat = 0.0;
-			double biggestLat = 0.0;
-
-			foreach (Position fieldPoint in boundingCoordinates)
-			{
-				if (smallestLon == 0.0 && biggestLon == 0.0 && smallestLat == 0.0 && biggestLat == 0.0)
-				{
-					smallestLon = fieldPoint.Longitude;
-					biggestLon = fieldPoint.Longitude;
-					smallestLat = fieldPoint.Latitude;
-					biggestLat = fieldPoint.Latitude;
-				}
-				if (fieldPoint.Longitude < smallestLon)
-				{
-					smallestLon = fieldPoint.Longitude;
-				}
-				if (fieldPoint.Longitude > biggestLon)
-				{
-					biggestLon = fieldPoint.Longitude;
-				}
-				if (fieldPoint.Latitude < smallestLat)
-				{
-					smallestLat = fieldPoint.Latitude;
-				}
-				if (fieldPoint.Latitude > biggestLat)
-				{
-					biggestLat = fieldPoint.Latitude;
-				}
-			}
-
-			fieldWithLon = biggestLon - smallestLon;
-			fieldHeightLat = biggestLat - smallestLat;
-			Debug.WriteLine ("width: {0}, height: {1}", fieldWithLon, fieldHeightLat);
-		}
-
-		private void CalculatePinPosition ()
-		{
-			double coordinateCounter = 0.0;
-			double latSum = 0.0;
-			double lonSum = 0.0;
-
-			foreach (Position fieldPoint in boundingCoordinates)
-			{
-				coordinateCounter++;
-				latSum += fieldPoint.Latitude;
-				lonSum += fieldPoint.Longitude;
-			}
-			fieldPinPosition = new Position (latSum / coordinateCounter, lonSum / coordinateCounter);
-
-		}
 	}
 }
 

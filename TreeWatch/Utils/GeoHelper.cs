@@ -6,7 +6,11 @@ namespace TreeWatch
 {
 	public static class GeoHelper
 	{
-		public static Boolean isInsideCoords(List<Position> coords, Position position){
+
+		//coords is the list of positions which are the boundaries of the field
+		// position is the position to check if inside the boundaries
+
+		public static Boolean IsInsideCoords(List<Position> coords, Position position){
 			int i, j;
 			int nvert = coords.Count;
 
