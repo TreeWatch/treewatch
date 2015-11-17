@@ -46,7 +46,6 @@ namespace TreeWatch.Droid
 
 		public void AddFields ()
 		{
-
 			foreach (var Field in myMap.Fields) {
 				if (Field.Blocks.Count != 0) {
 					foreach (var block in Field.Blocks) {
@@ -70,12 +69,12 @@ namespace TreeWatch.Droid
 			}
 		}
 
-		public PolygonOptions GetPolygon(Java.Util.ArrayList cordinates, Android.Graphics.Color fillColor)
+		public PolygonOptions GetPolygon(Java.Util.ArrayList coordinates, Android.Graphics.Color color)
 		{
 			var polygonOptions = new PolygonOptions ();
 			polygonOptions.InvokeFillColor (fillColor);
 			polygonOptions.InvokeStrokeWidth (0);
-			polygonOptions.AddAll (cordinates);
+			polygonOptions.AddAll (coordinates);
 			return polygonOptions;
 		}
 
@@ -98,6 +97,7 @@ namespace TreeWatch.Droid
 			cords.Add (new LatLng (coordinates [0].Latitude, coordinates [0].Longitude));
 			return cords;
 		}
+
 		public void OnMapReady (GoogleMap googleMap)
 		{
 			Map = googleMap;
