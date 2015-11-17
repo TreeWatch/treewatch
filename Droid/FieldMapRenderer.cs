@@ -5,9 +5,9 @@ using Android.Gms.Maps.Model;
 using TreeWatch;
 using TreeWatch.Droid;
 using Xamarin.Forms;
+using Xamarin.Forms.Maps;
 using Xamarin.Forms.Maps.Android;
 using Xamarin.Forms.Platform.Android;
-using Xamarin.Forms.Maps;
 
 [assembly: ExportRenderer (typeof(FieldMap), typeof(FieldMapRenderer))]
 namespace TreeWatch.Droid

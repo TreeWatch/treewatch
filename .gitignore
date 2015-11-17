@@ -1,9 +1,6 @@
 # Created by https://www.gitignore.io/api/xamarinstudio,linux,osx,windows
 
-Components/
-
-### Custom ###
-Keys.cs		
+### Custom ###	
 Components/
 
 ### XamarinStudio ###

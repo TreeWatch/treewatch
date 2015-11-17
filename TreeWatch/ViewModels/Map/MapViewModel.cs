@@ -16,7 +16,7 @@ namespace TreeWatch
 	{
 		public event PropertyChangedEventHandler PropertyChanged;
 
-		String searchText = string.Empty;
+		String searchText = String.Empty;
 		Command searchCommand;
 		Field selectedField;
 		FieldHelper fieldHelper;
@@ -27,6 +27,7 @@ namespace TreeWatch
 			fieldHelper.FieldTapped += FieldTapped;
 			fieldHelper.FieldSelected += FieldSelected;
 			Fields = new ObservableCollection<Field> ();
+			selectedField = new Field("Dummy", new List<Position>(), new List<Block>());
 
 			foreach (Field field in new DBQuery<Field> (App.Database).GetAllWithChildren()) {
 				Fields.Add (field);
@@ -122,10 +123,11 @@ namespace TreeWatch
 		public Position getCurrentDevicePosition ()
 		{
 			// Todo: make this not static
-			const double latitude = 51.39202;
-			const double longitude = 6.04745;
+			var pos = new Position();
+			pos.Latitude = 51.39202;
+			pos.Longitude = 6.04745;
 
-			return new Position (latitude, longitude);
+			return pos;
 		}
 
 		public ObservableCollection<Field> Fields {
@@ -136,7 +138,7 @@ namespace TreeWatch
 		public Field CheckFieldClicked(Position touchPos)
 		{
 			foreach(Field field in Fields){
-				if(GeoHelper.isInsideCoords(field.BoundingCordinates, touchPos))
+				if(GeoHelper.IsInsideCoords(field.BoundingCordinates, touchPos))
 				{
 					return field;
 				}

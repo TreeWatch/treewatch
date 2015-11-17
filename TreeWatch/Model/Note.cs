@@ -1,5 +1,4 @@
 ﻿using System;
-using Xamarin.Forms.Maps;
 using SQLiteNetExtensions.Attributes;
 
 namespace TreeWatch

@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Xamarin.Forms.Maps;
-using Newtonsoft.Json;
 using SQLiteNetExtensions.Extensions;
 
 namespace TreeWatch
@@ -38,9 +37,6 @@ namespace TreeWatch
 
 			var testfield = new Field ("TestField", fieldcords, blocks);
 			query.InsertWithChildren(testfield);
-
-			var a = new TreeWatchDatabase ().connection.GetAllWithChildren<Field> ();
-
 		}
 	}
 }
