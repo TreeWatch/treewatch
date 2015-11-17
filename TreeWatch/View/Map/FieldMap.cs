@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 
@@ -8,12 +7,11 @@ namespace TreeWatch
 
 	public class FieldMap: Map
 	{
-		Color overlayColor;
+		readonly Color overlayColor;
 
 		public  Color OverLayColor {
 			get{ return overlayColor; }
 		}
-
 
 		public FieldMap (MapSpan region) : base (region)
 		{

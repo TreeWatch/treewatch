@@ -2,13 +2,11 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 
 using Xamarin.Forms;
-using Xamarin.Forms.Maps;
 
 namespace TreeWatch
 {
@@ -26,20 +24,13 @@ namespace TreeWatch
 			fieldHelper = FieldHelper.Instance;
 			fieldHelper.FieldTapped += FieldTapped;
 			fieldHelper.FieldSelected += FieldSelected;
-			Fields = new ObservableCollection<Field> ();
-			selectedField = new Field("Dummy", new List<Position>(), new List<Block>());
-
-			foreach (Field field in new DBQuery<Field> (App.Database).GetAllWithChildren()) {
-				Fields.Add (field);
-			}
+			Fields = new ObservableCollection<Field> (new DBQuery<Field> (App.Database).GetAllWithChildren ());
+			selectedField = new Field ("Dummy", new List<Position> (), new List<Block> ());
 		}
 
-		public Field SelectedField
-		{
-			set 
-			{
-				if (value != null && !value.Name.Equals(selectedField.Name)) 
-				{
+		public Field SelectedField {
+			set {
+				if (value != null && !value.Name.Equals (selectedField.Name)) {
 					selectedField = value;
 					SearchText = string.Empty;
 					fieldHelper.FieldSelectedEvent (selectedField);
@@ -48,16 +39,15 @@ namespace TreeWatch
 			get { return selectedField; }
 		}
 
-		void FieldTapped(object sender, FieldTappedEventArgs e)
+		void FieldTapped (object sender, FieldTappedEventArgs e)
 		{
 			Field tappedField = CheckFieldClicked (e.Position);
-			if (tappedField != null) 
-			{
+			if (tappedField != null) {
 				SelectedField = tappedField;
 			}
 		}
 
-		public void FieldSelected(object sender, FieldSelectedEventArgs e)
+		public void FieldSelected (object sender, FieldSelectedEventArgs e)
 		{
 			SelectedField = e.Field;
 		}
@@ -67,12 +57,10 @@ namespace TreeWatch
 		public string SearchText {
 			get { return this.searchText; }
 			set {
-				if (searchText != value)
-				{ 
+				if (searchText != value) { 
 					searchText = value ?? string.Empty;
 					OnPropertyChanged ("SearchText");
-					if (SearchCommand.CanExecute (null))
-					{
+					if (SearchCommand.CanExecute (null)) {
 						SearchCommand.Execute (null);
 					}
 				}
@@ -85,8 +73,7 @@ namespace TreeWatch
 
 				if (Fields != null) {
 					List<Field> entities = Fields.Where (x => x.Name.ToLower ().Contains (searchText.ToLower ())).ToList (); 
-					if (entities != null && entities.Any ())
-					{
+					if (entities != null && entities.Any ()) {
 						filteredFields = new ObservableCollection<Field> (entities);
 					}
 				}
@@ -123,7 +110,7 @@ namespace TreeWatch
 		public Position getCurrentDevicePosition ()
 		{
 			// Todo: make this not static
-			var pos = new Position();
+			var pos = new Position ();
 			pos.Latitude = 51.39202;
 			pos.Longitude = 6.04745;
 
@@ -135,11 +122,10 @@ namespace TreeWatch
 			private set;
 		}
 
-		public Field CheckFieldClicked(Position touchPos)
+		public Field CheckFieldClicked (Position touchPos)
 		{
-			foreach(Field field in Fields){
-				if(GeoHelper.IsInsideCoords(field.BoundingCordinates, touchPos))
-				{
+			foreach (Field field in Fields) {
+				if (GeoHelper.IsInsideCoords (field.BoundingCoordinates, touchPos)) {
 					return field;
 				}
 			}

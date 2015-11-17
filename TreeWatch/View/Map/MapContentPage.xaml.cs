@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 
@@ -10,7 +8,7 @@ namespace TreeWatch
 		public MapContentPage (MapViewModel mapViewModel)
 		{
 			InitializeComponent ();
-			this.BindingContext = mapViewModel;
+			BindingContext = mapViewModel;
 			Content = CreateMapContentView ();
 		}
 

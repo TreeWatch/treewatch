@@ -9,6 +9,7 @@ namespace TreeWatch
 			get;
 			set;
 		}
+
 		public DateTime EndTime {
 			get;
 			set;

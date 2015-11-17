@@ -13,61 +13,72 @@ namespace TreeWatch
 			connection = db.connection;
 		}
 
-		public void Insert(T obj)
+		public void Insert (T obj)
 		{
 			connection.Insert (obj);
 		}
 
-		public void InsertAll(IEnumerable<T> objs)
+		public void InsertAll (IEnumerable<T> objs)
 		{
 			connection.InsertAll (objs);
 		}
 
-		public void InsertAllWithChildren(IEnumerable<T> objs)
+		public void InsertAllWithChildren (IEnumerable<T> objs)
 		{
 			connection.InsertAllWithChildren (objs, true);
 		}
 
-		public void InsertWithChildren(T obj)
+		public void InsertWithChildren (T obj)
 		{
 			connection.InsertWithChildren (obj, true);
 		}
 
 		public T GetByID (int id)
 		{
-			return connection.Table<T> ().Where (t => t.ID == id).FirstOrDefault();
+			return connection.Table<T> ().Where (t => t.ID == id).FirstOrDefault ();
 		}
 
-		public List<T> GetAllWithChildren()
+		public List<T> GetAllWithChildren ()
 		{
 			return connection.GetAllWithChildren<T> (null, true);
 		}
 
-		public void Update(T obj)
+		public void Update (T obj)
 		{
 			connection.Update (obj);
 		}
 
-		public void UpdateWithChildren(T obj)
+		public void UpdateWithChildren (T obj)
 		{
 			connection.UpdateWithChildren (obj);
 		}
 
-		public void UpdateAll(IEnumerable<T> objs)
+		public void UpdateAll (IEnumerable<T> objs)
 		{
 			connection.UpdateAll (objs);
 		}
 
-		public void Delete(T obj) 
+		public void UpdateAllWithChildren (IEnumerable<T> objs)
+		{
+			foreach (var item in objs) {
+				connection.UpdateWithChildren (item);
+			}
+		}
+
+		public void Delete (T obj)
 		{
 			connection.Delete (obj);
 		}
 
-		public void DeleteAll() 
+		public void DeleteAll (IEnumerable<T> objs)
 		{
-			connection.DeleteAll<T>();
+			connection.Delete (objs);
 		}
-			
+
+		public void DeleteAll ()
+		{
+			connection.DeleteAll<T> ();
+		}
 	}
 }
 

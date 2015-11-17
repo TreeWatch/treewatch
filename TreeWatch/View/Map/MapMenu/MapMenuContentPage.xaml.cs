@@ -1,7 +1,5 @@
 using System;
-
 using Xamarin.Forms;
-using System.Diagnostics;
 
 namespace TreeWatch
 {
@@ -19,8 +17,7 @@ namespace TreeWatch
 
 		protected virtual void OnFieldSelected ()
 		{
-			if (FieldSelected != null)
-			{
+			if (FieldSelected != null) {
 				FieldSelected (this, EventArgs.Empty);
 			}
 		}

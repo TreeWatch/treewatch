@@ -56,8 +56,8 @@ namespace TreeWatch.iOS
 				foreach (var field in myMap.Fields) {
 					if (field.Blocks.Count != 0) {
 						foreach (var block in field.Blocks) {
-							if (block.BoundingCordinates.Count != 0 && block.BoundingCordinates.Count >= 3) {
-								var rowpoints = convertCordinates (block.BoundingCordinates);
+							if (block.BoundingCoordinates.Count != 0 && block.BoundingCoordinates.Count >= 3) {
+								var rowpoints = convertCordinates (block.BoundingCoordinates);
 								var rowpolygon = MKPolygon.FromCoordinates (rowpoints);
 								rowpolygon.Title = ((int)block.TreeType).ToString ();
 								polygons.Add (rowpolygon);
@@ -65,8 +65,8 @@ namespace TreeWatch.iOS
 						}
 					}
 
-					if (field.BoundingCordinates.Count != 0 && field.BoundingCordinates.Count >= 3) {
-						var points = convertCordinates (field.BoundingCordinates);
+					if (field.BoundingCoordinates.Count != 0 && field.BoundingCoordinates.Count >= 3) {
+						var points = convertCordinates (field.BoundingCoordinates);
 						var polygon = MKPolygon.FromCoordinates (points);
 						polygon.Title = "Field";
 						polygons.Add (polygon);

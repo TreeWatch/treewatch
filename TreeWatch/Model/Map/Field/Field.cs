@@ -12,14 +12,14 @@ namespace TreeWatch
 
 		public String Name { get; set; }
 
-		public Field (string name, List<Position> boundingCordinates, List<Block> blocks)
+		public Field (string name, List<Position> boundingCoordinates, List<Block> blocks)
 		{
 			Name = name;
-			BoundingCordinates = boundingCordinates;
+			BoundingCoordinates = boundingCoordinates;
 			Blocks = blocks;
 		}
 
-		public Field () 
+		public Field ()
 		{
 		}
 	}

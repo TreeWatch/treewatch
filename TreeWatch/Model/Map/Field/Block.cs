@@ -5,21 +5,21 @@ namespace TreeWatch
 {
 	public class Block : PolygonModel
 	{
-		[ForeignKey(typeof(Field))]
+		[ForeignKey (typeof(Field))]
 		public int FieldId { get; set; }
 
-		[ManyToMany(typeof(BlockToDo))]
+		[ManyToMany (typeof(BlockToDo))]
 		public List<ToDo> ToDos { get; set; }
 
 		public TreeType TreeType { get; set; }
 
-		public Block (List<Position> boundingCordinates, TreeType treeType)
+		public Block (List<Position> boundingCoordinates, TreeType treeType)
 		{
-			BoundingCordinates = boundingCordinates;
+			BoundingCoordinates = boundingCoordinates;
 			TreeType = treeType;
 		}
 
-		public Block () 
+		public Block ()
 		{
 		}
 	}

@@ -4,10 +4,10 @@ namespace TreeWatch
 {
 	public class BlockToDo
 	{
-		[ForeignKey(typeof(Block))]
+		[ForeignKey (typeof(Block))]
 		public int BlockId { get; set; }
 
-		[ForeignKey(typeof(ToDo))]
+		[ForeignKey (typeof(ToDo))]
 		public int ToDoId { get; set; }
 	}
 }

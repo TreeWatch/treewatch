@@ -5,7 +5,11 @@ namespace TreeWatch
 {
 	public static class ColorHelper
 	{
-
+		/// <summary>
+		/// Gets the color of the tree type.
+		/// </summary>
+		/// <returns>The tree type color.</returns>
+		/// <param name="type">TreeType</param>
 		public static Color GetTreeTypeColor (TreeType type)
 		{
 			switch (type) {
@@ -24,9 +28,14 @@ namespace TreeWatch
 			}
 		}
 
+		/// <summary>
+		/// Gets the color of the TreeType represented as Integer in a String.
+		/// </summary>
+		/// <returns>The TreeType color.</returns>
+		/// <param name="type">TreeType</param>
 		public static Color GetTreeTypeColor (String type)
 		{
-			var treeType = (TreeType)(Int32.Parse(type));
+			var treeType = (TreeType)(Int32.Parse (type));
 			return ColorHelper.GetTreeTypeColor (treeType);
 		}
 	}

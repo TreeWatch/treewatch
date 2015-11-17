@@ -16,6 +16,13 @@ namespace TreeWatch
 		[TextBlob("PositionBlob")]
 		public Position Position { get; set; }
 
+		/// <summary>
+		/// Gets or sets the position BLOB.
+		/// </summary>
+		/// <remarks>
+		/// Should only be used by SQLite.
+		/// </remarks> 
+		/// <value>The position serialized as BLOB.</value>
 		public String PositionBlob { get; set; }
 
 		public Note (string title, string description, string imagePath, DateTime timeStamp, Position position)

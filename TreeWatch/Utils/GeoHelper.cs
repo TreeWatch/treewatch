@@ -1,30 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
-using Xamarin.Forms.Maps;
 
 namespace TreeWatch
 {
 	public static class GeoHelper
 	{
-
-		//coords is the list of positions which are the boundaries of the field
-		// position is the position to check if inside the boundaries
-
-		public static Boolean IsInsideCoords(List<Position> coords, Position position){
+		/// <summary>
+		/// Determines if a position is inside the polygon defined by the cordinates.
+		/// </summary>
+		/// <returns><c>true</c> is inside the polygon defined by the cordinates; otherwise, <c>false</c>.</returns>
+		/// <param name="cordinates">cordinates of polygon.</param>
+		/// <param name="position">Position.</param>
+		public static Boolean IsInsideCoords (List<Position> cordinates, Position position)
+		{
 			int i, j;
-			int nvert = coords.Count;
+			int nvert = cordinates.Count;
 
 			bool inside = false;
 
-			if (coords.Count < 3)
-			{
+			if (cordinates.Count < 3) {
 				return inside;
 			}
 
-			for (i = 0, j = nvert - 1; i < nvert; j = i++)
-			{
-				if (((coords[i].Latitude > position.Latitude) != (coords[j].Latitude > position.Latitude)) &&
-					(position.Longitude < (coords[j].Longitude - coords[i].Longitude) * (position.Latitude - coords[i].Latitude) / (coords[j].Latitude - coords[i].Latitude) + coords[i].Longitude))
+			for (i = 0, j = nvert - 1; i < nvert; j = i++) {
+				if (((cordinates [i].Latitude > position.Latitude) != (cordinates [j].Latitude > position.Latitude)) &&
+				    (position.Longitude < (cordinates [j].Longitude - cordinates [i].Longitude) * (position.Latitude - cordinates [i].Latitude) / (cordinates [j].Latitude - cordinates [i].Latitude) + cordinates [i].Longitude))
 					inside = !inside; 
 			}
 			return inside;

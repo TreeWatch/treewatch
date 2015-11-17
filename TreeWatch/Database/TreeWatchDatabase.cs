@@ -15,12 +15,12 @@ namespace TreeWatch
 			connection.CreateTable<Field> ();
 			connection.CreateTable<User> ();
 			connection.CreateTable<Hours> ();
-			connection.CreateTable<Note>();
+			connection.CreateTable<Note> ();
 			connection.CreateTable<UserToDo> ();
 			connection.CreateTable<BlockToDo> ();
 		}
 
-		public void ClearDataBase()
+		public void ClearDataBase ()
 		{
 			connection.DeleteAll<ToDo> ();
 			connection.DeleteAll<Block> ();

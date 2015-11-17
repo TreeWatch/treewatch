@@ -1,18 +1,11 @@
 ﻿using System;
-using System.Dynamic;
-using Xamarin.Forms.Maps;
 using System.Diagnostics;
 
 namespace TreeWatch
 {
 	public class FieldHelper
 	{
-		private static readonly FieldHelper instance = new FieldHelper();
-
-		private FieldHelper ()
-		{
-			
-		}
+		static readonly FieldHelper instance = new FieldHelper();
 
 		public static FieldHelper Instance
 		{

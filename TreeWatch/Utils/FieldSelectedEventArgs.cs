@@ -7,18 +7,12 @@ namespace TreeWatch
 	{
 		public FieldSelectedEventArgs (Field field)
 		{
-			this.field = field;
+			Field = field;
 		}
 
-		private Field field;
-
-		public Field Field
-		{
-			get{ return field; }
-			private set 
-			{
-				field = value;
-			}
+		public Field Field {
+			get;
+			private set;
 		}
 	}
 }

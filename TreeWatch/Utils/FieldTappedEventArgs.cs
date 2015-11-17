@@ -1,5 +1,4 @@
 ﻿using System;
-using Xamarin.Forms.Maps;
 
 namespace TreeWatch
 {
@@ -7,21 +6,12 @@ namespace TreeWatch
 	{
 		public FieldTappedEventArgs (Position pos)
 		{
-			this.Position = pos;
+			Position = pos;
 		}
 
-		private Position pos;
-
-		public Position Position 
-		{
-			get 
-			{
-				return pos;
-			}
-			private set
-			{
-				pos = value;
-			}
+		public Position Position {
+			get;
+			private set;
 		}
 	}
 }

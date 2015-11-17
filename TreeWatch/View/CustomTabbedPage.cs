@@ -7,19 +7,19 @@ namespace TreeWatch
 		public CustomTabbedPage ()
 		{
 			// map tab page
-			this.Children.Add (new MapMasterDetailPage ());
+			Children.Add (new MapMasterDetailPage ());
 
 			// note tab page
-			this.Children.Add (new NoteNavigationPage (new NoteContentPage ()));
+			Children.Add (new NoteNavigationPage (new NoteContentPage ()));
 
 			// todo tab page
-			this.Children.Add (new ToDoNavigationPage (new ToDoContentPage ()));
+			Children.Add (new ToDoNavigationPage (new ToDoContentPage ()));
 
 			// history tab page
-			this.Children.Add (new HistoryNavigationPage (new HistoryContentPage ()));
+			Children.Add (new HistoryNavigationPage (new HistoryContentPage ()));
 
 			// settings tab page
-			this.Children.Add (new SettingsNavigationPage (new SettingsContentPage ()));
+			Children.Add (new SettingsNavigationPage (new SettingsContentPage ()));
 		}
 	}
 }

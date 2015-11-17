@@ -30,7 +30,7 @@ namespace TreeWatch
 			Email = email;
 		}
 
-		public User () 
+		public User ()
 		{
 		}
 	}
