@@ -13,9 +13,9 @@ namespace TreeWatch
 
 		public TreeType TreeType { get; set; }
 
-		public Block (List<Position> boundingCordinates, TreeType treeType)
+		public Block (List<Position> boundingCoordinates, TreeType treeType)
 		{
-			BoundingCordinates = boundingCordinates;
+			BoundingCoordinates = boundingCoordinates;
 			TreeType = treeType;
 		}
 

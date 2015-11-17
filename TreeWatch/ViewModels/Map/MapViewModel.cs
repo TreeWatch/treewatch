@@ -7,7 +7,6 @@ using System.Runtime.CompilerServices;
 using System.Windows.Input;
 
 using Xamarin.Forms;
-using Xamarin.Forms.Maps;
 
 namespace TreeWatch
 {
@@ -59,42 +58,6 @@ namespace TreeWatch
 		public void FieldSelected (object sender, FieldSelectedEventArgs e)
 		{
 			SelectedField = e.Field;
-		}
-
-		public string SelectedFieldName {
-			get {
-				return SelectedField.Name;
-			}
-		}
-
-		public string SelectedFieldWidth {
-			get {
-				return SelectedField.FieldWidthLon.ToString ();
-			}
-		}
-
-		public string SelectedFieldHeight {
-			get {
-				return SelectedField.FieldHeightLat.ToString ();
-			}
-		}
-
-		public string SelectedFieldLatitude {
-			get {
-				return SelectedField.FieldPinPosition.Latitude.ToString ();
-			}
-		}
-
-		public string SelectedFieldLongitude {
-			get {
-				return SelectedField.FieldPinPosition.Longitude.ToString ();
-			}
-		}
-
-		public string SelectedFieldBlockCount {
-			get {
-				return SelectedField.Rows.Count.ToString ();
-			}
 		}
 
 		public ICommand SelectFieldCommand { private set; get; }
@@ -176,7 +139,7 @@ namespace TreeWatch
 		{
 			foreach (Field field in Fields)
 			{
-				if (GeoHelper.isInsideCoords (field.BoundingCordinates, touchPos))
+				if (GeoHelper.IsInsideCoords (field.BoundingCoordinates, touchPos))
 				{
 					return field;
 				}

@@ -6,10 +6,10 @@ namespace TreeWatch
 {
 	public abstract class PolygonModel : BaseModel
 	{
-		[TextBlob("BoundingCordiantesBlob")]
-		public List<Position> BoundingCordinates { get; set; }
+		[TextBlob("BoundingCoordiantesBlob")]
+		public List<Position> BoundingCoordinates { get; set; }
 
-		public string BoundingCordiantesBlob { get; set; }
+		public string BoundingCoordiantesBlob { get; set; }
 	}
 }
 
