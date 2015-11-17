@@ -3507,8 +3507,8 @@ namespace TreeWatch.Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f0a007e
-			public const int action0 = 2131361918;
+			// aapt resource value: 0x7f0a0079
+			public const int action0 = 2131361913;
 			
 			// aapt resource value: 0x7f0a005a
 			public const int action_bar = 2131361882;
@@ -3534,8 +3534,8 @@ namespace TreeWatch.Droid
 			// aapt resource value: 0x7f0a005b
 			public const int action_context_bar = 2131361883;
 			
-			// aapt resource value: 0x7f0a0082
-			public const int action_divider = 2131361922;
+			// aapt resource value: 0x7f0a007d
+			public const int action_divider = 2131361917;
 			
 			// aapt resource value: 0x7f0a0003
 			public const int action_menu_divider = 2131361795;
@@ -3567,8 +3567,8 @@ namespace TreeWatch.Droid
 			// aapt resource value: 0x7f0a0037
 			public const int always = 2131361847;
 			
-			// aapt resource value: 0x7f0a0076
-			public const int art = 2131361910;
+			// aapt resource value: 0x7f0a0071
+			public const int art = 2131361905;
 			
 			// aapt resource value: 0x7f0a0035
 			public const int beginning = 2131361845;
@@ -3579,11 +3579,11 @@ namespace TreeWatch.Droid
 			// aapt resource value: 0x7f0a0050
 			public const int buttonPanel = 2131361872;
 			
-			// aapt resource value: 0x7f0a007b
-			public const int buttons = 2131361915;
+			// aapt resource value: 0x7f0a0076
+			public const int buttons = 2131361910;
 			
-			// aapt resource value: 0x7f0a007f
-			public const int cancel_action = 2131361919;
+			// aapt resource value: 0x7f0a007a
+			public const int cancel_action = 2131361914;
 			
 			// aapt resource value: 0x7f0a0018
 			public const int center = 2131361816;
@@ -3597,8 +3597,8 @@ namespace TreeWatch.Droid
 			// aapt resource value: 0x7f0a0052
 			public const int checkbox = 2131361874;
 			
-			// aapt resource value: 0x7f0a0085
-			public const int chronometer = 2131361925;
+			// aapt resource value: 0x7f0a0080
+			public const int chronometer = 2131361920;
 			
 			// aapt resource value: 0x7f0a0021
 			public const int clip_horizontal = 2131361825;
@@ -3624,14 +3624,14 @@ namespace TreeWatch.Droid
 			// aapt resource value: 0x7f0a0043
 			public const int default_activity_button = 2131361859;
 			
-			// aapt resource value: 0x7f0a0075
-			public const int default_control_frame = 2131361909;
+			// aapt resource value: 0x7f0a0070
+			public const int default_control_frame = 2131361904;
 			
 			// aapt resource value: 0x7f0a002a
 			public const int disableHome = 2131361834;
 			
-			// aapt resource value: 0x7f0a007c
-			public const int disconnect = 2131361916;
+			// aapt resource value: 0x7f0a0077
+			public const int disconnect = 2131361911;
 			
 			// aapt resource value: 0x7f0a005c
 			public const int edit_query = 2131361884;
@@ -3639,8 +3639,8 @@ namespace TreeWatch.Droid
 			// aapt resource value: 0x7f0a001b
 			public const int end = 2131361819;
 			
-			// aapt resource value: 0x7f0a008a
-			public const int end_padder = 2131361930;
+			// aapt resource value: 0x7f0a0085
+			public const int end_padder = 2131361925;
 			
 			// aapt resource value: 0x7f0a0011
 			public const int enterAlways = 2131361809;
@@ -3687,26 +3687,17 @@ namespace TreeWatch.Droid
 			// aapt resource value: 0x7f0a0042
 			public const int image = 2131361858;
 			
-			// aapt resource value: 0x7f0a006f
-			public const int imageButton1 = 2131361903;
-			
-			// aapt resource value: 0x7f0a0089
-			public const int info = 2131361929;
+			// aapt resource value: 0x7f0a0084
+			public const int info = 2131361924;
 			
 			// aapt resource value: 0x7f0a001d
 			public const int left = 2131361821;
 			
-			// aapt resource value: 0x7f0a0083
-			public const int line1 = 2131361923;
+			// aapt resource value: 0x7f0a007e
+			public const int line1 = 2131361918;
 			
-			// aapt resource value: 0x7f0a0087
-			public const int line3 = 2131361927;
-			
-			// aapt resource value: 0x7f0a006b
-			public const int linearLayout1 = 2131361899;
-			
-			// aapt resource value: 0x7f0a006c
-			public const int linearLayout2 = 2131361900;
+			// aapt resource value: 0x7f0a0082
+			public const int line3 = 2131361922;
 			
 			// aapt resource value: 0x7f0a0028
 			public const int listMode = 2131361832;
@@ -3714,20 +3705,20 @@ namespace TreeWatch.Droid
 			// aapt resource value: 0x7f0a0044
 			public const int list_item = 2131361860;
 			
-			// aapt resource value: 0x7f0a0081
-			public const int media_actions = 2131361921;
+			// aapt resource value: 0x7f0a007c
+			public const int media_actions = 2131361916;
+			
+			// aapt resource value: 0x7f0a006f
+			public const int media_route_control_frame = 2131361903;
+			
+			// aapt resource value: 0x7f0a006b
+			public const int media_route_list = 2131361899;
 			
 			// aapt resource value: 0x7f0a0074
-			public const int media_route_control_frame = 2131361908;
+			public const int media_route_volume_layout = 2131361908;
 			
-			// aapt resource value: 0x7f0a0070
-			public const int media_route_list = 2131361904;
-			
-			// aapt resource value: 0x7f0a0079
-			public const int media_route_volume_layout = 2131361913;
-			
-			// aapt resource value: 0x7f0a007a
-			public const int media_route_volume_slider = 2131361914;
+			// aapt resource value: 0x7f0a0075
+			public const int media_route_volume_slider = 2131361909;
 			
 			// aapt resource value: 0x7f0a0036
 			public const int middle = 2131361846;
@@ -3756,8 +3747,8 @@ namespace TreeWatch.Droid
 			// aapt resource value: 0x7f0a0016
 			public const int pin = 2131361814;
 			
-			// aapt resource value: 0x7f0a0077
-			public const int play_pause = 2131361911;
+			// aapt resource value: 0x7f0a0072
+			public const int play_pause = 2131361906;
 			
 			// aapt resource value: 0x7f0a0006
 			public const int progress_circular = 2131361798;
@@ -3771,8 +3762,8 @@ namespace TreeWatch.Droid
 			// aapt resource value: 0x7f0a001e
 			public const int right = 2131361822;
 			
-			// aapt resource value: 0x7f0a0072
-			public const int route_name = 2131361906;
+			// aapt resource value: 0x7f0a006d
+			public const int route_name = 2131361901;
 			
 			// aapt resource value: 0x7f0a000d
 			public const int satellite = 2131361805;
@@ -3822,8 +3813,8 @@ namespace TreeWatch.Droid
 			// aapt resource value: 0x7f0a0068
 			public const int select_dialog_listview = 2131361896;
 			
-			// aapt resource value: 0x7f0a0073
-			public const int settings = 2131361907;
+			// aapt resource value: 0x7f0a006e
+			public const int settings = 2131361902;
 			
 			// aapt resource value: 0x7f0a0053
 			public const int shortcut = 2131361875;
@@ -3858,17 +3849,17 @@ namespace TreeWatch.Droid
 			// aapt resource value: 0x7f0a001f
 			public const int start = 2131361823;
 			
-			// aapt resource value: 0x7f0a0080
-			public const int status_bar_latest_event_content = 2131361920;
+			// aapt resource value: 0x7f0a007b
+			public const int status_bar_latest_event_content = 2131361915;
 			
-			// aapt resource value: 0x7f0a007d
-			public const int stop = 2131361917;
+			// aapt resource value: 0x7f0a0078
+			public const int stop = 2131361912;
 			
 			// aapt resource value: 0x7f0a0065
 			public const int submit_area = 2131361893;
 			
-			// aapt resource value: 0x7f0a0078
-			public const int subtitle = 2131361912;
+			// aapt resource value: 0x7f0a0073
+			public const int subtitle = 2131361907;
 			
 			// aapt resource value: 0x7f0a0029
 			public const int tabMode = 2131361833;
@@ -3876,29 +3867,23 @@ namespace TreeWatch.Droid
 			// aapt resource value: 0x7f0a000e
 			public const int terrain = 2131361806;
 			
-			// aapt resource value: 0x7f0a0088
-			public const int text = 2131361928;
+			// aapt resource value: 0x7f0a0083
+			public const int text = 2131361923;
 			
-			// aapt resource value: 0x7f0a0086
-			public const int text2 = 2131361926;
+			// aapt resource value: 0x7f0a0081
+			public const int text2 = 2131361921;
 			
 			// aapt resource value: 0x7f0a004d
 			public const int textSpacerNoButtons = 2131361869;
 			
-			// aapt resource value: 0x7f0a006d
-			public const int textViewName = 2131361901;
-			
-			// aapt resource value: 0x7f0a006e
-			public const int textViewRows = 2131361902;
-			
-			// aapt resource value: 0x7f0a0084
-			public const int time = 2131361924;
+			// aapt resource value: 0x7f0a007f
+			public const int time = 2131361919;
 			
 			// aapt resource value: 0x7f0a0046
 			public const int title = 2131361862;
 			
-			// aapt resource value: 0x7f0a0071
-			public const int title_bar = 2131361905;
+			// aapt resource value: 0x7f0a006c
+			public const int title_bar = 2131361900;
 			
 			// aapt resource value: 0x7f0a0049
 			public const int title_template = 2131361865;
@@ -4071,52 +4056,49 @@ namespace TreeWatch.Droid
 			public const int design_navigation_menu = 2130903072;
 			
 			// aapt resource value: 0x7f030021
-			public const int field_info_window = 2130903073;
+			public const int mr_media_route_chooser_dialog = 2130903073;
 			
 			// aapt resource value: 0x7f030022
-			public const int mr_media_route_chooser_dialog = 2130903074;
+			public const int mr_media_route_controller_material_dialog_b = 2130903074;
 			
 			// aapt resource value: 0x7f030023
-			public const int mr_media_route_controller_material_dialog_b = 2130903075;
+			public const int mr_media_route_list_item = 2130903075;
 			
 			// aapt resource value: 0x7f030024
-			public const int mr_media_route_list_item = 2130903076;
+			public const int notification_media_action = 2130903076;
 			
 			// aapt resource value: 0x7f030025
-			public const int notification_media_action = 2130903077;
+			public const int notification_media_cancel_action = 2130903077;
 			
 			// aapt resource value: 0x7f030026
-			public const int notification_media_cancel_action = 2130903078;
+			public const int notification_template_big_media = 2130903078;
 			
 			// aapt resource value: 0x7f030027
-			public const int notification_template_big_media = 2130903079;
+			public const int notification_template_big_media_narrow = 2130903079;
 			
 			// aapt resource value: 0x7f030028
-			public const int notification_template_big_media_narrow = 2130903080;
+			public const int notification_template_lines = 2130903080;
 			
 			// aapt resource value: 0x7f030029
-			public const int notification_template_lines = 2130903081;
+			public const int notification_template_media = 2130903081;
 			
 			// aapt resource value: 0x7f03002a
-			public const int notification_template_media = 2130903082;
+			public const int notification_template_part_chronometer = 2130903082;
 			
 			// aapt resource value: 0x7f03002b
-			public const int notification_template_part_chronometer = 2130903083;
+			public const int notification_template_part_time = 2130903083;
 			
 			// aapt resource value: 0x7f03002c
-			public const int notification_template_part_time = 2130903084;
+			public const int select_dialog_item_material = 2130903084;
 			
 			// aapt resource value: 0x7f03002d
-			public const int select_dialog_item_material = 2130903085;
+			public const int select_dialog_multichoice_material = 2130903085;
 			
 			// aapt resource value: 0x7f03002e
-			public const int select_dialog_multichoice_material = 2130903086;
+			public const int select_dialog_singlechoice_material = 2130903086;
 			
 			// aapt resource value: 0x7f03002f
-			public const int select_dialog_singlechoice_material = 2130903087;
-			
-			// aapt resource value: 0x7f030030
-			public const int support_simple_spinner_dropdown_item = 2130903088;
+			public const int support_simple_spinner_dropdown_item = 2130903087;
 			
 			static Layout()
 			{
