@@ -1,22 +1,17 @@
-﻿using SQLite;
-using SQLiteNetExtensions.Attributes;
-using SQLite.Net.Attributes;
+﻿using SQLiteNetExtensions.Attributes;
 
 namespace TreeWatch
 {
-	public class PositionModel
+	public class PositionModel : DBEntity
 	{
-		[PrimaryKey, AutoIncrement]
-		public int ID { get; set; }
-
 		public double Latitude { get; set; }
 
 		public double Longitude { get; set; }
 
-		[ForeignKey(typeof(Field))]
+		[ForeignKey (typeof(Field))]
 		public int FieldId { get; set; }
 
-		[ForeignKey(typeof(Block))]
+		[ForeignKey (typeof(Block))]
 		public int BlockId { get; set; }
 
 
@@ -26,7 +21,7 @@ namespace TreeWatch
 			Longitude = longitude;
 		}
 
-		public PositionModel()
+		public PositionModel () 
 		{
 		}
 	}

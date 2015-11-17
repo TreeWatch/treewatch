@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -8,7 +9,6 @@ using System.Windows.Input;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
-using System;
 
 namespace TreeWatch
 {
@@ -19,6 +19,7 @@ namespace TreeWatch
 		String searchText = string.Empty;
 		Command searchCommand;
 		Field selectedField;
+		FieldHelper fieldHelper;
 
 		public MapViewModel ()
 		{
@@ -26,8 +27,10 @@ namespace TreeWatch
 			fieldHelper.FieldTapped += FieldTapped;
 			fieldHelper.FieldSelected += FieldSelected;
 			Fields = new ObservableCollection<Field> ();
-			SetUpMockData ();
-			selectedField = new Field ("Dummy");
+
+			foreach (Field field in new DBQuery<Field> (App.Database).GetAllWithChildren()) {
+				Fields.Add (field);
+			}
 		}
 
 		public Field SelectedField
@@ -44,7 +47,7 @@ namespace TreeWatch
 			get { return selectedField; }
 		}
 
-		private void FieldTapped(object sender, FieldTappedEventArgs e)
+		void FieldTapped(object sender, FieldTappedEventArgs e)
 		{
 			Field tappedField = CheckFieldClicked (e.Position);
 			if (tappedField != null) 
@@ -56,47 +59,6 @@ namespace TreeWatch
 		public void FieldSelected(object sender, FieldSelectedEventArgs e)
 		{
 			SelectedField = e.Field;
-		}
-
-		void SetUpMockData ()
-		{
-			Fields.Add (new Field ("Ajax", new List<PositionModel> (), new List<Block> ()));
-			Fields.Add (new Field ("PSV", new List<PositionModel> (), new List<Block> ()));
-			Fields.Add (new Field ("Roda jc", new List<PositionModel> (), new List<Block> ()));
-			Fields.Add (new Field ("VVV", new List<PositionModel> (), new List<Block> ()));
-			Fields.Add (new Field ("Hertog Jan", new List<PositionModel> (), new List<Block> ()));
-			Fields.Add (new Field ("Twente", new List<PositionModel> (), new List<Block> ()));
-
-			var fieldcords = new List<PositionModel> ();
-			fieldcords.Add (new PositionModel (51.39202, 6.04745));
-			fieldcords.Add (new PositionModel (51.39202, 6.05116));
-			fieldcords.Add (new PositionModel (51.38972, 6.05116));
-			fieldcords.Add (new PositionModel (51.38972, 6.04745));
-
-			fieldcords.Add (new Position (51.39202, 6.04745));
-			fieldcords.Add (new Position (51.39202, 6.05116));
-			fieldcords.Add (new Position (51.38972, 6.05116));
-			fieldcords.Add (new Position (51.38972, 6.04745));
-			testfield.BoundingCordinates = fieldcords;
-
-			fieldcords = new List<Position> ();
-			fieldcords.Add (new Position (51.39302, 6.04745));
-			fieldcords.Add (new Position (51.39302, 6.05116));
-			fieldcords.Add (new Position (51.39511, 6.05116));
-			fieldcords.Add (new Position (51.39511, 6.04745));
-			Fields [0].BoundingCordinates = fieldcords;
-
-		        var blocks = new List<Block> ();
-			blocks.Add (new Block ( new  List<PositionModel> { new PositionModel (51.39082462477471, 6.050752777777778), 
-															   new PositionModel (51.3904837408623, 6.047676310228867)}, 
-				                   TreeType.APPLE));
-
-			var testfield = new Field ("TestField", fieldcords, blocks);
-			App.Database.InsertField(testfield);
-
-			foreach (Field field in App.Database.GetFields()) {
-				Fields.Add (field);
-			}
 		}
 
 		public ICommand SelectFieldCommand { private set; get; }

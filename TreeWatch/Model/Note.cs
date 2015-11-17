@@ -1,14 +1,11 @@
 ﻿using System;
-using SQLite;
-using SQLite.Net.Attributes;
+using Xamarin.Forms.Maps;
+using SQLiteNetExtensions.Attributes;
 
 namespace TreeWatch
 {
-	public class Note
+	public class Note : BaseModel
 	{
-		[PrimaryKey, AutoIncrement]
-		public int ID { get; set; }
-
 		public string Title { get; set; }
 
 		public string Description { get; set; }
@@ -17,9 +14,12 @@ namespace TreeWatch
 
 		public DateTime TimeStamp { get; set; }
 
-		public PositionModel Position { get; set; }
+		[TextBlob("PositionBlob")]
+		public Position Position { get; set; }
 
-		public Note (string title, string description, string imagePath, DateTime timeStamp, PositionModel position)
+		public String PositionBlob { get; set; }
+
+		public Note (string title, string description, string imagePath, DateTime timeStamp, Position position)
 		{
 			Title = title;
 			Description = description;
@@ -27,8 +27,7 @@ namespace TreeWatch
 			TimeStamp = timeStamp;
 			Position = position;
 		}
-
-		public Note()
+		public Note () 
 		{
 		}
 	}

@@ -1,13 +1,10 @@
-﻿using SQLite;
-using SQLite.Net.Attributes;
+﻿using System.Collections.Generic;
+using SQLiteNetExtensions.Attributes;
 
 namespace TreeWatch
 {
-	public class User
+	public class User : BaseModel
 	{
-		[PrimaryKey, AutoIncrement]
-		public int ID { get; set; }
-
 		public string FirstName { get; set; }
 
 		public string LastName { get; set; }
@@ -18,6 +15,12 @@ namespace TreeWatch
 
 		public string Email { get; set; }
 
+		[OneToMany (CascadeOperations = CascadeOperation.CascadeInsert | CascadeOperation.CascadeRead)]
+		public List<UserToDo> ToDos {
+			get;
+			set;
+		}
+
 		public User (string firstName, string lastName, string username, string password, string email)
 		{
 			FirstName = firstName;
@@ -27,7 +30,7 @@ namespace TreeWatch
 			Email = email;
 		}
 
-		public User()
+		public User () 
 		{
 		}
 	}

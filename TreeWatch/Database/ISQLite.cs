@@ -1,6 +1,4 @@
-﻿using System;
-using SQLite;
-using SQLite.Net;
+﻿using SQLite.Net;
 
 namespace TreeWatch
 {

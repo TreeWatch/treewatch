@@ -14,7 +14,6 @@ namespace TreeWatch.UITests
 
 		protected IApp app;
 		Platform platform;
-		private TreeWatchDatabase _database;
 
 		public DBTests (Platform platform)
 		{
@@ -34,19 +33,14 @@ namespace TreeWatch.UITests
 			app.Tap ("ToDo");
 
 			var newToDoOne = new ToDo ("Soilscan", "Make a new Soilscan on Field XYZ");
-			var newToDoTwo = new ToDo("Harvest","Harvest the trees");
-<<<<<<< HEAD
-			db.InsertToDo (newToDoTwo);
-			var list = (List<ToDo>) db.GetToDos ();
-=======
-			App.Database.InsertToDo (newToDoOne);
-			App.Database.InsertToDo (newToDoTwo);
-			List<ToDo> list = (List<ToDo>) App.Database.GetToDos ();
->>>>>>> Stash
-
-			Assert.IsNotEmpty(list);
-			Assert.IsTrue(list.Contains (newToDoOne));
-			Assert.IsTrue (list.Contains (newToDoTwo));
+			var newToDoTwo = new ToDo ("Harvest", "Harvest the trees");
+//			new DBQuery<ToDo> (App.Database).InsertWithChildren (newToDoOne);
+//			new DBQuery<ToDo> (App.Database).InsertWithChildren (newToDoTwo);
+//			var list = new DBQuery<ToDo> (App.Database).GetAllWithChildren ();
+//
+//			Assert.IsNotEmpty (list);
+//			Assert.IsTrue (list.Contains (newToDoOne));
+//			Assert.IsTrue (list.Contains (newToDoTwo));
 
 		}
 	}

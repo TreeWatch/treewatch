@@ -7,6 +7,7 @@ using TreeWatch.Droid;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps.Android;
 using Xamarin.Forms.Platform.Android;
+using Xamarin.Forms.Maps;
 
 [assembly: ExportRenderer (typeof(FieldMap), typeof(FieldMapRenderer))]
 namespace TreeWatch.Droid
@@ -43,16 +44,16 @@ namespace TreeWatch.Droid
 			foreach (var Field in myMap.Fields) {
 
 				foreach (var block in Field.Blocks) {
-					if (block.BoundingCordinates.Count != 0) {
-						var rowpoints = FieldMapRenderer.convertCordinates (block.BoundingCordinates);
+					if (block.BoundingCordinates.Count != 0 && block.BoundingCordinates.Count >= 3) {
+						var rowpoints = FieldMapRenderer.ConvertCordinates (block.BoundingCordinates);
 						polygon.InvokeFillColor (ColorHelper.GetTreeTypeColor(block.TreeType).ToAndroid ());
 						polygon.AddAll (rowpoints);
 						Map.AddPolygon (polygon);
 					}
 
 				}
-				if (Field.BoundingCordinates.Count != 0) {
-					var polygonpoints = FieldMapRenderer.convertCordinates (Field.BoundingCordinates);
+				if (Field.BoundingCordinates.Count != 0 && Field.BoundingCordinates.Count >= 3) {
+					var polygonpoints = FieldMapRenderer.ConvertCordinates (Field.BoundingCordinates);
 					polygon.InvokeFillColor (myMap.OverLayColor.ToAndroid ());
 					polygon.AddAll (polygonpoints);
 					Map.AddPolygon (polygon);
@@ -81,7 +82,7 @@ namespace TreeWatch.Droid
 		public void OnMapReady (GoogleMap googleMap)
 		{
 			Map = googleMap;
-			addFields ();
+			AddFields ();
 			var handler = MapReady;
 			if (handler != null)
 				handler (this, EventArgs.Empty);
