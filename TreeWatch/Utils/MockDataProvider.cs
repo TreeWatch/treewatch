@@ -44,6 +44,36 @@ namespace TreeWatch
 				new Position (51.389485, 6.038983)
 			}, new List<Block> ()));
 
+			var blocks = new List<Block> ();
+			double startlatA = 51.390508; 
+			double startlatB = 51.389674;
+			double startlonA = 6.050828;
+			double startlonB = 6.047850;
+			for (int i = 0; i < 9; i++) {
+				blocks.Add (new Block (new  List<Position> { 
+					new Position (startlatA, startlonA),
+					new Position (startlatB, startlonB),
+					new Position (startlatB + 0.0001, startlonB), 
+					new Position (startlatA + 0.0001, startlonA)
+				}, 
+					TreeType.APPLE));
+				startlatA += 0.000103;
+				startlatB += 0.000103;
+			}
+			startlatB = 51.391453;
+			startlonB = 6.049844;
+			for (int i = 0; i < 4; i++) {
+				blocks.Add (new Block (new  List<Position> { 
+					new Position (startlatA, startlonA),
+					new Position (startlatB, startlonB),
+					new Position (startlatB + 0.0001, startlonB), 
+					new Position (startlatA + 0.0001, startlonA)
+				}, 
+					TreeType.APPLE));
+				startlatA += 0.000106;
+				startlatB += 0.000106;
+			}  
+
 			query.InsertWithChildren (new Field ("Hertog Jan", new List<Position> {
 				new Position (51.389619, 6.047791),
 				new Position (51.391065, 6.047748),
@@ -51,12 +81,9 @@ namespace TreeWatch
 				new Position (51.391936, 6.049722),
 				new Position (51.391922, 6.050967),
 				new Position (51.390450, 6.050924)
-			}, new List<Block> () {new Block (new  List<Position> { 
-					new Position (51.39082462477471, 6.050752777777778),
-					new Position (51.3904837408623, 6.047676310228867)
-				}, 
-					TreeType.APPLE)
-			}));
+			}, blocks));
+
+
 		}
 	}
 }
