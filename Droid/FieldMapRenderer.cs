@@ -44,7 +44,6 @@ namespace TreeWatch.Droid
 							Map.AddPolygon (GetPolygon (FieldMapRenderer.ConvertCoordinates (block.BoundingCoordinates), 
 								(block.TreeType.ColorProp).ToAndroid ()));
 						}
-
 					}
 				}
 

@@ -15,7 +15,7 @@
 					HorizontalOptions="CenterAndExpand"
 					FontSize         ="30"
 					FontAttributes   ="Bold"
-					Text             ="{Binding SelectedFieldName}" />
+					Text             ="{Binding FieldName}" />
 				<Grid>
 					<Grid.ColumnDefinitions>
 						<ColumnDefinition

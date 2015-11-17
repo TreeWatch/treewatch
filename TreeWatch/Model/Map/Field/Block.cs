@@ -17,9 +17,9 @@ namespace TreeWatch
 		[OneToOne (CascadeOperations = CascadeOperation.CascadeRead | CascadeOperation.CascadeInsert)]
 		public TreeType TreeType { get; set; }
 
-		public Block (List<Position> boundingCordinates, TreeType treeType)
+		public Block (List<Position> boundingCoordinates, TreeType treeType)
 		{
-			BoundingCoordinates = boundingCordinates;
+			BoundingCoordinates = boundingCoordinates;
 			TreeType = treeType;
 		}
 

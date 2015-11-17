@@ -13,16 +13,19 @@ namespace TreeWatch.iOS
 		CLLocationCoordinate2D coordinate;
 
 		public Field Field { get; private set; }
-		public override string Title {get { return title; } }
-		public override string Subtitle {get { return subtitle; } }
+
+		public override string Title { get { return title; } }
+
+		public override string Subtitle { get { return subtitle; } }
+
 		public override CLLocationCoordinate2D Coordinate { get { return this.coordinate; } }
 
 		public FieldMapAnnotation (Field field)
 		{
-			this.coordinate = new CLLocationCoordinate2D( field.FieldPinPosition.Latitude, field.FieldPinPosition.Longitude);
+			this.coordinate = new CLLocationCoordinate2D (field.CalculatePinPosition.Latitude, field.CalculatePinPosition.Longitude);
 			this.Field = field;
 			this.title = field.Name;
-			this.subtitle = string.Format ("Number of rows: {0}", field.Rows.Count);
+			this.subtitle = string.Format ("Number of rows: {0}", field.Blocks.Count);
 		}
 	}
 }

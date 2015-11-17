@@ -7,10 +7,9 @@ using TreeWatch;
 using TreeWatch.iOS;
 using UIKit;
 using Xamarin.Forms;
-using Xamarin.Forms.Maps;
 using Xamarin.Forms.Maps.iOS;
 using Xamarin.Forms.Platform.iOS;
-using System.Runtime.CompilerServices;
+using Foundation;
 
 [assembly: ExportRenderer (typeof(FieldMap), typeof(FieldMapRenderer))]
 
@@ -40,8 +39,8 @@ namespace TreeWatch.iOS
 		{
 			if (mapView != null)
 			{
-				var coords = new CLLocationCoordinate2D (e.Field.FieldPinPosition.Latitude, e.Field.FieldPinPosition.Longitude);
-				var span = new MKCoordinateSpan (e.Field.FieldHeightLat * 1.1, e.Field.FieldWidthLon * 1.1);
+				var coords = new CLLocationCoordinate2D (e.Field.CalculatePinPosition.Latitude, e.Field.CalculatePinPosition.Longitude);
+				var span = new MKCoordinateSpan (e.Field.CalculateWidthHeight.Width * 1.1, e.Field.CalculateWidthHeight.Height * 1.1);
 				mapView.Region = new MKCoordinateRegion (coords, span);
 				//mapView.SetCenterCoordinate (coords, true);
 			}
@@ -81,7 +80,10 @@ namespace TreeWatch.iOS
 							var customTabbedPage = (CustomTabbedPage)Xamarin.Forms.Application.Current.MainPage;
 							var masterDetailPage = (MasterDetailPage)customTabbedPage.CurrentPage;
 							var mapNavigationPage = (MapNavigationPage)masterDetailPage.Detail;
-							mapNavigationPage.PushAsync (new DetailedInformationContentPage (new DetailInformationViewModel ((Field)s)));
+
+							var fieldMapAnnotation = (FieldMapAnnotation) anno;
+
+							mapNavigationPage.PushAsync (new DetailedInformationContentPage (new DetailInformationViewModel (fieldMapAnnotation.Field)));
 						};
 
 						aview.RightCalloutAccessoryView = detailButton;
@@ -112,16 +114,19 @@ namespace TreeWatch.iOS
 					{
 						if (row.BoundingRectangle.Count != 0)
 						{
-							var rowpoints = convertCordinates (row.BoundingRectangle);
-							var rowpolygon = MKPolygon.FromCoordinates (rowpoints);
-							rowpolygon.Title = ((int)row.TreeType).ToString ();
-							polygons.Add (rowpolygon);
+							if (block.BoundingCoordinates.Count != 0 && block.BoundingCoordinates.Count >= 3)
+							{
+								var rowpoints = convertCordinates (block.BoundingCoordinates);
+								var rowpolygon = MKPolygon.FromCoordinates (rowpoints);
+								rowpolygon.Title = ((int)block.TreeType).ToString ();
+								polygons.Add (rowpolygon);
+							}
 						}
 					}
 
-					if (field.BoundingCordinates.Count != 0)
+					if (field.BoundingCoordinates.Count != 0 && field.BoundingCoordinates.Count >= 3)
 					{
-						var points = convertCordinates (field.BoundingCordinates);
+						var points = convertCordinates (field.BoundingCoordinates);
 						var polygon = MKPolygon.FromCoordinates (points);
 						polygon.Title = "Field";
 						polygons.Add (polygon);

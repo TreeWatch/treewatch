@@ -1,13 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Linq;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Windows.Input;
-
-using Xamarin.Forms;
-using Xamarin.Forms.Maps;
-using System;
 
 namespace TreeWatch
 {
@@ -31,31 +23,31 @@ namespace TreeWatch
 
 		public string FieldWidth {
 			get {
-				return field.FieldWidthLon.ToString ();
+				return field.CalculateWidthHeight.Width.ToString ();
 			}
 		}
 
 		public string FieldHeight {
 			get {
-				return field.FieldHeightLat.ToString ();
+				return field.CalculateWidthHeight.Height.ToString ();
 			}
 		}
 
 		public string FieldLatitude {
 			get {
-				return field.FieldPinPosition.Latitude.ToString ();
+				return field.CalculatePinPosition.Latitude.ToString ();
 			}
 		}
 
 		public string FieldLongitude {
 			get {
-				return field.FieldPinPosition.Longitude.ToString ();
+				return field.CalculatePinPosition.Longitude.ToString ();
 			}
 		}
 
 		public string FieldBlockCount {
 			get {
-				return field.Rows.Count.ToString ();
+				return field.Blocks.Count.ToString ();
 			}
 		}
 
@@ -66,5 +58,6 @@ namespace TreeWatch
 				handler (this, new PropertyChangedEventArgs (propertyName));
 
 		}
+	}
 }
 

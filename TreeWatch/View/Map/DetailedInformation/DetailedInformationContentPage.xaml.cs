@@ -7,13 +7,13 @@ namespace TreeWatch
 {
 	public partial class DetailedInformationContentPage : ContentPage
 	{
-		public DetailedInformationContentPage (MapViewModel mapViewModel)
+		public DetailedInformationContentPage (DetailInformationViewModel detailInformationViewModel)
 		{
 			// initialize component
 			InitializeComponent ();
 
 			// set view model
-			this.BindingContext = mapViewModel;
+			this.BindingContext = detailInformationViewModel;
 		}
 	}
 }

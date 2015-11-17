@@ -128,7 +128,7 @@ namespace TreeWatch
 		{
 			foreach (Field field in Fields)
 			{
-				if (GeoHelper.isInsideCoords (field.BoundingCordinates, touchPos))
+				if (GeoHelper.IsInsideCoords (field.BoundingCoordinates, touchPos))
 				{
 					return field;
 				}
