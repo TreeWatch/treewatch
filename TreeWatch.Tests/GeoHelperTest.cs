@@ -22,10 +22,10 @@ namespace TreeWatch.Tests
 			var posOutsideOne = new Position (51.39220, 6.04683);
 			var posOutsideTwo = new Position (51.38949, 6.05168);
 
-			Assert.IsTrue (GeoHelper.isInsideCoords (fieldcords, posInsideOne));
-			Assert.IsTrue (GeoHelper.isInsideCoords (fieldcords, posInsideTwo));
-			Assert.IsFalse (GeoHelper.isInsideCoords (fieldcords, posOutsideOne));
-			Assert.IsFalse (GeoHelper.isInsideCoords (fieldcords, posOutsideTwo));
+			Assert.IsTrue (GeoHelper.IsInsideCoords (fieldcords, posInsideOne));
+			Assert.IsTrue (GeoHelper.IsInsideCoords (fieldcords, posInsideTwo));
+			Assert.IsFalse (GeoHelper.IsInsideCoords (fieldcords, posOutsideOne));
+			Assert.IsFalse (GeoHelper.IsInsideCoords (fieldcords, posOutsideTwo));
 		}
 
 		[Test ()]
@@ -47,11 +47,11 @@ namespace TreeWatch.Tests
 			var posOutsideTwo = new Position (50.38949, 5.05168);
 			var posOutsideExtrem = new Position (51.39124639281435, 6.049579664911691);
 
-			Assert.IsTrue (GeoHelper.isInsideCoords (fieldcords, posInsideOne));
-			Assert.IsTrue (GeoHelper.isInsideCoords (fieldcords, posInsideTwo));
-			Assert.IsFalse (GeoHelper.isInsideCoords (fieldcords, posOutsideOne));
-			Assert.IsFalse (GeoHelper.isInsideCoords (fieldcords, posOutsideTwo));
-			Assert.IsFalse (GeoHelper.isInsideCoords (fieldcords, posOutsideExtrem));
+			Assert.IsTrue (GeoHelper.IsInsideCoords (fieldcords, posInsideOne));
+			Assert.IsTrue (GeoHelper.IsInsideCoords (fieldcords, posInsideTwo));
+			Assert.IsFalse (GeoHelper.IsInsideCoords (fieldcords, posOutsideOne));
+			Assert.IsFalse (GeoHelper.IsInsideCoords (fieldcords, posOutsideTwo));
+			Assert.IsFalse (GeoHelper.IsInsideCoords (fieldcords, posOutsideExtrem));
 		}
 	}
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -8,7 +9,6 @@ using System.Windows.Input;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
-using System;
 
 namespace TreeWatch
 {
@@ -16,7 +16,7 @@ namespace TreeWatch
 	{
 		public event PropertyChangedEventHandler PropertyChanged;
 
-		String searchText = string.Empty;
+		String searchText = String.Empty;
 		Command searchCommand;
 		Field selectedField;
 		FieldHelper fieldHelper;
@@ -27,8 +27,11 @@ namespace TreeWatch
 			fieldHelper.FieldTapped += FieldTapped;
 			fieldHelper.FieldSelected += FieldSelected;
 			Fields = new ObservableCollection<Field> ();
-			SetUpMockData ();
-			selectedField = new Field ("Dummy");
+			selectedField = new Field("Dummy", new List<Position>(), new List<Block>());
+
+			foreach (Field field in new DBQuery<Field> (App.Database).GetAllWithChildren()) {
+				Fields.Add (field);
+			}
 		}
 
 		public Field SelectedField
@@ -45,7 +48,7 @@ namespace TreeWatch
 			get { return selectedField; }
 		}
 
-		private void FieldTapped(object sender, FieldTappedEventArgs e)
+		void FieldTapped(object sender, FieldTappedEventArgs e)
 		{
 			Field tappedField = CheckFieldClicked (e.Position);
 			if (tappedField != null) 
@@ -59,36 +62,7 @@ namespace TreeWatch
 			SelectedField = e.Field;
 		}
 
-		void SetUpMockData ()
-		{
-			Fields.Add (new Field ("Ajax"));
-			Fields.Add (new Field ("PSV"));
-			Fields.Add (new Field ("Roda jc"));
-			Fields.Add (new Field ("VVV"));
-			Fields.Add (new Field ("Hertog Jan"));
-			Fields.Add (new Field ("Twente"));
-
-			var testfield = new Field ("TestField");
-			var fieldcords = new List<Position> ();
-
-			fieldcords.Add (new Position (51.39202, 6.04745));
-			fieldcords.Add (new Position (51.39202, 6.05116));
-			fieldcords.Add (new Position (51.38972, 6.05116));
-			fieldcords.Add (new Position (51.38972, 6.04745));
-			testfield.BoundingCordinates = fieldcords;
-
-			fieldcords = new List<Position> ();
-			fieldcords.Add (new Position (51.39302, 6.04745));
-			fieldcords.Add (new Position (51.39302, 6.05116));
-			fieldcords.Add (new Position (51.39511, 6.05116));
-			fieldcords.Add (new Position (51.39511, 6.04745));
-			Fields [0].BoundingCordinates = fieldcords;
-
-			var row = new List<Row> ();
-			row.Add (new Row (new Position (51.39082462477471, 6.050752777777778), new Position (51.3904837408623, 6.047676310228867), TreeType.APPLE));
-			testfield.Rows = row;
-			Fields.Add (testfield);
-		}
+		public ICommand SelectFieldCommand { private set; get; }
 
 		public string SearchText {
 			get { return this.searchText; }
@@ -109,8 +83,7 @@ namespace TreeWatch
 			get {
 				var filteredFields = new ObservableCollection<Field> ();
 
-				if (Fields != null)
-				{
+				if (Fields != null) {
 					List<Field> entities = Fields.Where (x => x.Name.ToLower ().Contains (searchText.ToLower ())).ToList (); 
 					if (entities != null && entities.Any ())
 					{
@@ -150,10 +123,11 @@ namespace TreeWatch
 		public Position getCurrentDevicePosition ()
 		{
 			// Todo: make this not static
-			const double latitude = 51.39202;
-			const double longitude = 6.04745;
+			var pos = new Position();
+			pos.Latitude = 51.39202;
+			pos.Longitude = 6.04745;
 
-			return new Position (latitude, longitude);
+			return pos;
 		}
 
 		public ObservableCollection<Field> Fields {
@@ -164,7 +138,7 @@ namespace TreeWatch
 		public Field CheckFieldClicked(Position touchPos)
 		{
 			foreach(Field field in Fields){
-				if(GeoHelper.isInsideCoords(field.BoundingCordinates, touchPos))
+				if(GeoHelper.IsInsideCoords(field.BoundingCordinates, touchPos))
 				{
 					return field;
 				}

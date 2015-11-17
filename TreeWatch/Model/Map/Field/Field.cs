@@ -1,33 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
-
-using Xamarin.Forms.Maps;
+using SQLiteNetExtensions.Attributes;
 
 namespace TreeWatch
 {
-	public class Field
+	public class Field : PolygonModel
 	{
 
-		public List<Position> BoundingCordinates {
-			get;
-			set;
-		}
+		[OneToMany (CascadeOperations = CascadeOperation.CascadeInsert | CascadeOperation.CascadeRead)]
+		public List<Block> Blocks { get; set; }
 
-		public List<Row> Rows {
-			get;
-			set;
-		}
+		public String Name { get; set; }
 
-		public String Name { get; private set; }
-
-		public Field (String name)
+		public Field (string name, List<Position> boundingCordinates, List<Block> blocks)
 		{
-			this.Name = name;
-			BoundingCordinates = new List<Position> ();
-			Rows = new List<Row> ();
+			Name = name;
+			BoundingCordinates = boundingCordinates;
+			Blocks = blocks;
 		}
 
-
+		public Field () 
+		{
+		}
 	}
 }
 

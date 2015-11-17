@@ -1,9 +1,7 @@
-
 ﻿using System;
 using System.Collections.Generic;
 using CoreGraphics;
 using CoreLocation;
-using Foundation;
 using MapKit;
 using TreeWatch;
 using TreeWatch.iOS;
@@ -55,19 +53,19 @@ namespace TreeWatch.iOS
 					return polygonRenderer;
 				};
 
-				foreach (var field in myMap.Fields) 
-				{
-
-					foreach (var row in field.Rows) {
-						if (row.BoundingRectangle.Count != 0) {
-							var rowpoints = convertCordinates (row.BoundingRectangle);
-							var rowpolygon = MKPolygon.FromCoordinates (rowpoints);
-							rowpolygon.Title = ((int)row.TreeType).ToString ();
-							polygons.Add (rowpolygon);
+				foreach (var field in myMap.Fields) {
+					if (field.Blocks.Count != 0) {
+						foreach (var block in field.Blocks) {
+							if (block.BoundingCordinates.Count != 0 && block.BoundingCordinates.Count >= 3) {
+								var rowpoints = convertCordinates (block.BoundingCordinates);
+								var rowpolygon = MKPolygon.FromCoordinates (rowpoints);
+								rowpolygon.Title = ((int)block.TreeType).ToString ();
+								polygons.Add (rowpolygon);
+							}
 						}
 					}
 
-					if (field.BoundingCordinates.Count != 0) {
+					if (field.BoundingCordinates.Count != 0 && field.BoundingCordinates.Count >= 3) {
 						var points = convertCordinates (field.BoundingCordinates);
 						var polygon = MKPolygon.FromCoordinates (points);
 						polygon.Title = "Field";
