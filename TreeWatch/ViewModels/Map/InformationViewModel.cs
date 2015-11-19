@@ -4,13 +4,13 @@ using Xamarin.Forms;
 
 namespace TreeWatch
 {
-	public class FieldInformationViewModel : INotifyPropertyChanged
+	public class InformationViewModel : INotifyPropertyChanged
 	{
 		public event PropertyChangedEventHandler PropertyChanged;
 
 		Field field;
 
-		public FieldInformationViewModel (Field field)
+		public InformationViewModel (Field field)
 		{
 			this.field = field;
 		}

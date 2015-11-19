@@ -131,7 +131,7 @@ namespace TreeWatch.Droid
 				var masterDetailPage = (MasterDetailPage)customTabbedPage.CurrentPage;
 				var mapNavigationPage = (MapNavigationPage)masterDetailPage.Detail;
 
-				mapNavigationPage.PushAsync (new FieldInformationContentPage (new FieldInformationViewModel (field)));
+				mapNavigationPage.PushAsync (new FieldInformationContentPage (new InformationViewModel (field)));
 			}
 		}
 
