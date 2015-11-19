@@ -65,7 +65,7 @@ namespace TreeWatch.Droid
 				MarkerOptions marker = new MarkerOptions ();
 				marker.SetTitle (Field.Name);
 				marker.SetSnippet(string.Format("Number of rows: {0}", Field.Blocks.Count));
-				marker.SetPosition (new LatLng(Field.CalculatePinPosition.Latitude, Field.CalculatePinPosition.Longitude));
+				marker.SetPosition (new LatLng(GeoHelper.CalculateCenter(Field.BoundingCoordinates).Latitude, GeoHelper.CalculateCenter(Field.BoundingCoordinates).Longitude));
 				marker.SetIcon (BitmapDescriptorFactory.FromResource(Resource.Drawable.location_marker));
 				Map.AddMarker (marker);
 			}
@@ -149,11 +149,11 @@ namespace TreeWatch.Droid
 		{
 			if (Map != null) 
 			{
-				Android.Gms.Maps.Model.LatLngBounds.Builder builder = new LatLngBounds.Builder ();
-				TreeWatch.Field.WidthHeight wh = e.Field.CalculateWidthHeight;
-				Position middle = e.Field.CalculatePinPosition;
-				double w = wh.Width / 1.9;//1.9 so 0.1 padding
-				double h = wh.Height / 1.9;
+				LatLngBounds.Builder builder = new LatLngBounds.Builder ();
+				GeoHelper.WidthHeight widthHeight = GeoHelper.CalculateWidthHeight(e.Field.BoundingCoordinates);
+				Position middle = GeoHelper.CalculateCenter(e.Field.BoundingCoordinates);
+				double w = widthHeight.Width / 1.9;//1.9 so 0.1 padding
+				double h = widthHeight.Height / 1.9;
 				builder.Include (new LatLng (middle.Latitude - w, middle.Longitude - h));
 				builder.Include (new LatLng (middle.Latitude + w, middle.Longitude + h));
 				LatLngBounds bounds = builder.Build ();
