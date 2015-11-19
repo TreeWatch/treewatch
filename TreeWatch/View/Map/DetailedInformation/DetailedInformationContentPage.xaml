@@ -6,69 +6,38 @@
 	xmlns:local="clr-namespace:TreeWatch;assembly=TreeWatch"
 	Title      ="Detailed Information"
 	StyleId    ="DetailedInformation"
-	Padding    ="10, 25, 10, 10">
+	Padding    ="0, 0, 0, 0">
 	<ContentPage.Content>
-		<ScrollView>
-			<StackLayout
-				Spacing="25">
-				<Label
-					HorizontalOptions="CenterAndExpand"
-					FontSize         ="30"
-					FontAttributes   ="Bold"
-					Text             ="{Binding FieldName}" />
-				<Grid>
-					<Grid.ColumnDefinitions>
-						<ColumnDefinition
-							Width="*" />
-						<ColumnDefinition
-							Width="*" />
-					</Grid.ColumnDefinitions>
-					<Label
-						FontAttributes="Bold"
-						Grid.Row      ="0"
-						Grid.Column   ="0"
-						Text          ="Width" />
-					<Label
-						Grid.Row   ="1"
-						Grid.Column="0"
-						Text       ="{Binding FieldWidth}" />
-					<Label
-						FontAttributes="Bold"
-						Grid.Row      ="0"
-						Grid.Column   ="1"
-						Text          ="Height" />
-					<Label
-						Grid.Row   ="1"
-						Grid.Column="1"
-						Text       ="{Binding FieldHeight}" />
-					<Label
-						FontAttributes="Bold"
-						Grid.Row      ="2"
-						Grid.Column   ="0"
-						Text          ="Latitude" />
-					<Label
-						Grid.Row   ="3"
-						Grid.Column="0"
-						Text       ="{Binding FieldLatitude}" />
-					<Label
-						FontAttributes="Bold"
-						Grid.Row      ="2"
-						Grid.Column   ="1"
-						Text          ="Longitude" />
-					<Label
-						Grid.Row   ="3"
-						Grid.Column="1"
-						Text       ="{Binding FieldLongitude}" />
-				</Grid>
-				<StackLayout
-					Orientation="Vertical">
-					<Label
-						FontAttributes="Bold"
-						Text          ="Block Count" />
-					<Label
-						Text="{Binding FieldBlockCount}" />
-				</StackLayout>
-			</StackLayout>
-		</ScrollView>
+		<TableView>
+			<TableRoot>
+				<TableSection>
+					<ImageCell />
+				</TableSection>
+				<TableSection
+					Title="Fieldinformationen">
+					<TextCell
+						Text  ="Name"
+						Detail="{Binding FieldName}" />
+					<TextCell
+						Text  ="Latitude"
+						Detail="{Binding FieldLatitude}" />
+					<TextCell
+						Text  ="Longitude"
+						Detail="{Binding FieldLongitude}" />
+					<TextCell
+						Text  ="Sea level"
+						Detail="{Binding FieldSeaLevel}" />
+					<TextCell
+						Text  ="Size"
+						Detail="{Binding FieldSize}" />
+				</TableSection>
+				<TableSection
+					Title="Blockinformation">
+					<TextCell
+						Text  ="Blocks"
+						Detail="{Binding FieldBlockCount}"/>
+				</TableSection>
+			</TableRoot>
+		</TableView>
 	</ContentPage.Content>
 </ContentPage>
