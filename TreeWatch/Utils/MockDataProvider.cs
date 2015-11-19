@@ -57,21 +57,32 @@ namespace TreeWatch
 					new Position (startlatA + 0.0001, startlonA)
 				}, 
 					TreeType.APPLE));
-				startlatA += 0.000103;
-				startlatB += 0.000103;
+				startlatA += 0.000111;
+				startlatB += 0.000111;
 			}
 			startlatB = 51.391453;
 			startlonB = 6.049844;
+
+			blocks.Add (new Block (new  List<Position> { 
+				new Position (startlatA, startlonA),
+				new Position (startlatB - 0.000221, startlonB),
+				new Position (startlatB, startlonB)
+			}, 
+				TreeType.APPLE));
+			
+			startlatA += 0.000011;
+			startlatB += 0.000011;
+
 			for (int i = 0; i < 4; i++) {
 				blocks.Add (new Block (new  List<Position> { 
 					new Position (startlatA, startlonA),
 					new Position (startlatB, startlonB),
-					new Position (startlatB + 0.0001, startlonB), 
-					new Position (startlatA + 0.0001, startlonA)
+					new Position (startlatB + 0.000075, startlonB), 
+					new Position (startlatA + 0.000075, startlonA)
 				}, 
 					TreeType.APPLE));
-				startlatA += 0.000106;
-				startlatB += 0.000106;
+				startlatA += 0.000086;
+				startlatB += 0.000086;
 			}  
 
 			query.InsertWithChildren (new Field ("Hertog Jan", new List<Position> {
