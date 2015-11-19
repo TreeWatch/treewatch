@@ -23,19 +23,19 @@ namespace TreeWatch
 
 		public string FieldSize {
 			get {
-				return "0 qm";//field.CalculateSize.ToString ();
+				return "0 qm";//GeoHelper.CalculateCenter(field.BoundingCoordinates)field.CalculateSize.ToString ();
 			}
 		}
 
 		public string FieldLatitude {
 			get {
-				return field.CalculatePinPosition.Latitude.ToString ().Split ('.') [0] + "." + field.CalculatePinPosition.Latitude.ToString ().Split ('.') [1].Substring (0, 6);
+				return GeoHelper.CalculateCenter(field.BoundingCoordinates).Latitude.ToString ().Split ('.') [0] + "." + GeoHelper.CalculateCenter(field.BoundingCoordinates).Latitude.ToString ().Split ('.') [1].Substring (0, 6);
 			}
 		}
 
 		public string FieldLongitude {
 			get {
-				return field.CalculatePinPosition.Longitude.ToString ().Split ('.') [0] + "." + field.CalculatePinPosition.Longitude.ToString ().Split ('.') [1].Substring (0, 6);
+				return GeoHelper.CalculateCenter(field.BoundingCoordinates).Longitude.ToString ().Split ('.') [0] + "." + GeoHelper.CalculateCenter(field.BoundingCoordinates).Longitude.ToString ().Split ('.') [1].Substring (0, 6);
 			}
 		}
 
