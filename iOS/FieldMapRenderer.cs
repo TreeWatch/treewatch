@@ -39,8 +39,8 @@ namespace TreeWatch.iOS
 		{
 			if (mapView != null)
 			{
-				var coords = new CLLocationCoordinate2D (e.Field.CalculatePinPosition.Latitude, e.Field.CalculatePinPosition.Longitude);
-				var span = new MKCoordinateSpan (e.Field.CalculateWidthHeight.Width * 1.1, e.Field.CalculateWidthHeight.Height * 1.1);
+				var coords = new CLLocationCoordinate2D (GeoHelper.CalculateCenter(e.Field.BoundingCoordinates).Latitude, GeoHelper.CalculateCenter(e.Field.BoundingCoordinates).Longitude);
+				var span = new MKCoordinateSpan (GeoHelper.CalculateWidthHeight(e.Field.BoundingCoordinates).Width * 1.1, GeoHelper.CalculateWidthHeight(e.Field.BoundingCoordinates).Height * 1.1);
 				mapView.Region = new MKCoordinateRegion (coords, span);
 				//mapView.SetCenterCoordinate (coords, true);
 			}
