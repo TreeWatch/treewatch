@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+	xmlns     ="http://xamarin.com/schemas/2014/forms"
+	xmlns:x    ="http://schemas.microsoft.com/winfx/2009/xaml"
+	x:Class    ="TreeWatch.FieldInformationContentPage"
+	xmlns:local="clr-namespace:TreeWatch;assembly=TreeWatch"
+	Title      ="Field Information"
+	StyleId    ="FieldInformation"
+	Padding    ="0, 0, 0, 0">
+	<ContentPage.Content>
+		<TableView Intent="Menu">
+			<TableRoot>
+				<TableSection
+					>
+					<ViewCell>
+						<StackLayout
+							Orientation="Horizontal"
+							Padding    ="20,0,20,0">
+							<Label
+								Text           ="Name"
+								VerticalOptions="Center" />
+							<Label
+								HorizontalOptions="EndAndExpand"
+								Text             ="{Binding FieldName}"
+								TextColor        ="#8E8F93"
+								VerticalOptions  ="Center" />
+						</StackLayout>
+					</ViewCell>
+					<ViewCell>
+						<StackLayout
+							Orientation="Horizontal"
+							Padding    ="20,0,20,0">
+							<Label
+								Text           ="Size"
+								VerticalOptions="Center" />
+							<Label
+								HorizontalOptions="EndAndExpand"
+								Text             ="{Binding FieldSize}"
+								TextColor        ="#8E8F93"
+								VerticalOptions  ="Center" />
+						</StackLayout>
+					</ViewCell>
+				</TableSection>
+				<TableSection
+					Title="Blockinformation">
+					<ViewCell>
+						<StackLayout
+							Orientation="Horizontal"
+							Padding    ="20,0,20,0">
+							<Label
+								Text           ="Blocks"
+								VerticalOptions="Center" />
+							<Label
+								HorizontalOptions="EndAndExpand"
+								Text             ="{Binding FieldBlockCount}"
+								TextColor        ="#8E8F93"
+								VerticalOptions  ="Center" />
+						</StackLayout>
+					</ViewCell>
+				</TableSection>
+			</TableRoot>
+		</TableView>
+	</ContentPage.Content>
+</ContentPage>
