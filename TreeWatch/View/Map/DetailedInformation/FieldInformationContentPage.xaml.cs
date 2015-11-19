@@ -4,7 +4,7 @@ namespace TreeWatch
 {
 	public partial class FieldInformationContentPage : ContentPage
 	{
-		public FieldInformationContentPage (FieldInformationViewModel fieldInformationViewModel)
+		public FieldInformationContentPage (InformationViewModel fieldInformationViewModel)
 		{
 			// initialize component
 			InitializeComponent ();

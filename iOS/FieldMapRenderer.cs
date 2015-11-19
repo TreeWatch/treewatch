@@ -82,7 +82,7 @@ namespace TreeWatch.iOS
 
 							var fieldMapAnnotation = (FieldMapAnnotation) anno;
 
-							mapNavigationPage.PushAsync (new FieldInformationContentPage (new FieldInformationViewModel (fieldMapAnnotation.Field)));
+							mapNavigationPage.PushAsync (new FieldInformationContentPage (new InformationViewModel (fieldMapAnnotation.Field)));
 						};
 
 						aview.RightCalloutAccessoryView = detailButton;
