@@ -1,17 +1,16 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage
-	xmlns     ="http://xamarin.com/schemas/2014/forms"
-	xmlns:x    ="http://schemas.microsoft.com/winfx/2009/xaml"
-	x:Class    ="TreeWatch.FieldInformationContentPage"
-	xmlns:local="clr-namespace:TreeWatch;assembly=TreeWatch"
-	Title      ="Field Information"
-	StyleId    ="FieldInformation"
-	Padding    ="0, 0, 0, 0">
+	xmlns ="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	x:Class="TreeWatch.BlockInformationContentPage"
+	Title  ="Block Information"
+	StyleId="BlockInformation"
+	Padding="0, 0, 0, 0">
 	<ContentPage.Content>
 		<TableView
 			Intent="Menu">
 			<TableRoot>
-				<TableSection>
+<!--				<TableSection>
 					<ViewCell>
 						<StackLayout
 							Orientation="Horizontal"
@@ -61,7 +60,7 @@
 								VerticalOptions="Center" />
 						</StackLayout>
 					</ViewCell>
-				</TableSection>
+				</TableSection>-->
 			</TableRoot>
 		</TableView>
 	</ContentPage.Content>
