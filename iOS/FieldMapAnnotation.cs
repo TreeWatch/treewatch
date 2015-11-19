@@ -22,7 +22,7 @@ namespace TreeWatch.iOS
 
 		public FieldMapAnnotation (Field field)
 		{
-			this.coordinate = new CLLocationCoordinate2D (field.CalculatePinPosition.Latitude, field.CalculatePinPosition.Longitude);
+			this.coordinate = new CLLocationCoordinate2D (GeoHelper.CalculateCenter(field.BoundingCoordinates).Latitude, GeoHelper.CalculateCenter(field.BoundingCoordinates).Longitude);
 			this.Field = field;
 			this.title = field.Name;
 			this.subtitle = string.Format ("Number of rows: {0}", field.Blocks.Count);
