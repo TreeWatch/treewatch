@@ -137,6 +137,7 @@
   <Import Project="..\packages\Xamarin.Forms.1.5.1.6471\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.1.5.1.6471\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
   <ItemGroup>
     <Folder Include="Resources\Images.xcassets\" />
+    <Folder Include="Resources\CellIcons\" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Contents.json" />
@@ -175,5 +176,6 @@
     <BundleResource Include="Resources\NoteTabBarIcon.png" />
     <BundleResource Include="Resources\SettingsTabBarIcon.png" />
     <BundleResource Include="Resources\ToDoTabBarIcon.png" />
+    <BundleResource Include="Resources\CellIcons\disclosure_indicator.png" />
   </ItemGroup>
 </Project>

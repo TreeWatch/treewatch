@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using Xamarin.Forms;
 
 namespace TreeWatch
 {
@@ -31,6 +32,15 @@ namespace TreeWatch
 			get {
 				return field.Blocks.Count.ToString ();
 			}
+		}
+
+		public void NavigateToBlocks ()
+		{
+			var customTabbedPage = (CustomTabbedPage)Application.Current.MainPage;
+			var masterDetailPage = (MasterDetailPage)customTabbedPage.CurrentPage;
+			var mapNavigationPage = (MapNavigationPage)masterDetailPage.Detail;
+
+			mapNavigationPage.PushAsync (new BlockInformationContentPage (this));
 		}
 
 		protected virtual void OnPropertyChanged ([CallerMemberName] string propertyName = null)
