@@ -139,6 +139,8 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\HamburgerMenuIcon.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\HamburgerMenuIcon.png" />
     <AndroidResource Include="Resources\layout\field_info_window.axml" />
+    <AndroidResource Include="Resources\drawable\marker.png" />
+    <AndroidResource Include="Resources\drawable\location_marker.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.1.4.4.6392\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.1.4.4.6392\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />

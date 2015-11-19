@@ -3453,43 +3453,49 @@ namespace TreeWatch.Droid
 			public const int icon = 2130837617;
 			
 			// aapt resource value: 0x7f020072
-			public const int mr_ic_cast_dark = 2130837618;
+			public const int location_marker = 2130837618;
 			
 			// aapt resource value: 0x7f020073
-			public const int mr_ic_cast_light = 2130837619;
+			public const int marker = 2130837619;
 			
 			// aapt resource value: 0x7f020074
-			public const int mr_ic_media_route_connecting_mono_dark = 2130837620;
+			public const int mr_ic_cast_dark = 2130837620;
 			
 			// aapt resource value: 0x7f020075
-			public const int mr_ic_media_route_connecting_mono_light = 2130837621;
+			public const int mr_ic_cast_light = 2130837621;
 			
 			// aapt resource value: 0x7f020076
-			public const int mr_ic_media_route_mono_dark = 2130837622;
+			public const int mr_ic_media_route_connecting_mono_dark = 2130837622;
 			
 			// aapt resource value: 0x7f020077
-			public const int mr_ic_media_route_mono_light = 2130837623;
+			public const int mr_ic_media_route_connecting_mono_light = 2130837623;
 			
 			// aapt resource value: 0x7f020078
-			public const int mr_ic_pause_dark = 2130837624;
+			public const int mr_ic_media_route_mono_dark = 2130837624;
 			
 			// aapt resource value: 0x7f020079
-			public const int mr_ic_pause_light = 2130837625;
+			public const int mr_ic_media_route_mono_light = 2130837625;
 			
 			// aapt resource value: 0x7f02007a
-			public const int mr_ic_play_dark = 2130837626;
+			public const int mr_ic_pause_dark = 2130837626;
 			
 			// aapt resource value: 0x7f02007b
-			public const int mr_ic_play_light = 2130837627;
+			public const int mr_ic_pause_light = 2130837627;
 			
 			// aapt resource value: 0x7f02007c
-			public const int mr_ic_settings_dark = 2130837628;
+			public const int mr_ic_play_dark = 2130837628;
 			
 			// aapt resource value: 0x7f02007d
-			public const int mr_ic_settings_light = 2130837629;
+			public const int mr_ic_play_light = 2130837629;
 			
 			// aapt resource value: 0x7f02007e
-			public const int notification_template_icon_bg = 2130837630;
+			public const int mr_ic_settings_dark = 2130837630;
+			
+			// aapt resource value: 0x7f02007f
+			public const int mr_ic_settings_light = 2130837631;
+			
+			// aapt resource value: 0x7f020080
+			public const int notification_template_icon_bg = 2130837632;
 			
 			static Drawable()
 			{

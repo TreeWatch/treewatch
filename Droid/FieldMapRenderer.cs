@@ -10,6 +10,7 @@ using Xamarin.Forms.Maps.Android;
 using Xamarin.Forms.Platform.Android;
 using Java.Security.Spec;
 using Javax.Xml.Namespace;
+using System.Security.Cryptography;
 
 [assembly: ExportRenderer (typeof(FieldMap), typeof(FieldMapRenderer))]
 namespace TreeWatch.Droid
@@ -67,6 +68,7 @@ namespace TreeWatch.Droid
 				marker.SetTitle (Field.Name);
 				marker.SetSnippet(string.Format("Number of rows: {0}", Field.Blocks.Count));
 				marker.SetPosition (new LatLng(Field.CalculatePinPosition.Latitude, Field.CalculatePinPosition.Longitude));
+				marker.SetIcon (BitmapDescriptorFactory.FromResource(Resource.Drawable.location_marker));
 				Map.AddMarker (marker);
 			}
 		}
