@@ -21,27 +21,27 @@ namespace TreeWatch
 			}
 		}
 
-		public string FieldWidth {
+		public string FieldSize {
 			get {
-				return GeoHelper.CalculateWidthHeight(field.BoundingCoordinates).Width.ToString ();
-			}
-		}
-
-		public string FieldHeight {
-			get {
-				return GeoHelper.CalculateWidthHeight(field.BoundingCoordinates).Height.ToString ();
+				return "0 qm";//field.CalculateSize.ToString ();
 			}
 		}
 
 		public string FieldLatitude {
 			get {
-				return GeoHelper.CalculateCenter(field.BoundingCoordinates).Latitude.ToString ();
+				return field.CalculatePinPosition.Latitude.ToString ().Split ('.') [0] + "." + field.CalculatePinPosition.Latitude.ToString ().Split ('.') [1].Substring (0, 6);
 			}
 		}
 
 		public string FieldLongitude {
 			get {
-				return GeoHelper.CalculateCenter(field.BoundingCoordinates).Longitude.ToString ();
+				return field.CalculatePinPosition.Longitude.ToString ().Split ('.') [0] + "." + field.CalculatePinPosition.Longitude.ToString ().Split ('.') [1].Substring (0, 6);
+			}
+		}
+
+		public string FieldSeaLevel {
+			get {
+				return "0 m above sea level";//field.SeaLevel ();
 			}
 		}
 
