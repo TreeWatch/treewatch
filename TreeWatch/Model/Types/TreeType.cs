@@ -1,7 +1,4 @@
-﻿
-using SQLiteNetExtensions.Attributes;
-using Xamarin.Forms;
-using System;
+﻿using Xamarin.Forms;
 using SQLite.Net.Attributes;
 
 
@@ -14,7 +11,7 @@ namespace TreeWatch
 		public string TreeColor { get; set; }
 
 		[Ignore]
-		public Color ColorProp{ get { return Color.FromHex (TreeColor); } set{ TreeColor = ColorHelper.ToHex (ColorProp); } }
+		public Color ColorProp{ get { return Color.FromHex (TreeColor); } set{ TreeColor = ColorHelper.ToHex (value); } }
 
 		public TreeType()
 		{

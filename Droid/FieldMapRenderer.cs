@@ -5,7 +5,6 @@ using Android.Gms.Maps.Model;
 using TreeWatch;
 using TreeWatch.Droid;
 using Xamarin.Forms;
-using Xamarin.Forms.Maps;
 using Xamarin.Forms.Maps.Android;
 using Xamarin.Forms.Platform.Android;
 
@@ -42,14 +41,15 @@ namespace TreeWatch.Droid
 				if (Field.Blocks.Count != 0) {
 					foreach (var block in Field.Blocks) {
 						if (block.BoundingCoordinates.Count != 0 && block.BoundingCoordinates.Count >= 3) {
-							Map.AddPolygon (GetPolygon (FieldMapRenderer.ConvertCordinates (block.BoundingCoordinates), 
+							Map.AddPolygon (GetPolygon (FieldMapRenderer.ConvertCoordinates (block.BoundingCoordinates), 
 								(block.TreeType.ColorProp).ToAndroid ()));
 						}
+
 					}
 				}
 
 				if (Field.BoundingCoordinates.Count != 0 && Field.BoundingCoordinates.Count >= 3) {
-					Map.AddPolygon (GetPolygon (FieldMapRenderer.ConvertCordinates (Field.BoundingCoordinates),
+					Map.AddPolygon (GetPolygon (FieldMapRenderer.ConvertCoordinates (Field.BoundingCoordinates),
 						myMap.OverLayColor.ToAndroid (), myMap.BoundaryColor.ToAndroid()));
 				}
 			}
@@ -74,13 +74,13 @@ namespace TreeWatch.Droid
 			return polygonOptions;
 		}
 
-		static Java.Util.ArrayList ConvertCordinates (List<Position> cordinates)
+		static Java.Util.ArrayList ConvertCoordinates (List<Position> coordinates)
 		{
 			var cords = new Java.Util.ArrayList ();
-			foreach (var pos in cordinates) {
+			foreach (var pos in coordinates) {
 				cords.Add (new LatLng (pos.Latitude, pos.Longitude));
 			}
-			cords.Add (new LatLng (cordinates [0].Latitude, cordinates [0].Longitude));
+			cords.Add (new LatLng (coordinates [0].Latitude, coordinates [0].Longitude));
 			return cords;
 		}
 		public void OnMapReady (GoogleMap googleMap)
