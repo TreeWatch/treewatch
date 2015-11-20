@@ -105,12 +105,12 @@ namespace TreeWatch.iOS
 					return polygonRenderer;
 				};
 
+
 				foreach (var field in myMap.Fields)
 				{
-
-					foreach (var row in field.Rows)
+					if (field.Blocks.Count != 0)
 					{
-						if (row.BoundingRectangle.Count != 0)
+						foreach (var block in field.Blocks)
 						{
 							if (block.BoundingCoordinates.Count != 0 && block.BoundingCoordinates.Count >= 3)
 							{

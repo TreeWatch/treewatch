@@ -40,7 +40,7 @@ namespace TreeWatch
 			get { return selectedField; }
 		}
 
-		private void FieldTapped (object sender, FieldTappedEventArgs e)
+		void FieldTapped (object sender, FieldTappedEventArgs e)
 		{
 			Field tappedField = CheckFieldClicked (e.Position);
 			if (tappedField != null)
@@ -55,6 +55,7 @@ namespace TreeWatch
 		}
 
 		public ICommand SelectFieldCommand { private set; get; }
+
 
 		public string SearchText {
 			get { return this.searchText; }
@@ -73,7 +74,8 @@ namespace TreeWatch
 			get {
 				var filteredFields = new ObservableCollection<Field> ();
 
-				if (Fields != null) {
+				if (Fields != null)
+				{
 					List<Field> entities = Fields.Where (x => x.Name.ToLower ().Contains (searchText.ToLower ())).ToList (); 
 					if (entities != null && entities.Any ()) {
 						filteredFields = new ObservableCollection<Field> (entities);

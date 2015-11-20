@@ -97,6 +97,7 @@
     <Folder Include="ViewModels\Note\" />
     <Folder Include="Utils\" />
     <Folder Include="Model\Types\" />
+    <Folder Include="View\Map\DetailedInformation\" />
     <Folder Include="Database\" />
     <Folder Include="Model\ToDo\" />
     <Folder Include="View\Map\DetailedInformation\" />

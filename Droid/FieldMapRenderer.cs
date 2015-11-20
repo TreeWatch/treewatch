@@ -82,6 +82,7 @@ namespace TreeWatch.Droid
 			polygonOptions.InvokeFillColor (fillColor);
 			polygonOptions.InvokeStrokeWidth (0);
 			polygonOptions.AddAll (coordinates);
+			
 			return polygonOptions;
 		}
 
@@ -92,6 +93,7 @@ namespace TreeWatch.Droid
 			polygonOptions.InvokeStrokeWidth (4);
 			polygonOptions.InvokeStrokeColor (boundaryColor);
 			polygonOptions.AddAll (cordinates);
+
 			return polygonOptions;
 		}
 
