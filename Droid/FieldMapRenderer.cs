@@ -5,6 +5,7 @@ using Android.Gms.Maps.Model;
 using TreeWatch;
 using TreeWatch.Droid;
 using Xamarin.Forms;
+using Xamarin.Forms.Maps;
 using Xamarin.Forms.Maps.Android;
 using Xamarin.Forms.Platform.Android;
 
@@ -36,44 +37,50 @@ namespace TreeWatch.Droid
 
 		public void AddFields ()
 		{
-			var polygon = new PolygonOptions ();
-			polygon.InvokeFillColor (myMap.OverLayColor.ToAndroid ());
-			polygon.InvokeStrokeWidth (0);
 
 			foreach (var Field in myMap.Fields) {
 				if (Field.Blocks.Count != 0) {
 					foreach (var block in Field.Blocks) {
 						if (block.BoundingCoordinates.Count != 0 && block.BoundingCoordinates.Count >= 3) {
-							Map.AddPolygon (GetPolygon (FieldMapRenderer.ConvertCoordinates (block.BoundingCoordinates), 
-								ColorHelper.GetTreeTypeColor (block.TreeType).ToAndroid ()));
+							Map.AddPolygon (GetPolygon (FieldMapRenderer.ConvertCordinates (block.BoundingCoordinates), 
+								(block.TreeType.ColorProp).ToAndroid ()));
 						}
-
 					}
 				}
 
 				if (Field.BoundingCoordinates.Count != 0 && Field.BoundingCoordinates.Count >= 3) {
-					Map.AddPolygon (GetPolygon (FieldMapRenderer.ConvertCoordinates (Field.BoundingCoordinates),
-						myMap.OverLayColor.ToAndroid ()));
+					Map.AddPolygon (GetPolygon (FieldMapRenderer.ConvertCordinates (Field.BoundingCoordinates),
+						myMap.OverLayColor.ToAndroid (), myMap.BoundaryColor.ToAndroid()));
 				}
 			}
 		}
 
-		public PolygonOptions GetPolygon(Java.Util.ArrayList cordinates, Android.Graphics.Color color)
+		public PolygonOptions GetPolygon(Java.Util.ArrayList cordinates, Android.Graphics.Color fillColor)
 		{
 			var polygonOptions = new PolygonOptions ();
-			polygonOptions.InvokeFillColor (color);
+			polygonOptions.InvokeFillColor (fillColor);
 			polygonOptions.InvokeStrokeWidth (0);
 			polygonOptions.AddAll (cordinates);
 			return polygonOptions;
 		}
 
-		static Java.Util.ArrayList ConvertCoordinates (List<Position> coordinates)
+		public PolygonOptions GetPolygon(Java.Util.ArrayList cordinates, Android.Graphics.Color fillColor, Android.Graphics.Color boundaryColor)
+		{
+			var polygonOptions = new PolygonOptions ();
+			polygonOptions.InvokeFillColor (fillColor);
+			polygonOptions.InvokeStrokeWidth (4);
+			polygonOptions.InvokeStrokeColor (boundaryColor);
+			polygonOptions.AddAll (cordinates);
+			return polygonOptions;
+		}
+
+		static Java.Util.ArrayList ConvertCordinates (List<Position> cordinates)
 		{
 			var cords = new Java.Util.ArrayList ();
-			foreach (var pos in coordinates) {
+			foreach (var pos in cordinates) {
 				cords.Add (new LatLng (pos.Latitude, pos.Longitude));
 			}
-			cords.Add (new LatLng (coordinates [0].Latitude, coordinates [0].Longitude));
+			cords.Add (new LatLng (cordinates [0].Latitude, cordinates [0].Longitude));
 			return cords;
 		}
 		public void OnMapReady (GoogleMap googleMap)
