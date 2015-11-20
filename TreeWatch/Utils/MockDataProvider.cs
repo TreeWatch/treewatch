@@ -20,13 +20,40 @@ namespace TreeWatch
 			double startlonA = 6.055982;
 			double startlonB = 6.053727;
 			for (int i = 0; i < 21; i++) {
-				blocks.Add (new Block (new  List<Position> { 
-					new Position (startlatA, startlonA),
-					new Position (startlatB, startlonB),
-					new Position (startlatB + 0.0001, startlonB + 0.00001), 
-					new Position (startlatA + 0.0001, startlonA + 0.00001)
-				}, 
-					TreeType.APPLE));
+				if (i == 5) {
+					blocks.Add (new Block (new  List<Position> { 
+						new Position (startlatA + 0.00005, startlonA - 0.00110),
+						new Position (startlatB, startlonB),
+						new Position (startlatB + 0.0001, startlonB + 0.00001), 
+						new Position (startlatA + 0.00015, startlonA - 0.00109)
+					}, 
+						TreeType.PEAR));
+					blocks.Add (new Block (new  List<Position> { 
+						new Position (startlatA, startlonA),
+						new Position (startlatB -0.00005, startlonB + 0.00130),
+						new Position (startlatB +0.00005, startlonB + 0.00131), 
+						new Position (startlatA + 0.0001, startlonA + 0.00001)
+					}, 
+						TreeType.APPLE));
+				} else {
+					if (i < 5) {
+						blocks.Add (new Block (new  List<Position> { 
+							new Position (startlatA, startlonA),
+							new Position (startlatB, startlonB),
+							new Position (startlatB + 0.0001, startlonB + 0.00001), 
+							new Position (startlatA + 0.0001, startlonA + 0.00001)
+						}, 
+							TreeType.PEAR));
+					} else {
+						blocks.Add (new Block (new  List<Position> { 
+							new Position (startlatA, startlonA),
+							new Position (startlatB, startlonB),
+							new Position (startlatB + 0.0001, startlonB + 0.00001), 
+							new Position (startlatA + 0.0001, startlonA + 0.00001)
+						}, 
+							TreeType.APPLE));
+					}
+				}
 				startlatA += 0.000111;
 				startlatB += 0.000111;
 				startlonA += 0.000006;
