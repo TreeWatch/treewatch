@@ -43,14 +43,14 @@ namespace TreeWatch.Droid
 				if (Field.Blocks.Count != 0) {
 					foreach (var block in Field.Blocks) {
 						if (block.BoundingCoordinates.Count != 0 && block.BoundingCoordinates.Count >= 3) {
-							Map.AddPolygon (GetPolygon (FieldMapRenderer.ConvertCordinates (block.BoundingCoordinates), 
+							Map.AddPolygon (GetPolygon (FieldMapRenderer.ConvertCoordinates (block.BoundingCoordinates), 
 								(block.TreeType.ColorProp).ToAndroid ()));
 						}
 					}
 				}
 
 				if (Field.BoundingCoordinates.Count != 0 && Field.BoundingCoordinates.Count >= 3) {
-					Map.AddPolygon (GetPolygon (FieldMapRenderer.ConvertCordinates (Field.BoundingCoordinates),
+					Map.AddPolygon (GetPolygon (FieldMapRenderer.ConvertCoordinates (Field.BoundingCoordinates),
 						myMap.OverLayColor.ToAndroid (), myMap.BoundaryColor.ToAndroid()));
 				}
 			}
