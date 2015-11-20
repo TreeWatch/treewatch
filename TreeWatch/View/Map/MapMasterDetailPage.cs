@@ -25,7 +25,6 @@ namespace TreeWatch
 			if (Detail.Icon != null) {
 				Icon = Detail.Icon;
 			}
-
 		}
 	}
 }

@@ -68,7 +68,7 @@ namespace TreeWatch.Droid
 			return polygonOptions;
 		}
 
-		static Java.Util.ArrayList ConvertCordinates (List<Position> cordinates)
+		static Java.Util.ArrayList ConvertCoordinates (List<Position> cordinates)
 		{
 			var cords = new Java.Util.ArrayList ();
 			foreach (var pos in cordinates) {

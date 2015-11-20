@@ -12,12 +12,6 @@
 			x:TypeArguments="FileImageSource"
 			iOS            ="NoteTabBarIcon.png" />
 	</ContentPage.Icon>
-	<ContentPage.Resources>
-		<ResourceDictionary>
-			<local:NoteViewModel
-				x:Key="noteViewModel" />
-		</ResourceDictionary>
-	</ContentPage.Resources>
 	<ContentPage.Content>
 		<ScrollView>
 			<StackLayout
@@ -27,9 +21,23 @@
 				<Entry
 					Placeholder="Title"
 					Keyboard   ="Default" />
-				<Button
-					Text           ="FOTO"
-					VerticalOptions="StartAndExpand" />
+				<Image 
+					Source="{Binding ImageSource}" 
+					VerticalOptions="CenterAndExpand" />
+				<StackLayout
+					HorizontalOptions="CenterAndExpand"
+					VerticalOptions  ="End"
+					Orientation      ="Horizontal"
+					Spacing          ="20">
+					<Button
+						Text           ="Take picture"
+						VerticalOptions="StartAndExpand" 
+						Command="{Binding TakePictureCommand}"/>
+					<Button
+						Text           ="Select from librabry"
+						VerticalOptions="StartAndExpand" 
+						Command="{Binding SelectPictureCommand}"/>
+				</StackLayout>
 				<Editor
 					Text           ="Description"
 					VerticalOptions="FillAndExpand" />
