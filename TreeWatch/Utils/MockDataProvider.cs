@@ -14,12 +14,37 @@ namespace TreeWatch
 
 			var query = new DBQuery<Field> (connection);
 
+			var blocks = new List<Block> ();
+			double startlatA = 51.392712; 
+			double startlatB = 51.392799;
+			double startlonA = 6.055982;
+			double startlonB = 6.053727;
+			for (int i = 0; i < 21; i++) {
+				blocks.Add (new Block (new  List<Position> { 
+					new Position (startlatA, startlonA),
+					new Position (startlatB, startlonB),
+					new Position (startlatB + 0.0001, startlonB + 0.00001), 
+					new Position (startlatA + 0.0001, startlonA + 0.00001)
+				}, 
+					TreeType.APPLE));
+				startlatA += 0.000111;
+				startlatB += 0.000111;
+				startlonA += 0.000006;
+				startlonB += 0.000018;
+			}
+			blocks.Add (new Block (new  List<Position> { 
+				new Position (startlatA, startlonA),
+				new Position (startlatB, startlonB),
+				new Position (startlatA + 0.0003, startlonA + 0.00001)
+			}, 
+				TreeType.APPLE));
+
 			query.InsertWithChildren (new Field ("Ajax", new List<Position> {
 				new Position (51.395390, 6.056181),
 				new Position (51.392672, 6.056074),
 				new Position (51.392766, 6.053628),
 				new Position (51.395189, 6.054014)
-			}, new List<Block> ()));
+			}, blocks));
 
 			query.InsertWithChildren (new Field ("PSV", new List<Position> {
 				new Position (51.487109, 4.464810),
@@ -37,18 +62,37 @@ namespace TreeWatch
 				new Position (51.369918, 6.045259),
 				new Position (51.371131, 6.042325)
 			}, new List<Block> ()));
+				
+			blocks = new List<Block> ();
+			startlatA = 51.387758; 
+			startlatB = 51.386690;
+			startlonA = 6.040104;
+			startlonB = 6.036195;
+			for (int i = 0; i < 15; i++) {
+				blocks.Add (new Block (new  List<Position> { 
+					new Position (startlatA, startlonA),
+					new Position (startlatB, startlonB),
+					new Position (startlatB + 0.0001, startlonB + 0.0001), 
+					new Position (startlatA + 0.0001, startlonA - 0.000075)
+				}, 
+					TreeType.APPLE));
+				startlatA += 0.000111;
+				startlatB += 0.000111;
+				startlonA -= 0.000075;
+				startlonB += 0.000111;
+			}
 
 			query.InsertWithChildren (new Field ("VVV", new List<Position> {
 				new Position (51.387718, 6.040184),
 				new Position (51.386620, 6.036065),
 				new Position (51.389485, 6.038983)
-			}, new List<Block> ()));
+			}, blocks));
 
-			var blocks = new List<Block> ();
-			double startlatA = 51.390508; 
-			double startlatB = 51.389674;
-			double startlonA = 6.050828;
-			double startlonB = 6.047850;
+			blocks = new List<Block> ();
+			startlatA = 51.390508; 
+			startlatB = 51.389674;
+			startlonA = 6.050828;
+			startlonB = 6.047850;
 			for (int i = 0; i < 9; i++) {
 				blocks.Add (new Block (new  List<Position> { 
 					new Position (startlatA, startlonA),
