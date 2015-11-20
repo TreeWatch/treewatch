@@ -14,7 +14,7 @@ namespace TreeWatch
 			case TreeType.CHERRY:
 				return Color.Red;
 			case TreeType.PEAR:
-				return Color.Maroon;
+				return Color.Yellow;
 			case TreeType.PLUM:
 				return Color.Purple;
 			case TreeType.NOTDEFINED:
