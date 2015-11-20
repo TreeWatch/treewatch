@@ -138,7 +138,6 @@ namespace TreeWatch
 			{ 
 				DefaultCamera = CameraDevice.Rear,
 				SaveMediaOnCapture = true,
-				Directory = "TreeWatch" ,
 				Name = string.Format("TreeWatch_{0}", DateTime.Now.ToString("yyMMddhhmmss")),
 				MaxPixelDimension = 1024,
 				PercentQuality = 85
