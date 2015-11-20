@@ -127,9 +127,6 @@
     <Compile Include="FieldMapDelegate.cs" />
     <Compile Include="FieldMapAnnotationView.cs" />
     <Compile Include="SQLite_iOS.cs" />
-    <Compile Include="FieldMapAnnotation.cs" />
-    <Compile Include="FieldMapDelegate.cs" />
-    <Compile Include="FieldMapAnnotationView.cs" />
   </ItemGroup>
   <ItemGroup>
     <ITunesArtwork Include="iTunesArtwork" />
@@ -201,5 +198,6 @@
     <BundleResource Include="Resources\Icons\ToDoTabBarIcon.png" />
     <BundleResource Include="Resources\Icons\ToDoTabBarIcon%402x.png" />
     <BundleResource Include="Resources\Icons\ToDoTabBarIcon%403x.png" />
+    <BundleResource Include="Resources\CellIcons\disclosure_indicator.png" />
   </ItemGroup>
 </Project>

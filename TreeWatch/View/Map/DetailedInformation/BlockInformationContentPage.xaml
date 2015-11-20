@@ -28,7 +28,7 @@
 							<Label
 								HorizontalOptions="EndAndExpand"
 								Text             ="{Binding TreeType.Name}"
-								TextColor        ="{Binding TreeType.TreeColor}"
+								TextColor        ="{Binding TreeType.ColorProp}"
 								VerticalOptions  ="Center" />
 						</StackLayout>
 					</ViewCell>

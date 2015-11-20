@@ -16,6 +16,11 @@ namespace TreeWatch
 
 			// set content of page
 			Content = CreateMapContentView ();
+
+			if (TargetPlatform.Android == Device.OS)
+			{
+				this.Title = "Map";
+			}
 		}
 
 		View CreateMapContentView ()

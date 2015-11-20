@@ -79,7 +79,7 @@ namespace TreeWatch.Droid
 		public PolygonOptions GetPolygon (Java.Util.ArrayList coordinates, Android.Graphics.Color color)
 		{
 			var polygonOptions = new PolygonOptions ();
-			polygonOptions.InvokeFillColor (fillColor);
+			polygonOptions.InvokeFillColor (color);
 			polygonOptions.InvokeStrokeWidth (0);
 			polygonOptions.AddAll (coordinates);
 			

@@ -100,7 +100,6 @@
     <Folder Include="View\Map\DetailedInformation\" />
     <Folder Include="Database\" />
     <Folder Include="Model\ToDo\" />
-    <Folder Include="View\Map\DetailedInformation\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">

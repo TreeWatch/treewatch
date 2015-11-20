@@ -116,7 +116,7 @@ namespace TreeWatch.iOS
 							{
 								var rowpoints = convertCordinates (block.BoundingCoordinates);
 								var rowpolygon = MKPolygon.FromCoordinates (rowpoints);
-								rowpolygon.Title = ((int)block.TreeType).ToString ();
+								rowpolygon.Title = block.TreeType.ID.ToString ();
 								polygons.Add (rowpolygon);
 							}
 						}
