@@ -9,7 +9,7 @@
 	<ContentPage.Icon>
 		<OnPlatform
 			x:TypeArguments="FileImageSource"
-			iOS            ="MapTabBarIcon.png" />
+			iOS            ="Icons/MapTabBarIcon.png" />
 	</ContentPage.Icon>
 	<ContentPage.Content>
 		<StackLayout

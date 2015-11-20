@@ -3488,8 +3488,11 @@ namespace TreeWatch.Droid
 			// aapt resource value: 0x7f02007d
 			public const int mr_ic_settings_light = 2130837629;
 			
+			// aapt resource value: 0x7f02007f
+			public const int notification_template_icon_bg = 2130837631;
+			
 			// aapt resource value: 0x7f02007e
-			public const int notification_template_icon_bg = 2130837630;
+			public const int splash = 2130837630;
 			
 			static Drawable()
 			{
@@ -5046,6 +5049,9 @@ namespace TreeWatch.Droid
 			
 			// aapt resource value: 0x7f080013
 			public const int Theme_MediaRouter_Light = 2131230739;
+			
+			// aapt resource value: 0x7f080144
+			public const int Theme_Splash = 2131231044;
 			
 			// aapt resource value: 0x7f0800fd
 			public const int ThemeOverlay_AppCompat = 2131230973;

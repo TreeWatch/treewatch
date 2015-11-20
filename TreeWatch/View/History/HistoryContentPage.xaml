@@ -8,7 +8,7 @@
 	<ContentPage.Icon>
 		<OnPlatform
 			x:TypeArguments="FileImageSource"
-			iOS            ="HistoryTabBarIcon.png" />
+			iOS            ="Icons/HistoryTabBarIcon.png" />
 	</ContentPage.Icon>
 	<ContentPage.Content>
 		<ScrollView>
