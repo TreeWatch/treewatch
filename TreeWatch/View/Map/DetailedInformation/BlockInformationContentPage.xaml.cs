@@ -11,7 +11,6 @@ namespace TreeWatch
 		{
 			// initialize component
 			InitializeComponent ();
-
 			// set view model
 			this.BindingContext = fieldInformationViewModel;
 		}
