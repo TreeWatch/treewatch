@@ -5,7 +5,6 @@ using Android.Gms.Maps.Model;
 using TreeWatch;
 using TreeWatch.Droid;
 using Xamarin.Forms;
-using Xamarin.Forms.Maps;
 using Xamarin.Forms.Maps.Android;
 using Xamarin.Forms.Platform.Android;
 
@@ -68,13 +67,13 @@ namespace TreeWatch.Droid
 			return polygonOptions;
 		}
 
-		static Java.Util.ArrayList ConvertCordinates (List<Position> cordinates)
+		static Java.Util.ArrayList ConvertCoordinates (List<Position> coordinates)
 		{
 			var cords = new Java.Util.ArrayList ();
-			foreach (var pos in cordinates) {
+			foreach (var pos in coordinates) {
 				cords.Add (new LatLng (pos.Latitude, pos.Longitude));
 			}
-			cords.Add (new LatLng (cordinates [0].Latitude, cordinates [0].Longitude));
+			cords.Add (new LatLng (coordinates [0].Latitude, coordinates [0].Longitude));
 			return cords;
 		}
 		public void OnMapReady (GoogleMap googleMap)

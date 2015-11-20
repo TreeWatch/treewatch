@@ -10,7 +10,7 @@
 	<ContentPage.Icon>
 		<OnPlatform
 			x:TypeArguments="FileImageSource"
-			iOS            ="NoteTabBarIcon.png" />
+			iOS            ="Icons/NoteTabBarIcon.png" />
 	</ContentPage.Icon>
 	<ContentPage.Resources>
 		<ResourceDictionary>

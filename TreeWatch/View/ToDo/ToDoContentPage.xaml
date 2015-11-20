@@ -8,7 +8,7 @@
 	<ContentPage.Icon>
 		<OnPlatform
 			x:TypeArguments="FileImageSource"
-			iOS            ="NoteTabBarIcon.png" />
+			iOS            ="Icons/ToDoTabBarIcon.png" />
 	</ContentPage.Icon>
 	<ContentPage.Content>
 		<ScrollView>
