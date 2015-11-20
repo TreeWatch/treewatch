@@ -4,7 +4,7 @@
 	xmlns:x        ="http://schemas.microsoft.com/winfx/2009/xaml"
 	x:Class        ="TreeWatch.FieldInformationContentPage"
 	xmlns:local    ="clr-namespace:TreeWatch;assembly=TreeWatch"
-	Title          ="Field Information"
+	Title          ="{Binding Field.Name}"
 	StyleId        ="FieldInformation"
 	Padding        ="0, 0, 0, 0">
 	<ContentPage.Content>
@@ -12,7 +12,7 @@
 			Intent="Menu">
 			<TableRoot>
 				<TableSection>
-					<ViewCell>
+<!--					<ViewCell>
 						<StackLayout
 							Orientation="Horizontal"
 							Padding    ="10">
@@ -26,7 +26,7 @@
 								TextColor        ="#8E8F93"
 								VerticalOptions  ="Center" />
 						</StackLayout>
-					</ViewCell>
+					</ViewCell>-->
 					<ViewCell>
 						<StackLayout
 							Orientation="Horizontal"
@@ -56,7 +56,7 @@
 								VerticalOptions="Center" />
 							<Label
 								HorizontalOptions="EndAndExpand"
-								Text             ="{Binding FieldBlockCount}"
+								Text             ="{Binding Field.Blocks.Count}"
 								TextColor        ="#8E8F93"
 								VerticalOptions  ="Center" />
 							<Image

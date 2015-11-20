@@ -21,7 +21,6 @@ namespace TreeWatch
 			// settings tab page
 			this.Children.Add (new SettingsContentPage ());
 
-			NavigationPage.SetBackButtonTitle (this, "Home");
 			NavigationPage.SetHasNavigationBar (this, false);
 		}
 	}
