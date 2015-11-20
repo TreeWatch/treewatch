@@ -3,65 +3,37 @@
 	xmlns ="http://xamarin.com/schemas/2014/forms"
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 	x:Class="TreeWatch.BlockInformationContentPage"
-	Title  ="Block Information"
+	Title  ="Blocks"
 	StyleId="BlockInformation"
 	Padding="0, 0, 0, 0">
 	<ContentPage.Content>
-		<TableView
-			Intent="Menu">
-			<TableRoot>
-<!--				<TableSection>
+		<ListView
+			x:Name      ="BlockView"
+			ItemsSource ="{Binding Field.Blocks}"
+			SelectedItem="{Binding Block}">
+			<ListView.Header>
+				<StackLayout>
+				</StackLayout>
+			</ListView.Header>
+			<ListView.ItemTemplate>
+				<DataTemplate>
 					<ViewCell>
 						<StackLayout
 							Orientation="Horizontal"
 							Padding    ="10">
 							<Label
-								Text           ="Name"
+								Text           ="{Binding ID}"
+								TextColor      ="#000000"
 								VerticalOptions="Center" />
 							<Label
 								HorizontalOptions="EndAndExpand"
-								Text             ="{Binding FieldName}"
-								TextColor        ="#8E8F93"
+								Text             ="{Binding TreeType.Name}"
+								TextColor        ="{Binding TreeType.TreeColor}"
 								VerticalOptions  ="Center" />
 						</StackLayout>
 					</ViewCell>
-					<ViewCell>
-						<StackLayout
-							Orientation="Horizontal"
-							Padding    ="10">
-							<Label
-								Text           ="Size"
-								VerticalOptions="Center" />
-							<Label
-								HorizontalOptions="EndAndExpand"
-								Text             ="{Binding FieldSize}"
-								TextColor        ="#8E8F93"
-								VerticalOptions  ="Center" />
-						</StackLayout>
-					</ViewCell>
-				</TableSection>
-				<TableSection
-					Title="Blockinformation">
-					<ViewCell
-						Tapped="{Binding NavigateToBlocks}">
-						<StackLayout
-							Orientation="Horizontal"
-							Padding    ="10">
-							<Label
-								Text           ="Blocks"
-								VerticalOptions="Center" />
-							<Label
-								HorizontalOptions="EndAndExpand"
-								Text             ="{Binding FieldBlockCount}"
-								TextColor        ="#8E8F93"
-								VerticalOptions  ="Center" />
-							<Image
-								Source         ="CellIcons/disclosure_indicator.png"
-								VerticalOptions="Center" />
-						</StackLayout>
-					</ViewCell>
-				</TableSection>-->
-			</TableRoot>
-		</TableView>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+		</ListView>
 	</ContentPage.Content>
 </ContentPage>

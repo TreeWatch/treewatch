@@ -9,29 +9,19 @@ namespace TreeWatch
 	{
 		public event PropertyChangedEventHandler PropertyChanged;
 
-		Field field;
-
 		public InformationViewModel (Field field)
 		{
-			this.field = field;
+			Field = field;
 		}
 
-
-		public string FieldName {
-			get {
-				return field.Name;
-			}
+		public Field Field {
+			get;
+			set;
 		}
 
 		public string FieldSize {
 			get {
 				return "0 qm";//GeoHelper.CalculateCenter(field.BoundingCoordinates)field.CalculateSize.ToString ();
-			}
-		}
-
-		public string FieldBlockCount {
-			get {
-				return field.Blocks.Count.ToString ();
 			}
 		}
 
