@@ -35,7 +35,7 @@ namespace TreeWatch
 			}
 		}
 
-		protected void NavigateToBlocks (object sender, EventArgs e)
+		public void NavigateToBlocks ()
 		{
 			var customTabbedPage = (CustomTabbedPage)Application.Current.MainPage;
 			var masterDetailPage = (MasterDetailPage)customTabbedPage.CurrentPage;
