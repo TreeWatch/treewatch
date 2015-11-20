@@ -8,7 +8,7 @@ namespace TreeWatch
 
 	public class FieldMap: Map
 	{
-		Color overlayColor;
+		readonly Color overlayColor;
 
 		public  Color OverLayColor {
 			get{ return overlayColor; }

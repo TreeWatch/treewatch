@@ -37,24 +37,19 @@
     <Compile Include="View\History\HistoryContentPage.xaml.cs">
       <DependentUpon>HistoryContentPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\History\HistoryNavigationPage.cs" />
     <Compile Include="View\Map\MapContentPage.xaml.cs">
       <DependentUpon>MapContentPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Map\MapMasterDetailPage.cs" />
-    <Compile Include="View\Map\MapNavigationPage.cs" />
     <Compile Include="View\Note\NoteContentPage.xaml.cs">
       <DependentUpon>NoteContentPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Note\NoteNavigationPage.cs" />
     <Compile Include="View\Settings\SettingsContentPage.xaml.cs">
       <DependentUpon>SettingsContentPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Settings\SettingsNavigationPage.cs" />
     <Compile Include="View\ToDo\ToDoContentPage.xaml.cs">
       <DependentUpon>ToDoContentPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ToDo\ToDoNavigationPage.cs" />
     <Compile Include="ViewModels\Map\MapViewModel.cs" />
     <Compile Include="View\Map\FieldMap.cs" />
     <Compile Include="ViewModels\Note\NoteViewModel.cs" />
@@ -85,6 +80,7 @@
       <DependentUpon>BlockInformationContentPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\Map\InformationViewModel.cs" />
+    <Compile Include="View\Map\MapNavigationPage.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.1.5.1.6471\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.1.5.1.6471\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />

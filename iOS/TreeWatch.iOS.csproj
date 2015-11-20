@@ -164,11 +164,6 @@
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\AppIcon86%402x.png" />
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\AppIcon98%402x.png" />
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\AppIcon44%402x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\HamburgerMenuIcon.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\HamburgerMenuIcon.imageset\HamburgerMenuIcon%401x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\HamburgerMenuIcon.imageset\HamburgerMenuIcon%402x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\HamburgerMenuIcon.imageset\HamburgerMenuIcon%403x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\HamburgerMenuIcon.imageset\HamburgerMenuIcon.pdf" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\HistoryTabBarIcon.png" />
@@ -177,5 +172,8 @@
     <BundleResource Include="Resources\SettingsTabBarIcon.png" />
     <BundleResource Include="Resources\ToDoTabBarIcon.png" />
     <BundleResource Include="Resources\CellIcons\disclosure_indicator.png" />
+    <BundleResource Include="Resources\HamburgerMenuIcon.png" />
+    <BundleResource Include="Resources\HamburgerMenuIcon%402x.png" />
+    <BundleResource Include="Resources\HamburgerMenuIcon%403x.png" />
   </ItemGroup>
 </Project>

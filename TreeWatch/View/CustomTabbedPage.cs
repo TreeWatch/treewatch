@@ -10,16 +10,19 @@ namespace TreeWatch
 			this.Children.Add (new MapMasterDetailPage ());
 
 			// note tab page
-			this.Children.Add (new NoteNavigationPage (new NoteContentPage ()));
+			this.Children.Add (new NoteContentPage ());
 
 			// todo tab page
-			this.Children.Add (new ToDoNavigationPage (new ToDoContentPage ()));
+			this.Children.Add (new ToDoContentPage ());
 
 			// history tab page
-			this.Children.Add (new HistoryNavigationPage (new HistoryContentPage ()));
+			this.Children.Add (new HistoryContentPage ());
 
 			// settings tab page
-			this.Children.Add (new SettingsNavigationPage (new SettingsContentPage ()));
+			this.Children.Add (new SettingsContentPage ());
+
+			NavigationPage.SetBackButtonTitle (this, "Home");
+			NavigationPage.SetHasNavigationBar (this, false);
 		}
 	}
 }
