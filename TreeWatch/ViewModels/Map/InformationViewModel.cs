@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Xamarin.Forms;
+using System;
 
 namespace TreeWatch
 {
@@ -34,7 +35,7 @@ namespace TreeWatch
 			}
 		}
 
-		public void NavigateToBlocks ()
+		protected void NavigateToBlocks (object sender, EventArgs e)
 		{
 			var customTabbedPage = (CustomTabbedPage)Application.Current.MainPage;
 			var masterDetailPage = (MasterDetailPage)customTabbedPage.CurrentPage;
