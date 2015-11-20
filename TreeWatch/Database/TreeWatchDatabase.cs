@@ -18,6 +18,7 @@ namespace TreeWatch
 			connection.CreateTable<Note> ();
 			connection.CreateTable<UserToDo> ();
 			connection.CreateTable<BlockToDo> ();
+			connection.CreateTable<TreeType> ();
 		}
 
 		public void ClearDataBase ()
@@ -30,6 +31,7 @@ namespace TreeWatch
 			connection.DeleteAll<Note> ();
 			connection.DeleteAll<UserToDo> ();
 			connection.DeleteAll<BlockToDo> ();
+			connection.DeleteAll<TreeType> ();
 		}
 			
 	}
