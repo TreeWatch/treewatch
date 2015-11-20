@@ -49,7 +49,12 @@ namespace TreeWatch.iOS
 				mapView.OverlayRenderer = (m, o) => {
 					polygonRenderer = new MKPolygonRenderer (o as MKPolygon);
 					renderers.Add (polygonRenderer);
-					polygonRenderer.FillColor = (o as MKPolygon).Title == "Field" ? myMap.OverLayColor.ToUIColor () : ColorHelper.GetTreeTypeColor ((o as MKPolygon).Title).ToUIColor ();
+					polygonRenderer.FillColor = (o as MKPolygon).Title == "Field" ? myMap.OverLayColor.ToUIColor () : ColorHelper.GetTreeTypeColor (Int32.Parse((o as MKPolygon).Title)).ToUIColor ();
+					if((o as MKPolygon).Title == "Field"){
+						polygonRenderer.StrokeColor = myMap.BoundaryColor.ToUIColor();
+						polygonRenderer.LineWidth = 1;
+					}
+
 					return polygonRenderer;
 				};
 
@@ -59,7 +64,7 @@ namespace TreeWatch.iOS
 							if (block.BoundingCoordinates.Count != 0 && block.BoundingCoordinates.Count >= 3) {
 								var rowpoints = convertCordinates (block.BoundingCoordinates);
 								var rowpolygon = MKPolygon.FromCoordinates (rowpoints);
-								rowpolygon.Title = ((int)block.TreeType).ToString ();
+								rowpolygon.Title = block.TreeType.ID.ToString();
 								polygons.Add (rowpolygon);
 							}
 						}

@@ -1,42 +1,32 @@
 ﻿using System;
 using Xamarin.Forms;
+using System.Diagnostics;
 
 namespace TreeWatch
 {
 	public static class ColorHelper
 	{
-		/// <summary>
-		/// Gets the color of the tree type.
-		/// </summary>
-		/// <returns>The tree type color.</returns>
-		/// <param name="type">TreeType</param>
-		public static Color GetTreeTypeColor (TreeType type)
-		{
-			switch (type) {
-			case TreeType.APPLE:
-				return Color.Lime;
-			case TreeType.CHERRY:
-				return Color.Red;
-			case TreeType.PEAR:
-				return Color.Maroon;
-			case TreeType.PLUM:
-				return Color.Purple;
-			case TreeType.NOTDEFINED:
-				return Color.Black;
-			default:
-				return Color.Blue;
-			}
-		}
 
-		/// <summary>
-		/// Gets the color of the TreeType represented as Integer in a String.
-		/// </summary>
-		/// <returns>The TreeType color.</returns>
-		/// <param name="type">TreeType</param>
 		public static Color GetTreeTypeColor (String type)
 		{
-			var treeType = (TreeType)(Int32.Parse (type));
+			var treeType = (Int32.Parse(type));
 			return ColorHelper.GetTreeTypeColor (treeType);
+		}
+
+		public static Color GetTreeTypeColor(int ID){
+			var connection = new TreeWatchDatabase ();
+			TreeType type = new DBQuery<TreeType> (connection).GetByID (ID);
+			return type.ColorProp;
+		}
+
+		public static string ToHex(Color color)
+		{
+			var A = (int)(255 * color.A);
+			var R = (int)(255 * color.R);
+			var G = (int)(255 * color.G);
+			var B = (int)(255 * color.B);
+
+			return "#" + A.ToString ("X2") + R.ToString ("X2") + G.ToString ("X2") + B.ToString ("X2");
 		}
 	}
 }

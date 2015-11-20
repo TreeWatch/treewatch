@@ -9,14 +9,22 @@ namespace TreeWatch
 	{
 		readonly Color overlayColor;
 
+		readonly Color boundaryColor;
+
 		public  Color OverLayColor {
 			get{ return overlayColor; }
+		}
+
+		public  Color BoundaryColor {
+			get{ return boundaryColor; }
 		}
 
 		public FieldMap (MapSpan region) : base (region)
 		{
 			Fields = new ObservableCollection<Field> ();
-			overlayColor = new Color ((204.0 / 255), (40.0 / 255), (196.0 / 255), (127.0 / 255));
+			//overlayColor = new Color ((204.0 / 255), (40.0 / 255), (196.0 / 255), (127.0 / 255));
+			overlayColor = Color.Transparent;
+			boundaryColor = Color.FromHex("#ff8400");
 		}
 
 		public ObservableCollection<Field> Fields {
