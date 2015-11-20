@@ -19,9 +19,13 @@ namespace TreeWatch
 			};
 			this.Master = mapMenuContentPage;
 
-			// Create the detail page and wrap it in a navigation page to provide a NavigationBar and Toggle button
-			var mapNavigationPage = new MapNavigationPage (new MapContentPage (mapViewModel));
-			this.Detail = mapNavigationPage;
+			if (TargetPlatform.iOS == Device.OS)
+			{
+				this.Detail = new MapNavigationPage (new MapContentPage (mapViewModel));
+			} else
+			{
+				this.Detail = new MapContentPage (mapViewModel);
+			}
 
 			// configuration of this page
 			this.MasterBehavior = MasterBehavior.Popover;

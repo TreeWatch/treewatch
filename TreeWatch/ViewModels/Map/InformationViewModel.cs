@@ -37,11 +37,9 @@ namespace TreeWatch
 
 		public void NavigateToBlocks ()
 		{
-			var customTabbedPage = (CustomTabbedPage)Application.Current.MainPage;
-			var masterDetailPage = (MasterDetailPage)customTabbedPage.CurrentPage;
-			var mapNavigationPage = (MapNavigationPage)masterDetailPage.Detail;
+			var navigationPage = (NavigationPage)Application.Current.MainPage;
 
-			mapNavigationPage.PushAsync (new BlockInformationContentPage (this));
+			navigationPage.PushAsync (new BlockInformationContentPage (this));
 		}
 
 		protected virtual void OnPropertyChanged ([CallerMemberName] string propertyName = null)

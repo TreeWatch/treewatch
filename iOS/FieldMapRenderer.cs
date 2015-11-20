@@ -77,13 +77,11 @@ namespace TreeWatch.iOS
 						UIButton detailButton = UIButton.FromType (UIButtonType.DetailDisclosure);
 
 						detailButton.TouchUpInside += (s, ev) => {
-							var customTabbedPage = (CustomTabbedPage)Xamarin.Forms.Application.Current.MainPage;
-							var masterDetailPage = (MasterDetailPage)customTabbedPage.CurrentPage;
-							var mapNavigationPage = (MapNavigationPage)masterDetailPage.Detail;
+							var navigationPage = (NavigationPage)Xamarin.Forms.Application.Current.MainPage;
 
 							var fieldMapAnnotation = (FieldMapAnnotation) anno;
 
-							mapNavigationPage.PushAsync (new FieldInformationContentPage (new InformationViewModel (fieldMapAnnotation.Field)));
+							navigationPage.PushAsync (new FieldInformationContentPage (new InformationViewModel (fieldMapAnnotation.Field)));
 						};
 
 						aview.RightCalloutAccessoryView = detailButton;
