@@ -44,6 +44,7 @@
 				<TableSection
 					Title="Blockinformation">
 					<ViewCell
+						x:Name = "BlockViewCell"
 						Tapped="{Binding NavigateToBlocks}">
 						<StackLayout
 							Orientation="Horizontal"
