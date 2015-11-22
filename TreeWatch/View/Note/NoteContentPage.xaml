@@ -7,6 +7,11 @@
 	Title         ="Note"
 	StyleId       ="NoteView"
 	BindingContext="{local:NoteViewModel}">
+	<ContentPage.Padding>
+		<OnPlatform
+			x:TypeArguments="Thickness"
+			iOS            ="0,20,0,0" />
+	</ContentPage.Padding>
 	<ContentPage.Icon>
 		<OnPlatform
 			x:TypeArguments="FileImageSource"
@@ -27,8 +32,10 @@
 				<Entry
 					Placeholder="Title"
 					Keyboard   ="Default" />
-				<Button
-					Text           ="FOTO"
+				<Image
+					x:Name         ="picture"
+					Source         ="camera.png"
+					HeightRequest  ="250"
 					VerticalOptions="StartAndExpand" />
 				<Editor
 					Text           ="Description"

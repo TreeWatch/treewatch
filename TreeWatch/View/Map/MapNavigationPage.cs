@@ -1,4 +1,5 @@
 ﻿using Xamarin.Forms;
+using System.Diagnostics;
 
 namespace TreeWatch
 {
@@ -6,14 +7,15 @@ namespace TreeWatch
 	{
 		public MapNavigationPage (Page root) : base (root)
 		{
-			Title = root.Title;
-			StyleId = "MapNavigationPage";
-			if (root.Icon != null) {
+			// set style id for testing
+			this.StyleId = "MapNavigationPage";
+
+			// set default values
+			this.Title = "Map";
+			if (root.Icon != null)
+			{
 				Icon = root.Icon;
 			}
 		}
-		
 	}
 }
-
-

@@ -5,7 +5,13 @@ namespace TreeWatch
 {
 	public class FieldHelper
 	{
-		static readonly FieldHelper instance = new FieldHelper();
+		private static readonly FieldHelper instance = new FieldHelper();
+		public static Field SelectedField { get; set;}
+
+		private FieldHelper ()
+		{
+			
+		}
 
 		public static FieldHelper Instance
 		{
@@ -27,7 +33,7 @@ namespace TreeWatch
 		{
 			if (FieldSelected != null) 
 			{
-				Debug.WriteLine (field.Name);
+				SelectedField = field;
 				FieldSelected (this, new FieldSelectedEventArgs (field));
 			}
 		}

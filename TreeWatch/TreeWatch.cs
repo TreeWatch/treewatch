@@ -10,7 +10,7 @@ namespace TreeWatch
 		{
 			MockDataProvider.SetUpMockData();
 			// The root page of your application
-			MainPage = new CustomTabbedPage();
+			MainPage = new NavigationPage(new CustomTabbedPage());
 		}
 
 		public static TreeWatchDatabase Database {

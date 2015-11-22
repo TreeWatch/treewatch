@@ -123,6 +123,9 @@
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="FieldMapRenderer.cs" />
+    <Compile Include="FieldMapAnnotation.cs" />
+    <Compile Include="FieldMapDelegate.cs" />
+    <Compile Include="FieldMapAnnotationView.cs" />
     <Compile Include="SQLite_iOS.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -135,6 +138,7 @@
   <ItemGroup>
     <Folder Include="Resources\Images.xcassets\" />
     <Folder Include="Resources\Icons\" />
+    <Folder Include="Resources\CellIcons\" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Contents.json" />
@@ -194,5 +198,6 @@
     <BundleResource Include="Resources\Icons\ToDoTabBarIcon.png" />
     <BundleResource Include="Resources\Icons\ToDoTabBarIcon%402x.png" />
     <BundleResource Include="Resources\Icons\ToDoTabBarIcon%403x.png" />
+    <BundleResource Include="Resources\CellIcons\disclosure_indicator.png" />
   </ItemGroup>
 </Project>
