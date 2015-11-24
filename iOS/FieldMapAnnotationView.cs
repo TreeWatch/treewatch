@@ -5,13 +5,13 @@ namespace TreeWatch.iOS
 {
 	public class FieldMapAnnotationView : MKAnnotationView
 	{
-		private readonly IMKAnnotation annotation;
-		private readonly string annotationId;
+//		private readonly IMKAnnotation annotation;
+//		private readonly string annotationId;
 
 		public FieldMapAnnotationView (IMKAnnotation annotation, string annotationId)
 		{
-			this.annotation = annotation;
-			this.annotationId = annotationId;
+//			this.annotation = annotation;
+//			this.annotationId = annotationId;
 			CanShowCallout = false;
 		}
 

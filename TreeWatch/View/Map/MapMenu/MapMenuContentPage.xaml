@@ -1,16 +1,16 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage
-	xmlns        ="http://xamarin.com/schemas/2014/forms"
-	xmlns:x       ="http://schemas.microsoft.com/winfx/2009/xaml"
-	x:Class       ="TreeWatch.MapMenuContentPage"
-	xmlns:local   ="clr-namespace:TreeWatch;assembly=TreeWatch"
-	Title         ="Menu"
-	StyleId       ="MapMenu">
+	xmlns     ="http://xamarin.com/schemas/2014/forms"
+	xmlns:x    ="http://schemas.microsoft.com/winfx/2009/xaml"
+	x:Class    ="TreeWatch.MapMenuContentPage"
+	xmlns:local="clr-namespace:TreeWatch;assembly=TreeWatch"
+	Title      ="Menu"
+	StyleId    ="MapMenu">
 	<ContentPage.Icon>
 		<OnPlatform
-				x:TypeArguments="FileImageSource"
-				iOS            ="Icons/HamburgerMenuIcon.png" 
-				Android 	   ="HamburgerMenuIcon.png"/> 
+			x:TypeArguments="FileImageSource"
+			iOS            ="Icons/HamburgerMenuIcon.png"
+			Android        ="HamburgerMenuIcon.png" />
 	</ContentPage.Icon>
 	<ContentPage.Padding>
 		<OnPlatform
@@ -24,12 +24,11 @@
 			Orientation      ="Vertical"
 			Spacing          ="15">
 			<SearchBar
-				x:Name       ="searchBar"
 				Placeholder  ="Search"
 				Text         ="{Binding SearchText}"
 				SearchCommand="{Binding SearchCommand}" />
 			<ListView
-				x:Name      ="FieldView"
+				x:Name      ="fieldView"
 				ItemsSource ="{Binding FilteredFields}"
 				SelectedItem="{Binding SelectedField}">
 				<ListView.Header>
