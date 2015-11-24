@@ -9,7 +9,6 @@ using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps.iOS;
 using Xamarin.Forms.Platform.iOS;
-using Foundation;
 
 [assembly: ExportRenderer (typeof(FieldMap), typeof(FieldMapRenderer))]
 
@@ -17,12 +16,22 @@ namespace TreeWatch.iOS
 {
 	public class FieldMapRenderer : MapRenderer
 	{
+
+		public static double MERCATOR_RADIUS = 85445659.44705395;
+		public static int MAX_GOOGLE_LEVELS = 20;
+
 		MKMapView mapView;
+
 		FieldMap myMap;
+
 		List<MKPolygon> polygons;
+
 		List<MKPolygonRenderer> renderers;
+
 		MKPolygonRenderer polygonRenderer;
+
 		UITapGestureRecognizer tapGesture;
+
 		FieldHelper fieldHelper;
 
 		public FieldMapRenderer ()
@@ -37,134 +46,109 @@ namespace TreeWatch.iOS
 
 		protected void FieldSelected (object sender, FieldSelectedEventArgs e)
 		{
-			if (mapView != null)
-			{
-				var coords = new CLLocationCoordinate2D (GeoHelper.CalculateCenter(e.Field.BoundingCoordinates).Latitude, GeoHelper.CalculateCenter(e.Field.BoundingCoordinates).Longitude);
-				var span = new MKCoordinateSpan (GeoHelper.CalculateWidthHeight(e.Field.BoundingCoordinates).Width * 1.1, GeoHelper.CalculateWidthHeight(e.Field.BoundingCoordinates).Height * 1.1);
+			if (mapView != null) {
+				var center = GeoHelper.CalculateCenter (e.Field.BoundingCoordinates);
+				var widthHeight = GeoHelper.CalculateWidthHeight (e.Field.BoundingCoordinates);
+				var coords = new CLLocationCoordinate2D (center.Latitude, center.Longitude);
+				var span = new MKCoordinateSpan (widthHeight.Width * 1.1, widthHeight.Height * 1.1);
 				mapView.Region = new MKCoordinateRegion (coords, span);
-				//mapView.SetCenterCoordinate (coords, true);
 			}
-
 		}
 
 		protected override void OnElementChanged (ElementChangedEventArgs<View> e)
 		{
 			base.OnElementChanged (e);
 
-			if (e.OldElement == null)
-			{
+			if (e.OldElement == null) {
 				mapView = Control as MKMapView;
 				mapView.AddGestureRecognizer (tapGesture);
-				mapView.GetViewForAnnotation = (mapview, anno) =>
-				{
-					try
-					{
-						const string annoId = "pin";
-						var ca = (FieldMapAnnotation)anno;
-						var aview = (MKPinAnnotationView)mapview.DequeueReusableAnnotation (annoId);
-						if (aview == null)
-						{
-							aview = new MKPinAnnotationView (ca, annoId);
-						} else
-						{
-							aview.Annotation = ca;
-						}
-						aview.AnimatesDrop = true;
-						aview.Selected = true;
-						aview.PinColor = MKPinAnnotationColor.Red;
-						aview.CanShowCallout = true;
+				mapView.GetViewForAnnotation = GetViewForAnnotation;
 
-						UIButton detailButton = UIButton.FromType (UIButtonType.DetailDisclosure);
-
-						detailButton.TouchUpInside += (s, ev) => {
-							var navigationPage = (NavigationPage)Xamarin.Forms.Application.Current.MainPage;
-
-							var fieldMapAnnotation = (FieldMapAnnotation) anno;
-
-							navigationPage.PushAsync (new FieldInformationContentPage (new InformationViewModel (fieldMapAnnotation.Field)));
-						};
-
-						aview.RightCalloutAccessoryView = detailButton;
-
-						return aview;
-					} catch (Exception)
-					{
-						return null;
-					}
-				};
 				myMap = e.NewElement as FieldMap;
-				mapView.OverlayRenderer = (m, o) => {
-					polygonRenderer = new MKPolygonRenderer (o as MKPolygon);
-					renderers.Add (polygonRenderer);
-					polygonRenderer.FillColor = (o as MKPolygon).Title == "Field" ? myMap.OverLayColor.ToUIColor () : ColorHelper.GetTreeTypeColor (Int32.Parse((o as MKPolygon).Title)).ToUIColor ();
-					if((o as MKPolygon).Title == "Field"){
-						polygonRenderer.StrokeColor = myMap.BoundaryColor.ToUIColor();
-						polygonRenderer.LineWidth = 1;
-					}
+				mapView.OverlayRenderer = GetOverlayRender;
 
-					return polygonRenderer;
-				};
-
-
-				foreach (var field in myMap.Fields)
-				{
-					if (field.Blocks.Count != 0)
-					{
-						foreach (var block in field.Blocks)
-						{
-							if (block.BoundingCoordinates.Count != 0 && block.BoundingCoordinates.Count >= 3)
-							{
-								var rowpoints = convertCordinates (block.BoundingCoordinates);
-								var rowpolygon = MKPolygon.FromCoordinates (rowpoints);
-								rowpolygon.Title = block.TreeType.ID.ToString ();
-								polygons.Add (rowpolygon);
-							}
-						}
-					}
-
-					if (field.BoundingCoordinates.Count != 0 && field.BoundingCoordinates.Count >= 3)
-					{
-						var points = convertCordinates (field.BoundingCoordinates);
-						var polygon = MKPolygon.FromCoordinates (points);
-						polygon.Title = "Field";
-						polygons.Add (polygon);
-						var annotation = new FieldMapAnnotation (field);
-						mapView.AddAnnotation (annotation);
-					}
-				}
-				mapView.AddOverlays (polygons.ToArray ());
+				AddFields ();
 			}
 		}
 
-		public MKAnnotationView GetViewForAnnotation (MKMapView mapView, NSObject annotation)
+		MKOverlayRenderer GetOverlayRender (MKMapView m, IMKOverlay o)
 		{
-			try
-			{
-				var ca = (FieldMapAnnotation)annotation;
-				var aview = (MKPinAnnotationView)mapView.DequeueReusableAnnotation ("pin");
-				if (aview == null)
-				{
-					aview = new MKPinAnnotationView (ca, "pin");
-				} else
-				{
-					aview.Annotation = ca;
+			var polygon = o as MKPolygon;
+			polygonRenderer = new MKPolygonRenderer (polygon);
+			renderers.Add (polygonRenderer);
+
+			if (polygon.Title == "Field") {
+				polygonRenderer.FillColor = myMap.OverLayColor.ToUIColor ();
+				polygonRenderer.StrokeColor = myMap.BoundaryColor.ToUIColor ();
+				polygonRenderer.LineWidth = 1;
+			} else
+				polygonRenderer.FillColor = ColorHelper.GetTreeTypeColor (Int32.Parse (polygon.Title)).ToUIColor ();
+
+			return polygonRenderer;
+		}
+
+		void AddFields ()
+		{
+			foreach (var field in myMap.Fields) {
+				if (field.Blocks.Count != 0) {
+					foreach (var block in field.Blocks) {
+						if (block.BoundingCoordinates.Count != 0 && block.BoundingCoordinates.Count >= 3) {
+							var rowpoints = convertCordinates (block.BoundingCoordinates);
+							var rowpolygon = MKPolygon.FromCoordinates (rowpoints);
+							rowpolygon.Title = block.TreeType.ID.ToString ();
+							polygons.Add (rowpolygon);
+						}
+					}
 				}
+
+				if (field.BoundingCoordinates.Count != 0 && field.BoundingCoordinates.Count >= 3) {
+					var points = convertCordinates (field.BoundingCoordinates);
+					var polygon = MKPolygon.FromCoordinates (points);
+					polygon.Title = "Field";
+					polygons.Add (polygon);
+
+					// AddFieldMapAnnotation (field); Not needed anymore
+				}
+			}
+			mapView.AddOverlays (polygons.ToArray ());
+		}
+
+		void AddFieldMapAnnotation (Field field)
+		{
+			var annotation = new FieldMapAnnotation (field);
+			mapView.AddAnnotation (annotation);
+		}
+
+		static MKAnnotationView GetViewForAnnotation (MKMapView mapView, IMKAnnotation annotation)
+		{
+			try {
+				const string annotationId = "pin";
+				var fieldMapAnnotation = (FieldMapAnnotation)annotation;
+				var aview = (MKPinAnnotationView)mapView.DequeueReusableAnnotation (annotationId);
+
+				if (aview == null) {
+					aview = new MKPinAnnotationView (fieldMapAnnotation, annotationId);
+				} else {
+					aview.Annotation = fieldMapAnnotation;
+				}
+
 				aview.AnimatesDrop = true;
-				aview.PinColor = MKPinAnnotationColor.Purple;
+				aview.Selected = true;
+				aview.PinColor = MKPinAnnotationColor.Red;
 				aview.CanShowCallout = true;
 
-				//					UIButton rightCallout = UIButton.FromType(UIButtonType.DetailDisclosure);
-				//					rightCallout.Frame = new RectangleF(250,8f,25f,25f);
-				//					rightCallout.TouchDown += delegate 
-				//					{
-				//						NSUrl url = new NSUrl("http://maps.google.com/maps?q=" + ca.Coordinate.ToLL()  );
-				//						UIApplication.SharedApplication.OpenUrl(url);
-				//					};
-				//					aview.RightCalloutAccessoryView = rightCallout;
+				UIButton detailButton = UIButton.FromType (UIButtonType.DetailDisclosure);
+
+				detailButton.TouchUpInside += (s, ev) => {
+					var navigationPage = (NavigationPage)Xamarin.Forms.Application.Current.MainPage;
+
+					navigationPage.PushAsync (new FieldInformationContentPage (new InformationViewModel (fieldMapAnnotation.Field)));
+				};
+
+				aview.RightCalloutAccessoryView = detailButton;
 
 				return aview;
-			} catch (Exception)
-			{
+			} catch (Exception) {
 				return null;
 			}
 		}
@@ -173,8 +157,7 @@ namespace TreeWatch.iOS
 		{
 			var points = new CLLocationCoordinate2D[Cordinates.Count + 1];
 			var i = 0;
-			foreach (var pos in Cordinates)
-			{
+			foreach (var pos in Cordinates) {
 				points [i] = new CLLocationCoordinate2D (pos.Latitude, pos.Longitude);
 				i++;
 			}
@@ -183,13 +166,25 @@ namespace TreeWatch.iOS
 			return points;
 		}
 
-		private void MapTapped (UITapGestureRecognizer sender)
+		void MapTapped (UIGestureRecognizer sender)
 		{
 			CGPoint pointInView = sender.LocationInView (mapView);
 			CLLocationCoordinate2D touchCoordinates = mapView.ConvertPoint (pointInView, this.mapView);
-			FieldHelper.Instance.FieldTappedEvent (new Position (touchCoordinates.Latitude, touchCoordinates.Longitude));
+
+			FieldHelper.Instance.MapTappedEvent (new Position (touchCoordinates.Latitude, touchCoordinates.Longitude), ZoomLevel (mapView));
 		}
 
+		static double ZoomLevel (MKMapView mapView)
+		{
+			var longitudeDelta = mapView.Region.Span.LongitudeDelta;
+			var mapWidthInPixels = mapView.Bounds.Size.Width;
 
+			double zoomScale = longitudeDelta * MERCATOR_RADIUS * Math.PI / (180.0 * mapWidthInPixels);
+			double zoomLevel = MAX_GOOGLE_LEVELS - Math.Log (zoomScale, 2.0);
+			if (zoomLevel < 0)
+				zoomLevel = 0;
+
+			return zoomLevel;
+		}
 	}
 }
