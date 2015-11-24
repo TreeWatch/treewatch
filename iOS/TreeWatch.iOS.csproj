@@ -146,19 +146,6 @@
   <ItemGroup>
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Default-736h%403x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Default-568h%402x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Default-667h%402x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Default-Landscape-568h%402x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Default-Landscape-667h%402x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Default-Landscape-736h%403x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Default-Landscape.png" />
-    <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Default-Landscape%402x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Default-Portrait-736h%403x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Default-Portrait.png" />
-    <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Default-Portrait%402x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Default.png" />
-    <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Default%402x.png" />
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\AppIcon128.png" />
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\AppIcon128%402x.png" />
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\AppIcon16.png" />
@@ -190,6 +177,21 @@
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\AppIcon76%402x.png" />
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\AppIcon86%402x.png" />
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\AppIcon98%402x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Default-Portrait-736h%403x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Default-Portrait.png" />
+    <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Default-Portrait%402x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Default-Landscape.png" />
+    <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Default-Landscape%402x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Default%402x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Default-568h%402x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Default.png" />
+    <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Default-736h%403x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Default-667h%402x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Default-Landscape-736h%403x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Default-PortraitWSB.png" />
+    <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Default-PortraitWSB%402x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Default-LandscapeWSB.png" />
+    <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Default-LandscapeWSB%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Icons\HamburgerMenuIcon.png" />
