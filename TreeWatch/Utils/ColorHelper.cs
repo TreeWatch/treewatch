@@ -6,7 +6,6 @@ namespace TreeWatch
 {
 	public static class ColorHelper
 	{
-
 		public static Color GetTreeTypeColor (String type)
 		{
 			var treeType = (Int32.Parse(type));

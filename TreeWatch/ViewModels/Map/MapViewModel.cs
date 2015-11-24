@@ -17,13 +17,15 @@ namespace TreeWatch
 		String searchText = String.Empty;
 		Command searchCommand;
 		Field selectedField;
+		Block selectedBlock;
 		FieldHelper fieldHelper;
 
 		public MapViewModel ()
 		{
 			fieldHelper = FieldHelper.Instance;
-			fieldHelper.FieldTapped += FieldTapped;
+			fieldHelper.MapTapped += MapTapped;
 			fieldHelper.FieldSelected += FieldSelected;
+			fieldHelper.BlockSelected += BlockSelected;
 			Fields = new ObservableCollection<Field> (new DBQuery<Field> (App.Database).GetAllWithChildren ());
 			selectedField = new Field ("Dummy", new List<Position> (), new List<Block> ());
 		}
@@ -40,19 +42,51 @@ namespace TreeWatch
 			get { return selectedField; }
 		}
 
-		void FieldTapped (object sender, FieldTappedEventArgs e)
+		public Block SelectedBlock {
+			set {
+				if (value != null && value.ID != selectedBlock.ID)
+				{
+					selectedBlock = value;
+					fieldHelper.BlockSelectedEvent (selectedBlock);
+				}
+			}
+			get { return selectedBlock; }
+			
+		}
+
+		void MapTapped (object sender, MapTappedEventArgs e)
 		{
-			Field tappedField = CheckFieldClicked (e.Position);
+			var tappedField = CheckFieldClicked (e.Position);
 			if (tappedField != null)
 			{
 				SelectedField = tappedField;
 			}
+
+			if (e.Zoomlevel > 15) {
+				var tappedBlock = CheckBlockClicked (e.Position);
+				if (tappedBlock != null)
+				{
+					selectedBlock = tappedBlock;
+					var navigationPage = (NavigationPage)Application.Current.MainPage;
+
+					var InformationViewModel = new InformationViewModel (SelectedField);
+					navigationPage.PushAsync (new BlockInformationContentPage (InformationViewModel));
+
+				}
+			}
+
 		}
 
-		public void FieldSelected (object sender, FieldSelectedEventArgs e)
+		void FieldSelected (object sender, FieldSelectedEventArgs e)
 		{
 			SelectedField = e.Field;
 		}
+
+		void BlockSelected (object sender, BlockSelectedEventArgs e)
+		{
+			SelectedBlock = e.Block;
+		}
+
 
 		public ICommand SelectFieldCommand { private set; get; }
 
@@ -133,6 +167,18 @@ namespace TreeWatch
 				if (GeoHelper.IsInsideCoords (field.BoundingCoordinates, touchPos))
 				{
 					return field;
+				}
+			}
+			return null;
+		}
+
+		public Block CheckBlockClicked (Position touchPos)
+		{
+			foreach (Block block in SelectedField.Blocks)
+			{
+				if (GeoHelper.IsInsideCoords (block.BoundingCoordinates, touchPos))
+				{
+					return block;
 				}
 			}
 			return null;

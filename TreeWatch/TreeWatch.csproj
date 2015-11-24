@@ -62,8 +62,6 @@
     <Compile Include="Model\Note.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Utils\FieldHelper.cs" />
-    <Compile Include="Utils\FieldTappedEventArgs.cs" />
-    <Compile Include="Utils\FieldSelectedEventArgs.cs" />
     <Compile Include="Database\DBHelper.cs" />
     <Compile Include="Database\DBQuery.cs" />
     <Compile Include="Utils\MockDataProvider.cs" />
@@ -82,6 +80,9 @@
     </Compile>
     <Compile Include="ViewModels\Map\InformationViewModel.cs" />
     <Compile Include="View\Map\MapNavigationPage.cs" />
+    <Compile Include="Utils\MapTappedEventArgs.cs" />
+    <Compile Include="Utils\BlockSelectedEventArgs.cs" />
+    <Compile Include="Utils\FieldSelectedEventArgs.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.1.5.1.6471\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.1.5.1.6471\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
