@@ -7,7 +7,7 @@ namespace TreeWatch.iOS
 	public class FieldMapDelegate : MKMapViewDelegate
 	{
 		protected string annotationIdentifier = "FieldAnnotation";
-		UIButton detailButton;
+//		UIButton detailButton;
 
 		public override MKAnnotationView GetViewForAnnotation(MKMapView mapView, IMKAnnotation annotation)
 		{

@@ -32,8 +32,8 @@ namespace TreeWatch.UITests
 			
 			app.Tap ("ToDo");
 
-			var newToDoOne = new ToDo ("Soilscan", "Make a new Soilscan on Field XYZ");
-			var newToDoTwo = new ToDo ("Harvest", "Harvest the trees");
+//			var newToDoOne = new ToDo ("Soilscan", "Make a new Soilscan on Field XYZ");
+//			var newToDoTwo = new ToDo ("Harvest", "Harvest the trees");
 //			new DBQuery<ToDo> (App.Database).InsertWithChildren (newToDoOne);
 //			new DBQuery<ToDo> (App.Database).InsertWithChildren (newToDoTwo);
 //			var list = new DBQuery<ToDo> (App.Database).GetAllWithChildren ();

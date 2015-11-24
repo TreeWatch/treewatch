@@ -13,8 +13,7 @@ namespace TreeWatch
 
 			this.BindingContext = mapViewModel;
 
-			ListView listView = this.FindByName<ListView> ("FieldView");
-			listView.ItemSelected += (object sender, SelectedItemChangedEventArgs e) => OnFieldSelected ();
+			fieldView.ItemSelected += (object sender, SelectedItemChangedEventArgs e) => OnFieldSelected ();
 		}
 
 		protected virtual void OnFieldSelected ()
