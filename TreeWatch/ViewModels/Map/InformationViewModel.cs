@@ -42,6 +42,13 @@ namespace TreeWatch
 			navigationPage.PushAsync (new BlocksInformationContentPage (this));
 		}
 
+		public void NavigateToBlock ()
+		{
+			var navigationPage = (NavigationPage)Application.Current.MainPage;
+
+			navigationPage.PushAsync (new BlockInformationContentPage (this));
+		}
+
 		protected virtual void OnPropertyChanged ([CallerMemberName] string propertyName = null)
 		{
 			PropertyChangedEventHandler handler = PropertyChanged;
