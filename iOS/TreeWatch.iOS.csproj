@@ -212,6 +212,7 @@
     <BundleResource Include="Resources\Icons\ToDoTabBarIcon.png" />
     <BundleResource Include="Resources\Icons\ToDoTabBarIcon%402x.png" />
     <BundleResource Include="Resources\Icons\ToDoTabBarIcon%403x.png" />
-    <BundleResource Include="Resources\CellIcons\disclosure_indicator.png" />
+    <BundleResource Include="Resources\CellIcons\InfoIcon.png" />
+    <BundleResource Include="Resources\CellIcons\RightArrowIcon.png" />
   </ItemGroup>
 </Project>

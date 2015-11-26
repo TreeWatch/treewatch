@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+	xmlns ="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	x:Class="TreeWatch.BlocksInformationContentPage"
+	Title  ="Blocks"
+	StyleId="BlockInformation"
+	Padding="0, 0, 0, 0">
+	<ContentPage.Content>
+		<ListView
+			ItemsSource ="{Binding Field.Blocks}"
+			SelectedItem="{Binding Block}">
+			<ListView.Header>
+				<StackLayout>
+				</StackLayout>
+			</ListView.Header>
+			<ListView.ItemTemplate>
+				<DataTemplate>
+					<ViewCell>
+						<StackLayout
+							Orientation="Horizontal"
+							Padding    ="10">
+							<Label
+								Text           ="{Binding ID}"
+								TextColor      ="#000000"
+								VerticalOptions="Center" />
+							<Label
+								HorizontalOptions="EndAndExpand"
+								Text             ="{Binding TreeType.Name}"
+								TextColor        ="{Binding TreeType.ColorProp}"
+								VerticalOptions  ="Center" />
+						</StackLayout>
+					</ViewCell>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+		</ListView>
+	</ContentPage.Content>
+</ContentPage>
