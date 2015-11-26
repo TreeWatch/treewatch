@@ -8,6 +8,7 @@
 	Padding="0, 0, 0, 0">
 	<ContentPage.Content>
 		<ListView
+			x:Name      ="blockView"
 			ItemsSource ="{Binding Field.Blocks}"
 			SelectedItem="{Binding Block}">
 			<ListView.Header>
@@ -29,6 +30,15 @@
 								Text             ="{Binding TreeType.Name}"
 								TextColor        ="{Binding TreeType.ColorProp}"
 								VerticalOptions  ="Center" />
+							<Image
+								VerticalOptions="Center">
+								<Image.Source>
+									<OnPlatform
+										x:TypeArguments="ImageSource"
+										iOS            ="CellIcons/RightArrowIcon.png"
+										Android        ="RightArrowIcon.png" />
+								</Image.Source>
+							</Image>
 						</StackLayout>
 					</ViewCell>
 				</DataTemplate>
