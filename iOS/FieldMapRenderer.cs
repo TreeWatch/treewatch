@@ -40,9 +40,8 @@ namespace TreeWatch.iOS
 			if (e.OldElement == null) {
 				mapView = Control as MKMapView;
 				mapView.AddGestureRecognizer (tapGesture);
-
-
-
+				mapView.ShowsCompass = true;
+				mapView.ShowsUserLocation = true;
 
 				myMap = e.NewElement as FieldMap;
 

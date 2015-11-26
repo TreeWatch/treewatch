@@ -6,6 +6,8 @@ using Xamarin;
 using XLabs.Ioc;
 using XLabs.Platform.Device;
 using XLabs.Platform.Services;
+using Xamarin.Forms;
+using XLabs.Platform.Services.Geolocation;
 
 namespace TreeWatch.Droid
 {
@@ -30,6 +32,7 @@ namespace TreeWatch.Droid
 			container.Register<IDisplay>(t => t.Resolve<IDevice>().Display);
 			container.Register<INetwork>(t => t.Resolve<IDevice>().Network);
 			Resolver.SetResolver(container.GetResolver());
+			DependencyService.Register<Geolocator> ();
 
 			LoadApplication (new App ());
 		}

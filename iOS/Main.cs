@@ -2,6 +2,8 @@
 using XLabs.Ioc;
 using XLabs.Platform.Device;
 using XLabs.Platform.Services;
+using Xamarin.Forms;
+using XLabs.Platform.Services.Geolocation;
 
 namespace TreeWatch.iOS
 {
@@ -15,6 +17,7 @@ namespace TreeWatch.iOS
 			container.Register<IDisplay>(t => t.Resolve<IDevice>().Display);
 			container.Register<INetwork>(t => t.Resolve<IDevice>().Network);
 			Resolver.SetResolver(container.GetResolver());
+			DependencyService.Register<Geolocator> ();
 			// if you want to use a different Application Delegate class from "AppDelegate"
 			// you can specify it here.
 			UIApplication.Main (args, null, "AppDelegate");

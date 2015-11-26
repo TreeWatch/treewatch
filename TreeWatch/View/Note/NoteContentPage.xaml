@@ -41,6 +41,13 @@
 				<Editor
 					Text           ="Description"
 					VerticalOptions="FillAndExpand" />
+				<StackLayout>
+					<Button Text="Get Position" Command="{Binding GetPositionCommand}" />
+					<Entry Text="{Binding PositionStatus}" />
+					<Entry Text="{Binding PositionLatitude}" />
+					<Entry Text="{Binding PositionLongitude}" />
+					<Entry Text="{Binding Accuracy}" />
+				</StackLayout>
 				<StackLayout
 					HorizontalOptions="CenterAndExpand"
 					VerticalOptions  ="End"

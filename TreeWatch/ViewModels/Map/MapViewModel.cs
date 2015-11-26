@@ -7,11 +7,18 @@ using System.Runtime.CompilerServices;
 using System.Windows.Input;
 
 using Xamarin.Forms;
+using System.Threading.Tasks;
+using XLabs.Platform.Services.Geolocation;
+using XLabs.Platform.Device;
+using System.Threading;
+using System.Diagnostics;
 
 namespace TreeWatch
 {
 	public class MapViewModel : INotifyPropertyChanged
 	{
+		
+
 		public event PropertyChangedEventHandler PropertyChanged;
 
 		String searchText = String.Empty;
@@ -27,6 +34,18 @@ namespace TreeWatch
 			Fields = new ObservableCollection<Field> (new DBQuery<Field> (App.Database).GetAllWithChildren ());
 			selectedField = new Field ("Dummy", new List<Position> (), new List<Block> ());
 		}
+
+		/*
+		void Setup()
+		{
+			if (this.Geolocator != null)
+				return;
+			this.Geolocator = DependencyService.Get<IGeolocator> ();
+			this.Geolocator.PositionError += OnListeningError;
+			this.Geolocator.PositionChanged += OnPositionChanged;
+		}*/
+
+
 
 		public Field SelectedField {
 			set {

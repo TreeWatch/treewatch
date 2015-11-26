@@ -8,6 +8,9 @@ using XLabs.Forms.Mvvm;
 using XLabs.Ioc;
 using XLabs.Platform.Device;
 using XLabs.Platform.Services.Media;
+using XLabs.Platform.Services.Geolocation;
+using System.Threading;
+using System.Diagnostics;
 
 namespace TreeWatch
 {
@@ -40,6 +43,202 @@ namespace TreeWatch
 		/// </summary>
 		private Command _selectPictureCommand;
 		private string _status;
+
+		/// <summary>
+		/// The geolocator
+		/// </summary>
+		private IGeolocator _geolocator;
+		/// <summary>
+		/// The position status
+		/// </summary>
+		private string _positionStatus = string.Empty;
+		/// <summary>
+		/// The position latitude
+		/// </summary>
+		private string _positionLatitude = string.Empty;
+		/// <summary>
+		/// The position longitude
+		/// </summary>
+		private string _positionLongitude = string.Empty;
+		/// <summary>
+		/// The position longitude
+		/// </summary>
+		private string _accuracy = string.Empty;
+		/// <summary>
+		/// The cancel source
+		/// </summary>
+		private CancellationTokenSource _cancelSource;
+		/// <summary>
+		/// The get position command
+		/// </summary>
+		private Command _getPositionCommand;
+
+		/// <summary>
+		/// Gets or sets the position latitude.
+		/// </summary>
+		/// <value>The position latitude.</value>
+		public string PositionLatitude
+		{
+			get
+			{
+				return _positionLatitude;
+			}
+			set
+			{
+				if (value != _positionLatitude)
+				{
+					_positionLatitude = value;
+					OnPropertyChanged ("PositionLatitude");
+				}
+			}
+		}
+
+		/// <summary>
+		/// Gets or sets the position longitude.
+		/// </summary>
+		/// <value>The position longitude.</value>
+		public string PositionLongitude
+		{
+			get
+			{
+				return _positionLongitude;
+			}
+			set
+			{
+				if (value != _positionLongitude)
+				{
+					_positionLongitude = value;
+					OnPropertyChanged ("PositionLongitude");
+				}
+			}
+		}
+
+		public string PositionStatus
+		{
+			get
+			{
+				return _positionStatus;
+			}
+			set
+			{
+				if (value != _positionStatus)
+				{
+					_positionStatus = value;
+					OnPropertyChanged ("PositionStatus");
+				}
+			}
+		}
+
+		/// <summary>
+		/// Gets or sets the position latitude.
+		/// </summary>
+		/// <value>The position latitude.</value>
+		public string Accuracy
+		{
+			get
+			{
+				return _accuracy;
+			}
+			set
+			{
+				if (value != _accuracy)
+				{
+					_accuracy = value;
+					OnPropertyChanged ("Accuracy");
+				}
+			}
+		}
+
+		/// <summary>
+		/// Gets the get position command.
+		/// </summary>
+		/// <value>The get position command.</value>
+		public Command GetPositionCommand 
+		{
+			get
+			{ 
+				Debug.WriteLine ("GetPositionCommand");
+				return _getPositionCommand ??
+					(_getPositionCommand = new Command(async () => await GetPosition(), () => Geolocator != null)); 
+			}
+		}
+
+		private IGeolocator Geolocator
+		{
+			get
+			{
+				if (_geolocator == null)
+				{
+					_geolocator = DependencyService.Get<IGeolocator>();
+
+					_geolocator.DesiredAccuracy = 1;
+					_geolocator.PositionError += OnListeningError;
+					_geolocator.PositionChanged += OnPositionChanged;
+				}
+				return _geolocator;
+			}
+		}
+
+		bool IsBusy;
+
+		private async Task GetPosition()
+		{
+			Debug.WriteLine ("Available: {0}, enabled: {1}", this.Geolocator.IsGeolocationAvailable, this.Geolocator.IsGeolocationEnabled);
+			_cancelSource = new CancellationTokenSource();
+
+			PositionStatus = "...";
+			PositionLatitude = "...";
+			PositionLongitude = "...";
+			Accuracy = "...";
+			IsBusy = true;
+			await Geolocator.GetPositionAsync(10000, _cancelSource.Token, true)
+				.ContinueWith(t =>
+					{
+						IsBusy = false;
+						if (t.IsFaulted)
+						{
+							PositionStatus = ((GeolocationException) t.Exception.InnerException).Error.ToString();
+						}
+						else if (t.IsCanceled)
+						{
+							PositionStatus = "Canceled";
+						}
+						else
+						{
+							
+							Test(t.Result);
+						}
+					}, _scheduler);
+		}
+
+		private void Test(XLabs.Platform.Services.Geolocation.Position pos)
+		{
+			PositionStatus = pos.Timestamp.ToString("G");
+			PositionLongitude = pos.Longitude.ToString("N4");
+			PositionLatitude = pos.Latitude.ToString("N4");
+			Accuracy = pos.Accuracy.ToString();
+			Debug.WriteLine ("Status: {0}, LA: {1}, LO: {2}", pos.Timestamp.ToString ("G"), pos.Latitude.ToString ("N4"), pos.Longitude.ToString ("N4"));
+		}
+
+		/// <summary>
+		/// Handles the <see cref="E:ListeningError" /> event.
+		/// </summary>
+		/// <param name="sender">The sender.</param>
+		/// <param name="e">The <see cref="PositionErrorEventArgs"/> instance containing the event data.</param>
+		private void OnListeningError(object sender, PositionErrorEventArgs e)
+		{
+
+		}
+
+		/// <summary>
+		/// Handles the <see cref="E:PositionChanged" /> event.
+		/// </summary>
+		/// <param name="sender">The sender.</param>
+		/// <param name="e">The <see cref="PositionEventArgs"/> instance containing the event data.</param>
+		private void OnPositionChanged(object sender, PositionEventArgs e)
+		{
+			Debug.WriteLine ("Status: {0}, LA: {1}, LO: {2}", e.Position.Timestamp.ToString ("G"), e.Position.Latitude.ToString ("N4"), e.Position.Longitude.ToString ("N4"));
+		}
 
 		public NoteViewModel ()
 		{
