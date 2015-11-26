@@ -7,6 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Windows.Input;
 
 using Xamarin.Forms;
+using System.Diagnostics;
 
 namespace TreeWatch
 {
@@ -32,8 +33,7 @@ namespace TreeWatch
 
 		public Field SelectedField {
 			set {
-				if (value != null && !value.Name.Equals (selectedField.Name))
-				{
+				if (value != null && !value.Name.Equals (selectedField.Name)) {
 					selectedField = value;
 					SearchText = string.Empty;
 					fieldHelper.FieldSelectedEvent (selectedField);
@@ -44,8 +44,7 @@ namespace TreeWatch
 
 		public Block SelectedBlock {
 			set {
-				if (value != null && value.ID != selectedBlock.ID)
-				{
+				if (value != null && value.ID != selectedBlock.ID) {
 					selectedBlock = value;
 					fieldHelper.BlockSelectedEvent (selectedBlock);
 				}
@@ -57,20 +56,18 @@ namespace TreeWatch
 		void MapTapped (object sender, MapTappedEventArgs e)
 		{
 			var tappedField = CheckFieldClicked (e.Position);
-			if (tappedField != null)
-			{
+			if (tappedField != null) {
 				SelectedField = tappedField;
 			}
 
 			if (e.Zoomlevel > 15) {
 				var tappedBlock = CheckBlockClicked (e.Position);
-				if (tappedBlock != null)
-				{
+				if (tappedBlock != null) {
 					selectedBlock = tappedBlock;
 					var navigationPage = (NavigationPage)Application.Current.MainPage;
 
-					var InformationViewModel = new InformationViewModel (SelectedField);
-					navigationPage.PushAsync (new BlockInformationContentPage (InformationViewModel));
+					var informationViewModel = new InformationViewModel (SelectedField, SelectedBlock);
+					navigationPage.PushAsync (new BlockInformationContentPage (informationViewModel));
 
 				}
 			}
@@ -88,8 +85,13 @@ namespace TreeWatch
 		}
 
 
-		public ICommand SelectFieldCommand { private set; get; }
+		public void NavigateToField (Field field)
+		{
+			var navigationPage = (NavigationPage)Application.Current.MainPage;
 
+			var informationViewModel = new InformationViewModel (field);
+			navigationPage.PushAsync (new FieldInformationContentPage (informationViewModel));
+		}
 
 		public string SearchText {
 			get { return this.searchText; }
@@ -108,8 +110,7 @@ namespace TreeWatch
 			get {
 				var filteredFields = new ObservableCollection<Field> ();
 
-				if (Fields != null)
-				{
+				if (Fields != null) {
 					List<Field> entities = Fields.Where (x => x.Name.ToLower ().Contains (searchText.ToLower ())).ToList (); 
 					if (entities != null && entities.Any ()) {
 						filteredFields = new ObservableCollection<Field> (entities);
@@ -162,10 +163,8 @@ namespace TreeWatch
 
 		public Field CheckFieldClicked (Position touchPos)
 		{
-			foreach (Field field in Fields)
-			{
-				if (GeoHelper.IsInsideCoords (field.BoundingCoordinates, touchPos))
-				{
+			foreach (Field field in Fields) {
+				if (GeoHelper.IsInsideCoords (field.BoundingCoordinates, touchPos)) {
 					return field;
 				}
 			}
@@ -174,10 +173,8 @@ namespace TreeWatch
 
 		public Block CheckBlockClicked (Position touchPos)
 		{
-			foreach (Block block in SelectedField.Blocks)
-			{
-				if (GeoHelper.IsInsideCoords (block.BoundingCoordinates, touchPos))
-				{
+			foreach (Block block in SelectedField.Blocks) {
+				if (GeoHelper.IsInsideCoords (block.BoundingCoordinates, touchPos)) {
 					return block;
 				}
 			}

@@ -28,19 +28,44 @@
 				Text         ="{Binding SearchText}"
 				SearchCommand="{Binding SearchCommand}" />
 			<ListView
-				x:Name      ="fieldView"
-				ItemsSource ="{Binding FilteredFields}"
-				SelectedItem="{Binding SelectedField}">
+				x:Name             ="fieldView"
+				ItemsSource        ="{Binding FilteredFields}"
+				SelectedItem       ="{Binding SelectedField}"
+				SeparatorVisibility="None">
 				<ListView.Header>
 					<StackLayout>
 					</StackLayout>
 				</ListView.Header>
 				<ListView.ItemTemplate>
 					<DataTemplate>
-						<TextCell
-							x:Name="TextCell"
-							Text  ="{Binding Name}">
-						</TextCell>
+						<ViewCell>
+							<StackLayout
+								Orientation="Horizontal"
+								Padding    ="10">
+								<Label
+									Text           ="{Binding Name}"
+									TextColor      ="#000000"
+									VerticalOptions="Center" />
+								<Button
+									Clicked          ="InfoButtonClicked"
+									CommandParameter ="{Binding Name}"
+									HorizontalOptions="EndAndExpand"
+									VerticalOptions  ="Center"
+									WidthRequest     ="50">
+									<Button.BackgroundColor>
+										<OnPlatform
+											x:TypeArguments="Color"
+											Android        ="#EEEEEE" />
+									</Button.BackgroundColor>
+									<Button.Image>
+										<OnPlatform
+											x:TypeArguments="FileImageSource"
+											iOS            ="CellIcons/InfoIcon.png"
+											Android        ="InfoIcon.png" />
+									</Button.Image>
+								</Button>
+							</StackLayout>
+						</ViewCell>
 					</DataTemplate>
 				</ListView.ItemTemplate>
 			</ListView>

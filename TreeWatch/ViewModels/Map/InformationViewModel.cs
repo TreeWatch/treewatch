@@ -9,12 +9,22 @@ namespace TreeWatch
 	{
 		public event PropertyChangedEventHandler PropertyChanged;
 
-		public InformationViewModel (Field field)
+		public InformationViewModel (Field field, Block block)
 		{
 			Field = field;
+			Block = block;
+		}
+
+		public InformationViewModel (Field field) : this (field, null)
+		{
 		}
 
 		public Field Field {
+			get;
+			set;
+		}
+
+		public Block Block {
 			get;
 			set;
 		}
@@ -29,7 +39,7 @@ namespace TreeWatch
 		{
 			var navigationPage = (NavigationPage)Application.Current.MainPage;
 
-			navigationPage.PushAsync (new BlockInformationContentPage (this));
+			navigationPage.PushAsync (new BlocksInformationContentPage (this));
 		}
 
 		protected virtual void OnPropertyChanged ([CallerMemberName] string propertyName = null)
