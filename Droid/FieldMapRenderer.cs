@@ -7,6 +7,15 @@ using TreeWatch.Droid;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps.Android;
 using Xamarin.Forms.Platform.Android;
+<<<<<<< 3bd74325abc9744668c9ba6141a64485fd5ea017
+=======
+using Java.Security.Spec;
+using Javax.Xml.Namespace;
+using System.Security.Cryptography;
+using Java.IO;
+using System.IO;
+using System.Xml;
+>>>>>>> Added KML-Parser
 
 [assembly: ExportRenderer (typeof(FieldMap), typeof(FieldMapRenderer))]
 namespace TreeWatch.Droid
@@ -27,6 +36,7 @@ namespace TreeWatch.Droid
 		{
 			fieldHelper = FieldHelper.Instance;
 			fieldHelper.FieldSelected += FieldSelected;
+			XmlDocument coords = GetCoordsFromKml ();
 		}
 
 		protected override void OnElementChanged (ElementChangedEventArgs<View> e)
@@ -161,6 +171,25 @@ namespace TreeWatch.Droid
 				var bounds = builder.Build ();
 				Map.MoveCamera (CameraUpdateFactory.NewLatLngBounds (bounds, 0));
 			}
+		}
+
+		private XmlDocument GetCoordsFromKml ()
+		{
+			XmlDocument doc = new XmlDocument ();
+			try {
+
+				string content;
+				using(StreamReader sr = new StreamReader (Context.Assets.Open ("Karwei.kml")))
+				{
+					content = sr.ReadToEnd();
+				}
+				doc.LoadXml(content);
+
+			} catch (Java.IO.IOException ex) {
+				ex.PrintStackTrace();
+				return null;
+			}
+			return doc;
 		}
 	}
 
