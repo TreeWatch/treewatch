@@ -5,8 +5,13 @@
 	x:Class       ="TreeWatch.MapMenuContentPage"
 	xmlns:local   ="clr-namespace:TreeWatch;assembly=TreeWatch"
 	Title         ="Menu"
-	Icon          ="HamburgerMenuIcon.png"
 	StyleId       ="MapMenu">
+	<ContentPage.Icon>
+		<OnPlatform
+				x:TypeArguments="FileImageSource"
+				iOS            ="Icons/HamburgerMenuIcon.png" 
+				Android 	   ="HamburgerMenuIcon.png"/> 
+	</ContentPage.Icon>
 	<ContentPage.Padding>
 		<OnPlatform
 			x:TypeArguments="Thickness"

@@ -16,8 +16,6 @@ namespace TreeWatch.iOS
 	[Register ("AppDelegate")]
 	public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate
 	{
-		static readonly IntPtr setAccessibilityIdentifier_Handle = Selector.GetHandle("setAccessibilityIdentifier:");
-			
 		public override bool FinishedLaunching (UIApplication uiApplication, NSDictionary launchOptions)
 		{
 			global::Xamarin.Forms.Forms.Init ();
@@ -28,7 +26,6 @@ namespace TreeWatch.iOS
 				// http://developer.xamarin.com/recipes/testcloud/set-accessibilityidentifier-ios/
 				if (null != e.View.StyleId) {
 					e.NativeView.AccessibilityIdentifier = e.View.StyleId;
-						Console.WriteLine("Set AccessibilityIdentifier: " + e.View.StyleId);
 				}
 			};
 

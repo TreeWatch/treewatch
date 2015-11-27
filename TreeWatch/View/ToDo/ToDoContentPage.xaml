@@ -5,10 +5,15 @@
 	x:Class="TreeWatch.ToDoContentPage"
 	Title  ="ToDo"
 	StyleId = "TodoView">
+	<ContentPage.Padding>
+		<OnPlatform
+			x:TypeArguments="Thickness"
+			iOS            ="0,20,0,0" />
+	</ContentPage.Padding>
 	<ContentPage.Icon>
 		<OnPlatform
 			x:TypeArguments="FileImageSource"
-			iOS            ="NoteTabBarIcon.png" />
+			iOS            ="Icons/ToDoTabBarIcon.png" />
 	</ContentPage.Icon>
 	<ContentPage.Content>
 		<ScrollView>

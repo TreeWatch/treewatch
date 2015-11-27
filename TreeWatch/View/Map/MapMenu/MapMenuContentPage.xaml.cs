@@ -10,7 +10,9 @@ namespace TreeWatch
 		public MapMenuContentPage (MapViewModel mapViewModel)
 		{
 			InitializeComponent ();
+
 			this.BindingContext = mapViewModel;
+
 			ListView listView = this.FindByName<ListView> ("FieldView");
 			listView.ItemSelected += (object sender, SelectedItemChangedEventArgs e) => OnFieldSelected ();
 		}

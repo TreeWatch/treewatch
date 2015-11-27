@@ -5,10 +5,15 @@
 	x:Class="TreeWatch.SettingsContentPage"
 	Title  ="Settings"
 	StyleId = "SettingsView">
+	<ContentPage.Padding>
+		<OnPlatform
+			x:TypeArguments="Thickness"
+			iOS            ="0,20,0,0" />
+	</ContentPage.Padding>
 	<ContentPage.Icon>
 		<OnPlatform
 			x:TypeArguments="FileImageSource"
-			iOS            ="SettingsTabBarIcon.png" />
+			iOS            ="Icons/SettingsTabBarIcon.png" />
 	</ContentPage.Icon>
 	<ContentPage.Content>
 		<ScrollView>

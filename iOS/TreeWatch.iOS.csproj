@@ -147,6 +147,9 @@
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="FieldMapRenderer.cs" />
+    <Compile Include="FieldMapAnnotation.cs" />
+    <Compile Include="FieldMapDelegate.cs" />
+    <Compile Include="FieldMapAnnotationView.cs" />
     <Compile Include="SQLite_iOS.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -158,6 +161,8 @@
   <Import Project="..\packages\Xamarin.Forms.1.5.1.6471\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.1.5.1.6471\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
   <ItemGroup>
     <Folder Include="Resources\Images.xcassets\" />
+    <Folder Include="Resources\Icons\" />
+    <Folder Include="Resources\CellIcons\" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Contents.json" />
@@ -184,17 +189,39 @@
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\AppIcon86%402x.png" />
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\AppIcon98%402x.png" />
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\AppIcon44%402x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\HamburgerMenuIcon.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\HamburgerMenuIcon.imageset\HamburgerMenuIcon%401x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\HamburgerMenuIcon.imageset\HamburgerMenuIcon%402x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\HamburgerMenuIcon.imageset\HamburgerMenuIcon%403x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\HamburgerMenuIcon.imageset\HamburgerMenuIcon.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Default-736h%403x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Default-568h%402x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Default-667h%402x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Default-Landscape-568h%402x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Default-Landscape-667h%402x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Default-Landscape-736h%403x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Default-Landscape.png" />
+    <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Default-Landscape%402x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Default-Portrait-736h%403x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Default-Portrait.png" />
+    <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Default-Portrait%402x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Default.png" />
+    <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Default%402x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\HistoryTabBarIcon.png" />
-    <BundleResource Include="Resources\MapTabBarIcon.png" />
-    <BundleResource Include="Resources\NoteTabBarIcon.png" />
-    <BundleResource Include="Resources\SettingsTabBarIcon.png" />
-    <BundleResource Include="Resources\ToDoTabBarIcon.png" />
+    <BundleResource Include="Resources\Icons\HamburgerMenuIcon.png" />
+    <BundleResource Include="Resources\Icons\HamburgerMenuIcon%402x.png" />
+    <BundleResource Include="Resources\Icons\HamburgerMenuIcon%403x.png" />
+    <BundleResource Include="Resources\Icons\HistoryTabBarIcon.png" />
+    <BundleResource Include="Resources\Icons\HistoryTabBarIcon%402x.png" />
+    <BundleResource Include="Resources\Icons\HistoryTabBarIcon%403x.png" />
+    <BundleResource Include="Resources\Icons\MapTabBarIcon.png" />
+    <BundleResource Include="Resources\Icons\MapTabBarIcon%402x.png" />
+    <BundleResource Include="Resources\Icons\MapTabBarIcon%403x.png" />
+    <BundleResource Include="Resources\Icons\NoteTabBarIcon.png" />
+    <BundleResource Include="Resources\Icons\NoteTabBarIcon%402x.png" />
+    <BundleResource Include="Resources\Icons\NoteTabBarIcon%403x.png" />
+    <BundleResource Include="Resources\Icons\SettingsTabBarIcon.png" />
+    <BundleResource Include="Resources\Icons\SettingsTabBarIcon%402x.png" />
+    <BundleResource Include="Resources\Icons\SettingsTabBarIcon%403x.png" />
+    <BundleResource Include="Resources\Icons\ToDoTabBarIcon.png" />
+    <BundleResource Include="Resources\Icons\ToDoTabBarIcon%402x.png" />
+    <BundleResource Include="Resources\Icons\ToDoTabBarIcon%403x.png" />
+    <BundleResource Include="Resources\CellIcons\disclosure_indicator.png" />
   </ItemGroup>
 </Project>

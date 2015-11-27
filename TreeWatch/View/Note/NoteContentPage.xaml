@@ -7,10 +7,15 @@
 	Title         ="Note"
 	StyleId       ="NoteView"
 	BindingContext="{local:NoteViewModel}">
+	<ContentPage.Padding>
+		<OnPlatform
+			x:TypeArguments="Thickness"
+			iOS            ="0,20,0,0" />
+	</ContentPage.Padding>
 	<ContentPage.Icon>
 		<OnPlatform
 			x:TypeArguments="FileImageSource"
-			iOS            ="NoteTabBarIcon.png" />
+			iOS            ="Icons/NoteTabBarIcon.png" />
 	</ContentPage.Icon>
 	<ContentPage.Content>
 		<ScrollView>
@@ -23,7 +28,8 @@
 					Keyboard   ="Default" />
 				<Image 
 					Source="{Binding ImageSource}" 
-					VerticalOptions="CenterAndExpand" />
+					VerticalOptions="CenterAndExpand" 
+					HeightRequest  ="250"/>
 				<StackLayout
 					HorizontalOptions="CenterAndExpand"
 					VerticalOptions  ="End"

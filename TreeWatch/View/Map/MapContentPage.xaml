@@ -4,12 +4,11 @@
 	xmlns:x       ="http://schemas.microsoft.com/winfx/2009/xaml"
 	x:Class       ="TreeWatch.MapContentPage"
 	xmlns:local   ="clr-namespace:TreeWatch;assembly=TreeWatch"
-	Title         ="Map"
 	StyleId       ="MapView">
 	<ContentPage.Icon>
 		<OnPlatform
 			x:TypeArguments="FileImageSource"
-			iOS            ="MapTabBarIcon.png" />
+			iOS            ="Icons/MapTabBarIcon.png" />
 	</ContentPage.Icon>
 	<ContentPage.Content>
 		<StackLayout
