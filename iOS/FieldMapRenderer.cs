@@ -66,7 +66,8 @@ namespace TreeWatch.iOS
 				mapView.AddGestureRecognizer (tapGesture);
 				myMap = e.NewElement as FieldMap;
 				mapView.ShowsUserLocation = true;
-				//mapView.DidUpdateUserLocation += (object sender, MKUserLocationEventArgs ev) => mapView.SetCenterCoordinate(ev.UserLocation.Coordinate, true);
+				//update user position on map
+				mapView.DidUpdateUserLocation += UpdateUserLocation;
 				//MKUserTrackingBarButtonItem buttonItem = new MKUserTrackingBarButtonItem(mapView);
 
 				mapView.GetViewForAnnotation = GetViewForAnnotation;
@@ -76,6 +77,13 @@ namespace TreeWatch.iOS
 
 				AddFields ();
 			}
+		}
+
+		private void UpdateUserLocation(object sender, MKUserLocationEventArgs e)
+		{
+			mapView.SetCenterCoordinate(e.UserLocation.Coordinate, true);
+			//remove listener so we dont keep setting map to user position
+			mapView.DidUpdateUserLocation -= UpdateUserLocation;
 		}
 
 		MKOverlayRenderer GetOverlayRender (MKMapView m, IMKOverlay o)
