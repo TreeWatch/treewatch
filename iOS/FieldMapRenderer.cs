@@ -31,11 +31,7 @@ namespace TreeWatch.iOS
 		MKPolygonRenderer polygonRenderer;
 
 		UITapGestureRecognizer tapGesture;
-<<<<<<< HEAD
 		CLLocationManager locationManager;
-=======
-
->>>>>>> master
 		FieldHelper fieldHelper;
 
 		public FieldMapRenderer ()
