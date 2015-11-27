@@ -1,40 +1,45 @@
 ﻿using System;
-using System.Diagnostics;
 
 namespace TreeWatch
 {
 	public class FieldHelper
 	{
-		private static readonly FieldHelper instance = new FieldHelper();
-		public static Field SelectedField { get; set;}
+		static readonly FieldHelper instance = new FieldHelper ();
 
-		private FieldHelper ()
-		{
-			
-		}
+		public static Field SelectedField { get; set; }
 
-		public static FieldHelper Instance
-		{
+		public static Block SelectedBlock { get; set; }
+
+		public static FieldHelper Instance {
 			get { return  instance; }
 		}
 
-		public event EventHandler<FieldTappedEventArgs> FieldTapped;
+		public event EventHandler<MapTappedEventArgs> MapTapped;
+
 		public event EventHandler<FieldSelectedEventArgs> FieldSelected;
 
-		public void FieldTappedEvent(Position pos)
+		public event EventHandler<BlockSelectedEventArgs> BlockSelected;
+
+		public void MapTappedEvent (Position pos, double zoomLevel)
 		{
-			if (FieldTapped != null) 
-			{
-				FieldTapped (this, new FieldTappedEventArgs (pos));
+			if (MapTapped != null) {
+				MapTapped (this, new MapTappedEventArgs (pos, zoomLevel));
 			}
 		}
 
-		public void FieldSelectedEvent(Field field)
+		public void FieldSelectedEvent (Field field)
 		{
-			if (FieldSelected != null) 
-			{
+			if (FieldSelected != null) {
 				SelectedField = field;
 				FieldSelected (this, new FieldSelectedEventArgs (field));
+			}
+		}
+
+		public void BlockSelectedEvent (Block block)
+		{
+			if (BlockSelected != null) {
+				SelectedBlock = block;
+				BlockSelected (this, new BlockSelectedEventArgs (block));
 			}
 		}
 	}

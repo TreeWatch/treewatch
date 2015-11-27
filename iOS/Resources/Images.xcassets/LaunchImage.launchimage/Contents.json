@@ -113,6 +113,7 @@
     {
       "orientation": "portrait",
       "extent": "to-status-bar",
+      "filename": "Default-PortraitWSB.png",
       "size": "768x1004",
       "scale": "1x",
       "idiom": "ipad"
@@ -120,6 +121,7 @@
     {
       "orientation": "portrait",
       "extent": "to-status-bar",
+      "filename": "Default-PortraitWSB@2x.png",
       "size": "768x1004",
       "scale": "2x",
       "idiom": "ipad"
@@ -143,6 +145,7 @@
     {
       "orientation": "landscape",
       "extent": "to-status-bar",
+      "filename": "Default-LandscapeWSB.png",
       "size": "1024x748",
       "scale": "1x",
       "idiom": "ipad"
@@ -150,6 +153,7 @@
     {
       "orientation": "landscape",
       "extent": "to-status-bar",
+      "filename": "Default-LandscapeWSB@2x.png",
       "size": "1024x748",
       "scale": "2x",
       "idiom": "ipad"
