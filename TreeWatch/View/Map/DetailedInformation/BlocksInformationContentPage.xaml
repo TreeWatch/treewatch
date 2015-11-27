@@ -20,7 +20,7 @@
 					<ViewCell>
 						<StackLayout
 							Orientation="Horizontal"
-							Padding    ="10">
+							Padding    ="20,10,20,10">
 							<Label
 								Text           ="{Binding ID}"
 								TextColor      ="#000000"

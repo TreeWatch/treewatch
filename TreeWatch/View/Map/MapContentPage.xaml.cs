@@ -25,21 +25,17 @@ namespace TreeWatch
 
 		View CreateMapContentView ()
 		{
-			//Coordinates for the starting point of the map
+			var viewModel = (MapViewModel)BindingContext;
+			var currentLocation = viewModel.getCurrentDevicePosition ();
 
-			var model = (MapViewModel)BindingContext;
-			var location = model.getCurrentDevicePosition ();
+			var fieldMap = new FieldMap (MapSpan.FromCenterAndRadius (currentLocation, Distance.FromKilometers (1)));
+			fieldMap.Fields = viewModel.Fields;
 
-			var map = new FieldMap (MapSpan.FromCenterAndRadius (location, Distance.FromKilometers (1)));
-			map.Fields = model.Fields;
+			fieldMap.MapType = MapType.Hybrid;
 
-			map.MapType = MapType.Hybrid;
+			fieldMap.BindingContext = BindingContext;
 
-			map.BindingContext = BindingContext;
-
-			var createMapContentView = map;
-
-			return createMapContentView;
+			return fieldMap;
 		}
 	}
 }

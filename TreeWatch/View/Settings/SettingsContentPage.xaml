@@ -4,7 +4,7 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 	x:Class="TreeWatch.SettingsContentPage"
 	Title  ="Settings"
-	StyleId = "SettingsView">
+	StyleId="SettingsView">
 	<ContentPage.Padding>
 		<OnPlatform
 			x:TypeArguments="Thickness"
@@ -16,13 +16,50 @@
 			iOS            ="Icons/SettingsTabBarIcon.png" />
 	</ContentPage.Icon>
 	<ContentPage.Content>
-		<ScrollView>
-			<StackLayout
-				VerticalOptions  ="CenterAndExpand"
-				HorizontalOptions="CenterAndExpand"
-				Orientation      ="Vertical"
-				Spacing          ="15">
-			</StackLayout>
-		</ScrollView>
+		<TableView
+			Intent="Settings">
+			<TableRoot>
+				<TableSection
+					Title="Map">
+					<ViewCell
+						x:Name="mapType">
+						<StackLayout
+							Orientation="Horizontal"
+							Padding    ="20,10,20,10">
+							<Label
+								Text           ="Map Type"
+								TextColor      ="#000000"
+								VerticalOptions="Center" />
+							<Label
+								HorizontalOptions="EndAndExpand"
+								Text             ="{Binding FieldMap.MapType}"
+								TextColor        ="#8E8F93"
+								VerticalOptions  ="Center" />
+							<Image
+								VerticalOptions="Center">
+								<Image.Source>
+									<OnPlatform
+										x:TypeArguments="ImageSource"
+										iOS            ="CellIcons/RightArrowIcon.png"
+										Android        ="RightArrowIcon.png" />
+								</Image.Source>
+							</Image>
+						</StackLayout>
+					</ViewCell>
+					<SwitchCell
+						Text  ="Current Position"
+						On = "{Binding FieldMap.IsShowingUser}" />
+				</TableSection>
+				<TableSection
+					Title="Note">
+				</TableSection>
+				<TableSection
+					Title="ToDo">
+				</TableSection>
+				<TableSection
+					Title="History">
+				</TableSection>
+			</TableRoot>
+		</TableView>
 	</ContentPage.Content>
 </ContentPage>
