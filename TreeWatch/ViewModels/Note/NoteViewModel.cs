@@ -171,7 +171,7 @@ namespace TreeWatch
 				{
 					_geolocator = DependencyService.Get<IGeolocator>();
 
-					_geolocator.DesiredAccuracy = 1;
+					_geolocator.DesiredAccuracy = 1.0;
 					_geolocator.PositionError += OnListeningError;
 					_geolocator.PositionChanged += OnPositionChanged;
 				}
@@ -214,10 +214,10 @@ namespace TreeWatch
 		private void Test(XLabs.Platform.Services.Geolocation.Position pos)
 		{
 			PositionStatus = pos.Timestamp.ToString("G");
-			PositionLongitude = pos.Longitude.ToString("N4");
-			PositionLatitude = pos.Latitude.ToString("N4");
+			PositionLongitude = pos.Longitude.ToString();
+			PositionLatitude = pos.Latitude.ToString();
 			Accuracy = pos.Accuracy.ToString();
-			Debug.WriteLine ("Status: {0}, LA: {1}, LO: {2}", pos.Timestamp.ToString ("G"), pos.Latitude.ToString ("N4"), pos.Longitude.ToString ("N4"));
+			Debug.WriteLine ("Status: {0}, LA: {1}, LO: {2}", pos.Timestamp.ToString ("G"), pos.Latitude.ToString (), pos.Longitude.ToString ());
 		}
 
 		/// <summary>
@@ -237,7 +237,7 @@ namespace TreeWatch
 		/// <param name="e">The <see cref="PositionEventArgs"/> instance containing the event data.</param>
 		private void OnPositionChanged(object sender, PositionEventArgs e)
 		{
-			Debug.WriteLine ("Status: {0}, LA: {1}, LO: {2}", e.Position.Timestamp.ToString ("G"), e.Position.Latitude.ToString ("N4"), e.Position.Longitude.ToString ("N4"));
+			Debug.WriteLine ("Status: {0}, LA: {1}, LO: {2}", e.Position.Timestamp.ToString ("G"), e.Position.Latitude.ToString (), e.Position.Longitude.ToString ());
 		}
 
 		public NoteViewModel ()
@@ -337,7 +337,6 @@ namespace TreeWatch
 			{ 
 				DefaultCamera = CameraDevice.Rear,
 				SaveMediaOnCapture = true,
-				Name = string.Format("TreeWatch_{0}", DateTime.Now.ToString("yyMMddhhmmss")),
 				MaxPixelDimension = 1024,
 				PercentQuality = 85
 			};

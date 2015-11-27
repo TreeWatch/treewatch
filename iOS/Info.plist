@@ -53,5 +53,7 @@
 	</array>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Give me access!</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Moar access!</string>
 </dict>
 </plist>

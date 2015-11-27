@@ -83,6 +83,7 @@ namespace TreeWatch.Droid
 			AddFields ();
 			Map.MyLocationEnabled = true;
 			Map.UiSettings.MyLocationButtonEnabled = true;
+
 			var handler = MapReady;
 			if (handler != null)
 				handler (this, EventArgs.Empty);

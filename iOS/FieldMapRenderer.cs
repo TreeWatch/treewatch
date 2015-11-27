@@ -23,6 +23,7 @@ namespace TreeWatch.iOS
 		List<MKPolygonRenderer> renderers;
 		MKPolygonRenderer polygonRenderer;
 		UITapGestureRecognizer tapGesture;
+		CLLocationManager locationManager;
 
 		public FieldMapRenderer ()
 		{
@@ -30,7 +31,8 @@ namespace TreeWatch.iOS
 			renderers = new List<MKPolygonRenderer> ();
 			tapGesture = new UITapGestureRecognizer (MapTapped);
 			tapGesture.NumberOfTapsRequired = 1;
-
+			locationManager = new CLLocationManager ();
+			locationManager.RequestWhenInUseAuthorization ();
 		}
 
 		protected override void OnElementChanged (ElementChangedEventArgs<View> e)
@@ -40,10 +42,10 @@ namespace TreeWatch.iOS
 			if (e.OldElement == null) {
 				mapView = Control as MKMapView;
 				mapView.AddGestureRecognizer (tapGesture);
-				mapView.ShowsCompass = true;
-				mapView.ShowsUserLocation = true;
-
 				myMap = e.NewElement as FieldMap;
+				mapView.ShowsUserLocation = true;
+				//mapView.DidUpdateUserLocation += (object sender, MKUserLocationEventArgs ev) => mapView.SetCenterCoordinate(ev.UserLocation.Coordinate, true);
+				//MKUserTrackingBarButtonItem buttonItem = new MKUserTrackingBarButtonItem(mapView);
 
 				mapView.OverlayRenderer = (m, o) => {
 					polygonRenderer = new MKPolygonRenderer (o as MKPolygon);
