@@ -1,32 +1,17 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage
-	xmlns         ="http://xamarin.com/schemas/2014/forms"
-	xmlns:x        ="http://schemas.microsoft.com/winfx/2009/xaml"
-	x:Class        ="TreeWatch.FieldInformationContentPage"
-	xmlns:local    ="clr-namespace:TreeWatch;assembly=TreeWatch"
-	Title          ="{Binding Field.Name}"
-	StyleId        ="FieldInformation"
-	Padding        ="0, 0, 0, 0">
+	xmlns     ="http://xamarin.com/schemas/2014/forms"
+	xmlns:x    ="http://schemas.microsoft.com/winfx/2009/xaml"
+	x:Class    ="TreeWatch.FieldInformationContentPage"
+	xmlns:local="clr-namespace:TreeWatch;assembly=TreeWatch"
+	Title      ="{Binding Field.Name}"
+	StyleId    ="FieldInformation"
+	Padding    ="0, 0, 0, 0">
 	<ContentPage.Content>
 		<TableView
 			Intent="Menu">
 			<TableRoot>
 				<TableSection>
-<!--					<ViewCell>
-						<StackLayout
-							Orientation="Horizontal"
-							Padding    ="10">
-							<Label
-								Text           ="Name"
-								TextColor      ="#000000"
-								VerticalOptions="Center" />
-							<Label
-								HorizontalOptions="EndAndExpand"
-								Text             ="{Binding FieldName}"
-								TextColor        ="#8E8F93"
-								VerticalOptions  ="Center" />
-						</StackLayout>
-					</ViewCell>-->
 					<ViewCell>
 						<StackLayout
 							Orientation="Horizontal"
@@ -60,8 +45,14 @@
 								TextColor        ="#8E8F93"
 								VerticalOptions  ="Center" />
 							<Image
-								Source         ="CellIcons/disclosure_indicator.png"
-								VerticalOptions="Center" />
+								VerticalOptions="Center">
+								<Image.Source>
+									<OnPlatform
+										x:TypeArguments="ImageSource"
+										iOS            ="CellIcons/RightArrowIcon.png"
+										Android        ="RightArrowIcon.png" />
+								</Image.Source>
+							</Image>
 						</StackLayout>
 					</ViewCell>
 				</TableSection>

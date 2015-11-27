@@ -1,5 +1,6 @@
 ﻿using Xamarin.Forms;
 using System.Diagnostics;
+using System;
 
 namespace TreeWatch
 {
@@ -9,13 +10,6 @@ namespace TreeWatch
 		{
 			// initialize component
 			InitializeComponent ();
-
-			picture.GestureRecognizers.Add (new TapGestureRecognizer () {
-				Command = new Command (async () => {
-					// ToDo
-					Debug.WriteLine ("Take a Picture");
-				})
-			});
 		}
 	}
 }

@@ -33,7 +33,6 @@
 					Placeholder="Title"
 					Keyboard   ="Default" />
 				<Image
-					x:Name         ="picture"
 					Source         ="camera.png"
 					HeightRequest  ="250"
 					VerticalOptions="StartAndExpand" />

@@ -7,6 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Windows.Input;
 
 using Xamarin.Forms;
+using System.Diagnostics;
 
 namespace TreeWatch
 {
@@ -17,21 +18,22 @@ namespace TreeWatch
 		String searchText = String.Empty;
 		Command searchCommand;
 		Field selectedField;
+		Block selectedBlock;
 		FieldHelper fieldHelper;
 
 		public MapViewModel ()
 		{
 			fieldHelper = FieldHelper.Instance;
-			fieldHelper.FieldTapped += FieldTapped;
+			fieldHelper.MapTapped += MapTapped;
 			fieldHelper.FieldSelected += FieldSelected;
+			fieldHelper.BlockSelected += BlockSelected;
 			Fields = new ObservableCollection<Field> (new DBQuery<Field> (App.Database).GetAllWithChildren ());
 			selectedField = new Field ("Dummy", new List<Position> (), new List<Block> ());
 		}
 
 		public Field SelectedField {
 			set {
-				if (value != null && !value.Name.Equals (selectedField.Name))
-				{
+				if (value != null && !value.Name.Equals (selectedField.Name)) {
 					selectedField = value;
 					SearchText = string.Empty;
 					fieldHelper.FieldSelectedEvent (selectedField);
@@ -40,22 +42,56 @@ namespace TreeWatch
 			get { return selectedField; }
 		}
 
-		void FieldTapped (object sender, FieldTappedEventArgs e)
-		{
-			Field tappedField = CheckFieldClicked (e.Position);
-			if (tappedField != null)
-			{
-				SelectedField = tappedField;
+		public Block SelectedBlock {
+			set {
+				if (value != null && value.ID != selectedBlock.ID) {
+					selectedBlock = value;
+					fieldHelper.BlockSelectedEvent (selectedBlock);
+				}
 			}
+			get { return selectedBlock; }
+			
 		}
 
-		public void FieldSelected (object sender, FieldSelectedEventArgs e)
+		void MapTapped (object sender, MapTappedEventArgs e)
+		{
+			var tappedField = CheckFieldClicked (e.Position);
+			if (tappedField != null) {
+				SelectedField = tappedField;
+			}
+
+			if (e.Zoomlevel > 15) {
+				var tappedBlock = CheckBlockClicked (e.Position);
+				if (tappedBlock != null) {
+					selectedBlock = tappedBlock;
+					var navigationPage = (NavigationPage)Application.Current.MainPage;
+
+					var informationViewModel = new InformationViewModel (SelectedField, SelectedBlock);
+					navigationPage.PushAsync (new BlockInformationContentPage (informationViewModel));
+
+				}
+			}
+
+		}
+
+		void FieldSelected (object sender, FieldSelectedEventArgs e)
 		{
 			SelectedField = e.Field;
 		}
 
-		public ICommand SelectFieldCommand { private set; get; }
+		void BlockSelected (object sender, BlockSelectedEventArgs e)
+		{
+			SelectedBlock = e.Block;
+		}
 
+
+		public void NavigateToField (Field field)
+		{
+			var navigationPage = (NavigationPage)Application.Current.MainPage;
+
+			var informationViewModel = new InformationViewModel (field);
+			navigationPage.PushAsync (new FieldInformationContentPage (informationViewModel));
+		}
 
 		public string SearchText {
 			get { return this.searchText; }
@@ -74,8 +110,7 @@ namespace TreeWatch
 			get {
 				var filteredFields = new ObservableCollection<Field> ();
 
-				if (Fields != null)
-				{
+				if (Fields != null) {
 					List<Field> entities = Fields.Where (x => x.Name.ToLower ().Contains (searchText.ToLower ())).ToList (); 
 					if (entities != null && entities.Any ()) {
 						filteredFields = new ObservableCollection<Field> (entities);
@@ -128,11 +163,19 @@ namespace TreeWatch
 
 		public Field CheckFieldClicked (Position touchPos)
 		{
-			foreach (Field field in Fields)
-			{
-				if (GeoHelper.IsInsideCoords (field.BoundingCoordinates, touchPos))
-				{
+			foreach (Field field in Fields) {
+				if (GeoHelper.IsInsideCoords (field.BoundingCoordinates, touchPos)) {
 					return field;
+				}
+			}
+			return null;
+		}
+
+		public Block CheckBlockClicked (Position touchPos)
+		{
+			foreach (Block block in SelectedField.Blocks) {
+				if (GeoHelper.IsInsideCoords (block.BoundingCoordinates, touchPos)) {
+					return block;
 				}
 			}
 			return null;

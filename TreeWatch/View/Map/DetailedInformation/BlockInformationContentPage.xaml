@@ -3,37 +3,46 @@
 	xmlns ="http://xamarin.com/schemas/2014/forms"
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 	x:Class="TreeWatch.BlockInformationContentPage"
-	Title  ="Blocks"
+	Title  ="Block"
 	StyleId="BlockInformation"
 	Padding="0, 0, 0, 0">
 	<ContentPage.Content>
-		<ListView
-			x:Name      ="BlockView"
-			ItemsSource ="{Binding Field.Blocks}"
-			SelectedItem="{Binding Block}">
-			<ListView.Header>
-				<StackLayout>
-				</StackLayout>
-			</ListView.Header>
-			<ListView.ItemTemplate>
-				<DataTemplate>
+		<TableView
+			Intent="Menu">
+			<TableRoot>
+				<TableSection>
 					<ViewCell>
 						<StackLayout
 							Orientation="Horizontal"
 							Padding    ="10">
 							<Label
-								Text           ="{Binding ID}"
+								Text           ="ID"
 								TextColor      ="#000000"
 								VerticalOptions="Center" />
 							<Label
 								HorizontalOptions="EndAndExpand"
-								Text             ="{Binding TreeType.Name}"
-								TextColor        ="{Binding TreeType.ColorProp}"
+								Text             ="{Binding Block.ID}"
+								TextColor        ="#8E8F93"
 								VerticalOptions  ="Center" />
 						</StackLayout>
 					</ViewCell>
-				</DataTemplate>
-			</ListView.ItemTemplate>
-		</ListView>
+					<ViewCell>
+						<StackLayout
+							Orientation="Horizontal"
+							Padding    ="10">
+							<Label
+								Text           ="Name"
+								TextColor      ="#000000"
+								VerticalOptions="Center" />
+							<Label
+								HorizontalOptions="EndAndExpand"
+								Text             ="{Binding Block.TreeType.Name}"
+								TextColor        ="#8E8F93"
+								VerticalOptions  ="Center" />
+						</StackLayout>
+					</ViewCell>
+				</TableSection>
+			</TableRoot>
+		</TableView>
 	</ContentPage.Content>
 </ContentPage>
