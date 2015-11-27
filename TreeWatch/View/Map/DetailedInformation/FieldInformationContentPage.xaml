@@ -15,7 +15,7 @@
 					<ViewCell>
 						<StackLayout
 							Orientation="Horizontal"
-							Padding    ="10">
+							Padding    ="20,10,20,10">
 							<Label
 								Text           ="Size"
 								TextColor      ="#000000"
@@ -34,7 +34,7 @@
 						x:Name="blocks">
 						<StackLayout
 							Orientation="Horizontal"
-							Padding    ="10">
+							Padding    ="20,10,20,10">
 							<Label
 								Text           ="Blocks"
 								TextColor      ="#000000"

@@ -93,7 +93,7 @@ namespace TreeWatch.iOS
 				if (field.Blocks.Count != 0) {
 					foreach (var block in field.Blocks) {
 						if (block.BoundingCoordinates.Count != 0 && block.BoundingCoordinates.Count >= 3) {
-							var rowpoints = convertCordinates (block.BoundingCoordinates);
+							var rowpoints = convertCoordinates (block.BoundingCoordinates);
 							var rowpolygon = MKPolygon.FromCoordinates (rowpoints);
 							rowpolygon.Title = block.TreeType.ID.ToString ();
 							polygons.Add (rowpolygon);
@@ -102,7 +102,7 @@ namespace TreeWatch.iOS
 				}
 
 				if (field.BoundingCoordinates.Count != 0 && field.BoundingCoordinates.Count >= 3) {
-					var points = convertCordinates (field.BoundingCoordinates);
+					var points = convertCoordinates (field.BoundingCoordinates);
 					var polygon = MKPolygon.FromCoordinates (points);
 					polygon.Title = "Field";
 					polygons.Add (polygon);
@@ -153,15 +153,15 @@ namespace TreeWatch.iOS
 			}
 		}
 
-		static CLLocationCoordinate2D[] convertCordinates (List<Position> Cordinates)
+		static CLLocationCoordinate2D[] convertCoordinates (List<Position> Coordinates)
 		{
-			var points = new CLLocationCoordinate2D[Cordinates.Count + 1];
+			var points = new CLLocationCoordinate2D[Coordinates.Count + 1];
 			var i = 0;
-			foreach (var pos in Cordinates) {
+			foreach (var pos in Coordinates) {
 				points [i] = new CLLocationCoordinate2D (pos.Latitude, pos.Longitude);
 				i++;
 			}
-			points [i] = new CLLocationCoordinate2D (Cordinates [0].Latitude, Cordinates [0].Longitude);
+			points [i] = new CLLocationCoordinate2D (Coordinates [0].Latitude, Coordinates [0].Longitude);
 
 			return points;
 		}
