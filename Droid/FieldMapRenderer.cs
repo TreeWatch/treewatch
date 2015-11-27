@@ -27,6 +27,7 @@ namespace TreeWatch.Droid
 		{
 			fieldHelper = FieldHelper.Instance;
 			fieldHelper.FieldSelected += FieldSelected;
+			XmlDocument coords = GetCoordsFromKml ();
 		}
 
 		protected override void OnElementChanged (ElementChangedEventArgs<View> e)
@@ -50,7 +51,7 @@ namespace TreeWatch.Droid
 				if (field.Blocks.Count != 0) {
 					foreach (var block in field.Blocks) {
 						if (block.BoundingCoordinates.Count != 0 && block.BoundingCoordinates.Count >= 3) {
-							Map.AddPolygon (GetPolygon (FieldMapRenderer.ConvertCoordinates (block.BoundingCoordinates), 
+							Map.AddPolygon (GetPolygon (FieldMapRenderer.ConvertCoordinates (block.BoundingCoordinates),
 								(block.TreeType.ColorProp).ToAndroid ()));
 						}
 					}
@@ -82,7 +83,7 @@ namespace TreeWatch.Droid
 			polygonOptions.InvokeFillColor (color);
 			polygonOptions.InvokeStrokeWidth (0);
 			polygonOptions.AddAll (coordinates);
-			
+
 			return polygonOptions;
 		}
 
@@ -120,7 +121,7 @@ namespace TreeWatch.Droid
 			if (handler != null)
 				handler (this, EventArgs.Empty);
 		}
-			
+
 		void InfoWindowClicked (object sender, GoogleMap.InfoWindowClickEventArgs e)
 		{
 			Marker marker = e.Marker;
@@ -162,6 +163,5 @@ namespace TreeWatch.Droid
 				Map.MoveCamera (CameraUpdateFactory.NewLatLngBounds (bounds, 0));
 			}
 		}
-	}
 
 }

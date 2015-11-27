@@ -192,4 +192,7 @@
       <Visible>False</Visible>
     </XamarinComponentReference>
   </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Karwei.kml" />
+  </ItemGroup>
 </Project>
