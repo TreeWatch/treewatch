@@ -55,7 +55,7 @@
 									<Button.BackgroundColor>
 										<OnPlatform
 											x:TypeArguments="Color"
-											Android        ="#EEEEEE" />
+											Android        ="Transparent" />
 									</Button.BackgroundColor>
 									<Button.Image>
 										<OnPlatform
