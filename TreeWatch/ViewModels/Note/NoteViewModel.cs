@@ -17,7 +17,6 @@ namespace TreeWatch
 	public class NoteViewModel : INotifyPropertyChanged
 	{
 		public event PropertyChangedEventHandler PropertyChanged;
-
 		/// <summary>
 		/// The _scheduler.
 		/// </summary>
