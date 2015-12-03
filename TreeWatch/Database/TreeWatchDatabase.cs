@@ -1,5 +1,6 @@
 ﻿using Xamarin.Forms;
 using SQLite.Net;
+using System;
 
 namespace TreeWatch
 {
@@ -19,6 +20,9 @@ namespace TreeWatch
 			connection.CreateTable<UserToDo> ();
 			connection.CreateTable<BlockToDo> ();
 			connection.CreateTable<TreeType> ();
+			connection.CreateTable<DatabaseConfig> ();
+			connection.InsertOrIgnore (new DatabaseConfig ());
+
 		}
 
 		public void ClearDataBase ()
@@ -32,8 +36,26 @@ namespace TreeWatch
 			connection.DeleteAll<UserToDo> ();
 			connection.DeleteAll<BlockToDo> ();
 			connection.DeleteAll<TreeType> ();
+			//connection.Execute ("DROP TABLE initialized");
+		}
+
+		public DatabaseConfig DBconfig{
+			get{ return connection.Get<DatabaseConfig> (1); } set{ connection.Update (value); }
 		}
 			
+	}
+
+	public class DatabaseConfig : BaseModel{
+		public bool init {get; set;}
+
+		public DatabaseConfig()
+		{
+			ID = 1;
+		}
+
+		public DatabaseConfig(bool isset) : this(){
+			init = isset;
+		}
 	}
 }
 
