@@ -107,6 +107,9 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="ExifLib">
+      <HintPath>..\packages\ExifLib.PCL.1.0.1\lib\portable-net45+sl50+win+WindowsPhoneApp81+wp80+Xamarin.iOS10+MonoAndroid10+MonoTouch10\ExifLib.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TreeWatch\TreeWatch.csproj">
@@ -141,7 +144,6 @@
   <ItemGroup>
     <Folder Include="Resources\Images.xcassets\" />
     <Folder Include="Resources\Icons\" />
-    <Folder Include="Resources\CellIcons\" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Contents.json" />
@@ -212,7 +214,14 @@
     <BundleResource Include="Resources\Icons\ToDoTabBarIcon.png" />
     <BundleResource Include="Resources\Icons\ToDoTabBarIcon%402x.png" />
     <BundleResource Include="Resources\Icons\ToDoTabBarIcon%403x.png" />
-    <BundleResource Include="Resources\CellIcons\InfoIcon.png" />
-    <BundleResource Include="Resources\CellIcons\RightArrowIcon.png" />
+    <BundleResource Include="Resources\Icons\FilterListIcon.png" />
+    <BundleResource Include="Resources\Icons\FilterListIcon%402x.png" />
+    <BundleResource Include="Resources\Icons\FilterListIcon%403x.png" />
+    <BundleResource Include="Resources\Icons\InfoIcon.png" />
+    <BundleResource Include="Resources\Icons\InfoIcon%402x.png" />
+    <BundleResource Include="Resources\Icons\InfoIcon%403x.png" />
+    <BundleResource Include="Resources\Icons\ArrowRightIcon.png" />
+    <BundleResource Include="Resources\Icons\ArrowRightIcon%402x.png" />
+    <BundleResource Include="Resources\Icons\ArrowRightIcon%403x.png" />
   </ItemGroup>
 </Project>
