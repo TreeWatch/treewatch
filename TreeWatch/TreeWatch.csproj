@@ -82,6 +82,8 @@
     </Compile>
     <Compile Include="ViewModels\Map\InformationViewModel.cs" />
     <Compile Include="View\Map\MapNavigationPage.cs" />
+    <Compile Include="View\SplashPage.cs" />
+    <Compile Include="Utils\KMLParser.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.1.5.1.6471\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.1.5.1.6471\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
@@ -101,6 +103,7 @@
     <Folder Include="View\Map\DetailedInformation\" />
     <Folder Include="Database\" />
     <Folder Include="Model\ToDo\" />
+    <Folder Include="KML\Fields\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">
@@ -138,6 +141,13 @@
     <EmbeddedResource Include="View\Map\DetailedInformation\BlockInformationContentPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="KML\Blocks\rassenmapGrutto.kml" />
+    <EmbeddedResource Include="KML\Blocks\rassenmapHema.kml" />
+    <EmbeddedResource Include="KML\Blocks\rassenmapIkea.kml" />
+    <EmbeddedResource Include="KML\Fields\perceelscanGrutto.kml" />
+    <EmbeddedResource Include="KML\Fields\perceelscanPraxis.kml" />
+    <EmbeddedResource Include="KML\Fields\perceelscanSligro.kml" />
+    <EmbeddedResource Include="KML\Fields\perceelscanKarwei.kml" />
   </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>

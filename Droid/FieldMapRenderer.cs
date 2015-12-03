@@ -12,7 +12,6 @@ using Javax.Xml.Namespace;
 using System.Security.Cryptography;
 using Java.IO;
 using System.IO;
-using System.Xml;
 
 [assembly: ExportRenderer (typeof(FieldMap), typeof(FieldMapRenderer))]
 namespace TreeWatch.Droid
@@ -27,7 +26,6 @@ namespace TreeWatch.Droid
 		{
 			fieldHelper = FieldHelper.Instance;
 			fieldHelper.FieldSelected += FieldSelected;
-			XmlDocument coords = GetCoordsFromKml ();
 		}
 
 		new public GoogleMap Map { get; private set; }
@@ -107,6 +105,7 @@ namespace TreeWatch.Droid
 			foreach (var pos in coordinates)
 			{
 				cords.Add (new LatLng (pos.Latitude, pos.Longitude));
+
 			}
 			cords.Add (new LatLng (coordinates [0].Latitude, coordinates [0].Longitude));
 			return cords;
@@ -169,25 +168,6 @@ namespace TreeWatch.Droid
 				LatLngBounds bounds = builder.Build ();
 				Map.MoveCamera (CameraUpdateFactory.NewLatLngBounds (bounds, 0));
 			}
-		}
-
-		private XmlDocument GetCoordsFromKml ()
-		{
-			XmlDocument doc = new XmlDocument ();
-			try {
-
-				string content;
-				using(StreamReader sr = new StreamReader (Context.Assets.Open ("Karwei.kml")))
-				{
-					content = sr.ReadToEnd();
-				}
-				doc.LoadXml(content);
-
-			} catch (Java.IO.IOException ex) {
-				ex.PrintStackTrace();
-				return null;
-			}
-			return doc;
 		}
 	}
 
