@@ -19,19 +19,16 @@ namespace TreeWatch
 			};
 			this.Master = mapMenuContentPage;
 
-			if (TargetPlatform.iOS == Device.OS)
-			{
+			if (TargetPlatform.iOS == Device.OS) {
 				this.Detail = new MapNavigationPage (new MapContentPage (mapViewModel));
-			} else
-			{
+			} else {
 				this.Detail = new MapContentPage (mapViewModel);
 			}
 
 			// configuration of this page
 			this.MasterBehavior = MasterBehavior.Popover;
 			this.Title = Detail.Title;
-			if (Detail.Icon != null)
-			{
+			if (Detail.Icon != null) {
 				this.Icon = Detail.Icon;
 			}
 
