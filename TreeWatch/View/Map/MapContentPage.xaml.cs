@@ -4,38 +4,45 @@ using System.Diagnostics;
 
 namespace TreeWatch
 {
-	public partial class MapContentPage : ContentPage
-	{
-		public MapContentPage (MapViewModel mapViewModel)
-		{
-			// initialize this page
-			InitializeComponent ();
+    public partial class MapContentPage : ContentPage
+    {
+        public MapContentPage(MapViewModel mapViewModel)
+        {
+            // initialize this page
+            InitializeComponent();
 
-			// add view model
-			this.BindingContext = mapViewModel;
+            // add view model
+            this.BindingContext = mapViewModel;
 
-			// set content of page
-			Content = CreateMapContentView ();
+            // set content of page
+            Content = CreateMapContentView();
 
-			if (TargetPlatform.Android == Device.OS)
-			{
-				this.Title = "Map";
-			}
-		}
+            if (TargetPlatform.Android == Device.OS)
+            {
+                this.Title = "Map";
+            }
 
-		View CreateMapContentView ()
-		{
-			var viewModel = (MapViewModel)BindingContext;
-			var currentLocation = viewModel.getCurrentDevicePosition ();
+            var clearLayersToolBarItem = new ToolbarItem();
+            clearLayersToolBarItem.Icon = Device.OS == TargetPlatform.iOS ? "Icons/ClearLayersIcon" : "ClearLayersIcon";
+            ToolbarItems.Add(clearLayersToolBarItem);
+            var layersToolBarItem = new ToolbarItem();
+            layersToolBarItem.Icon = Device.OS == TargetPlatform.iOS ? "Icons/LayersIcon" : "LayersIcon";
+            ToolbarItems.Add(layersToolBarItem);
+        }
 
-			var fieldMap = new FieldMap (MapSpan.FromCenterAndRadius (currentLocation, Distance.FromKilometers (1)));
-			fieldMap.Fields = viewModel.Fields;
+        View CreateMapContentView()
+        {
+            var viewModel = (MapViewModel)BindingContext;
+            var currentLocation = viewModel.getCurrentDevicePosition();
 
-			fieldMap.MapType = MapType.Hybrid;
+            var fieldMap = new FieldMap(MapSpan.FromCenterAndRadius(currentLocation, Distance.FromKilometers(1)));
+            fieldMap.Fields = viewModel.Fields;
 
-			fieldMap.BindingContext = BindingContext;
+            fieldMap.MapType = MapType.Hybrid;
 
-			return fieldMap;
-		}
-	}
+            fieldMap.BindingContext = BindingContext;
+
+            return fieldMap;
+        }
+    }
 }
