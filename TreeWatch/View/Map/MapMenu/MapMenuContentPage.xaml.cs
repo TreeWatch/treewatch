@@ -14,7 +14,7 @@ namespace TreeWatch
 
 			this.BindingContext = mapViewModel;
 
-			fieldView.ItemTapped += OnFieldSelected;
+            fieldView.ItemTapped += OnFieldSelected;
 		}
 
 		protected virtual void OnFieldSelected (object sender, ItemTappedEventArgs e)
