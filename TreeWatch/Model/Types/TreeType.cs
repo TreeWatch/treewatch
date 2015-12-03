@@ -1,10 +1,11 @@
 ﻿using Xamarin.Forms;
 using SQLite.Net.Attributes;
+using System;
 
 
 namespace TreeWatch
 {
-	public class TreeType : BaseModel
+	public class TreeType : BaseModel, IEquatable<TreeType>
 	{
 		public string Name { get; set; }
 
@@ -23,6 +24,16 @@ namespace TreeWatch
 			TreeColor = color;
 			ColorProp = Color.FromHex (color);
 
+		}
+
+		public TreeType (string name) : this (name, "#00FFFFFFF")
+		{
+		}
+
+
+		public bool Equals (TreeType other)
+		{
+			return this.Name == other.Name;
 		}
 	}
 

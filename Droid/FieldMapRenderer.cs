@@ -27,7 +27,6 @@ namespace TreeWatch.Droid
 		{
 			fieldHelper = FieldHelper.Instance;
 			fieldHelper.FieldSelected += FieldSelected;
-			XmlDocument coords = GetCoordsFromKml ();
 		}
 
 		protected override void OnElementChanged (ElementChangedEventArgs<View> e)
@@ -103,6 +102,7 @@ namespace TreeWatch.Droid
 			var cords = new Java.Util.ArrayList ();
 			foreach (var pos in coordinates) {
 				cords.Add (new LatLng (pos.Latitude, pos.Longitude));
+
 			}
 			cords.Add (new LatLng (coordinates [0].Latitude, coordinates [0].Longitude));
 			return cords;
@@ -163,5 +163,6 @@ namespace TreeWatch.Droid
 				Map.MoveCamera (CameraUpdateFactory.NewLatLngBounds (bounds, 0));
 			}
 		}
+	}
 
 }
