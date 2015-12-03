@@ -23,10 +23,10 @@ namespace TreeWatch
             }
 
             var clearLayersToolBarItem = new ToolbarItem();
-            clearLayersToolBarItem.Icon = Device.OS == TargetPlatform.iOS ? "Icons/ClearLayersIcon" : "ClearLayersIcon";
+            clearLayersToolBarItem.Icon = Device.OS == TargetPlatform.iOS ? "Icons/ClearLayersIcon.png" : "ClearLayersIcon.png";
             ToolbarItems.Add(clearLayersToolBarItem);
             var layersToolBarItem = new ToolbarItem();
-            layersToolBarItem.Icon = Device.OS == TargetPlatform.iOS ? "Icons/LayersIcon" : "LayersIcon";
+            layersToolBarItem.Icon = Device.OS == TargetPlatform.iOS ? "Icons/LayersIcon.png" : "LayersIcon.png";
             ToolbarItems.Add(layersToolBarItem);
         }
 
