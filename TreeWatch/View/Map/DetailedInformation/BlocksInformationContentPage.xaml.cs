@@ -14,11 +14,6 @@ namespace TreeWatch
             // set view model
             this.BindingContext = fieldInformationViewModel;
 
-            var toolBarItem = new ToolbarItem();
-            toolBarItem.Text = "Filter";
-            toolBarItem.Icon = Device.OS == TargetPlatform.iOS ? "Icons/FilterListIcon" : "FilterListIcon";
-            ToolbarItems.Add(toolBarItem);
-
             blockView.ItemTapped += (sender, e) => ((InformationViewModel)this.BindingContext).NavigateToBlock();
         }
     }
