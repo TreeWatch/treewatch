@@ -13,7 +13,7 @@ namespace TreeWatch
             InitializeComponent();
             // set view model
             this.BindingContext = fieldInformationViewModel;
-
+			
             blockView.ItemTapped += (sender, e) => ((InformationViewModel)this.BindingContext).NavigateToBlock();
         }
     }
