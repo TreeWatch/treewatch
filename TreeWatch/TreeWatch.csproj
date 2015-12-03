@@ -155,6 +155,8 @@
     <EmbeddedResource Include="KML\Fields\perceelscanPraxis.kml" />
     <EmbeddedResource Include="KML\Fields\perceelscanSligro.kml" />
     <EmbeddedResource Include="KML\Fields\perceelscanKarwei.kml" />
+    <EmbeddedResource Include="KML\Fields\perceelscanHema.kml" />
+    <EmbeddedResource Include="KML\Fields\perceelscanIkea.kml" />
   </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>
