@@ -59,7 +59,7 @@
 									<Button.Image>
 										<OnPlatform
 											x:TypeArguments="FileImageSource"
-											iOS            ="CellIcons/InfoIcon.png"
+											iOS            ="Icons/InfoIcon.png"
 											Android        ="InfoIcon.png" />
 									</Button.Image>
 								</Button>
