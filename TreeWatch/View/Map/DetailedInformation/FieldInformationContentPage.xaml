@@ -50,7 +50,7 @@
 									<OnPlatform
 										x:TypeArguments="ImageSource"
 										iOS            ="Icons/ArrowRightIcon.png"
-										Android        ="ArrowRightIcon.png" />
+                                        Android        ="ArrowRightIcon.png" />
 								</Image.Source>
 							</Image>
 						</StackLayout>
