@@ -223,5 +223,11 @@
     <BundleResource Include="Resources\Icons\ArrowRightIcon.png" />
     <BundleResource Include="Resources\Icons\ArrowRightIcon%402x.png" />
     <BundleResource Include="Resources\Icons\ArrowRightIcon%403x.png" />
+    <BundleResource Include="Resources\Icons\LayersIcon%403x.png" />
+    <BundleResource Include="Resources\Icons\LayersIcon%402x.png" />
+    <BundleResource Include="Resources\Icons\LayersIcon.png" />
+    <BundleResource Include="Resources\Icons\ClearLayersIcon.png" />
+    <BundleResource Include="Resources\Icons\ClearLayersIcon%403x.png" />
+    <BundleResource Include="Resources\Icons\ClearLayersIcon%402x.png" />
   </ItemGroup>
 </Project>

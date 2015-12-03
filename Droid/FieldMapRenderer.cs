@@ -72,7 +72,7 @@ namespace TreeWatch.Droid
 			marker.SetSnippet (string.Format ("Number of rows: {0}", field.Blocks.Count));
 			var center = GeoHelper.CalculateCenter (field.BoundingCoordinates);
 			marker.SetPosition (new LatLng (center.Latitude, center.Longitude));
-			marker.SetIcon (BitmapDescriptorFactory.FromResource (Resource.Drawable.location_marker));
+            marker.SetIcon (BitmapDescriptorFactory.FromResource (Resource.Drawable.MapMarker));
 			Map.AddMarker (marker);
 		}
 
