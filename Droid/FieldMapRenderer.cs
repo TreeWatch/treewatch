@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Android.Gms.Maps;
 using Android.Gms.Maps.Model;
@@ -162,6 +162,7 @@ namespace TreeWatch.Droid
 				Map.MoveCamera (CameraUpdateFactory.NewLatLngBounds (bounds, 0));
 			}
 		}
+
 	}
 
 }

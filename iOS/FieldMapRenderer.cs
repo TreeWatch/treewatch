@@ -65,6 +65,7 @@ namespace TreeWatch.iOS
 		}
 
 
+
 		MKOverlayRenderer GetOverlayRender (MKMapView m, IMKOverlay o)
 		{
 			var overlay = Runtime.GetNSObject(o.Handle) as MKPolygon;
@@ -78,7 +79,7 @@ namespace TreeWatch.iOS
 					polygonRenderer.LineWidth = 1;
 				}
 				return polygonRenderer;
-			} else if (o is MultiPolygon)
+			} else if (o is MultiPolygon) 
 				return new MultiPolygonView (o);
 			 else
 				return null;
@@ -87,7 +88,6 @@ namespace TreeWatch.iOS
 		void AddFields ()
 		{
 			foreach (var field in myMap.Fields) {
-
 				var connection = new TreeWatchDatabase ();
 				var query = new DBQuery<Field> (connection);
 				var blockPolygons = new List<ColorPolygon> ();
