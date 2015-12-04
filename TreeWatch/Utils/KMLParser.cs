@@ -4,6 +4,7 @@ using System.Xml.Linq;
 using System.Reflection;
 using System.IO;
 using System.Linq;
+using System.Globalization;
 
 namespace TreeWatch
 {
@@ -47,22 +48,25 @@ namespace TreeWatch
 			foreach (var item in blocks) {
 				var resultBlock = new Block ();
 				resultBlock.BoundingCoordinates = new List<Position> ();
-				var treetypeName = item.Descendants (ns + "SimpleData").First().Value;
-				if (!allTreeTypes.Any(treeType => treeType.Name == treetypeName)){
-					var gayTreeType = new TreeType (treetypeName, NewTreeTypeColor (allTreeTypes));
-					resultBlock.TreeType =gayTreeType ;
-					allTreeTypes.Add(gayTreeType);
+				var treetypeName = item.Descendants (ns + "SimpleData").FirstOrDefault();
+
+				var treetypeNameString = treetypeName != null ? treetypeName.Value : "NOTDEFINED";
+
+				if (allTreeTypes.All (treeType => treeType.Name != treetypeNameString)) {
+					var gayTreeType = new TreeType (treetypeNameString, NewTreeTypeColor (allTreeTypes));
+					resultBlock.TreeType = gayTreeType;
+					allTreeTypes.Add (gayTreeType);
 				} else {
-					resultBlock.TreeType = allTreeTypes[allTreeTypes.IndexOf(new TreeType(treetypeName))];
+					resultBlock.TreeType = allTreeTypes [allTreeTypes.IndexOf (new TreeType (treetypeNameString))];
 				}
 
 				var cords = item.Descendants (ns + "coordinates");
 
-				var listOfCords = cords.First ().Value.Split (' ');
+				var listOfCords = cords.First ().Value.Trim().Split (' ');
 
 				foreach (var cord in listOfCords) {
-					var longitude = Convert.ToDouble (cord.Split (',') [0]);
-					var latitude = Convert.ToDouble (cord.Split (',') [1]);
+					var longitude = Convert.ToDouble (cord.Split (',') [0], new CultureInfo("en-US"));
+					var latitude = Convert.ToDouble (cord.Split (',') [1], new CultureInfo("en-US"));
 					var pos = new Position (latitude, longitude);
 					resultBlock.BoundingCoordinates.Add (pos);
 				}
@@ -84,11 +88,11 @@ namespace TreeWatch
 
 			var cords = xml.Descendants (ns + "coordinates");
 		
-			var listOfCords = cords.First ().Value.Split (' ');
+			var listOfCords = cords.First ().Value.Trim().Split (' ');
 
 			foreach (var item in listOfCords) {
-				var longitude = Convert.ToDouble (item.Split (',') [0]);
-				var latitude = Convert.ToDouble (item.Split (',') [1]);
+				var longitude = Convert.ToDouble (item.Split (',') [0], new CultureInfo("en-US"));
+				var latitude = Convert.ToDouble (item.Split (',') [1], new CultureInfo("en-US"));
 				var pos = new Position (latitude, longitude);
 				resultField.BoundingCoordinates.Add (pos);
 			}

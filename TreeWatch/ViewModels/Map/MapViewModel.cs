@@ -27,7 +27,7 @@ namespace TreeWatch
 			fieldHelper.MapTapped += MapTapped;
 			fieldHelper.FieldSelected += FieldSelected;
 			fieldHelper.BlockSelected += BlockSelected;
-			Fields = new ObservableCollection<Field> (new DBQuery<Field> (App.Database).GetAllWithChildren ());
+			Fields = new ObservableCollection<Field> (new DBQuery<Field> (App.Database).GetAll());
 			selectedField = new Field ("Dummy", new List<Position> (), new List<Block> ());
 		}
 

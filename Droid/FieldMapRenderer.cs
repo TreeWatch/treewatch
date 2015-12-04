@@ -8,7 +8,6 @@ using Xamarin.Forms;
 using Xamarin.Forms.Maps.Android;
 using Xamarin.Forms.Platform.Android;
 
-
 [assembly: ExportRenderer (typeof(FieldMap), typeof(FieldMapRenderer))]
 namespace TreeWatch.Droid
 {
@@ -28,7 +27,6 @@ namespace TreeWatch.Droid
 		{
 			fieldHelper = FieldHelper.Instance;
 			fieldHelper.FieldSelected += FieldSelected;
-			XmlDocument coords = GetCoordsFromKml ();
 		}
 
 		protected override void OnElementChanged (ElementChangedEventArgs<View> e)
@@ -82,7 +80,8 @@ namespace TreeWatch.Droid
 		{
 			var polygonOptions = new PolygonOptions ();
 			polygonOptions.InvokeFillColor (color);
-			polygonOptions.InvokeStrokeWidth (0);
+			polygonOptions.InvokeStrokeWidth (1);
+			polygonOptions.InvokeStrokeColor (Color.Black.ToAndroid());
 			polygonOptions.AddAll (coordinates);
 			
 			return polygonOptions;
@@ -106,7 +105,6 @@ namespace TreeWatch.Droid
 				cords.Add (new LatLng (pos.Latitude, pos.Longitude));
 
 			}
-			cords.Add (new LatLng (coordinates [0].Latitude, coordinates [0].Longitude));
 			return cords;
 		}
 

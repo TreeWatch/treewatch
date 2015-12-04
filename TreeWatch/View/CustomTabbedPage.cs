@@ -7,7 +7,7 @@ namespace TreeWatch
 		public CustomTabbedPage ()
 		{
 			// map tab page
-			Children.Add (new MapMasterDetailPage ());
+			this.Children.Add (new MapMasterDetailPage ());
 
 			// note tab page
 			this.Children.Add (new NoteContentPage ());
