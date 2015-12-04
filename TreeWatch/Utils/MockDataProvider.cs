@@ -16,6 +16,7 @@ namespace TreeWatch
 
 			var query = new DBQuery<Field> (connection);
 			var query2 = new DBQuery<TreeType> (connection);
+			var query3 = new DBQuery<Block> (connection);
 			var treetypes = query2.GetAllWithChildren ();
 
 			var field = KMLParser.GetField (KMLParser.LoadFile("KML.Fields.perceelscanKarwei.kml"));
@@ -34,21 +35,25 @@ namespace TreeWatch
 			field = KMLParser.GetField (KMLParser.LoadFile("KML.Fields.perceelscanGrutto.kml"));
 			field.Name = "Grutto";
 			field.Blocks = KMLParser.GetBlocks (KMLParser.LoadFile("KML.Blocks.rassenmapGrutto.kml"), treetypes);
-			query.InsertWithChildren(field);
+			query3.InsertAllWithChildren (field.Blocks);
+			query.InsertWithChildren(field, false);
 
 
 			treetypes = query2.GetAllWithChildren ();
 			field = KMLParser.GetField (KMLParser.LoadFile("KML.Fields.perceelscanHema.kml"));
 			field.Name = "Hema";
 			field.Blocks = KMLParser.GetBlocks (KMLParser.LoadFile("KML.Blocks.rassenmapHema.kml"), treetypes);
-			query.InsertWithChildren(field);
+			query3.InsertAllWithChildren (field.Blocks);
+			query.InsertWithChildren(field, false);
 
+			/*
 			treetypes = query2.GetAllWithChildren ();
 			field = KMLParser.GetField (KMLParser.LoadFile("KML.Fields.perceelscanIkea.kml"));
 			field.Name = "Ikea";
 			field.Blocks = KMLParser.GetBlocks (KMLParser.LoadFile("KML.Blocks.rassenmapIkea.kml"), treetypes);
-			query.InsertWithChildren(field);
-
+			query3.InsertAllWithChildren (field.Blocks);
+			query.InsertWithChildren(field, false);
+			*/
 		}
 	}
 }

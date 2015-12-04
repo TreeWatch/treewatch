@@ -8,7 +8,7 @@ using System.Globalization;
 
 namespace TreeWatch
 {
-	public class KMLParser
+	public static class KMLParser
 	{
 
 		public static String RandomColor ()
@@ -44,6 +44,7 @@ namespace TreeWatch
 
 			var blocks = xml.Descendants (ns + "Placemark");
 			var resultList = new List<Block> ();
+
 
 			foreach (var item in blocks) {
 				var resultBlock = new Block ();

@@ -33,6 +33,11 @@ namespace TreeWatch
 			connection.InsertWithChildren (obj, true);
 		}
 
+		public void InsertWithChildren (T obj, bool recursive)
+		{
+			connection.InsertWithChildren (obj, recursive);
+		}
+
 		public T GetByID (int id)
 		{
 			return connection.Table<T> ().Where (t => t.ID == id).FirstOrDefault ();
