@@ -36,21 +36,19 @@ namespace TreeWatch
 			field.Blocks = KMLParser.GetBlocks (KMLParser.LoadFile("KML.Blocks.rassenmapGrutto.kml"), treetypes);
 			query.InsertWithChildren(field);
 
-			/*
+
 			treetypes = query2.GetAllWithChildren ();
-			field = new Field ();
+			field = KMLParser.GetField (KMLParser.LoadFile("KML.Fields.perceelscanHema.kml"));
 			field.Name = "Hema";
-			field.BoundingCoordinates = new List<Position> ();
 			field.Blocks = KMLParser.GetBlocks (KMLParser.LoadFile("KML.Blocks.rassenmapHema.kml"), treetypes);
 			query.InsertWithChildren(field);
 
 			treetypes = query2.GetAllWithChildren ();
-			field = new Field ();
+			field = KMLParser.GetField (KMLParser.LoadFile("KML.Fields.perceelscanIkea.kml"));
 			field.Name = "Ikea";
-			field.BoundingCoordinates = new List<Position> ();
 			field.Blocks = KMLParser.GetBlocks (KMLParser.LoadFile("KML.Blocks.rassenmapIkea.kml"), treetypes);
 			query.InsertWithChildren(field);
-			*/
+
 		}
 	}
 }

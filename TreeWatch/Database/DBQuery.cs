@@ -38,9 +38,19 @@ namespace TreeWatch
 			return connection.Table<T> ().Where (t => t.ID == id).FirstOrDefault ();
 		}
 
+		public List<T> GetAll ()
+		{
+			return connection.GetAllWithChildren<T> (null, false);
+		}
+
 		public List<T> GetAllWithChildren ()
 		{
 			return connection.GetAllWithChildren<T> (null, true);
+		}
+
+		public void GetChildren (T item)
+		{
+			connection.GetChildren<T>(item, true);
 		}
 
 		public void Update (T obj)
