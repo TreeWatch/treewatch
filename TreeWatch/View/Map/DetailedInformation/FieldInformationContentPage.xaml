@@ -49,8 +49,8 @@
 								<Image.Source>
 									<OnPlatform
 										x:TypeArguments="ImageSource"
-										iOS            ="CellIcons/RightArrowIcon.png"
-										Android        ="RightArrowIcon.png" />
+										iOS            ="Icons/ArrowRightIcon.png"
+										Android        ="ArrowRightIcon.png" />
 								</Image.Source>
 							</Image>
 						</StackLayout>
