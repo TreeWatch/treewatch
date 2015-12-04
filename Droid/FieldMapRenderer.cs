@@ -37,7 +37,6 @@ namespace TreeWatch.Droid
 
 				mapView = Control as MapView;
 
-
 				mapView.GetMapAsync (this);
 
 				myMap = e.NewElement as FieldMap;
@@ -47,6 +46,9 @@ namespace TreeWatch.Droid
 		void AddFields ()
 		{
 			foreach (var field in myMap.Fields) {
+				var connection = new TreeWatchDatabase ();
+				var query = new DBQuery<Field> (connection);
+				query.GetChildren (field);
 				if (field.Blocks.Count != 0) {
 					foreach (var block in field.Blocks) {
 						if (block.BoundingCoordinates.Count != 0 && block.BoundingCoordinates.Count >= 3) {
@@ -111,11 +113,8 @@ namespace TreeWatch.Droid
 		public void OnMapReady (GoogleMap googleMap)
 		{
 			Map = googleMap;
-			Map.SetInfoWindowAdapter (new FieldInfoWindow ());
 			AddFields ();
-			Map.MarkerClick += MarkerClicked;
 			Map.MapClick += MapClicked;
-			Map.InfoWindowClick += InfoWindowClicked;
 
 			var handler = MapReady;
 			if (handler != null)
