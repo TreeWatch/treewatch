@@ -86,13 +86,10 @@
     <Compile Include="View\Map\DetailedInformation\BlocksInformationContentPage.xaml.cs">
       <DependentUpon>BlocksInformationContentPage.xaml</DependentUpon>
     </Compile>
-<<<<<<< HEAD
     <Compile Include="ViewModels\Settings\SettingsViewModel.cs" />
     <Compile Include="View\Settings\Map\MapTypeContentPage.xaml.cs">
       <DependentUpon>MapTypeContentPage.xaml</DependentUpon>
     </Compile>
-=======
->>>>>>> 68b2e2211d8ed05e112b2da1f5aa52f4e353e0b5
     <Compile Include="View\SplashPage.cs" />
     <Compile Include="Utils\KMLParser.cs" />
   </ItemGroup>
