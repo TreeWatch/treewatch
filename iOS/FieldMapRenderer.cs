@@ -95,7 +95,7 @@ namespace TreeWatch.iOS
 				if (field.Blocks.Count != 0) {
 					foreach (var block in field.Blocks) {
 						if (block.BoundingCoordinates.Count != 0 && block.BoundingCoordinates.Count >= 3) {
-							var blockPoints = convertCordinates (block.BoundingCoordinates);
+							var blockPoints = convertCoordinates (block.BoundingCoordinates);
 							var blockPolygon = (ColorPolygon) MKPolygon.FromCoordinates (blockPoints);
 							blockPolygon.FillColor = block.TreeType.ColorProp.ToCGColor ();
 							blockPolygons.Add (blockPolygon);
