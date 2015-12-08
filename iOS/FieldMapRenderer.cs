@@ -9,6 +9,7 @@ using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps.iOS;
 using Xamarin.Forms.Platform.iOS;
+using ObjCRuntime;
 
 [assembly: ExportRenderer (typeof(FieldMap), typeof(FieldMapRenderer))]
 
@@ -24,20 +25,12 @@ namespace TreeWatch.iOS
 
 		FieldMap myMap;
 
-		List<MKPolygon> polygons;
-
-		List<MKPolygonRenderer> renderers;
-
-		MKPolygonRenderer polygonRenderer;
-
 		UITapGestureRecognizer tapGesture;
 
 		FieldHelper fieldHelper;
 
 		public FieldMapRenderer ()
 		{
-			polygons = new List<MKPolygon> ();
-			renderers = new List<MKPolygonRenderer> ();
 			tapGesture = new UITapGestureRecognizer (MapTapped);
 			tapGesture.NumberOfTapsRequired = 1;
 			fieldHelper = FieldHelper.Instance;
@@ -71,46 +64,56 @@ namespace TreeWatch.iOS
 			}
 		}
 
+
+
 		MKOverlayRenderer GetOverlayRender (MKMapView m, IMKOverlay o)
 		{
-			var polygon = o as MKPolygon;
-			polygonRenderer = new MKPolygonRenderer (polygon);
-			renderers.Add (polygonRenderer);
+			var overlay = Runtime.GetNSObject(o.Handle) as MKPolygon;
+			if (overlay != null) {
+				var polygon = overlay;
+				var polygonRenderer = new MKPolygonRenderer (polygon);
 
-			if (polygon.Title == "Field") {
-				polygonRenderer.FillColor = myMap.OverLayColor.ToUIColor ();
-				polygonRenderer.StrokeColor = myMap.BoundaryColor.ToUIColor ();
-				polygonRenderer.LineWidth = 1;
-			} else
-				polygonRenderer.FillColor = ColorHelper.GetTreeTypeColor (Int32.Parse (polygon.Title)).ToUIColor ();
-
-			return polygonRenderer;
+				if (polygon.Title == "Field") {
+					polygonRenderer.FillColor = myMap.OverLayColor.ToUIColor ();
+					polygonRenderer.StrokeColor = myMap.BoundaryColor.ToUIColor ();
+					polygonRenderer.LineWidth = 1;
+				}
+				return polygonRenderer;
+			} else if (o is MultiPolygon) 
+				return new MultiPolygonView (o);
+			 else
+				return null;
 		}
 
 		void AddFields ()
 		{
 			foreach (var field in myMap.Fields) {
+				var connection = new TreeWatchDatabase ();
+				var query = new DBQuery<Field> (connection);
+				var blockPolygons = new List<ColorPolygon> ();
+				query.GetChildren (field);
 				if (field.Blocks.Count != 0) {
 					foreach (var block in field.Blocks) {
 						if (block.BoundingCoordinates.Count != 0 && block.BoundingCoordinates.Count >= 3) {
-							var rowpoints = convertCoordinates (block.BoundingCoordinates);
-							var rowpolygon = MKPolygon.FromCoordinates (rowpoints);
-							rowpolygon.Title = block.TreeType.ID.ToString ();
-							polygons.Add (rowpolygon);
+							var blockPoints = convertCoordinates (block.BoundingCoordinates);
+							var blockPolygon = (ColorPolygon) MKPolygon.FromCoordinates (blockPoints);
+							blockPolygon.FillColor = block.TreeType.ColorProp.ToCGColor ();
+							blockPolygons.Add (blockPolygon);
 						}
 					}
+					var blockMultiPolygon = new MultiPolygon (blockPolygons);
+
+					mapView.AddOverlay (blockMultiPolygon);
 				}
+
 
 				if (field.BoundingCoordinates.Count != 0 && field.BoundingCoordinates.Count >= 3) {
 					var points = convertCoordinates (field.BoundingCoordinates);
 					var polygon = MKPolygon.FromCoordinates (points);
 					polygon.Title = "Field";
-					polygons.Add (polygon);
-
-					// AddFieldMapAnnotation (field); Not needed anymore
+					mapView.AddOverlay(polygon);
 				}
 			}
-			mapView.AddOverlays (polygons.ToArray ());
 		}
 
 		void AddFieldMapAnnotation (Field field)
@@ -161,7 +164,6 @@ namespace TreeWatch.iOS
 				points [i] = new CLLocationCoordinate2D (pos.Latitude, pos.Longitude);
 				i++;
 			}
-			points [i] = new CLLocationCoordinate2D (Coordinates [0].Latitude, Coordinates [0].Longitude);
 
 			return points;
 		}
