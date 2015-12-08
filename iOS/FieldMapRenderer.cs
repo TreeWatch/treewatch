@@ -54,6 +54,7 @@ namespace TreeWatch.iOS
 
 			if (e.OldElement == null) {
 				mapView = Control as MKMapView;
+                mapView.ShowsUserLocation = true;
 				mapView.AddGestureRecognizer (tapGesture);
 				mapView.GetViewForAnnotation = GetViewForAnnotation;
 

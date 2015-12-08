@@ -29,6 +29,12 @@ namespace TreeWatch
 			fieldHelper.BlockSelected += BlockSelected;
 			Fields = new ObservableCollection<Field> (new DBQuery<Field> (App.Database).GetAll());
 			selectedField = new Field ("Dummy", new List<Position> (), new List<Block> ());
+            CrossGeofence.Current.StartMonitoring(new GeofenceCircularRegion ("Fontys", 51.353347,6.153896,20.0) {
+
+                NotifyOnStay=true,
+                StayedInThresholdDuration=TimeSpan.FromMinutes(1)
+
+            });
 		}
 
 		public Field SelectedField {
