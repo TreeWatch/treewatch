@@ -22,6 +22,12 @@ namespace TreeWatch
             get{ return boundaryColor; }
         }
 
+        public FieldMap()
+            : this(MapSpan.FromCenterAndRadius(new Position(), Distance.FromKilometers(1)))
+        {
+            
+        }
+
         public FieldMap(MapSpan region)
             : base(region)
         {

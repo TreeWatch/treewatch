@@ -13,8 +13,7 @@ namespace TreeWatch
             // add view model
             BindingContext = mapViewModel;
 
-            // set content of page
-            Content = CreateMapContentView();
+            setupMapContentView();
 
             if (TargetPlatform.Android == Device.OS)
             {
@@ -29,19 +28,17 @@ namespace TreeWatch
             }
         }
 
-        View CreateMapContentView()
+        void setupMapContentView()
         {
             var viewModel = BindingContext as MapViewModel;
             var currentLocation = viewModel.getCurrentDevicePosition();
 
-            var fieldMap = new FieldMap(MapSpan.FromCenterAndRadius(currentLocation, Distance.FromKilometers(1)));
+            fieldMap.MoveToRegion(MapSpan.FromCenterAndRadius(currentLocation, Distance.FromKilometers(1)));
             fieldMap.Fields = viewModel.Fields;
 
             fieldMap.MapType = MapType.Hybrid;
 
             fieldMap.BindingContext = BindingContext;
-
-            return fieldMap;
         }
     }
 }

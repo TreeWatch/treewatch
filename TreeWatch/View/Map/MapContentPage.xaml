@@ -33,11 +33,7 @@
             iOS            ="Icons/MapTabBarIcon.png" />
     </ContentPage.Icon>
     <ContentPage.Content>
-        <StackLayout
-            VerticalOptions  ="CenterAndExpand"
-            HorizontalOptions="FillAndExpand"
-            Orientation      ="Vertical"
-            Spacing          ="15">
-        </StackLayout>
+        <local:FieldMap
+            x:Name="fieldMap" />
     </ContentPage.Content>
 </ContentPage>
