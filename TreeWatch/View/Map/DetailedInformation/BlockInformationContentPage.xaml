@@ -14,10 +14,10 @@
 					<ViewCell>
 						<StackLayout
 							Orientation="Horizontal"
-							Padding    ="20,10,20,10">
+							Padding    ="20,0">
 							<Label
 								Text           ="ID"
-								TextColor      ="#000000"
+								TextColor      ="Black"
 								VerticalOptions="Center" />
 							<Label
 								HorizontalOptions="EndAndExpand"

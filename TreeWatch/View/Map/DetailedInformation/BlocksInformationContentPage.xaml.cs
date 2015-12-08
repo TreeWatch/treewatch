@@ -7,14 +7,16 @@ namespace TreeWatch
 {
     public partial class BlocksInformationContentPage : ContentPage
     {
-        public BlocksInformationContentPage(InformationViewModel fieldInformationViewModel)
+        public BlocksInformationContentPage(InformationViewModel informationViewModel)
         {
             // initialize component
             InitializeComponent();
             // set view model
-            this.BindingContext = fieldInformationViewModel;
+            BindingContext = informationViewModel;
 
-            blockView.ItemTapped += (sender, e) => ((InformationViewModel)this.BindingContext).NavigateToBlock();
+            NavigationPage.SetBackButtonTitle(this, "Blocks");
+          
+            blockView.ItemTapped += (sender, e) => (BindingContext as InformationViewModel).NavigateToBlock();
         }
     }
 }

@@ -1,6 +1,5 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
-using System.Diagnostics;
 
 namespace TreeWatch
 {
@@ -12,27 +11,27 @@ namespace TreeWatch
             InitializeComponent();
 
             // add view model
-            this.BindingContext = mapViewModel;
+            BindingContext = mapViewModel;
 
             // set content of page
             Content = CreateMapContentView();
 
             if (TargetPlatform.Android == Device.OS)
             {
-                this.Title = "Map";
+                Title = "Map";
             }
 
-            var clearLayersToolBarItem = new ToolbarItem();
-            clearLayersToolBarItem.Icon = Device.OS == TargetPlatform.iOS ? "Icons/ClearLayersIcon.png" : "ClearLayersIcon.png";
-            ToolbarItems.Add(clearLayersToolBarItem);
-            var layersToolBarItem = new ToolbarItem();
-            layersToolBarItem.Icon = Device.OS == TargetPlatform.iOS ? "Icons/LayersIcon.png" : "LayersIcon.png";
-            ToolbarItems.Add(layersToolBarItem);
+            if (TargetPlatform.iOS == Device.OS)
+            {
+                var myLocationToolBarItem = new ToolbarItem();
+                myLocationToolBarItem.Icon = Device.OS == TargetPlatform.iOS ? "Icons/MyLocationIcon.png" : "MyLocationIcon.png";
+                ToolbarItems.Insert(0, myLocationToolBarItem);
+            }
         }
 
         View CreateMapContentView()
         {
-            var viewModel = (MapViewModel)BindingContext;
+            var viewModel = BindingContext as MapViewModel;
             var currentLocation = viewModel.getCurrentDevicePosition();
 
             var fieldMap = new FieldMap(MapSpan.FromCenterAndRadius(currentLocation, Distance.FromKilometers(1)));

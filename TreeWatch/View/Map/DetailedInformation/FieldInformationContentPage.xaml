@@ -1,62 +1,62 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage
-	xmlns     ="http://xamarin.com/schemas/2014/forms"
-	xmlns:x    ="http://schemas.microsoft.com/winfx/2009/xaml"
-	x:Class    ="TreeWatch.FieldInformationContentPage"
-	xmlns:local="clr-namespace:TreeWatch;assembly=TreeWatch"
-	Title      ="{Binding Field.Name}"
-	StyleId    ="FieldInformation"
-	Padding    ="0, 0, 0, 0">
-	<ContentPage.Content>
-		<TableView
-			Intent="Menu">
-			<TableRoot>
-				<TableSection>
-					<ViewCell>
-						<StackLayout
-							Orientation="Horizontal"
-							Padding    ="20,10,20,10">
-							<Label
-								Text           ="Size"
-								TextColor      ="#000000"
-								VerticalOptions="Center" />
-							<Label
-								HorizontalOptions="EndAndExpand"
-								Text             ="{Binding FieldSize}"
-								TextColor        ="#8E8F93"
-								VerticalOptions  ="Center" />
-						</StackLayout>
-					</ViewCell>
-				</TableSection>
-				<TableSection
-					Title="Blockinformation">
-					<ViewCell
-						x:Name="blocks">
-						<StackLayout
-							Orientation="Horizontal"
-							Padding    ="20,10,20,10">
-							<Label
-								Text           ="Blocks"
-								TextColor      ="#000000"
-								VerticalOptions="Center" />
-							<Label
-								HorizontalOptions="EndAndExpand"
-								Text             ="{Binding Field.Blocks.Count}"
-								TextColor        ="#8E8F93"
-								VerticalOptions  ="Center" />
-							<Image
-								VerticalOptions="Center">
-								<Image.Source>
-									<OnPlatform
-										x:TypeArguments="ImageSource"
-										iOS            ="Icons/ArrowRightIcon.png"
+    xmlns     ="http://xamarin.com/schemas/2014/forms"
+    xmlns:x    ="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class    ="TreeWatch.FieldInformationContentPage"
+    xmlns:local="clr-namespace:TreeWatch;assembly=TreeWatch"
+    Title      ="{Binding Field.Name}"
+    StyleId    ="FieldInformation"
+    Padding    ="0, 0, 0, 0">
+    <ContentPage.Content>
+        <TableView
+            Intent="Menu">
+            <TableRoot>
+                <TableSection>
+                    <ViewCell>
+                        <StackLayout
+                            Orientation="Horizontal"
+                            Padding    ="20,0">
+                            <Label
+                                Text           ="Size"
+                                TextColor      ="Black"
+                                VerticalOptions="Center" />
+                            <Label
+                                HorizontalOptions="EndAndExpand"
+                                Text             ="{Binding FieldSize}"
+                                TextColor        ="#8E8F93"
+                                VerticalOptions  ="Center" />
+                        </StackLayout>
+                    </ViewCell>
+                </TableSection>
+                <TableSection
+                    Title="Blockinformation">
+                    <ViewCell
+                        x:Name="blocks">
+                        <StackLayout
+                            Orientation="Horizontal"
+                            Padding    ="20,0">
+                            <Label
+                                Text           ="Blocks"
+                                TextColor      ="#000000"
+                                VerticalOptions="Center" />
+                            <Label
+                                HorizontalOptions="EndAndExpand"
+                                Text             ="{Binding Field.Blocks.Count}"
+                                TextColor        ="#8E8F93"
+                                VerticalOptions  ="Center" />
+                            <Image
+                                VerticalOptions="Center">
+                                <Image.Source>
+                                    <OnPlatform
+                                        x:TypeArguments="ImageSource"
+                                        iOS            ="Icons/ArrowRightIcon.png"
                                         Android        ="ArrowRightIcon.png" />
-								</Image.Source>
-							</Image>
-						</StackLayout>
-					</ViewCell>
-				</TableSection>
-			</TableRoot>
-		</TableView>
-	</ContentPage.Content>
+                                </Image.Source>
+                            </Image>
+                        </StackLayout>
+                    </ViewCell>
+                </TableSection>
+            </TableRoot>
+        </TableView>
+    </ContentPage.Content>
 </ContentPage>

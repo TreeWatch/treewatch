@@ -217,9 +217,6 @@
     <BundleResource Include="Resources\Icons\ToDoTabBarIcon.png" />
     <BundleResource Include="Resources\Icons\ToDoTabBarIcon%402x.png" />
     <BundleResource Include="Resources\Icons\ToDoTabBarIcon%403x.png" />
-    <BundleResource Include="Resources\Icons\FilterListIcon.png" />
-    <BundleResource Include="Resources\Icons\FilterListIcon%402x.png" />
-    <BundleResource Include="Resources\Icons\FilterListIcon%403x.png" />
     <BundleResource Include="Resources\Icons\InfoIcon.png" />
     <BundleResource Include="Resources\Icons\InfoIcon%402x.png" />
     <BundleResource Include="Resources\Icons\InfoIcon%403x.png" />
@@ -232,5 +229,8 @@
     <BundleResource Include="Resources\Icons\ClearLayersIcon.png" />
     <BundleResource Include="Resources\Icons\ClearLayersIcon%403x.png" />
     <BundleResource Include="Resources\Icons\ClearLayersIcon%402x.png" />
+    <BundleResource Include="Resources\Icons\MyLocationIcon.png" />
+    <BundleResource Include="Resources\Icons\MyLocationIcon%402x.png" />
+    <BundleResource Include="Resources\Icons\MyLocationIcon%403x.png" />
   </ItemGroup>
 </Project>
