@@ -14,7 +14,7 @@ namespace TreeWatch
 
             NavigationPage.SetBackButtonTitle(this, informationViewModel.Field.Name);
 
-            blocks.Tapped += (sender, e) => (BindingContext as InformationViewModel).NavigateToBlocks();
+            varieties.Tapped += (sender, e) => (BindingContext as InformationViewModel).NavigateToVarieties();
         }
     }
 }

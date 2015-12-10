@@ -20,12 +20,12 @@ namespace TreeWatch
                 Title = "Map";
             }
 
-            if (TargetPlatform.iOS == Device.OS)
-            {
-                var myLocationToolBarItem = new ToolbarItem();
-                myLocationToolBarItem.Icon = Device.OS == TargetPlatform.iOS ? "Icons/MyLocationIcon.png" : "MyLocationIcon.png";
-                ToolbarItems.Insert(0, myLocationToolBarItem);
-            }
+//            if (TargetPlatform.iOS == Device.OS)
+//            {
+//                var myLocationToolBarItem = new ToolbarItem();
+//                myLocationToolBarItem.Icon = Device.OS == TargetPlatform.iOS ? "Icons/MyLocationIcon.png" : "MyLocationIcon.png";
+//                ToolbarItems.Insert(0, myLocationToolBarItem);
+//            }
         }
 
         void setupMapContentView()

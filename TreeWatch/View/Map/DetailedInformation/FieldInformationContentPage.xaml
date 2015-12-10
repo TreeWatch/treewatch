@@ -29,19 +29,19 @@
                     </ViewCell>
                 </TableSection>
                 <TableSection
-                    Title="Blockinformation">
+                    Title="Variety">
                     <ViewCell
-                        x:Name="blocks">
+                        x:Name="varieties">
                         <StackLayout
                             Orientation="Horizontal"
                             Padding    ="20,0">
                             <Label
-                                Text           ="Blocks"
+                                Text           ="Varieties"
                                 TextColor      ="#000000"
                                 VerticalOptions="Center" />
                             <Label
                                 HorizontalOptions="EndAndExpand"
-                                Text             ="{Binding Field.Blocks.Count}"
+                                Text             ="{Binding VarietyGroups.Count}"
                                 TextColor        ="#8E8F93"
                                 VerticalOptions  ="Center" />
                             <Image
