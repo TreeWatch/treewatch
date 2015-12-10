@@ -1,37 +1,40 @@
 using System;
+
 using Xamarin.Forms;
-using System.Diagnostics;
 
 namespace TreeWatch
 {
-	public partial class MapMenuContentPage : ContentPage
-	{
-		public event EventHandler FieldSelected;
+    public partial class MapMenuContentPage : ContentPage
+    {
+        public event EventHandler FieldSelected;
 
-		public MapMenuContentPage (MapViewModel mapViewModel)
-		{
-			InitializeComponent ();
+        public MapMenuContentPage(MapViewModel mapViewModel)
+        {
+            InitializeComponent();
 
-			this.BindingContext = mapViewModel;
+            BindingContext = mapViewModel;
 
-			fieldView.ItemTapped += OnFieldSelected;
-		}
+            fieldView.ItemTapped += OnFieldSelected;
+        }
 
-		protected virtual void OnFieldSelected (object sender, ItemTappedEventArgs e)
-		{
-			if (FieldSelected != null) {
-				FieldSelected (this, EventArgs.Empty);
-				FieldHelper.Instance.FieldSelectedEvent ((Field)e.Item);
-			}
-		}
+        protected virtual void OnFieldSelected(object sender, ItemTappedEventArgs e)
+        {
+            if (FieldSelected != null)
+            {
+                FieldSelected(this, EventArgs.Empty);
+                FieldHelper.Instance.FieldSelectedEvent(e.Item as Field);
+            }
+        }
 
-		public void InfoButtonClicked (object sender, EventArgs e)
-		{
-			foreach (Field field in fieldView.ItemsSource) {
-				if (field.Name.Equals (((Button)sender).CommandParameter)) {
-					((MapViewModel)this.BindingContext).NavigateToField (field);
-				}
-			}
-		}
-	}
+        public void InfoButtonClicked(object sender, EventArgs e)
+        {
+            foreach (Field field in fieldView.ItemsSource)
+            {
+                if (field.Name.Equals((sender as Button).CommandParameter))
+                {
+                    (BindingContext as MapViewModel).NavigateToField(field);
+                }
+            }
+        }
+    }
 }

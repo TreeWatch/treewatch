@@ -1,41 +1,44 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
-using System.Diagnostics;
 
 namespace TreeWatch
 {
-	public partial class MapContentPage : ContentPage
-	{
-		public MapContentPage (MapViewModel mapViewModel)
-		{
-			// initialize this page
-			InitializeComponent ();
+    public partial class MapContentPage : ContentPage
+    {
+        public MapContentPage(MapViewModel mapViewModel)
+        {
+            // initialize this page
+            InitializeComponent();
 
-			// add view model
-			this.BindingContext = mapViewModel;
+            // add view model
+            BindingContext = mapViewModel;
 
-			// set content of page
-			Content = CreateMapContentView ();
+            setupMapContentView();
 
-			if (TargetPlatform.Android == Device.OS)
-			{
-				this.Title = "Map";
-			}
-		}
+            if (TargetPlatform.Android == Device.OS)
+            {
+                Title = "Map";
+            }
 
-		View CreateMapContentView ()
-		{
-			var viewModel = (MapViewModel)BindingContext;
-			var currentLocation = viewModel.getCurrentDevicePosition ();
+//            if (TargetPlatform.iOS == Device.OS)
+//            {
+//                var myLocationToolBarItem = new ToolbarItem();
+//                myLocationToolBarItem.Icon = Device.OS == TargetPlatform.iOS ? "Icons/MyLocationIcon.png" : "MyLocationIcon.png";
+//                ToolbarItems.Insert(0, myLocationToolBarItem);
+//            }
+        }
 
-			var fieldMap = new FieldMap (MapSpan.FromCenterAndRadius (currentLocation, Distance.FromKilometers (1)));
-			fieldMap.Fields = viewModel.Fields;
+        void setupMapContentView()
+        {
+            var viewModel = BindingContext as MapViewModel;
+            var currentLocation = viewModel.getCurrentDevicePosition();
 
-			fieldMap.MapType = MapType.Hybrid;
+            fieldMap.MoveToRegion(MapSpan.FromCenterAndRadius(currentLocation, Distance.FromKilometers(1)));
+            fieldMap.Fields = viewModel.Fields;
 
-			fieldMap.BindingContext = BindingContext;
+            fieldMap.MapType = MapType.Hybrid;
 
-			return fieldMap;
-		}
-	}
+            fieldMap.BindingContext = BindingContext;
+        }
+    }
 }

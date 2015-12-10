@@ -1,24 +1,21 @@
-using System;
-using System.Diagnostics;
-
 using Xamarin.Forms;
 
 namespace TreeWatch
 {
-	public partial class FieldInformationContentPage : ContentPage
-	{
-		public FieldInformationContentPage (InformationViewModel informationViewModel)
-		{
-			// initialize component
-			InitializeComponent ();
+    public partial class FieldInformationContentPage : ContentPage
+    {
+        public FieldInformationContentPage(InformationViewModel informationViewModel)
+        {
+            // initialize component
+            InitializeComponent();
 
-			// set view model
-			this.BindingContext = informationViewModel;
+            // set view model
+            BindingContext = informationViewModel;
 
-			NavigationPage.SetBackButtonTitle (this, informationViewModel.Field.Name);
+            NavigationPage.SetBackButtonTitle(this, informationViewModel.Field.Name);
 
-			blocks.Tapped += (sender, e) => ((InformationViewModel)this.BindingContext).NavigateToBlocks();
-		}
-	}
+            varieties.Tapped += (sender, e) => (BindingContext as InformationViewModel).NavigateToVarieties();
+        }
+    }
 }
 
