@@ -17,6 +17,7 @@ namespace TreeWatch
 			var query = new DBQuery<Field> (connection);
 			var query2 = new DBQuery<TreeType> (connection);
 			var query3 = new DBQuery<Block> (connection);
+            var query4 = new DBQuery<Heatmap>(connection);
 			var treetypes = query2.GetAllWithChildren ();
 
 			var field = KMLParser.GetField (KMLParser.LoadFile("KML.Fields.perceelscanKarwei.kml"));
@@ -45,6 +46,11 @@ namespace TreeWatch
 			field.Blocks = KMLParser.GetBlocks (KMLParser.LoadFile("KML.Blocks.rassenmapHema.kml"), treetypes);
 			query3.InsertAllWithChildren (field.Blocks);
 			query.InsertWithChildren(field, false);
+
+            var heatmap = KMLParser.GetHeatmap(KMLParser.LoadFile("KML.Heatmaps.Biomassa.kml"));
+            heatmap.Name = "Biomassa";
+            query4.InsertWithChildren(heatmap);
+
 
 			/*
 			treetypes = query2.GetAllWithChildren ();

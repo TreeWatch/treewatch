@@ -63,15 +63,8 @@ namespace TreeWatch
 
 				var cords = item.Descendants (ns + "coordinates");
 
-				var listOfCords = cords.First ().Value.Trim().Split (' ');
-
-				foreach (var cord in listOfCords) {
-					var longitude = Convert.ToDouble (cord.Split (',') [0], new CultureInfo("en-US"));
-					var latitude = Convert.ToDouble (cord.Split (',') [1], new CultureInfo("en-US"));
-					var pos = new Position (latitude, longitude);
-					resultBlock.BoundingCoordinates.Add (pos);
-				}
-
+                resultBlock.BoundingCoordinates = GetCoordinates(cords);
+                
 				resultList.Add (resultBlock);
 			}
 
@@ -88,19 +81,39 @@ namespace TreeWatch
 			var ns = xml.Root.Name.Namespace;
 
 			var cords = xml.Descendants (ns + "coordinates");
-		
-			var listOfCords = cords.First ().Value.Trim().Split (' ');
 
-			foreach (var item in listOfCords) {
-				var longitude = Convert.ToDouble (item.Split (',') [0], new CultureInfo("en-US"));
-				var latitude = Convert.ToDouble (item.Split (',') [1], new CultureInfo("en-US"));
-				var pos = new Position (latitude, longitude);
-				resultField.BoundingCoordinates.Add (pos);
-			}
-
+            resultField.BoundingCoordinates = GetCoordinates(cords);
 
 			return resultField;
 		}
+
+        public static Heatmap GetHeatmap (string kml)
+        {
+            var xml = XDocument.Parse(kml);
+            var ns = xml.Root.Name.Namespace;
+
+            var points = xml.Descendants (ns + "Placemark");
+            var heatmap = new Heatmap();
+            heatmap.Points = new List<HeatmapPoint>();
+
+            foreach (var item in points)
+            {
+                var resultPoint = new HeatmapPoint();
+                var cords = item.Descendants (ns + "coordinates");
+
+                resultPoint.BoundingCoordinates = GetCoordinates(cords);
+
+                var descendants = item.Descendants(ns + "SimpleData").ToList();
+                resultPoint.RowID = Convert.ToDouble(descendants[1].Value, new CultureInfo("en-US"));
+                resultPoint.FID = Convert.ToDouble(descendants[2].Value, new CultureInfo("en-US"));
+                resultPoint.Mean = Convert.ToDouble(descendants[3].Value, new CultureInfo("en-US"));
+                resultPoint.Std = Convert.ToDouble(descendants[4].Value, new CultureInfo("en-US"));
+
+                heatmap.Points.Add(resultPoint);
+            }
+
+            return heatmap;
+        }
 
 		public static string LoadFile (string resourcename)
 		{
@@ -113,6 +126,23 @@ namespace TreeWatch
 
 			return text;
 		}
+
+        public static List<Position> GetCoordinates(IEnumerable<XElement> cords)
+        {
+            var listOfCords = cords.First ().Value.Trim().Split (' ');
+            List<Position> posList = new List<Position>();
+
+            foreach (var cord in listOfCords) {
+                var longitude = Convert.ToDouble (cord.Split (',') [0], new CultureInfo("en-US"));
+                var latitude = Convert.ToDouble (cord.Split (',') [1], new CultureInfo("en-US"));
+                var pos = new Position (latitude, longitude);
+                posList.Add (pos);
+            }
+
+            return posList;
+        }
+
+
 	}
 }
 
