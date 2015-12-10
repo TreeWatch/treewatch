@@ -197,6 +197,7 @@
     <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Default-PortraitWSB%402x.png" />
     <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Default-LandscapeWSB.png" />
     <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Default-LandscapeWSB%402x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\AppIcon83-5%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Icons\HamburgerMenuIcon.png" />
