@@ -5,7 +5,7 @@
     x:Class    ="TreeWatch.MapContentPage"
     xmlns:local="clr-namespace:TreeWatch;assembly=TreeWatch"
     StyleId    ="MapView">
-    <ContentPage.ToolbarItems>
+    <!--    <ContentPage.ToolbarItems>
         <ToolbarItem
             Text  ="Clear Layers"
             x:Name="clearLayers">
@@ -26,7 +26,7 @@
                     iOS            ="Icons/LayersIcon.png" />
             </ToolbarItem.Icon>
         </ToolbarItem>
-    </ContentPage.ToolbarItems>
+    </ContentPage.ToolbarItems>-->
     <ContentPage.Icon>
         <OnPlatform
             x:TypeArguments="FileImageSource"
