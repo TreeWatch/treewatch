@@ -10,6 +10,8 @@ using Xamarin.Forms;
 using Xamarin.Forms.Maps.iOS;
 using Xamarin.Forms.Platform.iOS;
 using ObjCRuntime;
+using LFHeatMap;
+using Foundation;
 
 [assembly: ExportRenderer (typeof(FieldMap), typeof(FieldMapRenderer))]
 
@@ -56,6 +58,8 @@ namespace TreeWatch.iOS
 				mapView = Control as MKMapView;
 				mapView.AddGestureRecognizer (tapGesture);
 				mapView.GetViewForAnnotation = GetViewForAnnotation;
+                mapView.RegionChanged += ChangeRegion; 
+                mapView.RegionWillChange += ChangeRegion;
 
 				myMap = e.NewElement as FieldMap;
 				mapView.OverlayRenderer = GetOverlayRender;
@@ -63,6 +67,16 @@ namespace TreeWatch.iOS
 				AddFields ();
 			}
 		}
+
+        void ChangeRegion(object sender, MKMapViewChangeEventArgs e){
+
+            foreach (var item in mapView.Subviews)
+            {
+                var heatMap = item as UIHeatMapView;
+                if (heatMap != null)
+                    heatMap.RefreshHeatMap(mapView);  
+            }
+        }
 
 
 
@@ -112,9 +126,20 @@ namespace TreeWatch.iOS
 					var polygon = MKPolygon.FromCoordinates (points);
 					polygon.Title = "Field";
 					mapView.AddOverlay(polygon);
+                    AddHeatMap(field.BoundingCoordinates, new List<int>());
 				}
+
+
+
 			}
 		}
+
+
+        void AddHeatMap(List<Position> positions, List<int> weights)
+        {
+            var view = new UIHeatMapView(positions, weights, mapView);
+            mapView.AddSubview(view);
+        }
 
 		void AddFieldMapAnnotation (Field field)
 		{
@@ -174,6 +199,7 @@ namespace TreeWatch.iOS
 			CLLocationCoordinate2D touchCoordinates = mapView.ConvertPoint (pointInView, this.mapView);
 
 			FieldHelper.Instance.MapTappedEvent (new Position (touchCoordinates.Latitude, touchCoordinates.Longitude), ZoomLevel (mapView));
+
 		}
 
 		static double ZoomLevel (MKMapView mapView)

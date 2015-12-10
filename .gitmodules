@@ -1,0 +1,3 @@
+[submodule "LFHeatMap"]
+	path = LFHeatMap
+	url = git@github.com:TreeWatch/LFHeatMaps.git
