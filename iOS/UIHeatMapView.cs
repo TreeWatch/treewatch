@@ -24,14 +24,20 @@ namespace TreeWatch.iOS
                 heatmapWeights[i] = weights[i];
             }
            
-            Image = LFHeatMap.LFHeatMap.HeatMapForMapView(view, 0.5F, heatmapPositions, heatmapWeights);
+            /* Readd LFHeatMap project first
+             * Found at https://github.com/TreeWatch/LFHeatMaps
+             */
+            //Image = LFHeatMap.LFHeatMap.HeatMapForMapView(view, 0.5F, heatmapPositions, heatmapWeights);
             ContentMode = UIViewContentMode.Center;
         }
  
         public void RefreshHeatMap(MKMapView view)
         {
             Frame = view.Frame;
-            Image = LFHeatMap.LFHeatMap.HeatMapForMapView(view, 0.5F, heatmapPositions, heatmapWeights);
+            /* Readd LFHeatMap project first
+             * Found at https://github.com/TreeWatch/LFHeatMaps
+             */
+            //Image = LFHeatMap.LFHeatMap.HeatMapForMapView(view, 0.5F, heatmapPositions, heatmapWeights);
         }
 
     }

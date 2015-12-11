@@ -114,10 +114,6 @@
       <Project>{8C138565-9C93-4EBA-85A7-7A37861C2249}</Project>
       <Name>TreeWatch</Name>
     </ProjectReference>
-    <ProjectReference Include="..\LFHeatMap\LFHeatMap\LFHeatMap.csproj">
-      <Project>{49978D09-B027-40AF-9FF5-B3BCA3D58550}</Project>
-      <Name>LFHeatMap</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
