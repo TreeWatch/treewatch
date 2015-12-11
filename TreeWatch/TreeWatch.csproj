@@ -177,13 +177,10 @@
     <EmbeddedResource Include="KML\Fields\perceelscanKarwei.kml" />
     <EmbeddedResource Include="KML\Fields\perceelscanHema.kml" />
     <EmbeddedResource Include="KML\Fields\perceelscanIkea.kml" />
-<<<<<<< HEAD
     <EmbeddedResource Include="View\Map\DetailedInformation\VarietiesInformationContentPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-=======
     <EmbeddedResource Include="KML\Heatmaps\Biomassa.kml" />
->>>>>>> Added Heatmaps in KMLParser
   </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>
