@@ -28,14 +28,14 @@ namespace TreeWatch.iOS
             }
            
 
-            //Image = LFHeatMap.LFHeatMap.HeatMapForMapView(view, 0.5F, heatmapPositions, heatmapWeights);
+            Image = LFHeatMap.LFHeatMap.HeatMapForMapView(view, 0.5F, heatmapPositions, heatmapWeights);
             ContentMode = UIViewContentMode.Center;
         }
  
         public void RefreshHeatMap(MKMapView view)
         {
             Frame = view.Frame;
-            //Image = LFHeatMap.LFHeatMap.HeatMapForMapView(view, 0.5F, heatmapPositions, heatmapWeights);
+            Image = LFHeatMap.LFHeatMap.HeatMapForMapView(view, 0.5F, heatmapPositions, heatmapWeights);
         }
         */
     }
