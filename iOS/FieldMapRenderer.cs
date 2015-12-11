@@ -57,8 +57,11 @@ namespace TreeWatch.iOS
 				mapView = Control as MKMapView;
 				mapView.AddGestureRecognizer (tapGesture);
 				mapView.GetViewForAnnotation = GetViewForAnnotation;
-                mapView.RegionChanged += ChangeRegion; 
-                mapView.RegionWillChange += ChangeRegion;
+
+                /* Readd LFHeatMap project first
+                 * Found at https://github.com/TreeWatch/LFHeatMaps
+                 */
+                //mapView.RegionChanged += ChangeRegion; 
 
 				myMap = e.NewElement as FieldMap;
 				mapView.OverlayRenderer = GetOverlayRender;
@@ -67,6 +70,9 @@ namespace TreeWatch.iOS
 			}
 		}
 
+        /* TODO Readd LFHeatMap project first
+         * Found at https://github.com/TreeWatch/LFHeatMaps
+         * Code:
         void ChangeRegion(object sender, MKMapViewChangeEventArgs e){
 
             foreach (var item in mapView.Subviews)
@@ -76,7 +82,7 @@ namespace TreeWatch.iOS
                     heatMap.RefreshHeatMap(mapView);  
             }
         }
-
+        */
 
 
 		MKOverlayRenderer GetOverlayRender (MKMapView m, IMKOverlay o)
@@ -162,8 +168,12 @@ namespace TreeWatch.iOS
             mapView.AddOverlay(heatmap);
 
 
-            // Showing a 'Real' heatmap using just points 
-            /* var positions = new List<Position>();
+            /* Showing a 'Real' heatmap using just points 
+             * current Version is using multiple polygons
+             * TODO Readd LFHeatMap project first
+             * Found at https://github.com/TreeWatch/LFHeatMaps
+             * Code :
+            var positions = new List<Position>();
             var weights = new List<Double>();
 
             foreach (var item in points)
@@ -171,7 +181,7 @@ namespace TreeWatch.iOS
 
                 foreach (var pos in item.BoundingCoordinates) {
                     positions.Add(pos);
-                        weights.Add(item.Std);
+                        weights.Add(item.Mean);
                 }
                
             }

@@ -9,6 +9,9 @@ namespace TreeWatch.iOS
 {
     public class UIHeatMapView : UIImageView
     {
+        /* TODO Readd LFHeatMap project first
+         * Found at https://github.com/TreeWatch/LFHeatMaps
+         *
         readonly CLLocation[] heatmapPositions;
 
         readonly NSNumber[] heatmapWeights;
@@ -24,9 +27,7 @@ namespace TreeWatch.iOS
                 heatmapWeights[i] = weights[i];
             }
            
-            /* Readd LFHeatMap project first
-             * Found at https://github.com/TreeWatch/LFHeatMaps
-             */
+
             //Image = LFHeatMap.LFHeatMap.HeatMapForMapView(view, 0.5F, heatmapPositions, heatmapWeights);
             ContentMode = UIViewContentMode.Center;
         }
@@ -34,12 +35,9 @@ namespace TreeWatch.iOS
         public void RefreshHeatMap(MKMapView view)
         {
             Frame = view.Frame;
-            /* Readd LFHeatMap project first
-             * Found at https://github.com/TreeWatch/LFHeatMaps
-             */
             //Image = LFHeatMap.LFHeatMap.HeatMapForMapView(view, 0.5F, heatmapPositions, heatmapWeights);
         }
-
+        */
     }
 
 }
