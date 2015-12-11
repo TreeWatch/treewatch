@@ -200,6 +200,7 @@
     <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Default-PortraitWSB%402x.png" />
     <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Default-LandscapeWSB.png" />
     <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Default-LandscapeWSB%402x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\AppIcon83-5%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Icons\HamburgerMenuIcon.png" />
@@ -220,9 +221,6 @@
     <BundleResource Include="Resources\Icons\ToDoTabBarIcon.png" />
     <BundleResource Include="Resources\Icons\ToDoTabBarIcon%402x.png" />
     <BundleResource Include="Resources\Icons\ToDoTabBarIcon%403x.png" />
-    <BundleResource Include="Resources\Icons\FilterListIcon.png" />
-    <BundleResource Include="Resources\Icons\FilterListIcon%402x.png" />
-    <BundleResource Include="Resources\Icons\FilterListIcon%403x.png" />
     <BundleResource Include="Resources\Icons\InfoIcon.png" />
     <BundleResource Include="Resources\Icons\InfoIcon%402x.png" />
     <BundleResource Include="Resources\Icons\InfoIcon%403x.png" />
@@ -235,5 +233,8 @@
     <BundleResource Include="Resources\Icons\ClearLayersIcon.png" />
     <BundleResource Include="Resources\Icons\ClearLayersIcon%403x.png" />
     <BundleResource Include="Resources\Icons\ClearLayersIcon%402x.png" />
+    <BundleResource Include="Resources\Icons\MyLocationIcon.png" />
+    <BundleResource Include="Resources\Icons\MyLocationIcon%402x.png" />
+    <BundleResource Include="Resources\Icons\MyLocationIcon%403x.png" />
   </ItemGroup>
 </Project>

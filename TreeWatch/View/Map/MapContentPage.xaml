@@ -1,22 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage
-	xmlns        ="http://xamarin.com/schemas/2014/forms"
-	xmlns:x       ="http://schemas.microsoft.com/winfx/2009/xaml"
-	x:Class       ="TreeWatch.MapContentPage"
-	xmlns:local   ="clr-namespace:TreeWatch;assembly=TreeWatch"
-	StyleId       ="MapView">
-	<ContentPage.Icon>
-		<OnPlatform
-			x:TypeArguments="FileImageSource"
-			iOS            ="Icons/MapTabBarIcon.png" />
-	</ContentPage.Icon>
-	<ContentPage.Content>
-		<StackLayout
-			VerticalOptions  ="CenterAndExpand"
-			HorizontalOptions="FillAndExpand"
-			Orientation      ="Vertical"
-			Spacing          ="15"
-			>
-		</StackLayout>
-	</ContentPage.Content>
+    xmlns     ="http://xamarin.com/schemas/2014/forms"
+    xmlns:x    ="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class    ="TreeWatch.MapContentPage"
+    xmlns:local="clr-namespace:TreeWatch;assembly=TreeWatch"
+    StyleId    ="MapView">
+    <ContentPage.Icon>
+        <OnPlatform
+            x:TypeArguments="FileImageSource"
+            iOS            ="Icons/MapTabBarIcon.png" />
+    </ContentPage.Icon>
+    <ContentPage.Content>
+        <local:FieldMap
+            x:Name="fieldMap" />
+    </ContentPage.Content>
 </ContentPage>
