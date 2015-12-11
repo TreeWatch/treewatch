@@ -26,10 +26,12 @@ namespace TreeWatch.iOS
 					context.BeginPath ();
 					context.AddPath (path);
 					context.DrawPath (CGPathDrawingMode.EOFill);
-					context.BeginPath ();
-					context.AddPath (path);
-					context.StrokePath ();
-				}
+                    if (item.DrawOutlines){
+					    context.BeginPath ();
+					    context.AddPath (path);
+					    context.StrokePath ();
+                    }
+                }
 			}
 
 		}
