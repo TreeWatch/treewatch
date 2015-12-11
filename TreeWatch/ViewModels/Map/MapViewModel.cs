@@ -10,7 +10,6 @@ using Xamarin.Forms;
 
 namespace TreeWatch
 {
-<<<<<<< HEAD
 	public class MapViewModel : INotifyPropertyChanged
 	{
 		public event PropertyChangedEventHandler PropertyChanged;
