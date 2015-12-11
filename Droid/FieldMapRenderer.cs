@@ -36,7 +36,6 @@ namespace TreeWatch.Droid
 			if (e.OldElement == null) {
 
 				mapView = Control as MapView;
-
 				mapView.GetMapAsync (this);
 
 				myMap = e.NewElement as FieldMap;
@@ -115,11 +114,20 @@ namespace TreeWatch.Droid
 			Map = googleMap;
 			AddFields ();
 			Map.MapClick += MapClicked;
-
+            Map.MyLocationEnabled = true;
+            Map.UiSettings.MyLocationButtonEnabled = true;
+            Map.MyLocationChange += SetUserPositionOnce;
 			var handler = MapReady;
 			if (handler != null)
 				handler (this, EventArgs.Empty);
 		}
+
+        protected void SetUserPositionOnce(object sender, GoogleMap.MyLocationChangeEventArgs e)
+        {
+            Map.MyLocationChange -= SetUserPositionOnce;
+            var latlng = new LatLng(e.Location.Latitude, e.Location.Longitude);
+            Map.MoveCamera(CameraUpdateFactory.NewLatLng(latlng));
+        }
 
 		void InfoWindowClicked (object sender, GoogleMap.InfoWindowClickEventArgs e)
 		{
