@@ -7,6 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Windows.Input;
 
 using Xamarin.Forms;
+using System.Diagnostics;
 
 namespace TreeWatch
 {
