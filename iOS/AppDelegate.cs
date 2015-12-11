@@ -10,6 +10,10 @@ using UIKit;
 
 using Xamarin;
 using Xamarin.Forms;
+using XLabs.Ioc;
+using XLabs.Platform.Device;
+using XLabs.Platform.Services;
+using XLabs.Platform.Services.Geolocation;
 
 namespace TreeWatch.iOS
 {
@@ -31,6 +35,12 @@ namespace TreeWatch.iOS
 
 			FormsMaps.Init ();
 
+            var container = new SimpleContainer ();
+            container.Register<IDevice>(t => AppleDevice.CurrentDevice);
+            container.Register<IDisplay>(t => t.Resolve<IDevice>().Display);
+            container.Register<INetwork>(t => t.Resolve<IDevice>().Network);
+            Resolver.SetResolver(container.GetResolver());
+            DependencyService.Register<Geolocator> ();
 
 			// Code for starting up the Xamarin Test Cloud Agent
 			#if ENABLE_TEST_CLOUD
