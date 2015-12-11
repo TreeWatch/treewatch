@@ -75,18 +75,7 @@ namespace TreeWatch.Droid
 
             }
         }
-
-        void AddMarker(Field field)
-        {
-            var marker = new MarkerOptions();
-            marker.SetTitle(field.Name);
-            marker.SetSnippet(string.Format("Number of rows: {0}", field.Blocks.Count));
-            var whc = GeoHelper.CalculateWidthHeight(field.BoundingCoordinates);
-            marker.SetPosition(new LatLng(whc.Center.Latitude, whc.Center.Longitude));
-            marker.SetIcon(BitmapDescriptorFactory.FromResource(Resource.Drawable.MapMarker));
-            Map.AddMarker(marker);
-        }
-
+            
         static PolygonOptions GetPolygon(Java.Lang.IIterable coordinates, Android.Graphics.Color color)
         {
             var polygonOptions = new PolygonOptions();

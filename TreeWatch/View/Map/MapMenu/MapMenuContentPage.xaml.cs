@@ -32,7 +32,7 @@ namespace TreeWatch
             {
                 if (field.Name.Equals((sender as Button).CommandParameter))
                 {
-                    (BindingContext as MapViewModel).NavigateToField(field);
+                    MapViewModel.NavigateToField(field);
                 }
             }
         }

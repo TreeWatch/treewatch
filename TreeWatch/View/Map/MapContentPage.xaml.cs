@@ -28,14 +28,14 @@ namespace TreeWatch
          */
         internal void SetupMapContentView()
         {
-            // Get binding context of this view
-            var viewModel = BindingContext as MapViewModel;
             // Get current position
-            var currentLocation = viewModel.GetCurrentDevicePosition();
+            var currentLocation = MapViewModel.GetCurrentDevicePosition();
 
             // Jump to the current location inside the map
             fieldMap.MoveToRegion(MapSpan.FromCenterAndRadius(currentLocation, Distance.FromKilometers(1)));
 
+            // Get binding context of this view
+            var viewModel = BindingContext as MapViewModel;
             // Add all fields into the map
             fieldMap.Fields = viewModel.Fields;
 

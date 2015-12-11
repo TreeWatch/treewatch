@@ -23,7 +23,6 @@ using System.Linq;
 // Analysis disable once InconsistentNaming
 namespace TreeWatch.iOS
 {
-<<<<<<< HEAD
 	public class FieldMapRenderer : MapRenderer
 	{
 
@@ -67,7 +66,6 @@ namespace TreeWatch.iOS
                 mapView.ShowsUserLocation = true;
                 mapView.DidUpdateUserLocation += SetUserPostionOnce;
 				mapView.AddGestureRecognizer (tapGesture);
-				mapView.GetViewForAnnotation = GetViewForAnnotation;
 
                 /* Readd LFHeatMap project first
                  * Found at https://github.com/TreeWatch/LFHeatMaps
@@ -206,52 +204,10 @@ namespace TreeWatch.iOS
                     positions.Add(pos);
                         weights.Add(item.Mean);
                 }
-
             }
-
             var view = new UIHeatMapView(positions, weights, mapView);
             mapView.AddSubview(view); */
         }
-
-		void AddFieldMapAnnotation (Field field)
-		{
-			var annotation = new FieldMapAnnotation (field);
-			mapView.AddAnnotation (annotation);
-		}
-
-		static MKAnnotationView GetViewForAnnotation (MKMapView mapView, IMKAnnotation annotation)
-		{
-			try {
-				const string annotationId = "pin";
-				var fieldMapAnnotation = (FieldMapAnnotation)annotation;
-				var aview = (MKPinAnnotationView)mapView.DequeueReusableAnnotation (annotationId);
-
-				if (aview == null) {
-					aview = new MKPinAnnotationView (fieldMapAnnotation, annotationId);
-				} else {
-					aview.Annotation = fieldMapAnnotation;
-				}
-
-				aview.AnimatesDrop = true;
-				aview.Selected = true;
-				aview.PinColor = MKPinAnnotationColor.Red;
-				aview.CanShowCallout = true;
-
-				UIButton detailButton = UIButton.FromType (UIButtonType.DetailDisclosure);
-
-				detailButton.TouchUpInside += (s, ev) => {
-					var navigationPage = (NavigationPage)Xamarin.Forms.Application.Current.MainPage;
-
-					navigationPage.PushAsync (new FieldInformationContentPage (new InformationViewModel (fieldMapAnnotation.Field)));
-				};
-
-				aview.RightCalloutAccessoryView = detailButton;
-
-				return aview;
-			} catch (Exception) {
-				return null;
-			}
-		}
 
 		static CLLocationCoordinate2D[] convertCoordinates (List<Position> Coordinates)
 		{

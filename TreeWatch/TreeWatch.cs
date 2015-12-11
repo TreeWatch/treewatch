@@ -9,7 +9,7 @@ namespace TreeWatch
         public App()
         {
             // The root page of your application
-            MainPage = !App.Database.DBconfig.Init ? new SplashPage() : new NavigationPage(new CustomTabbedPage()); 
+            MainPage = !App.Database.DBconfig.Init ? new SplashPage() as Page : new NavigationPage(new CustomTabbedPage()); 
         }
 
         public static TreeWatchDatabase Database
