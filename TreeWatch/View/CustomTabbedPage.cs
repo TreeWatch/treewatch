@@ -7,7 +7,8 @@ namespace TreeWatch
 		public CustomTabbedPage ()
 		{
 			// map tab page
-			Children.Add (new MapMasterDetailPage ());
+			var mapMasteDetailPage = new MapMasterDetailPage ();
+			Children.Add (mapMasteDetailPage);
 
 			// note tab page
 			this.Children.Add (new NoteContentPage ());
@@ -19,11 +20,9 @@ namespace TreeWatch
 			this.Children.Add (new HistoryContentPage ());
 
 			// settings tab page
-			this.Children.Add (new SettingsContentPage ());
+			this.Children.Add (new SettingsContentPage (mapMasteDetailPage.Detail));
 
 			NavigationPage.SetHasNavigationBar (this, false);
 		}
 	}
 }
-
-

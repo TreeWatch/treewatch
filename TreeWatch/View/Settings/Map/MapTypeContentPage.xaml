@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+	xmlns ="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	x:Class="TreeWatch.MapTypeContentPage">
+	<ContentPage.Content>
+		<ListView
+			x:Name     ="mapTypes"
+			ItemsSource="{Binding MapTypes}">
+			<ListView.Header>
+				<StackLayout>
+				</StackLayout>
+			</ListView.Header>
+			<ListView.ItemTemplate>
+				<DataTemplate>
+					<TextCell
+						Text            ="{Binding Name}"
+						CommandParameter="{Binding Name}" />
+				</DataTemplate>
+			</ListView.ItemTemplate>
+		</ListView>
+	</ContentPage.Content>
+</ContentPage>

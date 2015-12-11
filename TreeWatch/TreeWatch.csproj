@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -86,6 +86,15 @@
     <Compile Include="View\Map\DetailedInformation\BlocksInformationContentPage.xaml.cs">
       <DependentUpon>BlocksInformationContentPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\Settings\SettingsViewModel.cs" />
+    <Compile Include="View\Settings\Map\MapTypeContentPage.xaml.cs">
+      <DependentUpon>MapTypeContentPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SplashPage.cs" />
+    <Compile Include="Utils\KMLParser.cs" />
+    <Compile Include="View\Map\DetailedInformation\VarietiesInformationContentPage.xaml.cs">
+      <DependentUpon>VarietiesInformationContentPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.1.5.1.6471\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.1.5.1.6471\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
@@ -105,6 +114,9 @@
     <Folder Include="View\Map\DetailedInformation\" />
     <Folder Include="Database\" />
     <Folder Include="Model\ToDo\" />
+    <Folder Include="View\Settings\Map\" />
+    <Folder Include="ViewModels\Settings\" />
+    <Folder Include="KML\Fields\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">
@@ -146,6 +158,9 @@
     <Reference Include="XLabs.Forms">
       <HintPath>..\packages\XLabs.Forms.2.0.5782\lib\portable-net45+netcore45+wpa81+wp8\XLabs.Forms.dll</HintPath>
     </Reference>
+    <Reference Include="ExifLib">
+      <HintPath>..\packages\ExifLib.PCL.1.0.1\lib\portable-net45+sl50+win+WindowsPhoneApp81+wp80+Xamarin.iOS10+MonoAndroid10+MonoTouch10\ExifLib.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="View\History\HistoryContentPage.xaml" />
@@ -163,12 +178,82 @@
     <EmbeddedResource Include="View\Map\DetailedInformation\BlocksInformationContentPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Settings\Map\MapTypeContentPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KML\Blocks\rassenmapGrutto.kml" />
+    <EmbeddedResource Include="KML\Blocks\rassenmapHema.kml" />
+    <EmbeddedResource Include="KML\Blocks\rassenmapIkea.kml" />
+    <EmbeddedResource Include="KML\Fields\perceelscanGrutto.kml" />
+    <EmbeddedResource Include="KML\Fields\perceelscanPraxis.kml" />
+    <EmbeddedResource Include="KML\Fields\perceelscanSligro.kml" />
+    <EmbeddedResource Include="KML\Fields\perceelscanKarwei.kml" />
+    <EmbeddedResource Include="KML\Fields\perceelscanHema.kml" />
+    <EmbeddedResource Include="KML\Fields\perceelscanIkea.kml" />
+    <EmbeddedResource Include="View\Map\DetailedInformation\VarietiesInformationContentPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>
       <Properties>
         <Policies>
           <DotNetNamingPolicy DirectoryNamespaceAssociation="None" ResourceNamePolicy="FileFormatDefault" />
+          <NameConventionPolicy>
+            <Rules>
+              <NamingRule Name="Namespaces" AffectedEntity="Namespace" VisibilityMask="VisibilityMask" NamingStyle="PascalCase" IncludeInstanceMembers="True" IncludeStaticEntities="True" />
+              <NamingRule Name="Types" AffectedEntity="Class, Struct, Enum, Delegate" VisibilityMask="VisibilityMask" NamingStyle="PascalCase" IncludeInstanceMembers="True" IncludeStaticEntities="True" />
+              <NamingRule Name="Interfaces" AffectedEntity="Interface" VisibilityMask="VisibilityMask" NamingStyle="PascalCase" IncludeInstanceMembers="True" IncludeStaticEntities="True">
+                <RequiredPrefixes>
+                  <String>I</String>
+                </RequiredPrefixes>
+              </NamingRule>
+              <NamingRule Name="Attributes" AffectedEntity="CustomAttributes" VisibilityMask="VisibilityMask" NamingStyle="PascalCase" IncludeInstanceMembers="True" IncludeStaticEntities="True">
+                <RequiredSuffixes>
+                  <String>Attribute</String>
+                </RequiredSuffixes>
+              </NamingRule>
+              <NamingRule Name="Event Arguments" AffectedEntity="CustomEventArgs" VisibilityMask="VisibilityMask" NamingStyle="PascalCase" IncludeInstanceMembers="True" IncludeStaticEntities="True">
+                <RequiredSuffixes>
+                  <String>EventArgs</String>
+                </RequiredSuffixes>
+              </NamingRule>
+              <NamingRule Name="Exceptions" AffectedEntity="CustomExceptions" VisibilityMask="VisibilityMask" NamingStyle="PascalCase" IncludeInstanceMembers="True" IncludeStaticEntities="True">
+                <RequiredSuffixes>
+                  <String>Exception</String>
+                </RequiredSuffixes>
+              </NamingRule>
+              <NamingRule Name="Methods" AffectedEntity="Methods" VisibilityMask="VisibilityMask" NamingStyle="PascalCase" IncludeInstanceMembers="True" IncludeStaticEntities="True" />
+              <NamingRule Name="Static Readonly Fields" AffectedEntity="ReadonlyField" VisibilityMask="Internal, Protected, Public" NamingStyle="PascalCase" IncludeInstanceMembers="False" IncludeStaticEntities="True" />
+              <NamingRule Name="Fields (Non Private)" AffectedEntity="Field" VisibilityMask="Internal, Protected, Public" NamingStyle="PascalCase" IncludeInstanceMembers="True" IncludeStaticEntities="True" />
+              <NamingRule Name="ReadOnly Fields (Non Private)" AffectedEntity="ReadonlyField" VisibilityMask="Internal, Protected, Public" NamingStyle="PascalCase" IncludeInstanceMembers="True" IncludeStaticEntities="False" />
+              <NamingRule Name="Fields (Private)" AffectedEntity="Field, ReadonlyField" VisibilityMask="Private" NamingStyle="CamelCase" IncludeInstanceMembers="True" IncludeStaticEntities="False">
+                <AllowedPrefixes>
+                  <String>_</String>
+                  <String>m_</String>
+                </AllowedPrefixes>
+              </NamingRule>
+              <NamingRule Name="Static Fields (Private)" AffectedEntity="Field" VisibilityMask="Private" NamingStyle="CamelCase" IncludeInstanceMembers="False" IncludeStaticEntities="True" />
+              <NamingRule Name="ReadOnly Fields (Private)" AffectedEntity="ReadonlyField" VisibilityMask="Private" NamingStyle="CamelCase" IncludeInstanceMembers="True" IncludeStaticEntities="False">
+                <AllowedPrefixes>
+                  <String>_</String>
+                  <String>m_</String>
+                </AllowedPrefixes>
+              </NamingRule>
+              <NamingRule Name="Constant Fields" AffectedEntity="ConstantField" VisibilityMask="VisibilityMask" NamingStyle="PascalCase" IncludeInstanceMembers="True" IncludeStaticEntities="True" />
+              <NamingRule Name="Properties" AffectedEntity="Property" VisibilityMask="VisibilityMask" NamingStyle="PascalCase" IncludeInstanceMembers="True" IncludeStaticEntities="True" />
+              <NamingRule Name="Events" AffectedEntity="Event" VisibilityMask="VisibilityMask" NamingStyle="PascalCase" IncludeInstanceMembers="True" IncludeStaticEntities="True" />
+              <NamingRule Name="Enum Members" AffectedEntity="EnumMember" VisibilityMask="VisibilityMask" NamingStyle="PascalCase" IncludeInstanceMembers="True" IncludeStaticEntities="True" />
+              <NamingRule Name="Parameters" AffectedEntity="Parameter" VisibilityMask="VisibilityMask" NamingStyle="CamelCase" IncludeInstanceMembers="True" IncludeStaticEntities="True" />
+              <NamingRule Name="Type Parameters" AffectedEntity="TypeParameter" VisibilityMask="VisibilityMask" NamingStyle="PascalCase" IncludeInstanceMembers="True" IncludeStaticEntities="True">
+                <RequiredPrefixes>
+                  <String>T</String>
+                </RequiredPrefixes>
+              </NamingRule>
+            </Rules>
+          </NameConventionPolicy>
+          <VersionControlPolicy inheritsSet="Mono" />
+          <TextStylePolicy FileWidth="120" NoTabsAfterNonTabs="True" inheritsSet="VisualStudio" inheritsScope="text/plain" scope="text/x-fsharp" />
         </Policies>
       </Properties>
     </MonoDevelop>

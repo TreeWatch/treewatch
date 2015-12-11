@@ -3,7 +3,7 @@
 	xmlns ="http://xamarin.com/schemas/2014/forms"
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 	x:Class="TreeWatch.BlockInformationContentPage"
-	Title  ="Block"
+	Title  ="{Binding Block.TreeType.Name}"
 	StyleId="BlockInformation"
 	Padding="0, 0, 0, 0">
 	<ContentPage.Content>
@@ -14,29 +14,14 @@
 					<ViewCell>
 						<StackLayout
 							Orientation="Horizontal"
-							Padding    ="10">
+							Padding    ="20,0">
 							<Label
-								Text           ="ID"
-								TextColor      ="#000000"
+								Text           ="Database-ID"
+								TextColor      ="Black"
 								VerticalOptions="Center" />
 							<Label
 								HorizontalOptions="EndAndExpand"
 								Text             ="{Binding Block.ID}"
-								TextColor        ="#8E8F93"
-								VerticalOptions  ="Center" />
-						</StackLayout>
-					</ViewCell>
-					<ViewCell>
-						<StackLayout
-							Orientation="Horizontal"
-							Padding    ="10">
-							<Label
-								Text           ="Name"
-								TextColor      ="#000000"
-								VerticalOptions="Center" />
-							<Label
-								HorizontalOptions="EndAndExpand"
-								Text             ="{Binding Block.TreeType.Name}"
 								TextColor        ="#8E8F93"
 								VerticalOptions  ="Center" />
 						</StackLayout>

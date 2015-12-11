@@ -131,6 +131,9 @@
     <Reference Include="XLabs.Forms">
       <HintPath>..\packages\XLabs.Forms.2.0.5782\lib\Xamarin.iOS10\XLabs.Forms.dll</HintPath>
     </Reference>
+    <Reference Include="ExifLib">
+      <HintPath>..\packages\ExifLib.PCL.1.0.1\lib\portable-net45+sl50+win+WindowsPhoneApp81+wp80+Xamarin.iOS10+MonoAndroid10+MonoTouch10\ExifLib.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TreeWatch\TreeWatch.csproj">
@@ -154,6 +157,9 @@
     <Compile Include="FieldMapDelegate.cs" />
     <Compile Include="FieldMapAnnotationView.cs" />
     <Compile Include="SQLite_iOS.cs" />
+    <Compile Include="MultiPolygonView.cs" />
+    <Compile Include="MultiPolygon.cs" />
+    <Compile Include="ColorPolygon.cs" />
   </ItemGroup>
   <ItemGroup>
     <ITunesArtwork Include="iTunesArtwork" />
@@ -165,7 +171,6 @@
   <ItemGroup>
     <Folder Include="Resources\Images.xcassets\" />
     <Folder Include="Resources\Icons\" />
-    <Folder Include="Resources\CellIcons\" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Contents.json" />
@@ -216,6 +221,7 @@
     <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Default-PortraitWSB%402x.png" />
     <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Default-LandscapeWSB.png" />
     <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Default-LandscapeWSB%402x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\AppIcon83-5%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Icons\HamburgerMenuIcon.png" />
@@ -236,7 +242,20 @@
     <BundleResource Include="Resources\Icons\ToDoTabBarIcon.png" />
     <BundleResource Include="Resources\Icons\ToDoTabBarIcon%402x.png" />
     <BundleResource Include="Resources\Icons\ToDoTabBarIcon%403x.png" />
-    <BundleResource Include="Resources\CellIcons\InfoIcon.png" />
-    <BundleResource Include="Resources\CellIcons\RightArrowIcon.png" />
+    <BundleResource Include="Resources\Icons\InfoIcon.png" />
+    <BundleResource Include="Resources\Icons\InfoIcon%402x.png" />
+    <BundleResource Include="Resources\Icons\InfoIcon%403x.png" />
+    <BundleResource Include="Resources\Icons\ArrowRightIcon.png" />
+    <BundleResource Include="Resources\Icons\ArrowRightIcon%402x.png" />
+    <BundleResource Include="Resources\Icons\ArrowRightIcon%403x.png" />
+    <BundleResource Include="Resources\Icons\LayersIcon%403x.png" />
+    <BundleResource Include="Resources\Icons\LayersIcon%402x.png" />
+    <BundleResource Include="Resources\Icons\LayersIcon.png" />
+    <BundleResource Include="Resources\Icons\ClearLayersIcon.png" />
+    <BundleResource Include="Resources\Icons\ClearLayersIcon%403x.png" />
+    <BundleResource Include="Resources\Icons\ClearLayersIcon%402x.png" />
+    <BundleResource Include="Resources\Icons\MyLocationIcon.png" />
+    <BundleResource Include="Resources\Icons\MyLocationIcon%402x.png" />
+    <BundleResource Include="Resources\Icons\MyLocationIcon%403x.png" />
   </ItemGroup>
 </Project>

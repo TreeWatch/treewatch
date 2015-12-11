@@ -176,12 +176,34 @@
     <AndroidResource Include="Resources\drawable-land\splash.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\splash.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\splash.png" />
-    <AndroidResource Include="Resources\drawable\camera.png" />
     <AndroidResource Include="Resources\layout\field_info_window.axml" />
-    <AndroidResource Include="Resources\drawable\marker.png" />
-    <AndroidResource Include="Resources\drawable\location_marker.png" />
+    <AndroidResource Include="Resources\drawable\MapMarker.png" />
+    <AndroidResource Include="Resources\drawable\ArrowRightIcon.png" />
+    <AndroidResource Include="Resources\drawable\ClearLayersIcon.png" />
     <AndroidResource Include="Resources\drawable\InfoIcon.png" />
-    <AndroidResource Include="Resources\drawable\RightArrowIcon.png" />
+    <AndroidResource Include="Resources\drawable\LayersIcon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ArrowRightIcon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ClearLayersIcon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\InfoIcon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\LayersIcon.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ArrowRightIcon.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ClearLayersIcon.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\InfoIcon.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\LayersIcon.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\splash.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ArrowRightIcon.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ClearLayersIcon.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\InfoIcon.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\LayersIcon.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ArrowRightIcon.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ClearLayersIcon.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\InfoIcon.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\LayersIcon.png" />
+    <AndroidResource Include="Resources\drawable\MyLocationIcon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\MyLocationIcon.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\MyLocationIcon.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\MyLocationIcon.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\MyLocationIcon.png" />
   </ItemGroup>
   <Import Project="..\packages\Xamarin.Forms.1.4.4.6392\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.1.4.4.6392\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
   <Import Project="..\packages\Xamarin.Forms.1.5.1.6471\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.1.5.1.6471\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
@@ -191,5 +213,8 @@
       <Version>27.0.0.0</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Karwei.kml" />
   </ItemGroup>
 </Project>

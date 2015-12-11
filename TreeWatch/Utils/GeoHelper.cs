@@ -77,18 +77,37 @@ namespace TreeWatch
 			
 		public static Position CalculateCenter (List<Position> BoundingCoordinates) 
 		{
-			double coordinateCounter = 0.0;
+
 			double latSum = 0.0;
 			double lonSum = 0.0;
 
 			foreach (Position fieldPoint in BoundingCoordinates)
 			{
-				coordinateCounter++;
 				latSum += fieldPoint.Latitude;
 				lonSum += fieldPoint.Longitude;
 			}
 
-			return new Position (latSum / coordinateCounter, lonSum / coordinateCounter);
+			return new Position (latSum / BoundingCoordinates.Count, lonSum / BoundingCoordinates.Count);
+
+			/*
+			var count = BoundingCoordinates.Count;
+			double x = 0, y = 0, area = 0, k;
+			Position a, b = BoundingCoordinates[count - 1];
+
+			for( int i = 0; i < count; i++ )
+			{
+				a = BoundingCoordinates[ i ];
+
+				k = a.Latitude * b.Longitude - a.Longitude * b.Latitude;
+				area += k;
+				x += ( a.Longitude + b.Longitude ) * k;
+				y += ( a.Latitude + b.Latitude ) * k;
+
+				b = a;
+			}
+			area *= 3;
+
+			return ( Double.IsNaN (area) ) ? new Position (0,0) : new Position( x /= area, y /= area ); */
 		}
 
 	}

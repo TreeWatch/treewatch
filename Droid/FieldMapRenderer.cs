@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Android.Gms.Maps;
 using Android.Gms.Maps.Model;
@@ -37,7 +37,6 @@ namespace TreeWatch.Droid
 
 				mapView = Control as MapView;
 
-
 				mapView.GetMapAsync (this);
 
 				myMap = e.NewElement as FieldMap;
@@ -47,10 +46,13 @@ namespace TreeWatch.Droid
 		void AddFields ()
 		{
 			foreach (var field in myMap.Fields) {
+				var connection = new TreeWatchDatabase ();
+				var query = new DBQuery<Field> (connection);
+				query.GetChildren (field);
 				if (field.Blocks.Count != 0) {
 					foreach (var block in field.Blocks) {
 						if (block.BoundingCoordinates.Count != 0 && block.BoundingCoordinates.Count >= 3) {
-							Map.AddPolygon (GetPolygon (FieldMapRenderer.ConvertCoordinates (block.BoundingCoordinates), 
+							Map.AddPolygon (GetPolygon (FieldMapRenderer.ConvertCoordinates (block.BoundingCoordinates),
 								(block.TreeType.ColorProp).ToAndroid ()));
 						}
 					}
@@ -72,7 +74,7 @@ namespace TreeWatch.Droid
 			marker.SetSnippet (string.Format ("Number of rows: {0}", field.Blocks.Count));
 			var center = GeoHelper.CalculateCenter (field.BoundingCoordinates);
 			marker.SetPosition (new LatLng (center.Latitude, center.Longitude));
-			marker.SetIcon (BitmapDescriptorFactory.FromResource (Resource.Drawable.location_marker));
+            marker.SetIcon (BitmapDescriptorFactory.FromResource (Resource.Drawable.MapMarker));
 			Map.AddMarker (marker);
 		}
 
@@ -80,9 +82,10 @@ namespace TreeWatch.Droid
 		{
 			var polygonOptions = new PolygonOptions ();
 			polygonOptions.InvokeFillColor (color);
-			polygonOptions.InvokeStrokeWidth (0);
+			polygonOptions.InvokeStrokeWidth (1);
+			polygonOptions.InvokeStrokeColor (Color.Black.ToAndroid());
 			polygonOptions.AddAll (coordinates);
-			
+
 			return polygonOptions;
 		}
 
@@ -102,27 +105,25 @@ namespace TreeWatch.Droid
 			var cords = new Java.Util.ArrayList ();
 			foreach (var pos in coordinates) {
 				cords.Add (new LatLng (pos.Latitude, pos.Longitude));
+
 			}
-			cords.Add (new LatLng (coordinates [0].Latitude, coordinates [0].Longitude));
 			return cords;
 		}
 
 		public void OnMapReady (GoogleMap googleMap)
 		{
 			Map = googleMap;
-			Map.SetInfoWindowAdapter (new FieldInfoWindow ());
 			AddFields ();
 			Map.MyLocationEnabled = true;
 			Map.UiSettings.MyLocationButtonEnabled = true;
 			Map.MarkerClick += MarkerClicked;
 			Map.MapClick += MapClicked;
-			Map.InfoWindowClick += InfoWindowClicked;
 
 			var handler = MapReady;
 			if (handler != null)
 				handler (this, EventArgs.Empty);
 		}
-			
+
 		void InfoWindowClicked (object sender, GoogleMap.InfoWindowClickEventArgs e)
 		{
 			Marker marker = e.Marker;
@@ -164,6 +165,7 @@ namespace TreeWatch.Droid
 				Map.MoveCamera (CameraUpdateFactory.NewLatLngBounds (bounds, 0));
 			}
 		}
+
 	}
 
 }
