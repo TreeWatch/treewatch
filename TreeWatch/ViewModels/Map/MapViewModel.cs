@@ -55,7 +55,6 @@ namespace TreeWatch
                 }
             }
             get { return selectedBlock; }
-			
         }
 
         void MapTapped(object sender, MapTappedEventArgs e)
@@ -106,7 +105,7 @@ namespace TreeWatch
             set
             {
                 if (searchText != value)
-                { 
+                {
                     searchText = value ?? string.Empty;
                     OnPropertyChanged("SearchText");
                     if (SearchCommand.CanExecute(null))
@@ -125,7 +124,7 @@ namespace TreeWatch
 
                 if (Fields != null)
                 {
-                    List<Field> entities = Fields.Where(x => x.Name.ToLower().Contains(searchText.ToLower())).ToList(); 
+                    List<Field> entities = Fields.Where(x => x.Name.ToLower().Contains(searchText.ToLower())).ToList();
                     if (entities != null && entities.Any())
                     {
                         filteredFields = new ObservableCollection<Field>(entities);
@@ -202,7 +201,6 @@ namespace TreeWatch
             }
             return null;
         }
-			
+
     }
 }
-

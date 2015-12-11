@@ -14,24 +14,24 @@ namespace TreeWatch.iOS
         readonly NSNumber[] heatmapWeights;
 
 
-        public UIHeatMapView(List<Position> positions, List<int> weights, MKMapView view): base(view.Frame)
+        public UIHeatMapView(List<Position> positions, List<Double> weights, MKMapView view): base(view.Frame)
         {
             heatmapPositions = new CLLocation[positions.Count];
             heatmapWeights = new NSNumber[positions.Count];
 
             for (var i = 0; i < positions.Count; i++) {
                 heatmapPositions [i] = new CLLocation (positions[i].Latitude, positions[i].Longitude);
-                heatmapWeights[i] = 5;
+                heatmapWeights[i] = weights[i];
             }
            
-            Image = LFHeatMap.LFHeatMap.HeatMapForMapView(view, 1.0F, heatmapPositions, heatmapWeights);
+            Image = LFHeatMap.LFHeatMap.HeatMapForMapView(view, 0.5F, heatmapPositions, heatmapWeights);
             ContentMode = UIViewContentMode.Center;
         }
  
         public void RefreshHeatMap(MKMapView view)
         {
             Frame = view.Frame;
-            Image = LFHeatMap.LFHeatMap.HeatMapForMapView(view, 1.0F, heatmapPositions, heatmapWeights);
+            Image = LFHeatMap.LFHeatMap.HeatMapForMapView(view, 0.5F, heatmapPositions, heatmapWeights);
         }
 
     }

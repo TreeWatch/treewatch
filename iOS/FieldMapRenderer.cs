@@ -10,8 +10,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Maps.iOS;
 using Xamarin.Forms.Platform.iOS;
 using ObjCRuntime;
-using LFHeatMap;
-using Foundation;
+using System.Linq;
 
 [assembly: ExportRenderer (typeof(FieldMap), typeof(FieldMapRenderer))]
 
@@ -101,8 +100,9 @@ namespace TreeWatch.iOS
 
 		void AddFields ()
 		{
+            var connection = new TreeWatchDatabase ();
 			foreach (var field in myMap.Fields) {
-				var connection = new TreeWatchDatabase ();
+				
 				var query = new DBQuery<Field> (connection);
 				var blockPolygons = new List<ColorPolygon> ();
 				query.GetChildren (field);
@@ -126,19 +126,58 @@ namespace TreeWatch.iOS
 					var polygon = MKPolygon.FromCoordinates (points);
 					polygon.Title = "Field";
 					mapView.AddOverlay(polygon);
-                    AddHeatMap(field.BoundingCoordinates, new List<int>());
+
 				}
 
-
-
 			}
+            var query2 = new DBQuery<Heatmap>(connection);
+            var heatmaps = query2.GetAllWithChildren();
+            var heatmap = heatmaps[0];
+
+            AddHeatMap(heatmap.Points);
 		}
 
 
-        void AddHeatMap(List<Position> positions, List<int> weights)
+        void AddHeatMap(List<HeatmapPoint> points)
         {
+            var polygons = new List<ColorPolygon>();
+
+            var max = points.Max(r => r.Mean);
+            var min = points.Min(r => r.Mean);
+           
+            var a = max - min;
+
+            foreach (var item in points)
+            {
+                var singlepolygon = (ColorPolygon) MKPolygon.FromCoordinates(convertCoordinates(item.BoundingCoordinates));
+                var red = ((((item.Mean- min) / a ) * 245) + 10) / 255;
+                var color = Color.FromRgb(red , 0 , 1 - red);
+                singlepolygon.FillColor = color.ToCGColor();
+                singlepolygon.DrawOutlines = false;
+                polygons.Add(singlepolygon);
+            }
+
+            var heatmap = new MultiPolygon(polygons);
+
+            mapView.AddOverlay(heatmap);
+
+
+            // Showing a 'Real' heatmap using just points 
+            /* var positions = new List<Position>();
+            var weights = new List<Double>();
+
+            foreach (var item in points)
+            {
+
+                foreach (var pos in item.BoundingCoordinates) {
+                    positions.Add(pos);
+                        weights.Add(item.Std);
+                }
+               
+            }
+
             var view = new UIHeatMapView(positions, weights, mapView);
-            mapView.AddSubview(view);
+            mapView.AddSubview(view); */
         }
 
 		void AddFieldMapAnnotation (Field field)

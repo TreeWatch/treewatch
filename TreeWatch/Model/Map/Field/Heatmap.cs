@@ -8,6 +8,7 @@ namespace TreeWatch
     {
         [OneToMany (CascadeOperations = CascadeOperation.CascadeInsert | CascadeOperation.CascadeRead)]
         public List<HeatmapPoint> Points { get; set; }
+
         public String Name { get; set; }
 
         public Heatmap()

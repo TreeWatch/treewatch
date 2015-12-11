@@ -49502,17 +49502,6 @@
 	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
 	<ExtendedData><SchemaData schemaUrl="#Biomassa">
 		<SimpleData name="Id">0.000</SimpleData>
-		<SimpleData name="Rowid_">0.000</SimpleData>
-		<SimpleData name="FID_1">0.000</SimpleData>
-		<SimpleData name="MEAN">0.000</SimpleData>
-		<SimpleData name="STD">0.000</SimpleData>
-	</SchemaData></ExtendedData>
-      <Polygon><outerBoundaryIs><LinearRing><coordinates>6.458777031046483,51.437055892913264 6.458776491453265,51.437055892913264 6.458776491453265,51.437056005036055 6.458777031046483,51.437055892913264</coordinates></LinearRing></outerBoundaryIs></Polygon>
-  </Placemark>
-  <Placemark>
-	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
-	<ExtendedData><SchemaData schemaUrl="#Biomassa">
-		<SimpleData name="Id">0.000</SimpleData>
 		<SimpleData name="Rowid_">4175.000</SimpleData>
 		<SimpleData name="FID_1">4175.000</SimpleData>
 		<SimpleData name="MEAN">0.550</SimpleData>
