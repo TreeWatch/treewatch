@@ -17,12 +17,14 @@
     </ContentPage.Icon>
     <ContentPage.Content>
         <TableView
-            Intent="Settings">
+            Intent ="Settings"
+            StyleId="SVTableView">
             <TableRoot>
                 <TableSection
                     Title="Map">
                     <ViewCell
-                        x:Name="mapType">
+                        StyleId="SVTVMapType"
+                        x:Name ="mapType">
                         <StackLayout
                             Orientation="Horizontal"
                             Padding    ="20,10,20,10">
@@ -47,17 +49,27 @@
                         </StackLayout>
                     </ViewCell>
                     <SwitchCell
-                        Text="Current Position"
-                        On  ="{Binding FieldMap.IsShowingUser}" />
+                        On     ="{Binding FieldMap.IsShowingUser}"
+                        StyleId="SVTVCurrentPosition"
+                        Text   ="Current Position" />
                 </TableSection>
                 <TableSection
                     Title="Note">
+                    <TextCell
+                        Text  ="Not Supported"
+                        Detail="Comming Soon" />
                 </TableSection>
                 <TableSection
                     Title="ToDo">
+                    <TextCell
+                        Text  ="Not Supported"
+                        Detail="Comming Soon" />
                 </TableSection>
                 <TableSection
                     Title="History">
+                    <TextCell
+                        Text  ="Not Supported"
+                        Detail="Comming Soon" />
                 </TableSection>
             </TableRoot>
         </TableView>

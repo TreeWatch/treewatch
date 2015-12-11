@@ -31,9 +31,12 @@ namespace TreeWatch
             : base(region)
         {
             Fields = new ObservableCollection<Field>();
+            //FIXME can be deleted?
             //overlayColor = new Color ((204.0 / 255), (40.0 / 255), (196.0 / 255), (127.0 / 255));
             overlayColor = Color.Transparent;
             boundaryColor = Color.FromHex("#ff8400");
+
+            StyleId = "FieldMapView";
         }
 
         public ObservableCollection<Field> Fields

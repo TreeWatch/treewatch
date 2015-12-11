@@ -4,8 +4,8 @@
     xmlns:x    ="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class    ="TreeWatch.MapMenuContentPage"
     xmlns:local="clr-namespace:TreeWatch;assembly=TreeWatch"
-    Title      ="Menu"
-    StyleId    ="MapMenu">
+    Title      ="Map Menu"
+    StyleId    ="MapMenuView">
     <ContentPage.Icon>
         <OnPlatform
             x:TypeArguments="FileImageSource"
@@ -26,18 +26,21 @@
             <SearchBar
                 Placeholder  ="Search"
                 Text         ="{Binding SearchText}"
-                SearchCommand="{Binding SearchCommand}" />
+                SearchCommand="{Binding SearchCommand}"
+                StyleId      ="MMSearchBar" />
             <ListView
                 x:Name      ="fieldView"
                 ItemsSource ="{Binding FilteredFields}"
-                SelectedItem="{Binding SelectedField}">
+                SelectedItem="{Binding SelectedField}"
+                StyleId     ="MMListView">
                 <ListView.Header>
                     <StackLayout>
                     </StackLayout>
                 </ListView.Header>
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
+                        <ViewCell
+                            StyleId="MMLVField">
                             <StackLayout
                                 Orientation="Horizontal"
                                 Padding    ="20,0">

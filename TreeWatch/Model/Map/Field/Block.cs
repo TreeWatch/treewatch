@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+
 using SQLiteNetExtensions.Attributes;
-using System;
 
 namespace TreeWatch
 {
@@ -34,10 +35,9 @@ namespace TreeWatch
         {
             var block = obj as Block;
 
-            return String.Compare(TreeType.Name, block.TreeType.Name);
+            return String.Compare(TreeType.Name, block.TreeType.Name, StringComparison.Ordinal);
         }
 
         #endregion
     }
 }
-

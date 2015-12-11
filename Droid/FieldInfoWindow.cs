@@ -1,39 +1,33 @@
-﻿using System;
-using Android.Gms.Maps.Model;
-using Android.Widget;
-using Android.Views;
-using Java.Util.Zip;
-using Android.App;
+﻿using Android.App;
 using Android.Content;
-using Android.Test.Suitebuilder;
+using Android.Gms.Maps.Model;
+using Android.Views;
+using Android.Widget;
 
 namespace TreeWatch.Droid
 {
-	public class FieldInfoWindow : Java.Lang.Object, Android.Gms.Maps.GoogleMap.IInfoWindowAdapter
-	{
+    public class FieldInfoWindow : Java.Lang.Object, Android.Gms.Maps.GoogleMap.IInfoWindowAdapter
+    {
 
-		public FieldInfoWindow ()
-		{
-		}
+        public View GetInfoContents(Marker marker)
+        {
+            var inflater = Application.Context.GetSystemService(Context.LayoutInflaterService) as LayoutInflater;
 
-		public Android.Views.View GetInfoContents (Marker marker)
-		{
-			var inflater = Application.Context.GetSystemService(Context.LayoutInflaterService) as LayoutInflater;
+            View v = inflater.Inflate(Resource.Layout.field_info_window, null);
 
-			View v = inflater.Inflate(Resource.Layout.field_info_window, null);
+            var title = v.FindViewById(Resource.Id.textViewName) as TextView;
+            title.Text = marker.Title;
 
-			TextView title = (TextView) v.FindViewById(Resource.Id.textViewName);
-			title.Text = marker.Title;
+            var description = v.FindViewById(Resource.Id.textViewRows) as TextView;
+            description.Text = marker.Snippet;
 
-			TextView description = (TextView) v.FindViewById(Resource.Id.textViewRows);
-			description.Text = marker.Snippet;
+            return v;
+        }
 
-			return v;
-		}
-		public Android.Views.View GetInfoWindow (Marker marker)
-		{
-			return null;
-		}
-	}
+        public View GetInfoWindow(Marker marker)
+        {
+            return null;
+        }
+    }
 }
 

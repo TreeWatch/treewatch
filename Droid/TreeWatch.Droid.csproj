@@ -15,8 +15,8 @@
     <AndroidApplication>True</AndroidApplication>
     <AndroidUseLatestPlatformSdk>False</AndroidUseLatestPlatformSdk>
     <AssemblyName>TreeWatch.Droid</AssemblyName>
-    <TargetFrameworkVersion>v5.1</TargetFrameworkVersion>
-    <ReleaseVersion>0.2</ReleaseVersion>
+    <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
+    <ReleaseVersion>0.4</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -122,7 +122,6 @@
     </Compile>
     <Compile Include="FieldMapRenderer.cs" />
     <Compile Include="CustomNavigationRenderer.cs" />
-    <Compile Include="SQLite_Android.cs" />
     <Compile Include="SplashActivity.cs" />
     <Compile Include="Geofence\GeofenceImplementation.cs" />
     <Compile Include="Geofence\GeofenceStore.cs" />
@@ -130,6 +129,7 @@
     <Compile Include="Geofence\GeofenceBootReceiver.cs" />
     <Compile Include="Geofence\GeofenceBroadcastReceiver.cs" />
     <Compile Include="Geofence\GeofenceTransitionsIntentService.cs" />
+    <Compile Include="SQLiteAndroid.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

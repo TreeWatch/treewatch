@@ -2,9 +2,8 @@
 
 namespace TreeWatch
 {
-	public interface ISQLite
-	{
-		SQLiteConnection GetConnection ();
-	}
+    public interface ISQLite
+    {
+        SQLiteConnection GetConnection();
+    }
 }
-

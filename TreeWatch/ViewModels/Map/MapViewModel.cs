@@ -99,7 +99,7 @@ namespace TreeWatch
             SelectedBlock = e.Block;
         }
 
-        public void NavigateToField(Field field)
+        public static void NavigateToField(Field field)
         {
             var navigationPage = (NavigationPage)Application.Current.MainPage;
 
@@ -109,7 +109,7 @@ namespace TreeWatch
 
         public string SearchText
         {
-            get { return this.searchText; }
+            get { return searchText; }
             set
             {
                 if (searchText != value)
@@ -170,7 +170,7 @@ namespace TreeWatch
 
         }
 
-        public Position getCurrentDevicePosition()
+        public static Position GetCurrentDevicePosition()
         {
             // Todo: make this not static
             var pos = new Position();

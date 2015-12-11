@@ -2,12 +2,11 @@
 
 namespace TreeWatch
 {
-	public partial class ToDoContentPage : ContentPage
-	{
-		public ToDoContentPage ()
-		{
-			InitializeComponent ();
-		}
-	}
+    public partial class ToDoContentPage : ContentPage
+    {
+        public ToDoContentPage()
+        {
+            InitializeComponent();
+        }
+    }
 }
-

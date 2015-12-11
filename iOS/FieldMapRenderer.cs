@@ -1,21 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
+
 using CoreGraphics;
 using CoreLocation;
+
 using MapKit;
+
+using ObjCRuntime;
+
 using TreeWatch;
 using TreeWatch.iOS;
+
 using UIKit;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Maps.iOS;
 using Xamarin.Forms.Platform.iOS;
-using ObjCRuntime;
 using System.Linq;
 
-[assembly: ExportRenderer (typeof(FieldMap), typeof(FieldMapRenderer))]
+[assembly: ExportRenderer(typeof(FieldMap), typeof(FieldMapRenderer))]
 
+// Analysis disable once InconsistentNaming
 namespace TreeWatch.iOS
 {
+<<<<<<< HEAD
 	public class FieldMapRenderer : MapRenderer
 	{
 
@@ -64,7 +72,7 @@ namespace TreeWatch.iOS
                 /* Readd LFHeatMap project first
                  * Found at https://github.com/TreeWatch/LFHeatMaps
                  */
-                //mapView.RegionChanged += ChangeRegion; 
+                //mapView.RegionChanged += ChangeRegion;
 
 				myMap = e.NewElement as FieldMap;
 				mapView.OverlayRenderer = GetOverlayRender;
@@ -95,7 +103,7 @@ namespace TreeWatch.iOS
             {
                 var heatMap = item as UIHeatMapView;
                 if (heatMap != null)
-                    heatMap.RefreshHeatMap(mapView);  
+                    heatMap.RefreshHeatMap(mapView);
             }
         }
         */
@@ -113,7 +121,7 @@ namespace TreeWatch.iOS
 					polygonRenderer.LineWidth = 1;
 				}
 				return polygonRenderer;
-			} else if (o is MultiPolygon) 
+			} else if (o is MultiPolygon)
 				return new MultiPolygonView (o);
 			 else
 				return null;
@@ -123,7 +131,7 @@ namespace TreeWatch.iOS
 		{
             var connection = new TreeWatchDatabase ();
 			foreach (var field in myMap.Fields) {
-				
+
 				var query = new DBQuery<Field> (connection);
 				var blockPolygons = new List<ColorPolygon> ();
 				query.GetChildren (field);
@@ -165,7 +173,7 @@ namespace TreeWatch.iOS
 
             var max = points.Max(r => r.Mean);
             var min = points.Min(r => r.Mean);
-           
+
             var a = max - min;
 
             foreach (var item in points)
@@ -183,7 +191,7 @@ namespace TreeWatch.iOS
             mapView.AddOverlay(heatmap);
 
 
-            /* Showing a 'Real' heatmap using just points 
+            /* Showing a 'Real' heatmap using just points
              * current Version is using multiple polygons
              * TODO Readd LFHeatMap project first
              * Found at https://github.com/TreeWatch/LFHeatMaps
@@ -198,7 +206,7 @@ namespace TreeWatch.iOS
                     positions.Add(pos);
                         weights.Add(item.Mean);
                 }
-               
+
             }
 
             var view = new UIHeatMapView(positions, weights, mapView);

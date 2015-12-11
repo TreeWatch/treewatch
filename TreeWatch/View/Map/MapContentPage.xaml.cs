@@ -18,20 +18,20 @@ namespace TreeWatch
             // add view model
             BindingContext = mapViewModel;
 
-            setupMapContentView();
+            SetupMapContentView();
 
-            setupToolbarItems();
+            SetupToolbarItems();
         }
 
         /**
          * This method configurate the field map view inside the xaml
          */
-        internal void setupMapContentView()
+        internal void SetupMapContentView()
         {
             // Get binding context of this view
             var viewModel = BindingContext as MapViewModel;
             // Get current position
-            var currentLocation = viewModel.getCurrentDevicePosition();
+            var currentLocation = viewModel.GetCurrentDevicePosition();
 
             // Jump to the current location inside the map
             fieldMap.MoveToRegion(MapSpan.FromCenterAndRadius(currentLocation, Distance.FromKilometers(1)));
@@ -49,26 +49,28 @@ namespace TreeWatch
         /**
          * This method create and configurate all toolbar items
          */
-        internal void setupToolbarItems()
+        internal void SetupToolbarItems()
         {
             if (TargetPlatform.iOS == Device.OS)
             {
-                ToolbarItems.Insert(0, getMyLocationToolbarItem());
+                ToolbarItems.Insert(0, GetMyLocationToolbarItem());
             }
         }
 
         /**
          * This method create the toolbar item that should jump the map view to current location
          */
-        internal static ToolbarItem getMyLocationToolbarItem()
+        internal static ToolbarItem GetMyLocationToolbarItem()
         {
             var myLocationToolBarItem = new ToolbarItem();
 
-            // Design Toolbar Item
-            myLocationToolBarItem.Icon = Device.OS == TargetPlatform.iOS ? "Icons/MyLocationIcon.png" : "MyLocationIcon.png";
-
             // Set clicked event
             myLocationToolBarItem.Clicked += (sender, e) => FieldHelper.Instance.CenterUserPostionEvent();
+
+            // Design Toolbar Item
+            myLocationToolBarItem.Icon = Device.OS == TargetPlatform.iOS ? "Icons/MyLocationIcon.png" : "MyLocationIcon.png";
+            // Set style id for ui testing
+            myLocationToolBarItem.StyleId = "MMyLocationButton";
 
             return myLocationToolBarItem;
         }

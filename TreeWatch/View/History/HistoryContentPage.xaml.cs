@@ -2,12 +2,11 @@
 
 namespace TreeWatch
 {
-	public partial class HistoryContentPage : ContentPage
-	{
-		public HistoryContentPage ()
-		{
-			InitializeComponent ();
-		}
-	}
+    public partial class HistoryContentPage : ContentPage
+    {
+        public HistoryContentPage()
+        {
+            InitializeComponent();
+        }
+    }
 }
-

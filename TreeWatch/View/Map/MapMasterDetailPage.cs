@@ -20,14 +20,7 @@ namespace TreeWatch
             };
             Master = mapMenuContentPage;
 
-            if (TargetPlatform.iOS == Device.OS)
-            {
-                Detail = new MapNavigationPage(new MapContentPage(mapViewModel));
-            }
-            else
-            {
-                Detail = new MapContentPage(mapViewModel);
-            }
+            Detail = TargetPlatform.iOS == Device.OS ? new MapNavigationPage(new MapContentPage(mapViewModel)) : new MapContentPage(mapViewModel);
 
             // configuration of this page
             MasterBehavior = MasterBehavior.Popover;

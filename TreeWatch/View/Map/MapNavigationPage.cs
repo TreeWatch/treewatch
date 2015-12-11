@@ -8,10 +8,10 @@ namespace TreeWatch
             : base(root)
         {
             // set style id for testing
-            this.StyleId = "MapNavigationPage";
+            StyleId = "MapNavigationPage";
 
             // set default values
-            this.Title = "Map";
+            Title = "Map";
             if (root.Icon != null)
             {
                 Icon = root.Icon;

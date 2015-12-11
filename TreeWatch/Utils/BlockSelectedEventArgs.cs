@@ -1,19 +1,20 @@
 ﻿using System;
+
 using TreeWatch;
 
 namespace TreeWatch
 {
-	public class BlockSelectedEventArgs : EventArgs
-	{
-		public BlockSelectedEventArgs (Block block)
-		{
-			Block = block;
-		}
+    public class BlockSelectedEventArgs : EventArgs
+    {
+        public BlockSelectedEventArgs(Block block)
+        {
+            Block = block;
+        }
 
-		public Block Block {
-			get;
-			private set;
-		}
-	}
+        public Block Block
+        {
+            get;
+            private set;
+        }
+    }
 }
-

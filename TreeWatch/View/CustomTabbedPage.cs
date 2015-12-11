@@ -2,27 +2,29 @@
 
 namespace TreeWatch
 {
-	public class CustomTabbedPage : TabbedPage
-	{
-		public CustomTabbedPage ()
-		{
-			// map tab page
-			var mapMasteDetailPage = new MapMasterDetailPage ();
-			Children.Add (mapMasteDetailPage);
+    public class CustomTabbedPage : TabbedPage
+    {
+        public CustomTabbedPage()
+        {
+            StyleId = "TabbedPageView";
 
-			// note tab page
-			this.Children.Add (new NoteContentPage ());
+            // map tab page
+            var mapMasteDetailPage = new MapMasterDetailPage();
+            Children.Add(mapMasteDetailPage);
 
-			// todo tab page
-			this.Children.Add (new ToDoContentPage ());
+            // note tab page
+            Children.Add(new NoteContentPage());
 
-			// history tab page
-			this.Children.Add (new HistoryContentPage ());
+            // todo tab page
+            Children.Add(new ToDoContentPage());
 
-			// settings tab page
-			this.Children.Add (new SettingsContentPage (mapMasteDetailPage.Detail));
+            // history tab page
+            Children.Add(new HistoryContentPage());
 
-			NavigationPage.SetHasNavigationBar (this, false);
-		}
-	}
+            // settings tab page
+            Children.Add(new SettingsContentPage(mapMasteDetailPage.Detail));
+
+            NavigationPage.SetHasNavigationBar(this, false);
+        }
+    }
 }

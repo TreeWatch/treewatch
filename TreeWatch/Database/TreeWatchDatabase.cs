@@ -1,65 +1,64 @@
-﻿using Xamarin.Forms;
-using SQLite.Net;
-using System;
+﻿using SQLite.Net;
+
+using Xamarin.Forms;
 
 namespace TreeWatch
 {
-	public class TreeWatchDatabase
-	{
-		public readonly SQLiteConnection connection;
+    public class TreeWatchDatabase
+    {
+        public readonly SQLiteConnection Connection;
 
-		public TreeWatchDatabase ()
-		{
-			connection = DependencyService.Get<ISQLite> ().GetConnection ();
-			connection.CreateTable<ToDo> ();
-			connection.CreateTable<Block> ();
-			connection.CreateTable<Field> ();
-			connection.CreateTable<User> ();
-			connection.CreateTable<Hours> ();
-			connection.CreateTable<Note> ();
-			connection.CreateTable<UserToDo> ();
-			connection.CreateTable<BlockToDo> ();
-			connection.CreateTable<TreeType> ();
-			connection.CreateTable<DatabaseConfig> ();
-            connection.CreateTable<Heatmap>();
-            connection.CreateTable<HeatmapPoint>();
-			connection.InsertOrIgnore (new DatabaseConfig ());
+        public TreeWatchDatabase()
+        {
+            Connection = DependencyService.Get<ISQLite>().GetConnection();
+            Connection.CreateTable<ToDo>();
+            Connection.CreateTable<Block>();
+            Connection.CreateTable<Field>();
+            Connection.CreateTable<User>();
+            Connection.CreateTable<Hours>();
+            Connection.CreateTable<Note>();
+            Connection.CreateTable<UserToDo>();
+            Connection.CreateTable<BlockToDo>();
+            Connection.CreateTable<TreeType>();
+            Connection.CreateTable<DatabaseConfig>();
+            Connection.InsertOrIgnore(new DatabaseConfig());
+        }
 
-		}
+        public void ClearDataBase()
+        {
+            Connection.DeleteAll<ToDo>();
+            Connection.DeleteAll<Block>();
+            Connection.DeleteAll<Field>();
+            Connection.DeleteAll<User>();
+            Connection.DeleteAll<Hours>();
+            Connection.DeleteAll<Note>();
+            Connection.DeleteAll<UserToDo>();
+            Connection.DeleteAll<BlockToDo>();
+            Connection.DeleteAll<TreeType>();
+            //Connection.Execute ("DROP TABLE initialized");
+        }
 
-		public void ClearDataBase ()
-		{
-			connection.DeleteAll<ToDo> ();
-			connection.DeleteAll<Block> ();
-			connection.DeleteAll<Field> ();
-			connection.DeleteAll<User> ();
-			connection.DeleteAll<Hours> ();
-			connection.DeleteAll<Note> ();
-			connection.DeleteAll<UserToDo> ();
-			connection.DeleteAll<BlockToDo> ();
-			connection.DeleteAll<TreeType> ();
-            connection.DeleteAll<Heatmap>();
-            connection.DeleteAll<HeatmapPoint>();
-			//connection.Execute ("DROP TABLE initialized");
-		}
+        public DatabaseConfig DBconfig
+        {
+            get{ return Connection.Get<DatabaseConfig>(1); }
+            set{ Connection.Update(value); }
+        }
 
-		public DatabaseConfig DBconfig{
-			get{ return connection.Get<DatabaseConfig> (1); } set{ connection.Update (value); }
-		}
-			
-	}
+    }
 
-	public class DatabaseConfig : BaseModel{
-		public bool init {get; set;}
+    public class DatabaseConfig : BaseModel
+    {
+        public bool Init { get; set; }
 
-		public DatabaseConfig()
-		{
-			ID = 1;
-		}
+        public DatabaseConfig()
+        {
+            ID = 1;
+        }
 
-		public DatabaseConfig(bool isset) : this(){
-			init = isset;
-		}
-	}
+        public DatabaseConfig(bool isset)
+            : this()
+        {
+            Init = isset;
+        }
+    }
 }
-

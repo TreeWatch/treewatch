@@ -5,14 +5,16 @@
     x:Class    ="TreeWatch.FieldInformationContentPage"
     xmlns:local="clr-namespace:TreeWatch;assembly=TreeWatch"
     Title      ="{Binding Field.Name}"
-    StyleId    ="FieldInformation"
+    StyleId    ="FieldInformationView"
     Padding    ="0, 0, 0, 0">
     <ContentPage.Content>
         <TableView
-            Intent="Menu">
+            Intent ="Menu"
+            StyleId="FIVTableView">
             <TableRoot>
                 <TableSection>
-                    <ViewCell>
+                    <ViewCell
+                        StyleId="FIVTVSize">
                         <StackLayout
                             Orientation="Horizontal"
                             Padding    ="20,0">
@@ -31,7 +33,8 @@
                 <TableSection
                     Title="Variety">
                     <ViewCell
-                        x:Name="varieties">
+                        StyleId="FIVTVVarietyLink"
+                        x:Name ="varieties">
                         <StackLayout
                             Orientation="Horizontal"
                             Padding    ="20,0">

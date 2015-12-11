@@ -8,17 +8,18 @@ using Android.Support.Design.Widget;
 using Android.Support.V4.App;
 using Java.IO;
 using Android.Util;
+using Xamarin.Forms;
 
 namespace TreeWatch.Droid
 {
-	[Activity (Label = "TreeWatch", Icon = "@drawable/icon", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
-	public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsApplicationActivity
-	{
+    [Activity(Label = "TreeWatch", Icon = "@drawable/icon", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsApplicationActivity
+    {
         const int RequestLocationId = 0;
         const string tag = "mainactivity";
 
-        readonly string [] PermissionsLocation = 
-        {
+        readonly string[] PermissionsLocation =
+            {
             Manifest.Permission.AccessCoarseLocation,
             Manifest.Permission.AccessFineLocation
         };
@@ -54,18 +55,19 @@ namespace TreeWatch.Droid
 
             CrossGeofence.Initialize<CrossGeofenceListener>();
 
-			global::Xamarin.Forms.Forms.Init (this, savedInstanceState);
-			FormsMaps.Init (this, savedInstanceState);
+            Forms.Init(this, savedInstanceState);
+            FormsMaps.Init(this, savedInstanceState);
 
-			// http://forums.xamarin.com/discussion/21148/calabash-and-xamarin-forms-what-am-i-missing
-			Xamarin.Forms.Forms.ViewInitialized += (sender, e) => {
-				if (!string.IsNullOrWhiteSpace (e.View.StyleId)) {
-					e.NativeView.ContentDescription = e.View.StyleId;
-				}
-			};
+            // http://forums.xamarin.com/discussion/21148/calabash-and-xamarin-forms-what-am-i-missing
+            Forms.ViewInitialized += (sender, e) =>
+            {
+                if (!string.IsNullOrWhiteSpace(e.View.StyleId))
+                {
+                    e.NativeView.ContentDescription = e.View.StyleId;
+                }
+            };
 
-			LoadApplication (new App ());
-		}
-	}
+            LoadApplication(new App());
+        }
+    }
 }
-

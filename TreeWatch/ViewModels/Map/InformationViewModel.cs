@@ -1,9 +1,9 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 using Xamarin.Forms;
-using System.Collections.ObjectModel;
-using System;
 
 namespace TreeWatch
 {
@@ -24,7 +24,7 @@ namespace TreeWatch
                 Varieties varieties = null;
                 foreach (var item in Field.Blocks)
                 {
-                    if ((VarietyGroups.Count == 0 && varieties == null) || String.Compare(varieties.Variety, item.TreeType.Name) != 0)
+                    if ((VarietyGroups.Count == 0 && varieties == null) || String.Compare(varieties.Variety, item.TreeType.Name, StringComparison.Ordinal) != 0)
                     {
                         varieties = new Varieties(item.TreeType.Name, item.TreeType.ID.ToString(), item.TreeType.ColorProp);
 
@@ -51,7 +51,7 @@ namespace TreeWatch
             set;
         }
 
-        public string FieldSize
+        public static string FieldSize
         {
             get
             {

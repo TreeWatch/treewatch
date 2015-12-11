@@ -1,47 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
-<Document>
-	<name>perceelscanIkea.kml</name>
-	<StyleMap id="m_ylw-pushpin">
-		<Pair>
-			<key>normal</key>
-			<styleUrl>#s_ylw-pushpin</styleUrl>
-		</Pair>
-		<Pair>
-			<key>highlight</key>
-			<styleUrl>#s_ylw-pushpin_hl</styleUrl>
-		</Pair>
-	</StyleMap>
-	<Style id="s_ylw-pushpin">
-		<IconStyle>
-			<scale>1.1</scale>
-			<Icon>
-				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
-			</Icon>
-			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
-		</IconStyle>
-	</Style>
-	<Style id="s_ylw-pushpin_hl">
-		<IconStyle>
-			<scale>1.3</scale>
-			<Icon>
-				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
-			</Icon>
-			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
-		</IconStyle>
-	</Style>
-	<Placemark>
-		<name>perceelscanIkea</name>
-		<styleUrl>#m_ylw-pushpin</styleUrl>
-		<Polygon>
-			<tessellate>1</tessellate>
-			<outerBoundaryIs>
-				<LinearRing>
-					<coordinates>
+<kml
+    xmlns    ="http://www.opengis.net/kml/2.2"
+    xmlns:gx  ="http://www.google.com/kml/ext/2.2"
+    xmlns:kml ="http://www.opengis.net/kml/2.2"
+    xmlns:atom="http://www.w3.org/2005/Atom">
+    <Document>
+        <name>perceelscanIkea.kml</name>
+        <StyleMap
+            id="m_ylw-pushpin">
+            <Pair>
+                <key>normal</key>
+                <styleUrl>#s_ylw-pushpin</styleUrl>
+            </Pair>
+            <Pair>
+                <key>highlight</key>
+                <styleUrl>#s_ylw-pushpin_hl</styleUrl>
+            </Pair>
+        </StyleMap>
+        <Style
+            id="s_ylw-pushpin">
+            <IconStyle>
+                <scale>1.1</scale>
+                <Icon>
+                    <href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+                </Icon>
+                <hotSpot
+                    x     ="20"
+                    y     ="2"
+                    xunits="pixels"
+                    yunits="pixels" />
+            </IconStyle>
+        </Style>
+        <Style
+            id="s_ylw-pushpin_hl">
+            <IconStyle>
+                <scale>1.3</scale>
+                <Icon>
+                    <href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+                </Icon>
+                <hotSpot
+                    x     ="20"
+                    y     ="2"
+                    xunits="pixels"
+                    yunits="pixels" />
+            </IconStyle>
+        </Style>
+        <Placemark>
+            <name>perceelscanIkea</name>
+            <styleUrl>#m_ylw-pushpin</styleUrl>
+            <Polygon>
+                <tessellate>1</tessellate>
+                <outerBoundaryIs>
+                    <LinearRing>
+                        <coordinates>
 5.960751595376792,51.30994500255311,0 5.96069850178385,51.30984674571847,0 5.960717493543715,51.30976717372889,0 5.960789232542156,51.30965902827143,0 5.961809773699917,51.30896263871607,0 5.962334032312899,51.30870857644373,0 5.963786412231451,51.30913838227541,0 5.963324027871931,51.30955594079064,0 5.963688469419351,51.30969254565473,0 5.963861315084971,51.30973730844838,0 5.963903137573023,51.30967435757148,0 5.964347737691364,51.30928366272076,0 5.964662050634937,51.30934393608715,0 5.964901554950817,51.30941622745007,0 5.96516315953707,51.30950512009296,0 5.965424005174141,51.30964647366523,0 5.966303558873194,51.30996976438639,0 5.966557910455091,51.31006744828362,0 5.966659985617174,51.31016765313993,0 5.966687279931242,51.31028003100422,0 5.966643035160295,51.31037388797499,0 5.966520632301526,51.310510808471,0 5.966402442747283,51.31063837933539,0 5.966257812791131,51.31078019445393,0 5.966166394156788,51.31089369778333,0 5.966043249968602,51.31103081748157,0 5.965943936398535,51.31113202780595,0 5.965832348126192,51.31125120696175,0 5.9657367592963,51.31134221282748,0 5.965622059564688,51.31138602856559,0 5.965499402516111,51.31141737720882,0 5.965380651854685,51.31141825506139,0 5.965239135982944,51.31140272186924,0 5.96088029306256,51.31003117260651,0 5.960751595376792,51.30994500255311,0</coordinates>
-				</LinearRing>
-			</outerBoundaryIs>
-		</Polygon>
-	</Placemark>
-</Document>
+                    </LinearRing>
+                </outerBoundaryIs>
+            </Polygon>
+        </Placemark>
+    </Document>
 </kml>

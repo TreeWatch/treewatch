@@ -1,43 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<kml xmlns="http://www.opengis.net/kml/2.2">
-   <Document id="root_doc">
-      <Schema name="Perceelscan_Karwei" id="Perceelscan_Karwei">
-         <SimpleField name="__ID42" type="float" />
-         <SimpleField name="Client_ID" type="float" />
-         <SimpleField name="ClientName " type="string" />
-         <SimpleField name="" type="string" />
-         <SimpleField name="2" type="string" />
-         <SimpleField name="3" type="string" />
-         <SimpleField name="4" type="string" />
-         <SimpleField name="5" type="string" />
-         <SimpleField name="6" type="string" />
-         <SimpleField name="7" type="string" />
-         <SimpleField name="8" type="string" />
-      </Schema>
-      <Folder>
-         <name>Perceelscan_Karwei</name>
-         <Placemark>
-            <Style>
-               <LineStyle>
-                  <color>ff0000ff</color>
-               </LineStyle>
-               <PolyStyle>
-                  <fill>0</fill>
-               </PolyStyle>
-            </Style>
-            <ExtendedData>
-               <SchemaData schemaUrl="#Perceelscan_Karwei">
-                  <SimpleData name="Client_ID">4956</SimpleData>
-               </SchemaData>
-            </ExtendedData>
-            <Polygon>
-               <outerBoundaryIs>
-                  <LinearRing>
-                     <coordinates>5.895959721322507,51.287109059740359 5.896127175084381,51.287925845838849 5.897028655486645,51.287752838234624 5.897791280567573,51.287598390713491 5.897773833720202,51.287502099789229 5.899745147608636,51.287187128065874 5.8997685299814,51.287211763432104 5.899950193031337,51.287403446378221 5.900735840756217,51.287058663978485 5.900700227603853,51.287007930689121 5.90078764170511,51.286966871555812 5.899707735812213,51.285647447698544 5.897511411552025,51.286074473158898 5.89751249073846,51.286080547781161 5.894917407090438,51.286576301745434 5.894764702209847,51.286614998902543 5.894671352583196,51.286638734642658 5.893935887027556,51.286857530342303 5.894183740178858,51.28721120098097 5.894322055906979,51.287420319838695 5.894900859565097,51.287315929263819 5.894899960243069,51.287310529744879 5.895047269191483,51.28728071988926 5.895959721322507,51.287109059740359</coordinates>
-                  </LinearRing>
-               </outerBoundaryIs>
-            </Polygon>
-         </Placemark>
-      </Folder>
-   </Document>
+<kml
+    xmlns="http://www.opengis.net/kml/2.2">
+    <Document
+        id="root_doc">
+        <Schema
+            name="Perceelscan_Karwei"
+            id  ="Perceelscan_Karwei">
+            <SimpleField
+                name="__ID42"
+                type="float" />
+            <SimpleField
+                name="Client_ID"
+                type="float" />
+            <SimpleField
+                name="ClientName "
+                type="string" />
+            <SimpleField
+                name=""
+                type="string" />
+            <SimpleField
+                name="2"
+                type="string" />
+            <SimpleField
+                name="3"
+                type="string" />
+            <SimpleField
+                name="4"
+                type="string" />
+            <SimpleField
+                name="5"
+                type="string" />
+            <SimpleField
+                name="6"
+                type="string" />
+            <SimpleField
+                name="7"
+                type="string" />
+            <SimpleField
+                name="8"
+                type="string" />
+        </Schema>
+        <Folder>
+            <name>Perceelscan_Karwei</name>
+            <Placemark>
+                <Style>
+                    <LineStyle>
+                        <color>ff0000ff</color>
+                    </LineStyle>
+                    <PolyStyle>
+                        <fill>0</fill>
+                    </PolyStyle>
+                </Style>
+                <ExtendedData>
+                    <SchemaData
+                        schemaUrl="#Perceelscan_Karwei">
+                        <SimpleData
+                            name="Client_ID">4956</SimpleData>
+                    </SchemaData>
+                </ExtendedData>
+                <Polygon>
+                    <outerBoundaryIs>
+                        <LinearRing>
+                            <coordinates>5.895959721322507,51.287109059740359 5.896127175084381,51.287925845838849 5.897028655486645,51.287752838234624 5.897791280567573,51.287598390713491 5.897773833720202,51.287502099789229 5.899745147608636,51.287187128065874 5.8997685299814,51.287211763432104 5.899950193031337,51.287403446378221 5.900735840756217,51.287058663978485 5.900700227603853,51.287007930689121 5.90078764170511,51.286966871555812 5.899707735812213,51.285647447698544 5.897511411552025,51.286074473158898 5.89751249073846,51.286080547781161 5.894917407090438,51.286576301745434 5.894764702209847,51.286614998902543 5.894671352583196,51.286638734642658 5.893935887027556,51.286857530342303 5.894183740178858,51.28721120098097 5.894322055906979,51.287420319838695 5.894900859565097,51.287315929263819 5.894899960243069,51.287310529744879 5.895047269191483,51.28728071988926 5.895959721322507,51.287109059740359</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+        </Folder>
+    </Document>
 </kml>

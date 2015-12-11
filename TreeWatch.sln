@@ -283,6 +283,12 @@ Global
 		$0.TextStylePolicy = $39
 		$39.inheritsSet = null
 		$39.scope = application/json
-		version = 0.2
+		$0.TextStylePolicy = $40
+		$40.inheritsSet = null
+		$40.scope = application/vnd.google-earth.kml+xml
+		$0.XmlFormattingPolicy = $41
+		$41.inheritsSet = null
+		$41.scope = application/vnd.google-earth.kml+xml
+		version = 0.4
 	EndGlobalSection
 EndGlobal
