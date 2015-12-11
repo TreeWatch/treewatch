@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using Xamarin.Forms.Maps;
 
 namespace TreeWatch
 {
@@ -35,80 +37,69 @@ namespace TreeWatch
 		{
 			public double Width;
 			public double Height;
-
+            public Position Center;
+            public double WidthMeters;
+            public double HeightMeters;
 		}
 
-		public static WidthHeight CalculateWidthHeight(List<Position> BoundingCoordinates)
+		public static WidthHeight CalculateWidthHeight(List<Position> boundingCoordinates)
 		{
-			double smallestLon = 0.0;
-			double biggestLon = 0.0;
-			double smallestLat = 0.0;
-			double biggestLat = 0.0;
+            if (boundingCoordinates.Count < 2)
+                return new WidthHeight { Width = 0d, Height = 0d };
+            double smallestLon = boundingCoordinates[0].Longitude;
+            double biggestLon = smallestLon;
+            double smallestLat = boundingCoordinates[0].Latitude;
+            double biggestLat = smallestLat;
 
-			foreach (Position fieldPoint in BoundingCoordinates)
+            for(int i = 1; i < boundingCoordinates.Count; i++)
 			{
-				if (smallestLon == 0.0 && biggestLon == 0.0 && smallestLat == 0.0 && biggestLat == 0.0)
+                if (boundingCoordinates[i].Longitude < smallestLon)
 				{
-					smallestLon = fieldPoint.Longitude;
-					biggestLon = fieldPoint.Longitude;
-					smallestLat = fieldPoint.Latitude;
-					biggestLat = fieldPoint.Latitude;
+                    smallestLon = boundingCoordinates[i].Longitude;
 				}
-				if (fieldPoint.Longitude < smallestLon)
+                if (boundingCoordinates[i].Longitude > biggestLon)
 				{
-					smallestLon = fieldPoint.Longitude;
+                    biggestLon = boundingCoordinates[i].Longitude;
 				}
-				if (fieldPoint.Longitude > biggestLon)
+                if (boundingCoordinates[i].Latitude < smallestLat)
 				{
-					biggestLon = fieldPoint.Longitude;
+                    smallestLat = boundingCoordinates[i].Latitude;
 				}
-				if (fieldPoint.Latitude < smallestLat)
+                if (boundingCoordinates[i].Latitude > biggestLat)
 				{
-					smallestLat = fieldPoint.Latitude;
-				}
-				if (fieldPoint.Latitude > biggestLat)
-				{
-					biggestLat = fieldPoint.Latitude;
+                    biggestLat = boundingCoordinates[i].Latitude;
 				}
 			}
-
-			return new WidthHeight { Width = biggestLon - smallestLon, Height = biggestLat - smallestLat };
+            double width = biggestLon - smallestLon;
+            double height = biggestLat - smallestLat;
+            Position center = new Position(smallestLat + height * 0.5, smallestLon + width * 0.5);
+            return new WidthHeight { 
+                Width = width,
+                Height = height,
+                Center = center,
+                WidthMeters = DistanceInMeters(smallestLat, smallestLon, smallestLat, biggestLon),
+                HeightMeters = DistanceInMeters(smallestLat, smallestLon, biggestLat, smallestLon)
+            };
 		}
-			
-		public static Position CalculateCenter (List<Position> BoundingCoordinates) 
-		{
 
-			double latSum = 0.0;
-			double lonSum = 0.0;
+        public static double DistanceInMeters(double lat1, double lng1, double lat2, double lng2)
+        {
+            const double earthRadius = 6371000; //meters
+            double dLat =  ToRadians(lat2-lat1);
+            double dLng = ToRadians(lng2-lng1);
+            double a = Math.Sin(dLat/2) * Math.Sin(dLat/2) +
+                Math.Cos(ToRadians(lat1)) * Math.Cos(ToRadians(lat2)) *
+                Math.Sin(dLng/2) * Math.Sin(dLng/2);
+            double c = 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1-a));
+            float dist = (float) (earthRadius * c);
 
-			foreach (Position fieldPoint in BoundingCoordinates)
-			{
-				latSum += fieldPoint.Latitude;
-				lonSum += fieldPoint.Longitude;
-			}
+            return dist;
+        }
 
-			return new Position (latSum / BoundingCoordinates.Count, lonSum / BoundingCoordinates.Count);
-
-			/*
-			var count = BoundingCoordinates.Count;
-			double x = 0, y = 0, area = 0, k;
-			Position a, b = BoundingCoordinates[count - 1];
-
-			for( int i = 0; i < count; i++ )
-			{
-				a = BoundingCoordinates[ i ];
-
-				k = a.Latitude * b.Longitude - a.Longitude * b.Latitude;
-				area += k;
-				x += ( a.Longitude + b.Longitude ) * k;
-				y += ( a.Latitude + b.Latitude ) * k;
-
-				b = a;
-			}
-			area *= 3;
-
-			return ( Double.IsNaN (area) ) ? new Position (0,0) : new Position( x /= area, y /= area ); */
-		}
+        public static double ToRadians(double angle)
+        {
+            return (Math.PI / 180) * angle;
+        }
 
 	}
 }

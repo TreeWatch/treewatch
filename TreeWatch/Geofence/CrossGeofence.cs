@@ -29,17 +29,6 @@ namespace TreeWatch
         /// </summary>
         public static float SmallestDisplacement { get; set; }
 
-        /*
-         * Check later
-        #if __ANDROID__
-        /// <summary>
-        /// Icon resource used for notification
-        /// </summary>
-        public static int IconResource { get; set; }
-        /// <summary>
-        /// Sound for notification
-        /// </summary>
-        public static Android.Net.Uri SoundUri { get; set; }
         /// <summary>
         /// Location updates internal
         /// </summary>
@@ -48,8 +37,6 @@ namespace TreeWatch
         /// Fastest location updates interval
         /// </summary>
         public static int FastestLocationUpdatesInterval { get; set; }
-        #endif
-        */
 
         /// <summary>
         /// Initializes geofence plugin
@@ -88,6 +75,7 @@ namespace TreeWatch
                 {
                     throw GeofenceNotInitializedException();
                 }
+
                 var ret = Implementation.Value;
                 if (ret == null)
                 {

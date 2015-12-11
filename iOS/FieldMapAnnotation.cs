@@ -3,6 +3,7 @@ using MapKit;
 using CoreLocation;
 using Xamarin.Forms.Maps;
 using System.Diagnostics;
+using HealthKit;
 
 namespace TreeWatch.iOS
 {
@@ -22,7 +23,8 @@ namespace TreeWatch.iOS
 
 		public FieldMapAnnotation (Field field)
 		{
-			this.coordinate = new CLLocationCoordinate2D (GeoHelper.CalculateCenter(field.BoundingCoordinates).Latitude, GeoHelper.CalculateCenter(field.BoundingCoordinates).Longitude);
+            var whc = GeoHelper.CalculateWidthHeight(field.BoundingCoordinates);
+            this.coordinate = new CLLocationCoordinate2D (whc.Center.Latitude, whc.Center.Longitude);
 			this.Field = field;
 			this.title = field.Name;
 			this.subtitle = string.Format ("Number of blocks: {0}", field.Blocks.Count);

@@ -72,8 +72,8 @@ namespace TreeWatch.Droid
 			var marker = new MarkerOptions ();
 			marker.SetTitle (field.Name);
 			marker.SetSnippet (string.Format ("Number of rows: {0}", field.Blocks.Count));
-			var center = GeoHelper.CalculateCenter (field.BoundingCoordinates);
-			marker.SetPosition (new LatLng (center.Latitude, center.Longitude));
+            var whc = GeoHelper.CalculateWidthHeight(field.BoundingCoordinates);
+            marker.SetPosition (new LatLng (whc.Center.Latitude, whc.Center.Longitude));
             marker.SetIcon (BitmapDescriptorFactory.FromResource (Resource.Drawable.MapMarker));
 			Map.AddMarker (marker);
 		}
@@ -152,12 +152,11 @@ namespace TreeWatch.Droid
 		{
 			if (Map != null) {
 				var builder = new LatLngBounds.Builder ();
-				var widthHeight = GeoHelper.CalculateWidthHeight (e.Field.BoundingCoordinates);
-				var middle = GeoHelper.CalculateCenter (e.Field.BoundingCoordinates);
-				double width = widthHeight.Width / 1.9; //1.9 so 0.1 padding
-				double height = widthHeight.Height / 1.9;
-				builder.Include (new LatLng (middle.Latitude - width, middle.Longitude - height));
-				builder.Include (new LatLng (middle.Latitude + width, middle.Longitude + height));
+				var whc = GeoHelper.CalculateWidthHeight (e.Field.BoundingCoordinates);
+				double width = whc.Width * 0.95;
+				double height = whc.Height * 0.59;
+                builder.Include (new LatLng (whc.Center.Latitude - width, whc.Center.Longitude - height));
+                builder.Include (new LatLng (whc.Center.Latitude + width, whc.Center.Longitude + height));
 				var bounds = builder.Build ();
 				Map.MoveCamera (CameraUpdateFactory.NewLatLngBounds (bounds, 0));
 			}

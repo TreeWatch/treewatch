@@ -29,12 +29,19 @@ namespace TreeWatch
 			fieldHelper.BlockSelected += BlockSelected;
 			Fields = new ObservableCollection<Field> (new DBQuery<Field> (App.Database).GetAll());
 			selectedField = new Field ("Dummy", new List<Position> (), new List<Block> ());
-            CrossGeofence.Current.StartMonitoring(new GeofenceCircularRegion ("Fontys", 51.353347,6.153896,20.0) {
+            foreach (Field f in Fields)
+            {
+                var whc = GeoHelper.CalculateWidthHeight(f.BoundingCoordinates);
+                double rad = (whc.WidthMeters > whc.HeightMeters) ? whc.WidthMeters : whc.HeightMeters;
+                rad *= 0.5;
+                Debug.WriteLine("Field: {0}, Center: {1}-{2}, Radius: {3},  Width: {4}, Height: {5}", f.Name, whc.Center.Latitude, whc.Center.Longitude, rad, whc.WidthMeters, whc.HeightMeters);
+                CrossGeofence.Current.StartMonitoring(new GeofenceCircularRegion (f.Name, whc.Center.Latitude, whc.Center.Longitude, rad) {
 
-                NotifyOnStay=true,
-                StayedInThresholdDuration=TimeSpan.FromMinutes(1)
+                    NotifyOnStay=false,
+                    StayedInThresholdDuration=TimeSpan.FromMinutes(10)
 
-            });
+                });
+            }
 		}
 
 		public Field SelectedField {

@@ -40,8 +40,8 @@ namespace TreeWatch.iOS
 		protected void FieldSelected (object sender, FieldSelectedEventArgs e)
 		{
 			if (mapView != null) {
-				var center = GeoHelper.CalculateCenter (e.Field.BoundingCoordinates);
 				var widthHeight = GeoHelper.CalculateWidthHeight (e.Field.BoundingCoordinates);
+                var center = widthHeight.Center;
 				var coords = new CLLocationCoordinate2D (center.Latitude, center.Longitude);
 				var span = new MKCoordinateSpan (widthHeight.Width * 1.1, widthHeight.Height * 1.1);
 				mapView.Region = new MKCoordinateRegion (coords, span);
