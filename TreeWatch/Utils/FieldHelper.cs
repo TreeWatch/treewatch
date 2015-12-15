@@ -20,6 +20,8 @@ namespace TreeWatch
 
 		public event EventHandler<BlockSelectedEventArgs> BlockSelected;
 
+        public event EventHandler<EventArgs> CenterUserPosition;
+
 		public void MapTappedEvent (Position pos, double zoomLevel)
 		{
 			if (MapTapped != null) {
@@ -42,6 +44,13 @@ namespace TreeWatch
 				BlockSelected (this, new BlockSelectedEventArgs (block));
 			}
 		}
+
+        public void CenterUserPostionEvent ()
+        {
+            if (CenterUserPosition != null) {
+                CenterUserPosition (this, EventArgs.Empty);
+            }
+        }
 	}
 }
 

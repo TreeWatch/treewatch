@@ -36,13 +36,14 @@ namespace TreeWatch.iOS
 			tapGesture.NumberOfTapsRequired = 1;
 			fieldHelper = FieldHelper.Instance;
 			fieldHelper.FieldSelected += FieldSelected;
+            fieldHelper.CenterUserPosition += CenterOnUserPosition;
 		}
 
 		protected void FieldSelected (object sender, FieldSelectedEventArgs e)
 		{
 			if (mapView != null) {
-				var center = GeoHelper.CalculateCenter (e.Field.BoundingCoordinates);
 				var widthHeight = GeoHelper.CalculateWidthHeight (e.Field.BoundingCoordinates);
+                var center = widthHeight.Center;
 				var coords = new CLLocationCoordinate2D (center.Latitude, center.Longitude);
 				var span = new MKCoordinateSpan (widthHeight.Width * 1.1, widthHeight.Height * 1.1);
 				mapView.Region = new MKCoordinateRegion (coords, span);
@@ -55,6 +56,8 @@ namespace TreeWatch.iOS
 
 			if (e.OldElement == null) {
 				mapView = Control as MKMapView;
+                mapView.ShowsUserLocation = true;
+                mapView.DidUpdateUserLocation += SetUserPostionOnce;
 				mapView.AddGestureRecognizer (tapGesture);
 				mapView.GetViewForAnnotation = GetViewForAnnotation;
 
@@ -70,6 +73,19 @@ namespace TreeWatch.iOS
 			}
 		}
 
+        protected void SetUserPostionOnce(object sender, MKUserLocationEventArgs e)
+        {
+            mapView.DidUpdateUserLocation -= SetUserPostionOnce;
+            mapView.SetCenterCoordinate(e.UserLocation.Location.Coordinate, true);
+        }
+
+        protected void CenterOnUserPosition(object sender, EventArgs e)
+        {
+            if (mapView != null && mapView.UserLocation.Location != null)
+                mapView.SetCenterCoordinate(mapView.UserLocation.Location.Coordinate, true);
+            else
+                mapView.DidUpdateUserLocation += SetUserPostionOnce;
+        }
         /* TODO Readd LFHeatMap project first
          * Found at https://github.com/TreeWatch/LFHeatMaps
          * Code:
@@ -83,7 +99,6 @@ namespace TreeWatch.iOS
             }
         }
         */
-
 
 		MKOverlayRenderer GetOverlayRender (MKMapView m, IMKOverlay o)
 		{

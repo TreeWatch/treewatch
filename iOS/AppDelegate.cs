@@ -36,7 +36,7 @@ namespace TreeWatch.iOS
 			#if ENABLE_TEST_CLOUD
 			Xamarin.Calabash.Start ();
 			#endif
-
+            CrossGeofence.Initialize<CrossGeofenceListener>();
 			LoadApplication (new App ());
 
 			return base.FinishedLaunching (uiApplication, launchOptions);

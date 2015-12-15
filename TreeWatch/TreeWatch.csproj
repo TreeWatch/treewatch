@@ -17,7 +17,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug</OutputPath>
-    <DefineConstants>DEBUG;</DefineConstants>
+    <DefineConstants>DEBUG;__IOS__;__ANDROID__;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
@@ -92,6 +92,18 @@
     </Compile>
     <Compile Include="View\SplashPage.cs" />
     <Compile Include="Utils\KMLParser.cs" />
+    <Compile Include="Geofence\GeofenceCircularRegion.cs" />
+    <Compile Include="Geofence\GeofenceLocation.cs" />
+    <Compile Include="Geofence\GeofencePriority.cs" />
+    <Compile Include="Geofence\GeofenceResult.cs" />
+    <Compile Include="Geofence\GeofenceTransition.cs" />
+    <Compile Include="Geofence\IGeofence.cs" />
+    <Compile Include="Geofence\IGeofenceListener.cs" />
+    <Compile Include="Geofence\IGeofenceStore.cs" />
+    <Compile Include="Geofence\BaseGeofenceStore.cs" />
+    <Compile Include="Geofence\CrossGeofence.cs" />
+    <Compile Include="Geofence\CrossGeofenceListener.cs" />
+    <Compile Include="Geofence\GeofenceNotInitializedException.cs" />
     <Compile Include="View\Map\DetailedInformation\VarietiesInformationContentPage.xaml.cs">
       <DependentUpon>VarietiesInformationContentPage.xaml</DependentUpon>
     </Compile>
@@ -121,6 +133,7 @@
     <Folder Include="View\Settings\Map\" />
     <Folder Include="ViewModels\Settings\" />
     <Folder Include="KML\Fields\" />
+    <Folder Include="Geofence\" />
     <Folder Include="KML\Heatmaps\" />
   </ItemGroup>
   <ItemGroup>

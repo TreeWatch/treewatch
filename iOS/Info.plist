@@ -45,5 +45,9 @@
 	<array>
 		<string>location</string>
 	</array>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Location neccesary for geofencing</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Location needed</string>
 </dict>
 </plist>
