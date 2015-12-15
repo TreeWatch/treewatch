@@ -336,8 +336,7 @@ namespace TreeWatch
 			{ 
 				DefaultCamera = CameraDevice.Rear,
 				SaveMediaOnCapture = true,
-				MaxPixelDimension = 1024,
-				PercentQuality = 85
+				MaxPixelDimension = 1024                
 			};
 
 			return await _mediaPicker.TakePhotoAsync(options).ContinueWith(t =>
