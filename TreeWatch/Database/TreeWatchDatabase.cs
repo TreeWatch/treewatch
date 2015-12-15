@@ -21,6 +21,8 @@ namespace TreeWatch
 			connection.CreateTable<BlockToDo> ();
 			connection.CreateTable<TreeType> ();
 			connection.CreateTable<DatabaseConfig> ();
+            connection.CreateTable<Heatmap>();
+            connection.CreateTable<HeatmapPoint>();
 			connection.InsertOrIgnore (new DatabaseConfig ());
 
 		}
@@ -36,6 +38,8 @@ namespace TreeWatch
 			connection.DeleteAll<UserToDo> ();
 			connection.DeleteAll<BlockToDo> ();
 			connection.DeleteAll<TreeType> ();
+            connection.DeleteAll<Heatmap>();
+            connection.DeleteAll<HeatmapPoint>();
 			//connection.Execute ("DROP TABLE initialized");
 		}
 
