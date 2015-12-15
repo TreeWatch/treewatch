@@ -26,6 +26,8 @@ namespace TreeWatch.Droid
 		
 		public static void UpdateIdValues()
 		{
+			global::SQLite.Net.Platform.XamarinAndroid.Resource.String.ApplicationName = global::TreeWatch.Droid.Resource.String.ApplicationName;
+			global::SQLite.Net.Platform.XamarinAndroid.Resource.String.Hello = global::TreeWatch.Droid.Resource.String.Hello;
 			global::Xamarin.Forms.Platform.Resource.Animation.abc_fade_in = global::TreeWatch.Droid.Resource.Animation.abc_fade_in;
 			global::Xamarin.Forms.Platform.Resource.Animation.abc_fade_out = global::TreeWatch.Droid.Resource.Animation.abc_fade_out;
 			global::Xamarin.Forms.Platform.Resource.Animation.abc_grow_fade_in_from_bottom = global::TreeWatch.Droid.Resource.Animation.abc_grow_fade_in_from_bottom;
@@ -1484,8 +1486,6 @@ namespace TreeWatch.Droid
 			global::Xamarin.Forms.Platform.Resource.Styleable.ViewStubCompat_android_id = global::TreeWatch.Droid.Resource.Styleable.ViewStubCompat_android_id;
 			global::Xamarin.Forms.Platform.Resource.Styleable.ViewStubCompat_android_inflatedId = global::TreeWatch.Droid.Resource.Styleable.ViewStubCompat_android_inflatedId;
 			global::Xamarin.Forms.Platform.Resource.Styleable.ViewStubCompat_android_layout = global::TreeWatch.Droid.Resource.Styleable.ViewStubCompat_android_layout;
-			global::SQLite.Net.Platform.XamarinAndroid.Resource.String.ApplicationName = global::TreeWatch.Droid.Resource.String.ApplicationName;
-			global::SQLite.Net.Platform.XamarinAndroid.Resource.String.Hello = global::TreeWatch.Droid.Resource.String.Hello;
 		}
 		
 		public partial class Animation

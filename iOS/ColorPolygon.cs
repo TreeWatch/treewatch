@@ -15,8 +15,15 @@ namespace TreeWatch.iOS
 			set;
 		}
 
+        public bool DrawOutlines
+        {
+            get;
+            set;
+        }
+
 		public ColorPolygon (MKPolygon polygon){
 			Polygon = polygon;
+            DrawOutlines = true;
 		}
 
 		public static explicit operator ColorPolygon(MKPolygon polygon)  

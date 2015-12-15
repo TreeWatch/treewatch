@@ -1,10 +1,5 @@
 ﻿using System.Collections.Generic;
 using Xamarin.Forms;
-using System.Diagnostics;
-using System.IO;
-using System.Reflection;
-using System;
-
 namespace TreeWatch
 {
 	public static class MockDataProvider
@@ -18,6 +13,7 @@ namespace TreeWatch
 			var query = new DBQuery<Field> (connection);
 			var query2 = new DBQuery<TreeType> (connection);
 			var query3 = new DBQuery<Block> (connection);
+            var query4 = new DBQuery<Heatmap>(connection);
 			var treetypes = query2.GetAllWithChildren ();
 
 			var field = KMLParser.GetField (KMLParser.LoadFile("KML.Fields.perceelscanKarwei.kml"));
@@ -47,14 +43,24 @@ namespace TreeWatch
 			query3.InsertAllWithChildren (field.Blocks);
 			query.InsertWithChildren(field, false);
 
-			/*
-			treetypes = query2.GetAllWithChildren ();
-			field = KMLParser.GetField (KMLParser.LoadFile("KML.Fields.perceelscanIkea.kml"));
-			field.Name = "Ikea";
-			field.Blocks = KMLParser.GetBlocks (KMLParser.LoadFile("KML.Blocks.rassenmapIkea.kml"), treetypes);
-			query3.InsertAllWithChildren (field.Blocks);
-			query.InsertWithChildren(field, false);
-			*/
+            /* SQLite on android can not handle this many entitys at once.
+             * Therefore we can not add this field, also heatmaps dont work at all in android. 
+             */
+
+            if (TargetPlatform.iOS == Device.OS) 
+            {
+                var heatmap = KMLParser.GetHeatmap(KMLParser.LoadFile("KML.Heatmaps.Biomassa.kml"));
+                heatmap.Name = "Biomassa";
+                query4.InsertWithChildren(heatmap);
+
+			    treetypes = query2.GetAllWithChildren ();
+			    field = KMLParser.GetField (KMLParser.LoadFile("KML.Fields.perceelscanIkea.kml"));
+			    field.Name = "Ikea";
+			    field.Blocks = KMLParser.GetBlocks (KMLParser.LoadFile("KML.Blocks.rassenmapIkea.kml"), treetypes);
+			    query3.InsertAllWithChildren (field.Blocks);
+			    query.InsertWithChildren(field, false);
+			
+            }
 		}
 	}
 }
