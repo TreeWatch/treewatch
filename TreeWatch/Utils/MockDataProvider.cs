@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Xamarin.Forms;
-
 namespace TreeWatch
 {
 	public static class MockDataProvider

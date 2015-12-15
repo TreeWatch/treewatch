@@ -155,6 +155,8 @@
     <Compile Include="MultiPolygonView.cs" />
     <Compile Include="MultiPolygon.cs" />
     <Compile Include="ColorPolygon.cs" />
+    <Compile Include="Geofence\GeofenceImplementation.cs" />
+    <Compile Include="Geofence\GeofenceStore.cs" />
     <Compile Include="UIHeatMapView.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -167,6 +169,7 @@
   <ItemGroup>
     <Folder Include="Resources\Images.xcassets\" />
     <Folder Include="Resources\Icons\" />
+    <Folder Include="Geofence\" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Contents.json" />

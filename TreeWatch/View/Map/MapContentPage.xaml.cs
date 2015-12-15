@@ -68,7 +68,7 @@ namespace TreeWatch
             myLocationToolBarItem.Icon = Device.OS == TargetPlatform.iOS ? "Icons/MyLocationIcon.png" : "MyLocationIcon.png";
 
             // Set clicked event
-            myLocationToolBarItem.Clicked += (sender, e) => System.Diagnostics.Debug.WriteLine("Jump to my postion …");
+            myLocationToolBarItem.Clicked += (sender, e) => FieldHelper.Instance.CenterUserPostionEvent();
 
             return myLocationToolBarItem;
         }
