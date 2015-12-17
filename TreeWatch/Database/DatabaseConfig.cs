@@ -1,4 +1,4 @@
-﻿// <copyright file="FieldSelectedEventArgs.cs" company="TreeWatch">
+﻿// <copyright file="DatabaseConfig.cs" company="TreeWatch">
 // Copyright © 2015 TreeWatch
 // </copyright>
 #region Copyright
@@ -21,32 +21,33 @@
 #endregion
 namespace TreeWatch
 {
-    using System;
-
-    using TreeWatch;
-
     /// <summary>
-    /// Field selected event arguments.
+    /// Database config keeps information about the database.
     /// </summary>
-    public class FieldSelectedEventArgs : EventArgs
+    public class DatabaseConfig : BaseModel
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="TreeWatch.FieldSelectedEventArgs"/> class.
+        /// Initializes a new instance of the <see cref="TreeWatch.DatabaseConfig"/> class.
         /// </summary>
-        /// <param name="field">Field that through the event.</param>
-        public FieldSelectedEventArgs(Field field)
+        /// <param name="isset">If set to <c>true</c> database is already initialized.</param>
+        public DatabaseConfig(bool isset)
+            : this()
         {
-            this.Field = field;
+            this.Init = isset;
         }
 
         /// <summary>
-        /// Gets the field.
+        /// Initializes a new instance of the <see cref="TreeWatch.DatabaseConfig"/> class.
         /// </summary>
-        /// <value>The field.</value>
-        public Field Field
+        public DatabaseConfig()
         {
-            get;
-            private set;
+            this.ID = 1;
         }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether this <see cref="TreeWatch.DatabaseConfig"/> is initialized.
+        /// </summary>
+        /// <value><c>true</c> if init; otherwise, <c>false</c>.</value>
+        public bool Init { get; set; }
     }
 }

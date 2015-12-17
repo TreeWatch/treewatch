@@ -1,16 +1,43 @@
-﻿using System;
-using CoreLocation;
-using System.Collections.Generic;
-using Foundation;
-using System.Threading.Tasks;
-using UIKit;
-using System.Linq;
-using TreeWatch.iOS;
-
-[assembly: Xamarin.Forms.Dependency(typeof(GeofenceImplementation))]
-
+﻿// <copyright file="GeofenceImplementation.cs" company="TreeWatch">
+// Copyright © 2015 TreeWatch
+// </copyright>
+#region Copyright
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+#endregion
+// Analysis disable InconsistentNaming
 namespace TreeWatch.iOS
+// Analysis restore InconsistentNaming
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+
+    using CoreLocation;
+
+    using Foundation;
+
+    using TreeWatch.iOS;
+
+    using UIKit;
+
+    [assembly: Xamarin.Forms.Dependency(typeof(GeofenceImplementation))]
+
     /// <summary>
     /// Geofence implementation.
     /// </summary>
@@ -49,7 +76,7 @@ namespace TreeWatch.iOS
             this.geofenceResults = new Dictionary<string, GeofenceResult>();
 
             this.locationManager = new CLLocationManager();
-            this.locationManager.DidStartMonitoringForRegion += this.DidStartMonitoringForRegion;
+            this.locationManager.DidStartMonitoringForRegion += GeofenceImplementation.DidStartMonitoringForRegion;
             this.locationManager.RegionEntered += this.RegionEntered;
             this.locationManager.RegionLeft += this.RegionLeft;
             this.locationManager.Failed += this.OnFailure;
@@ -122,7 +149,7 @@ namespace TreeWatch.iOS
         /// <summary>
         /// Gets the Monitored regions
         /// </summary>
-        public IReadOnlyDictionary<string, GeofenceCircularRegion> Regions 
+        public IReadOnlyDictionary<string, GeofenceCircularRegion> Regions
         { 
             get { return this.regions; } 
         }
@@ -131,7 +158,7 @@ namespace TreeWatch.iOS
         /// Gets a Dicitonary that contains all geofence results received
         /// </summary>
         /// <value>The geofence results.</value>
-        public IReadOnlyDictionary<string, GeofenceResult> GeofenceResults 
+        public IReadOnlyDictionary<string, GeofenceResult> GeofenceResults
         { 
             get { return this.geofenceResults; } 
         }
@@ -140,7 +167,7 @@ namespace TreeWatch.iOS
         /// Gets a value indicating whether at least one region is been monitored
         /// </summary>
         /// <value><c>true</c> if this instance is monitoring; otherwise, <c>false</c>.</value>
-        public bool IsMonitoring 
+        public bool IsMonitoring
         { 
             get { return this.regions.Count > 0; } 
         }
@@ -149,7 +176,7 @@ namespace TreeWatch.iOS
         /// Gets the last known geofence location
         /// </summary>
         /// <value>The last known location.</value>
-        public GeofenceLocation LastKnownLocation 
+        public GeofenceLocation LastKnownLocation
         { 
             get { return this.lastKnownGeofenceLocation; } 
         }
@@ -173,7 +200,7 @@ namespace TreeWatch.iOS
 
                     if (CrossGeofence.Current.Regions[regionId].ShowNotification)
                     {
-                        this.CreateNotification(ViewAction, string.IsNullOrEmpty(CrossGeofence.Current.Regions[regionId].NotificationStayMessage) ? CrossGeofence.Current.GeofenceResults[regionId].ToString() : CrossGeofence.Current.Regions[regionId].NotificationStayMessage);
+                        GeofenceImplementation.CreateNotification(ViewAction, string.IsNullOrEmpty(CrossGeofence.Current.Regions[regionId].NotificationStayMessage) ? CrossGeofence.Current.GeofenceResults[regionId].ToString() : CrossGeofence.Current.Regions[regionId].NotificationStayMessage);
                     }
                 }
             }
@@ -203,10 +230,10 @@ namespace TreeWatch.iOS
             else if (CLLocationManager.IsMonitoringAvailable(typeof(CLRegion)))
             {
                 var settings = UIUserNotificationSettings.GetSettingsForTypes(
-                    UIUserNotificationType.Alert
-                    | UIUserNotificationType.Badge
-                    | UIUserNotificationType.Sound,
-                    new NSSet());
+                                   UIUserNotificationType.Alert
+                                   | UIUserNotificationType.Badge
+                                   | UIUserNotificationType.Sound,
+                                   new NSSet());
                 UIApplication.SharedApplication.RegisterUserNotificationSettings(settings);
 
                 retVal = true;
@@ -318,7 +345,7 @@ namespace TreeWatch.iOS
         /// <param name="regionIdentifier">Region to stop monitoring</param>
         public void StopMonitoring(string regionIdentifier)
         {
-            if (this.locationManager.IsMonitoringAvailable(typeof(CLRegion)))
+            if (GeofenceImplementation.locationManager.IsMonitoringAvailable(typeof(CLRegion)))
             {
                 this.RemoveRegionMonitoring(regionIdentifier);
 
@@ -359,7 +386,7 @@ namespace TreeWatch.iOS
             {
                 if (this.locationManager.Location != null)
                 {
-                    IEnumerable<GeofenceCircularRegion> newRegions = regions.OrderBy(r => this.CalculateDistance(this.locationManager.Location.Coordinate.Latitude, this.locationManager.Location.Coordinate.Longitude, r.Latitude, r.Longitude)).Take(20);
+                    IEnumerable<GeofenceCircularRegion> newRegions = regions.OrderBy(r => GeofenceImplementation.CalculateDistance(this.locationManager.Location.Coordinate.Latitude, this.locationManager.Location.Coordinate.Longitude, r.Latitude, r.Longitude)).Take(20);
 
                     nearestRegions = newRegions.ToList();
                 }
@@ -450,7 +477,7 @@ namespace TreeWatch.iOS
                 this.lastKnownGeofenceLocation.Date = referenceDate;
             }
         }
-   
+
         /// <summary>
         /// Locationses the updated.
         /// </summary>
@@ -534,7 +561,7 @@ namespace TreeWatch.iOS
         /// Get Called on RegionEntered.
         /// </summary>
         /// <param name="region">Region entered.</param>
-        private void OnRegionEntered(CLRegion region)
+        private async void OnRegionEntered(CLRegion region)
         {
             if (this.GeofenceResults.ContainsKey(region.Identifier) && this.GeofenceResults[region.Identifier].Transition == GeofenceTransition.Entered)
             {
@@ -574,12 +601,12 @@ namespace TreeWatch.iOS
 
                 if (this.Regions.ContainsKey(region.Identifier) && this.Regions[region.Identifier].ShowNotification)
                 {
-                    this.CreateNotification(ViewAction, string.IsNullOrEmpty(this.Regions[region.Identifier].NotificationEntryMessage) ? this.GeofenceResults[region.Identifier].ToString() : this.Regions[region.Identifier].NotificationEntryMessage);
+                    GeofenceImplementation.CreateNotification(ViewAction, string.IsNullOrEmpty(this.Regions[region.Identifier].NotificationEntryMessage) ? this.GeofenceResults[region.Identifier].ToString() : this.Regions[region.Identifier].NotificationEntryMessage);
                 }
             }
 
             // Checks if device has stayed asynchronously
-            this.CheckIfStayed(region.Identifier);
+            await this.CheckIfStayed(region.Identifier);
         }
 
         /// <summary>
@@ -631,7 +658,7 @@ namespace TreeWatch.iOS
 
             if (this.Regions[region.Identifier].ShowNotification)
             {
-                this.CreateNotification(ViewAction, string.IsNullOrEmpty(this.Regions[region.Identifier].NotificationExitMessage) ? this.GeofenceResults[region.Identifier].ToString() : this.Regions[region.Identifier].NotificationExitMessage);
+                GeofenceImplementation.CreateNotification(ViewAction, string.IsNullOrEmpty(this.Regions[region.Identifier].NotificationExitMessage) ? this.GeofenceResults[region.Identifier].ToString() : this.Regions[region.Identifier].NotificationExitMessage);
             }
         }
 
@@ -640,7 +667,7 @@ namespace TreeWatch.iOS
         /// </summary>
         private void RecalculateRegions()
         {
-            IList<GeofenceCircularRegion> regions = this.Regions.Values.ToList();
+            IList<GeofenceCircularRegion> tmpRegions = this.Regions.Values.ToList();
 
             // Stop all monitored regions
             foreach (CLCircularRegion region in this.locationManager.MonitoredRegions)
@@ -648,7 +675,7 @@ namespace TreeWatch.iOS
                 this.locationManager.StopMonitoring(region);
             }
 
-            IList<GeofenceCircularRegion> nearestRegions = this.GetCurrentRegions(regions);
+            IList<GeofenceCircularRegion> nearestRegions = this.GetCurrentRegions(tmpRegions);
 
             foreach (GeofenceCircularRegion region in nearestRegions)
             {
@@ -726,13 +753,13 @@ namespace TreeWatch.iOS
 
             return region;
         }
-            
+
         /// <summary>
         /// Requests the always authorization.
         /// </summary>
         private void RequestAlwaysAuthorization()
         {
-            CLAuthorizationStatus status = this.locationManager.Status;
+            CLAuthorizationStatus status = GeofenceImplementation.locationManager.Status;
             if (status == CLAuthorizationStatus.AuthorizedWhenInUse || status == CLAuthorizationStatus.Denied)
             {
                 string title = (status == CLAuthorizationStatus.Denied) ? "Location services are off" : "Background location is not enabled";

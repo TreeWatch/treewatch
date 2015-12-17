@@ -1,4 +1,4 @@
-﻿// <copyright file="FieldSelectedEventArgs.cs" company="TreeWatch">
+﻿// <copyright file="BlockToDo.cs" company="TreeWatch">
 // Copyright © 2015 TreeWatch
 // </copyright>
 #region Copyright
@@ -21,32 +21,25 @@
 #endregion
 namespace TreeWatch
 {
-    using System;
-
-    using TreeWatch;
+    using SQLiteNetExtensions.Attributes;
 
     /// <summary>
-    /// Field selected event arguments.
+    /// DatabaseHelperclass for mapping Todos to Blocks
     /// </summary>
-    public class FieldSelectedEventArgs : EventArgs
+    public class BlockToDo
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="TreeWatch.FieldSelectedEventArgs"/> class.
+        /// Gets or sets the block identifier.
         /// </summary>
-        /// <param name="field">Field that through the event.</param>
-        public FieldSelectedEventArgs(Field field)
-        {
-            this.Field = field;
-        }
+        /// <value>The block identifier.</value>
+        [ForeignKey(typeof(Block))]
+        public int BlockId { get; set; }
 
         /// <summary>
-        /// Gets the field.
+        /// Gets or sets todo identifier.
         /// </summary>
-        /// <value>The field.</value>
-        public Field Field
-        {
-            get;
-            private set;
-        }
+        /// <value>To do identifier.</value>
+        [ForeignKey(typeof(ToDo))]
+        public int ToDoId { get; set; }
     }
 }

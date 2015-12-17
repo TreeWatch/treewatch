@@ -1,13 +1,34 @@
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Xml.Linq;
-
+// <copyright file="KMLParser.cs" company="TreeWatch">
+// Copyright © 2015 TreeWatch
+// </copyright>
+#region Copyright
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+#endregion
 namespace TreeWatch
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Globalization;
+    using System.IO;
+    using System.Linq;
+    using System.Reflection;
+    using System.Xml.Linq;
+
     /// <summary>
     /// Get Information from KML fiels.
     /// </summary>
@@ -18,9 +39,9 @@ namespace TreeWatch
         /// </summary>
         /// <returns>The tree type color.</returns>
         /// <param name="treeTypes">Tree types.</param>
-        public static String NewTreeTypeColor(List<TreeType> treeTypes)
+        public static string NewTreeTypeColor(List<TreeType> treeTypes)
         {
-            var colors = new List<String>();
+            var colors = new List<string>();
             foreach (var item in treeTypes)
             {
                 colors.Add(item.TreeColor);
@@ -30,7 +51,8 @@ namespace TreeWatch
             do
             {
                 color = ColorHelper.RandomColor();
-            } while (colors.Contains(color));
+            }
+            while (colors.Contains(color));
 
             return color;
         }
@@ -39,8 +61,8 @@ namespace TreeWatch
         /// Gets blocks from a KML file.
         /// </summary>
         /// <returns>The blocks.</returns>
-        /// <param name="kml">Kmlfile</param>
-        /// <param name="treeTypes">Existing Tree types</param>
+        /// <param name="kml">Path to the KML file.</param>
+        /// <param name="treeTypes">Existing Tree types.</param>
         public static List<Block> GetBlocks(string kml, List<TreeType> treeTypes)
         {
             var allTreeTypes = new List<TreeType>();
@@ -139,7 +161,7 @@ namespace TreeWatch
         /// Loads the file.
         /// </summary>
         /// <returns>The file.</returns>
-        /// <param name="resourcename">Resourcename.</param>
+        /// <param name="resourcename">Name of the ressource.</param>
         public static string LoadFile(string resourcename)
         {
             var assembly = typeof(KMLParser).GetTypeInfo().Assembly;
@@ -157,10 +179,10 @@ namespace TreeWatch
         /// Gets the coordinates from XML.
         /// </summary>
         /// <returns>The coordinates.</returns>
-        /// <param name="cords">Cords.</param>
-        public static List<Position> GetCoordinates(IEnumerable<XElement> cords)
+        /// <param name="coords">The list of XML elements.</param>
+        public static List<Position> GetCoordinates(IEnumerable<XElement> coords)
         {
-            var listOfCords = cords.First().Value.Trim().Split(' ');
+            var listOfCords = coords.First().Value.Trim().Split(' ');
             var posList = new List<Position>();
 
             foreach (var cord in listOfCords)
@@ -173,7 +195,5 @@ namespace TreeWatch
 
             return posList;
         }
-
-
     }
 }

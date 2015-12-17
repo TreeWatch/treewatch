@@ -1,43 +1,66 @@
-﻿using System.Collections.Generic;
-using SQLite.Net;
-using SQLiteNetExtensions.Extensions;
-
+﻿// <copyright file="DBQuery.cs" company="TreeWatch">
+// Copyright © 2015 TreeWatch
+// </copyright>
+#region Copyright
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+#endregion
 namespace TreeWatch
 {
+    using System.Collections.Generic;
+    using SQLite.Net;
+    using SQLiteNetExtensions.Extensions;
+
     /// <summary>
-    /// Providing methods for a model of type <see cref="TreeWatch.BaseModel"/>to retrieve or 
-    /// update informatio in the database.
+    /// DB query.
     /// </summary>
+    /// <typeparam name="T">The second generic type parameter.</typeparam>
     public class DBQuery<T> where T : BaseModel
     {
-        readonly SQLiteConnection connection;
+        /// <summary>
+        /// The connection.
+        /// </summary>
+        private readonly SQLiteConnection connection;
 
         /// <summary>
-        /// Sets the database connection used by <see cref="TreeWatch.DBQuery`1"/>.
+        /// Initializes a new instance of the <see cref="TreeWatch.DBQuery{T}"/> class.
         /// </summary>
-        /// <param name="db">Database connection</param>
-
+        /// <param name="db">Database connection.</param>
         public DBQuery(TreeWatchDatabase db)
         {
-            connection = db.Connection;
+            this.connection = db.Connection;
         }
 
         /// <summary>
         /// Insert the specified object.
         /// </summary>
-        /// <param name="obj">Object.</param>
+        /// <param name="obj">Object that should be inserted.</param>
         public void Insert(T obj)
         {
-            connection.Insert(obj);
+            this.connection.Insert(obj);
         }
 
         /// <summary>
         /// Inserts all Objects of type T
         /// </summary>
-        /// <param name="objs">Objects.</param>
+        /// <param name="objs">Objects that should be inserted.</param>
         public void InsertAll(IEnumerable<T> objs)
         {
-            connection.InsertAll(objs);
+            this.connection.InsertAll(objs);
         }
 
         /// <summary>
@@ -46,16 +69,16 @@ namespace TreeWatch
         /// <param name="objs">Objects to be inserted.</param>
         public void InsertAllWithChildren(IEnumerable<T> objs)
         {
-            connection.InsertAllWithChildren(objs, true);
+            this.connection.InsertAllWithChildren(objs, true);
         }
 
         /// <summary>
         /// Inserts the object with children.
         /// </summary>
-        /// <param name="obj">Object.</param>
+        /// <param name="obj">Children of an object.</param>
         public void InsertWithChildren(T obj)
         {
-            connection.InsertWithChildren(obj, true);
+            this.connection.InsertWithChildren(obj, true);
         }
 
         /// <summary>
@@ -65,7 +88,7 @@ namespace TreeWatch
         /// <param name="recursive">If set to <c>true</c> recursive inserts childern.</param>
         public void InsertWithChildren(T obj, bool recursive)
         {
-            connection.InsertWithChildren(obj, recursive);
+            this.connection.InsertWithChildren(obj, recursive);
         }
 
         /// <summary>
@@ -75,7 +98,7 @@ namespace TreeWatch
         /// <param name="id">ID of Object in Database.</param>
         public T GetByID(int id)
         {
-            return connection.Table<T>().Where(t => t.ID == id).FirstOrDefault();
+            return this.connection.Table<T>().Where(t => t.ID == id).FirstOrDefault();
         }
 
         /// <summary>
@@ -84,7 +107,7 @@ namespace TreeWatch
         /// <returns>The all.</returns>
         public List<T> GetAll()
         {
-            return connection.GetAllWithChildren<T>(null, false);
+            return this.connection.GetAllWithChildren<T>(null, false);
         }
 
         /// <summary>
@@ -93,16 +116,16 @@ namespace TreeWatch
         /// <returns>The all with children.</returns>
         public List<T> GetAllWithChildren()
         {
-            return connection.GetAllWithChildren<T>(null, true);
+            return this.connection.GetAllWithChildren<T>(null, true);
         }
 
         /// <summary>
         /// Gets the children of item.
         /// </summary>
-        /// <param name="item">Item.</param>
+        /// <param name="item">A child item.</param>
         public void GetChildren(T item)
         {
-            connection.GetChildren<T>(item, true);
+            this.connection.GetChildren<T>(item, true);
         }
 
         /// <summary>
@@ -111,16 +134,16 @@ namespace TreeWatch
         /// <param name="obj">Object to be updated</param>
         public void Update(T obj)
         {
-            connection.Update(obj);
+            this.connection.Update(obj);
         }
 
         /// <summary>
-        /// Updates the  specified object with children.
+        /// Updates the specified object with children.
         /// </summary>
-        /// <param name="obj">Object.</param>
+        /// <param name="obj">Children of Object.</param>
         public void UpdateWithChildren(T obj)
         {
-            connection.UpdateWithChildren(obj);
+            this.connection.UpdateWithChildren(obj);
         }
 
         /// <summary>
@@ -129,7 +152,7 @@ namespace TreeWatch
         /// <param name="objs">List of Objects to be updated</param>
         public void UpdateAll(IEnumerable<T> objs)
         {
-            connection.UpdateAll(objs);
+            this.connection.UpdateAll(objs);
         }
 
         /// <summary>
@@ -140,26 +163,26 @@ namespace TreeWatch
         {
             foreach (var item in objs)
             {
-                connection.UpdateWithChildren(item);
+                this.connection.UpdateWithChildren(item);
             }
         }
 
         /// <summary>
         /// Delete the specified object.
         /// </summary>
-        /// <param name="obj">Object.</param>
+        /// <param name="obj">Object to be deleted.</param>
         public void Delete(T obj)
         {
-            connection.Delete(obj);
+            this.connection.Delete(obj);
         }
 
         /// <summary>
         /// Deletes all objects in objs.
         /// </summary>
-        /// <param name="objs">Objects.</param>
+        /// <param name="objs">Objects to be deleted.</param>
         public void DeleteAll(IEnumerable<T> objs)
         {
-            connection.Delete(objs);
+            this.connection.Delete(objs);
         }
 
         /// <summary>
@@ -167,7 +190,7 @@ namespace TreeWatch
         /// </summary>
         public void DeleteAll()
         {
-            connection.DeleteAll<T>();
+            this.connection.DeleteAll<T>();
         }
     }
 }
