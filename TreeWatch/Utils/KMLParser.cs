@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -93,13 +93,18 @@ namespace TreeWatch
             return resultField;
         }
 
-        public static Heatmap GetHeatmap(string kml)
+        /// <summary>
+        /// Gets the heatmap rom a KML file.
+        /// </summary>
+        /// <returns>The heatmap.</returns>
+        /// <param name="kml">Kml file.</param>
+        public static HeatMap GetHeatmap(string kml)
         {
             var xml = XDocument.Parse(kml);
             var ns = xml.Root.Name.Namespace;
 
             var points = xml.Descendants(ns + "Placemark");
-            var heatmap = new Heatmap();
+            var heatmap = new HeatMap();
             heatmap.Points = new List<HeatmapPoint>();
 
             foreach (var item in points)

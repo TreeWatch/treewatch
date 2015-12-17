@@ -27,5 +27,16 @@ namespace TreeWatch
 
             return "#" + A.ToString("X2") + R.ToString("X2") + G.ToString("X2") + B.ToString("X2");
         }
+
+        /// <summary>
+        /// Return a random hexcolor.
+        /// </summary>
+        /// <returns>The color.</returns>
+        public static String RandomColor()
+        {
+            var random = new Random();
+            var color = String.Format("#{0:X6}", random.Next(0x1000000));
+            return color;
+        }
     }
 }
