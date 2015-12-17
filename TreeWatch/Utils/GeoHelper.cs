@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace TreeWatch
 {
+    /// <summary>
+    /// Helper class for geo related functions.
+    /// </summary>
     public static class GeoHelper
     {
         /// <summary>
@@ -33,61 +36,98 @@ namespace TreeWatch
 
         }
 
-        public struct WidthHeight
+        /// <summary>
+        /// HelperStruct to return a box.
+        /// </summary>
+        public struct BoundingBox
         {
+            /// <summary>
+            /// The width.
+            /// </summary>
             public double Width;
+
+            /// <summary>
+            /// The height.
+            /// </summary>
             public double Height;
+
+            /// <summary>
+            /// The center.
+            /// </summary>
             public Position Center;
-            public double WidthMeters;
-            public double HeightMeters;
+
+            /// <summary>
+            /// The width in meters.
+            /// </summary>
+            public double WidthInMeters;
+
+            /// <summary>
+            /// The height in meters.
+            /// </summary>
+            public double HeightInMeters;
         }
 
-        public static WidthHeight CalculateWidthHeight(List<Position> boundingCoordinates)
+        /// <summary>
+        /// Calculates the bounding box for a list of coordinates.
+        /// </summary>
+        /// <returns>The bounding box.</returns>
+        /// <param name="boundingCoordinates">List of coordinates.</param>
+        public static BoundingBox CalculateBoundingBox(List<Position> boundingCoordinates)
         {
             if (boundingCoordinates.Count < 2)
-                return new WidthHeight { Width = 0d, Height = 0d };
-            double smallestLon = boundingCoordinates[0].Longitude;
-            double biggestLon = smallestLon;
-            double smallestLat = boundingCoordinates[0].Latitude;
-            double biggestLat = smallestLat;
+                return new BoundingBox { Width = 0d, Height = 0d };
+            
+            double smallestLongitude = boundingCoordinates[0].Longitude;
+            double biggestLongitude = smallestLongitude;
+            double smallestLatitude = boundingCoordinates[0].Latitude;
+            double biggestLatitude = smallestLatitude;
 
             for (int i = 1; i < boundingCoordinates.Count; i++)
             {
-                if (boundingCoordinates[i].Longitude < smallestLon)
+                if (boundingCoordinates[i].Longitude < smallestLongitude)
                 {
-                    smallestLon = boundingCoordinates[i].Longitude;
+                    smallestLongitude = boundingCoordinates[i].Longitude;
                 }
-                if (boundingCoordinates[i].Longitude > biggestLon)
+                if (boundingCoordinates[i].Longitude > biggestLongitude)
                 {
-                    biggestLon = boundingCoordinates[i].Longitude;
+                    biggestLongitude = boundingCoordinates[i].Longitude;
                 }
-                if (boundingCoordinates[i].Latitude < smallestLat)
+                if (boundingCoordinates[i].Latitude < smallestLatitude)
                 {
-                    smallestLat = boundingCoordinates[i].Latitude;
+                    smallestLatitude = boundingCoordinates[i].Latitude;
                 }
-                if (boundingCoordinates[i].Latitude > biggestLat)
+                if (boundingCoordinates[i].Latitude > biggestLatitude)
                 {
-                    biggestLat = boundingCoordinates[i].Latitude;
+                    biggestLatitude = boundingCoordinates[i].Latitude;
                 }
             }
-            double width = biggestLon - smallestLon;
-            double height = biggestLat - smallestLat;
-            Position center = new Position(smallestLat + height * 0.5, smallestLon + width * 0.5);
-            return new WidthHeight
+            double width = biggestLongitude - smallestLongitude;
+            double height = biggestLatitude - smallestLatitude;
+            var center = new Position(smallestLatitude + height * 0.5, smallestLongitude + width * 0.5);
+
+            return new BoundingBox
             {
                 Width = width,
                 Height = height,
                 Center = center,
-                WidthMeters = DistanceInMeters(smallestLat, smallestLon, smallestLat, biggestLon),
-                HeightMeters = DistanceInMeters(smallestLat, smallestLon, biggestLat, smallestLon)
+                WidthInMeters = DistanceInMeters(smallestLatitude, smallestLongitude, smallestLatitude, biggestLongitude),
+                HeightInMeters = DistanceInMeters(smallestLatitude, smallestLongitude, biggestLatitude, smallestLongitude)
             };
         }
 
-        public static double DistanceInMeters(double lat1, double lng1, double lat2, double lng2)
+        /// <summary>
+        /// Calculates the distances between two coordinates the in meters.
+        /// </summary>
+        /// <returns>The in meters.</returns>
+        /// <param name="lat1">Latitude1.</param>
+        /// <param name="long1">Longitude1.</param>
+        /// <param name="lat2">Latitude2.</param>
+        /// <param name="long2">Longitude2.</param>
+        public static double DistanceInMeters(double lat1, double long1, double lat2, double long2)
         {
             const double earthRadius = 6371000; //meters
             double dLat = ToRadians(lat2 - lat1);
-            double dLng = ToRadians(lng2 - lng1);
+            double dLng = ToRadians(long2 - long1);
             double a = Math.Sin(dLat / 2) * Math.Sin(dLat / 2) +
                        Math.Cos(ToRadians(lat1)) * Math.Cos(ToRadians(lat2)) *
                        Math.Sin(dLng / 2) * Math.Sin(dLng / 2);
@@ -97,6 +137,11 @@ namespace TreeWatch
             return dist;
         }
 
+        /// <summary>
+        /// Converts angle in degrees to radians
+        /// </summary>
+        /// <returns>The radians.</returns>
+        /// <param name="angle">Angle.</param>
         public static double ToRadians(double angle)
         {
             return (Math.PI / 180) * angle;

@@ -57,7 +57,7 @@ namespace TreeWatch.Droid
                 && lng != InvalidFloatValue
                 && radius != InvalidFloatValue
                 && persistent
-                && stayedInThresholdDuration != InvalidIntValue
+                && stayedInThresholdDuration != InvalidIntValue)
                 // && expirationDuration != InvalidLongValue
                 //&& transitionType != InvalidIntValue)
                 return new GeofenceCircularRegion(id, lat, lng, radius, notifyOnEntry, notifyOnExit, notifyOnStay, showNotification, persistent)
@@ -159,4 +159,3 @@ namespace TreeWatch.Droid
         }
     }
 }
-

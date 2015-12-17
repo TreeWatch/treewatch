@@ -31,10 +31,10 @@ namespace TreeWatch
             selectedField = new Field("Dummy", new List<Position>(), new List<Block>());
             foreach (Field f in Fields)
             {
-                var whc = GeoHelper.CalculateWidthHeight(f.BoundingCoordinates);
-                double rad = (whc.WidthMeters > whc.HeightMeters) ? whc.WidthMeters : whc.HeightMeters;
+                var whc = GeoHelper.CalculateBoundingBox(f.BoundingCoordinates);
+                double rad = (whc.WidthInMeters > whc.HeightInMeters) ? whc.WidthInMeters : whc.HeightInMeters;
                 rad *= 0.5;
-                Debug.WriteLine("Field: {0}, Center: {1}-{2}, Radius: {3},  Width: {4}, Height: {5}", f.Name, whc.Center.Latitude, whc.Center.Longitude, rad, whc.WidthMeters, whc.HeightMeters);
+                Debug.WriteLine("Field: {0}, Center: {1}-{2}, Radius: {3},  Width: {4}, Height: {5}", f.Name, whc.Center.Latitude, whc.Center.Longitude, rad, whc.WidthInMeters, whc.HeightInMeters);
                 CrossGeofence.Current.StartMonitoring(new GeofenceCircularRegion(f.Name, whc.Center.Latitude, whc.Center.Longitude, rad)
                     {
 

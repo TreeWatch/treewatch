@@ -7,6 +7,10 @@ namespace TreeWatch
     /// </summary>
     public abstract class BaseModel
     {
+        /// <summary>
+        /// Gets or sets the ID.
+        /// </summary>
+        /// <value>The ID.</value>
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
     }
