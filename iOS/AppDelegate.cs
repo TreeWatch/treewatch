@@ -1,9 +1,6 @@
 ﻿using Foundation;
-
 using TreeWatch;
-
 using UIKit;
-
 using Xamarin;
 using Xamarin.Forms;
 
@@ -29,7 +26,6 @@ namespace TreeWatch.iOS
             };
 
             FormsMaps.Init();
-
 
             // Code for starting up the Xamarin Test Cloud Agent
             #if ENABLE_TEST_CLOUD

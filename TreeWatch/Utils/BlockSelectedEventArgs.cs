@@ -1,7 +1,5 @@
 ﻿using System;
 
-using TreeWatch;
-
 namespace TreeWatch
 {
     public class BlockSelectedEventArgs : EventArgs

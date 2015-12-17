@@ -1,7 +1,5 @@
 ﻿using System;
-
 using SQLite.Net.Attributes;
-
 using Xamarin.Forms;
 
 

@@ -1,5 +1,4 @@
 ﻿using System;
-
 using SQLiteNetExtensions.Attributes;
 
 namespace TreeWatch

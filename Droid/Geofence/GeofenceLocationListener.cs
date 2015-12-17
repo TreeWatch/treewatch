@@ -1,6 +1,4 @@
-﻿using System;
-using Android.Gms.Location;
-using Android.OS;
+﻿using Android.Gms.Location;
 
 namespace TreeWatch.Droid
 {
@@ -17,10 +15,11 @@ namespace TreeWatch.Droid
         {
 
         }
+
         void Android.Gms.Location.ILocationListener.OnLocationChanged(Android.Locations.Location location)
         {
             //Location Updated
-            System.Diagnostics.Debug.WriteLine(string.Format("{0} - {1}: {2},{3}",CrossGeofence.Id,"Location Update",location.Latitude,location.Longitude));
+            System.Diagnostics.Debug.WriteLine(string.Format("{0} - {1}: {2},{3}", CrossGeofence.Id, "Location Update", location.Latitude, location.Longitude));
             ((GeofenceImplementation)CrossGeofence.Current).SetLastKnownLocation(location);
             /*
             GeofenceCircularRegion region = null;

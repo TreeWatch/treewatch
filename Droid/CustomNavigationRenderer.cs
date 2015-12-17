@@ -1,8 +1,6 @@
 ﻿using Android.App;
 using Android.Graphics.Drawables;
-
 using TreeWatch.Droid;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 

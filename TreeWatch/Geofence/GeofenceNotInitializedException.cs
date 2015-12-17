@@ -8,7 +8,8 @@ namespace TreeWatch
         {
         }
 
-        public GeofenceNotInitializedException(string message) : base(message)
+        public GeofenceNotInitializedException(string message)
+            : base(message)
         {
 
         }

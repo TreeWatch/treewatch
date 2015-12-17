@@ -7,38 +7,47 @@ namespace TreeWatch
         public GeofenceResult()
         {
         }
+
         /// <summary>
         /// Last time entered the geofence region
         /// </summary>
         public DateTime? LastEnterTime { get; set; }
+
         /// <summary>
         /// Last time exited the geofence region
         /// </summary>
         public DateTime? LastExitTime { get; set; }
+
         /// <summary>
         /// Result transition type
         /// </summary>
         public GeofenceTransition Transition { get; set; }
+
         /// <summary>
         /// Region identifier
         /// </summary>
         public string RegionId { get; set; }
+
         /// <summary>
         /// Duration span between last exited and entred time
         /// </summary>
         public TimeSpan? Duration { get { return LastExitTime - LastEnterTime; } }
+
         /// <summary>
         /// Time span between the last entry and current time.
         /// </summary>
         public TimeSpan? SinceLastEntry { get { return DateTime.Now - LastEnterTime; } }
+
         /// <summary>
         /// Result latitude
         /// </summary>
         public double Latitude { get; set; }
+
         /// <summary>
         /// Result longitude
         /// </summary>
         public double Longitude { get; set; }
+
         /// <summary>
         /// Result accuracy
         /// </summary>
@@ -52,6 +61,7 @@ namespace TreeWatch
         {
             return string.Format("{0} geofence region: {1}", TransitionName, RegionId);
         }
+
         /// <summary>
         /// Get transition name
         /// </summary>

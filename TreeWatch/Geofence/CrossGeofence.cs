@@ -7,18 +7,22 @@ namespace TreeWatch
     public class CrossGeofence
     {
         static Lazy<IGeofence> Implementation = new Lazy<IGeofence>(() => CreateGeofence(), System.Threading.LazyThreadSafetyMode.PublicationOnly);
+
         /// <summary>
         /// Checks if plugin is initialized
         /// </summary>
         public static bool IsInitialized { get { return (GeofenceListener != null); } }
+
         /// <summary>
         /// Plugin id
         /// </summary>
         public const string Id = "CrossGeofence";
+
         /// <summary>
         /// Geofence state events listener
         /// </summary>
         public static IGeofenceListener GeofenceListener { get; private set; }
+
         /// <summary>
         /// Geofence location accuracy priority
         /// </summary>
@@ -33,6 +37,7 @@ namespace TreeWatch
         /// Location updates internal
         /// </summary>
         public static int LocationUpdatesInterval { get; set; }
+
         /// <summary>
         /// Fastest location updates interval
         /// </summary>
@@ -44,7 +49,7 @@ namespace TreeWatch
         /// <typeparam name="T"></typeparam>
         /// <param name="priority"></param>
         /// <param name="smallestDisplacement"></param>
-        public static void Initialize<T>(GeofencePriority priority=GeofencePriority.BalancedPower, float smallestDisplacement = 0)
+        public static void Initialize<T>(GeofencePriority priority = GeofencePriority.BalancedPower, float smallestDisplacement = 0)
             where T : IGeofenceListener, new()
         {
 
@@ -63,6 +68,7 @@ namespace TreeWatch
 
 
         }
+
         /// <summary>
         /// Current settings to use
         /// </summary>
@@ -96,6 +102,7 @@ namespace TreeWatch
         {
             return new NotImplementedException("This functionality is not implemented in the portable version of this assembly.  You should reference the NuGet package from your main application project in order to reference the platform-specific implementation.");
         }
+
         internal static GeofenceNotInitializedException GeofenceNotInitializedException()
         {
             string description = string.Format("{0} - {1}", CrossGeofence.Id, "Plugin is not initialized. Should initialize before use with CrossGeofence Initialize method. Example:  CrossGeofence.Initialize<CrossGeofenceListener>()");

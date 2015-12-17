@@ -17,7 +17,8 @@ namespace TreeWatch.Droid
     public class GeofenceTransitionsIntentService : IntentService
     {
         static int NotificationId = 0;
-        const int  NotificationMaxId = 6;
+        const int NotificationMaxId = 6;
+
         /// <summary>
         /// Handles geofence intent arrival
         /// </summary>
@@ -85,7 +86,7 @@ namespace TreeWatch.Droid
                         break;
                 }
                 System.Diagnostics.Debug.WriteLine(string.Format("{0} - Transition: {1}", CrossGeofence.Id, gTransition));
-                if (CrossGeofence.Current.GeofenceResults[geofence.RequestId].Transition != gTransition )
+                if (CrossGeofence.Current.GeofenceResults[geofence.RequestId].Transition != gTransition)
                 {
 
                     CrossGeofence.Current.GeofenceResults[geofence.RequestId].Transition = gTransition;
@@ -97,18 +98,18 @@ namespace TreeWatch.Droid
 
                         string message = CrossGeofence.Current.GeofenceResults[geofence.RequestId].ToString();
 
-                        if(CrossGeofence.Current.Regions.ContainsKey(geofence.RequestId))
+                        if (CrossGeofence.Current.Regions.ContainsKey(geofence.RequestId))
                         {
-                            switch(gTransition)
+                            switch (gTransition)
                             {
                                 case GeofenceTransition.Entered:
-                                    message=string.IsNullOrEmpty(CrossGeofence.Current.Regions[geofence.RequestId].NotificationEntryMessage)?message:CrossGeofence.Current.Regions[geofence.RequestId].NotificationEntryMessage;
+                                    message = string.IsNullOrEmpty(CrossGeofence.Current.Regions[geofence.RequestId].NotificationEntryMessage) ? message : CrossGeofence.Current.Regions[geofence.RequestId].NotificationEntryMessage;
                                     break;
                                 case GeofenceTransition.Exited:
-                                    message=string.IsNullOrEmpty(CrossGeofence.Current.Regions[geofence.RequestId].NotificationExitMessage)?message:CrossGeofence.Current.Regions[geofence.RequestId].NotificationExitMessage;
+                                    message = string.IsNullOrEmpty(CrossGeofence.Current.Regions[geofence.RequestId].NotificationExitMessage) ? message : CrossGeofence.Current.Regions[geofence.RequestId].NotificationExitMessage;
                                     break;
                                 case GeofenceTransition.Stayed:
-                                    message=string.IsNullOrEmpty(CrossGeofence.Current.Regions[geofence.RequestId].NotificationStayMessage)?message:CrossGeofence.Current.Regions[geofence.RequestId].NotificationStayMessage;
+                                    message = string.IsNullOrEmpty(CrossGeofence.Current.Regions[geofence.RequestId].NotificationStayMessage) ? message : CrossGeofence.Current.Regions[geofence.RequestId].NotificationStayMessage;
                                     break;
 
                             }

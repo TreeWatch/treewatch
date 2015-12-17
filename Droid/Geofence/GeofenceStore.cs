@@ -12,17 +12,17 @@ namespace TreeWatch.Droid
 
         // Invalid values, used to test geofence storage when retrieving geofences.
         const long InvalidLongValue = -999L;
-        const float InvalidFloatValue= -999.0f;
-        const int InvalidIntValue= -999;
+        const float InvalidFloatValue = -999.0f;
+        const int InvalidIntValue = -999;
 
-        private static GeofenceStore sharedInstance=new GeofenceStore();
+        private static GeofenceStore sharedInstance = new GeofenceStore();
 
         public static GeofenceStore SharedInstance { get { return sharedInstance; } }
 
         /// <summary>
         /// Create the SharedPreferences storage with private access only.
         /// </summary>
-        private GeofenceStore ()
+        private GeofenceStore()
         {
             mPrefs = Android.App.Application.Context.GetSharedPreferences(GeofenceStoreId, FileCreationMode.Private);
         }
@@ -59,13 +59,12 @@ namespace TreeWatch.Droid
                 && persistent
                 && stayedInThresholdDuration != InvalidIntValue
                 // && expirationDuration != InvalidLongValue
-                //&& transitionType != InvalidIntValue
-            )
-                return new GeofenceCircularRegion(id,lat,lng,radius,notifyOnEntry,notifyOnExit,notifyOnStay,showNotification,persistent)
+                //&& transitionType != InvalidIntValue)
+                return new GeofenceCircularRegion(id, lat, lng, radius, notifyOnEntry, notifyOnExit, notifyOnStay, showNotification, persistent)
                 {
-                    NotificationEntryMessage=notificationEntryMessage,
-                    NotificationStayMessage=notificationStayMessage,
-                    NotificationExitMessage=notificationExitMessage,
+                    NotificationEntryMessage = notificationEntryMessage,
+                    NotificationStayMessage = notificationStayMessage,
+                    NotificationExitMessage = notificationExitMessage,
 
                     StayedInThresholdDuration = TimeSpan.FromMilliseconds(stayedInThresholdDuration)
                 };
@@ -78,7 +77,8 @@ namespace TreeWatch.Droid
         /// Save a geofence
         /// </summary>
         /// <param name="region">The GeofenceCircularRegion with the values you want to save in SharedPreferemces</param>
-        public override void Save(GeofenceCircularRegion region) {
+        public override void Save(GeofenceCircularRegion region)
+        {
 
             if (!region.Persistent)
                 return;
@@ -100,7 +100,7 @@ namespace TreeWatch.Droid
             prefs.PutBoolean(GetFieldKey(id, PersistentGeofenceRegionKey), region.Persistent);
             prefs.PutInt(GetFieldKey(id, StayedInThresholdDurationGeofenceRegionKey), (int)region.StayedInThresholdDuration.TotalMilliseconds);
             // Commit the changes
-            prefs.Commit ();
+            prefs.Commit();
 
         }
 
@@ -133,7 +133,8 @@ namespace TreeWatch.Droid
                 // Commit the changes
                 prefs.Commit();
 
-            }catch(Java.Lang.Exception ex)
+            }
+            catch (Java.Lang.Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine(string.Format("{0} - Error: {1}", CrossGeofence.Id, ex.ToString()));
             }

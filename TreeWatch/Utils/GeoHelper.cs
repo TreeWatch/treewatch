@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using Xamarin.Forms.Maps;
 
 namespace TreeWatch
 {
@@ -28,7 +26,7 @@ namespace TreeWatch
             for (i = 0, j = nvert - 1; i < nvert; j = i++)
             {
                 if (((cordinates[i].Latitude > position.Latitude) != (cordinates[j].Latitude > position.Latitude)) &&
-                (position.Longitude < (cordinates[j].Longitude - cordinates[i].Longitude) * (position.Latitude - cordinates[i].Latitude) / (cordinates[j].Latitude - cordinates[i].Latitude) + cordinates[i].Longitude))
+                    (position.Longitude < (cordinates[j].Longitude - cordinates[i].Longitude) * (position.Latitude - cordinates[i].Latitude) / (cordinates[j].Latitude - cordinates[i].Latitude) + cordinates[i].Longitude))
                     inside = !inside;
             }
             return inside;

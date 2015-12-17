@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace TreeWatch
+﻿namespace TreeWatch
 {
     public enum GeofenceTransition
     {

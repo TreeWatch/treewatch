@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using SQLiteNetExtensions.Attributes;
 
 namespace TreeWatch
@@ -10,8 +9,11 @@ namespace TreeWatch
         public int HeatmapId { get; set; }
 
         public double RowID { get; set; }
+
         public double FID { get; set; }
+
         public double Mean { get; set; }
+
         public double Std { get; set; }
 
         public HeatmapPoint()

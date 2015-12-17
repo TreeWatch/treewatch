@@ -1,13 +1,9 @@
 ﻿using System;
 using System.IO;
-
 using SQLite.Net;
 using SQLite.Net.Platform.XamarinAndroid;
-
 using TreeWatch.Droid;
-
 using Xamarin.Forms;
-
 
 [assembly: Dependency(typeof(SQLiteAndroid))]
 

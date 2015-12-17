@@ -1,13 +1,11 @@
-﻿using Android.App;
+﻿using Android;
+using Android.App;
 using Android.Content.PM;
 using Android.OS;
-
-using Xamarin;
-using Android;
 using Android.Support.Design.Widget;
 using Android.Support.V4.App;
-using Java.IO;
 using Android.Util;
+using Xamarin;
 using Xamarin.Forms;
 
 namespace TreeWatch.Droid

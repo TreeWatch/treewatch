@@ -9,7 +9,7 @@ namespace TreeWatch.Droid
     /// Receives BOOT_COMPLETED event
     /// </summary>
     [BroadcastReceiver]
-    [IntentFilter(new[] { Intent.ActionBootCompleted})]
+    [IntentFilter(new[] { Intent.ActionBootCompleted })]
     public class GeofenceBootReceiver : BroadcastReceiver
     {
         /// <summary>
@@ -20,7 +20,7 @@ namespace TreeWatch.Droid
         public override void OnReceive(Context context, Intent intent)
         {
             System.Diagnostics.Debug.WriteLine(string.Format("{0} - {1}", CrossGeofence.Id, "Boot Received"));
-            var geofenceInstance= CrossGeofence.Current;
+            var geofenceInstance = CrossGeofence.Current;
         }
     }
 }

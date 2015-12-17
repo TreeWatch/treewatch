@@ -1,21 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using Android.App;
-using Android.Gms.Common.Apis;
-using Android.Content;
 using System.Linq;
+using Android.App;
+using Android.Content;
 using Android.Gms.Common;
+using Android.Gms.Common.Apis;
 using Android.OS;
 using Java.Interop;
 using TreeWatch.Droid;
-using Android;
-using Android.Content.PM;
-using Android.Support.V4.Content;
-using Android.Support.V4.App;
-using Android.Support.Design.Widget;
-using Xamarin.Forms;
 
-[assembly: Xamarin.Forms.Dependency (typeof (GeofenceImplementation))]
+[assembly: Xamarin.Forms.Dependency(typeof(GeofenceImplementation))]
 namespace TreeWatch.Droid
 {
     public class GeofenceImplementation : Java.Lang.Object, IGeofence, GoogleApiClient.IConnectionCallbacks,
@@ -23,9 +17,9 @@ namespace TreeWatch.Droid
     {
         internal const string GeoReceiverAction = "ACTION_RECEIVE_GEOFENCE";
 
-        private Dictionary<string,GeofenceCircularRegion> mRegions= GeofenceStore.SharedInstance.GetAll();
+        private Dictionary<string,GeofenceCircularRegion> mRegions = GeofenceStore.SharedInstance.GetAll();
 
-        private  Dictionary<string, GeofenceResult> mGeofenceResults= new Dictionary<string, GeofenceResult>();
+        private  Dictionary<string, GeofenceResult> mGeofenceResults = new Dictionary<string, GeofenceResult>();
 
         private GeofenceLocation lastKnownGeofenceLocation;
 
@@ -34,21 +28,32 @@ namespace TreeWatch.Droid
         private GoogleApiClient mGoogleApiClient;
 
         // Defines the allowable request types
-        internal enum RequestType { Add, Update, Delete, Clear, Default }
+        internal enum RequestType
+        {
+            Add,
+            Update,
+            Delete,
+            Clear,
+            Default
+
+        }
+
         /// <summary>
         /// Get all regions been monitored
         /// </summary>
         public IReadOnlyDictionary<string, GeofenceCircularRegion> Regions { get { return mRegions; } }
+
         /// <summary>
         /// Get geofence state change results.
         /// </summary>
         public IReadOnlyDictionary<string, GeofenceResult> GeofenceResults { get { return mGeofenceResults; } }
 
         private IList<string> mRequestedRegionIdentifiers;
+
         /// <summary>
         /// Get last known location
         /// </summary>
-        public GeofenceLocation LastKnownLocation { get { return lastKnownGeofenceLocation; }  }
+        public GeofenceLocation LastKnownLocation { get { return lastKnownGeofenceLocation; } }
 
         internal RequestType CurrentRequestType { get; set; }
 
@@ -64,7 +69,7 @@ namespace TreeWatch.Droid
             get
             {
                 // If the PendingIntent already exists
-                if (mGeofencePendingIntent==null)
+                if (mGeofencePendingIntent == null)
                 {
 
                     //var intent = new Intent(Android.App.Application.Context, typeof(GeofenceBroadcastReceiver));
@@ -77,6 +82,7 @@ namespace TreeWatch.Droid
                 return mGeofencePendingIntent;
             }
         }
+
         /// <summary>
         /// Android Geofence plugin implementation
         /// </summary>
@@ -96,12 +102,13 @@ namespace TreeWatch.Droid
 
             InitializeGoogleAPI();
 
-            if(IsMonitoring)
+            if (IsMonitoring)
             { 
                 StartMonitoring(Regions.Values.ToList());
                 System.Diagnostics.Debug.WriteLine(string.Format("{0} - {1}", CrossGeofence.Id, "Monitoring was restored"));
             }
         }
+
         /// <summary>
         /// Starts monitoring specified region
         /// </summary>
@@ -121,6 +128,7 @@ namespace TreeWatch.Droid
 
             RequestMonitoringStart();
         }
+
         void RequestMonitoringStart()
         {
             //If connected to google play services then add regions
@@ -139,6 +147,7 @@ namespace TreeWatch.Droid
                 CurrentRequestType = RequestType.Add;
             }
         }
+
         /// <summary>
         /// Starts geofence monitoring on specified regions
         /// </summary>
@@ -171,6 +180,7 @@ namespace TreeWatch.Droid
                     Transition = GeofenceTransition.Unknown
                 });
         }
+
         private void AddGeofences()
         {
             try
@@ -181,12 +191,12 @@ namespace TreeWatch.Droid
                 {
                     int transitionTypes = 0;
 
-                    if(region.NotifyOnStay)
+                    if (region.NotifyOnStay)
                     {
                         transitionTypes |= Android.Gms.Location.Geofence.GeofenceTransitionDwell;
                     }
 
-                    if(region.NotifyOnEntry)
+                    if (region.NotifyOnEntry)
                     {
                         transitionTypes |= Android.Gms.Location.Geofence.GeofenceTransitionEnter;
                     }
@@ -196,7 +206,7 @@ namespace TreeWatch.Droid
                         transitionTypes |= Android.Gms.Location.Geofence.GeofenceTransitionExit;
                     }
 
-                    if(transitionTypes != 0)
+                    if (transitionTypes != 0)
                     {
 
                         geofenceList.Add(new Android.Gms.Location.GeofenceBuilder()
@@ -218,7 +228,7 @@ namespace TreeWatch.Droid
 
                 }
 
-                if(geofenceList.Count>0)
+                if (geofenceList.Count > 0)
                 {
                     Android.Gms.Location.GeofencingRequest request = new Android.Gms.Location.GeofencingRequest.Builder().SetInitialTrigger(Android.Gms.Location.GeofencingRequest.InitialTriggerEnter).AddGeofences(geofenceList).Build();
 
@@ -228,7 +238,8 @@ namespace TreeWatch.Droid
                 }
 
 
-            }catch(Java.Lang.Exception ex1)
+            }
+            catch (Java.Lang.Exception ex1)
             {
                 string message = string.Format("{0} - Error: {1}", CrossGeofence.Id, ex1.ToString());
                 System.Diagnostics.Debug.WriteLine(message);
@@ -267,6 +278,7 @@ namespace TreeWatch.Droid
                 mGoogleApiClient.Disconnect();
             }
         }
+
         private void RemoveGeofences(IList<string> regionIdentifiers)
         {
             foreach (string identifier in regionIdentifiers)
@@ -285,6 +297,7 @@ namespace TreeWatch.Droid
             //Check if there are still regions
             OnMonitoringRemoval();
         }
+
         /// <summary>
         /// Stops monitoring specified geofence regions
         /// </summary>
@@ -310,6 +323,7 @@ namespace TreeWatch.Droid
             //
 
         }
+
         /// <summary>
         /// Stops monitoring all geofence regions
         /// </summary>
@@ -333,6 +347,7 @@ namespace TreeWatch.Droid
 
 
         }
+
         private void RemoveGeofences()
         {
             GeofenceStore.SharedInstance.RemoveAll();
@@ -350,7 +365,7 @@ namespace TreeWatch.Droid
 
             if (queryResult == ConnectionResult.Success)
             {
-                if(mGoogleApiClient==null)
+                if (mGoogleApiClient == null)
                 {
                     mGoogleApiClient = new GoogleApiClient.Builder(Android.App.Application.Context).AddApi(Android.Gms.Location.LocationServices.API).AddConnectionCallbacks(this).AddOnConnectionFailedListener(this).Build();
                     string message = string.Format("{0} - {1}", CrossGeofence.Id, "Google Play services is available.");
@@ -385,11 +400,12 @@ namespace TreeWatch.Droid
             CrossGeofence.GeofenceListener.OnError(message);
 
         }
+
         internal void SetLastKnownLocation(Android.Locations.Location location)
         {
-            if(location!=null)
+            if (location != null)
             {
-                if(lastKnownGeofenceLocation==null)
+                if (lastKnownGeofenceLocation == null)
                 {
                     lastKnownGeofenceLocation = new GeofenceLocation();
                 }
@@ -401,6 +417,7 @@ namespace TreeWatch.Droid
             }
 
         }
+
         /// <summary>
         /// On Google play services Connection handling
         /// </summary>
@@ -409,7 +426,7 @@ namespace TreeWatch.Droid
         public void OnConnected(Bundle connectionHint)
         {
 
-            Android.Locations.Location location=Android.Gms.Location.LocationServices.FusedLocationApi.GetLastLocation(mGoogleApiClient);
+            Android.Locations.Location location = Android.Gms.Location.LocationServices.FusedLocationApi.GetLastLocation(mGoogleApiClient);
             SetLastKnownLocation(location);
 
             if (CurrentRequestType == RequestType.Add)
@@ -417,14 +434,15 @@ namespace TreeWatch.Droid
                 AddGeofences();
                 StartLocationUpdates();
 
-            }else if(CurrentRequestType == RequestType.Clear)
+            }
+            else if (CurrentRequestType == RequestType.Clear)
             {
                 RemoveGeofences();
 
             }
             else if (CurrentRequestType == RequestType.Delete)
             {
-                if(mRequestedRegionIdentifiers != null)
+                if (mRequestedRegionIdentifiers != null)
                 {
                     RemoveGeofences(mRequestedRegionIdentifiers);
                 }
@@ -435,6 +453,7 @@ namespace TreeWatch.Droid
 
 
         }
+
         /// <summary>
         /// On Geofence Request Result
         /// </summary>
@@ -452,11 +471,11 @@ namespace TreeWatch.Droid
             {
                 case Android.Gms.Location.GeofenceStatusCodes.SuccessCache:
                 case Android.Gms.Location.GeofenceStatusCodes.Success:
-                    if(CurrentRequestType==RequestType.Add)
+                    if (CurrentRequestType == RequestType.Add)
                     {
                         message = string.Format("{0} - {1}", CrossGeofence.Id, "Successfully added Geofence.");
 
-                        foreach(GeofenceCircularRegion region in Regions.Values)
+                        foreach (GeofenceCircularRegion region in Regions.Values)
                         {
                             CrossGeofence.GeofenceListener.OnMonitoringStarted(region.Id);
                         }
@@ -492,6 +511,7 @@ namespace TreeWatch.Droid
                     CrossGeofence.GeofenceListener.OnError(message);
             }
         }
+
         /// <summary>
         /// Connection suspended handling
         /// </summary>
@@ -521,19 +541,19 @@ namespace TreeWatch.Droid
             Android.Gms.Location.LocationRequest mLocationRequest = new Android.Gms.Location.LocationRequest();
             mLocationRequest.SetInterval(CrossGeofence.LocationUpdatesInterval == 0 ? 30000 : CrossGeofence.LocationUpdatesInterval);
             mLocationRequest.SetFastestInterval(CrossGeofence.FastestLocationUpdatesInterval == 0 ? 5000 : CrossGeofence.FastestLocationUpdatesInterval);
-            string priorityType="Balanced Power";
-            switch(CrossGeofence.GeofencePriority)
+            string priorityType = "Balanced Power";
+            switch (CrossGeofence.GeofencePriority)
             {
                 case GeofencePriority.HighAccuracy:
-                    priorityType="High Accuracy";
+                    priorityType = "High Accuracy";
                     mLocationRequest.SetPriority(Android.Gms.Location.LocationRequest.PriorityHighAccuracy);
                     break;
                 case GeofencePriority.LowAccuracy:
-                    priorityType="Low Accuracy";
+                    priorityType = "Low Accuracy";
                     mLocationRequest.SetPriority(Android.Gms.Location.LocationRequest.PriorityLowPower);
                     break;
                 case GeofencePriority.LowestAccuracy:
-                    priorityType="Lowest Accuracy";
+                    priorityType = "Lowest Accuracy";
                     mLocationRequest.SetPriority(Android.Gms.Location.LocationRequest.PriorityNoPower);
                     break;
                 case GeofencePriority.MediumAccuracy:
@@ -543,9 +563,9 @@ namespace TreeWatch.Droid
                     break;
             }
 
-            System.Diagnostics.Debug.WriteLine(string.Format("{0} - {1}: {2}", CrossGeofence.Id, "Priority set to",priorityType));
+            System.Diagnostics.Debug.WriteLine(string.Format("{0} - {1}: {2}", CrossGeofence.Id, "Priority set to", priorityType));
             //(Regions.Count == 0) ? (CrossGeofence.SmallestDisplacement==0?50 :CrossGeofence.SmallestDisplacement): Regions.Min(s => (float)s.Value.Radius)
-            if(CrossGeofence.SmallestDisplacement>0)
+            if (CrossGeofence.SmallestDisplacement > 0)
             {
                 mLocationRequest.SetSmallestDisplacement(CrossGeofence.SmallestDisplacement);
                 System.Diagnostics.Debug.WriteLine(string.Format("{0} - {1}: {2} meters", CrossGeofence.Id, "Location smallest displacement set to", CrossGeofence.SmallestDisplacement));
@@ -553,6 +573,7 @@ namespace TreeWatch.Droid
 
             Android.Gms.Location.LocationServices.FusedLocationApi.RequestLocationUpdates(mGoogleApiClient, mLocationRequest, GeofenceLocationListener.SharedInstance);
         }
+
         internal void StopLocationUpdates()
         {
             Android.Gms.Location.LocationServices.FusedLocationApi.RemoveLocationUpdates(mGoogleApiClient, GeofenceLocationListener.SharedInstance);

@@ -6,7 +6,7 @@ namespace TreeWatch
 {
     public class Heatmap : BaseModel
     {
-        [OneToMany (CascadeOperations = CascadeOperation.CascadeInsert | CascadeOperation.CascadeRead)]
+        [OneToMany(CascadeOperations = CascadeOperation.CascadeInsert | CascadeOperation.CascadeRead)]
         public List<HeatmapPoint> Points { get; set; }
 
         public String Name { get; set; }
@@ -15,7 +15,7 @@ namespace TreeWatch
         {
         }
 
-        public Heatmap (String name, List<HeatmapPoint> points)
+        public Heatmap(String name, List<HeatmapPoint> points)
         {
             this.Name = name;
             this.Points = points;

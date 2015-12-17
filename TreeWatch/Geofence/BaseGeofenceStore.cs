@@ -25,6 +25,7 @@ namespace TreeWatch
         protected const string PersistentGeofenceRegionKey = "Geofence.Region.Persistent";
         protected const string StayedInThresholdDurationGeofenceRegionKey = "Geofence.Region.StayedInThresholdDuration";
         protected const string ExitThresholdDurationGeofenceRegionKey = "Geofence.Region.ExitThresholdDuration";
+
         /// <summary>
         /// Given a GeofenceCircularRegion object's ID and the name of a field , return the keyname of the object's values in Store
         /// </summary>
@@ -35,26 +36,31 @@ namespace TreeWatch
         {
             return GeofenceStoreId + "_" + id + "_" + fieldName;
         }
+
         /// <summary>
         /// Gets all stored geofence regions
         /// </summary>
         /// <returns></returns>
         public abstract  Dictionary<string, GeofenceCircularRegion> GetAll();
+
         /// <summary>
         /// Gets specific geofence region from store
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         public abstract GeofenceCircularRegion Get(string id);
+
         /// <summary>
         /// Saves geofence region in store
         /// </summary>
         /// <param name="region"></param>
         public abstract void Save(GeofenceCircularRegion region);
+
         /// <summary>
         /// Clear geofence regions in store
         /// </summary>
         public abstract void RemoveAll();
+
         /// <summary>
         /// Remove specific geofence region from store
         /// </summary>

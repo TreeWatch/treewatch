@@ -1,12 +1,9 @@
 ﻿using System;
 using System.IO;
-
 using SQLite.Net;
 using SQLite.Net.Platform.XamarinIOS;
-
 using TreeWatch;
 using TreeWatch.iOS;
-
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(SQLiteIOS))]
