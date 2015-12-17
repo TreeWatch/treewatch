@@ -255,3 +255,4 @@ pythontex-files-*/
 tmp
 *.project
 *.texlipse
+/finalreport/
