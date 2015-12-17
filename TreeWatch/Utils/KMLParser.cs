@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -8,16 +8,16 @@ using System.Xml.Linq;
 
 namespace TreeWatch
 {
+    /// <summary>
+    /// Get Information from KML fiels.
+    /// </summary>
     public static class KMLParser
     {
-
-        public static String RandomColor()
-        {
-            var random = new Random();
-            var color = String.Format("#{0:X6}", random.Next(0x1000000));
-            return color;
-        }
-
+        /// <summary>
+        /// Generates a new unique Color.
+        /// </summary>
+        /// <returns>The tree type color.</returns>
+        /// <param name="treeTypes">Tree types.</param>
         public static String NewTreeTypeColor(List<TreeType> treeTypes)
         {
             var colors = new List<String>();
@@ -26,15 +26,21 @@ namespace TreeWatch
                 colors.Add(item.TreeColor);
             }
 
-            var color = "";
+            string color;
             do
             {
-                color = RandomColor();
+                color = ColorHelper.RandomColor();
             } while (colors.Contains(color));
 
             return color;
         }
 
+        /// <summary>
+        /// Gets blocks from a KML file.
+        /// </summary>
+        /// <returns>The blocks.</returns>
+        /// <param name="kml">Kmlfile</param>
+        /// <param name="treeTypes">Existing Tree types</param>
         public static List<Block> GetBlocks(string kml, List<TreeType> treeTypes)
         {
             var allTreeTypes = new List<TreeType>();
@@ -46,7 +52,6 @@ namespace TreeWatch
 
             var blocks = xml.Descendants(ns + "Placemark");
             var resultList = new List<Block>();
-
 
             foreach (var item in blocks)
             {
@@ -74,10 +79,14 @@ namespace TreeWatch
                 resultList.Add(resultBlock);
             }
 
-
             return resultList;
         }
 
+        /// <summary>
+        /// Gets the field from a KML file.
+        /// </summary>
+        /// <returns>The field.</returns>
+        /// <param name="kml">Kml file.</param>
         public static Field GetField(string kml)
         {
             var resultField = new Field();
@@ -93,13 +102,18 @@ namespace TreeWatch
             return resultField;
         }
 
-        public static Heatmap GetHeatmap(string kml)
+        /// <summary>
+        /// Gets the heatmap rom a KML file.
+        /// </summary>
+        /// <returns>The heatmap.</returns>
+        /// <param name="kml">Kml file.</param>
+        public static HeatMap GetHeatmap(string kml)
         {
             var xml = XDocument.Parse(kml);
             var ns = xml.Root.Name.Namespace;
 
             var points = xml.Descendants(ns + "Placemark");
-            var heatmap = new Heatmap();
+            var heatmap = new HeatMap();
             heatmap.Points = new List<HeatmapPoint>();
 
             foreach (var item in points)
@@ -121,12 +135,17 @@ namespace TreeWatch
             return heatmap;
         }
 
+        /// <summary>
+        /// Loads the file.
+        /// </summary>
+        /// <returns>The file.</returns>
+        /// <param name="resourcename">Resourcename.</param>
         public static string LoadFile(string resourcename)
         {
             var assembly = typeof(KMLParser).GetTypeInfo().Assembly;
             Stream stream = assembly.GetManifestResourceStream("TreeWatch." + resourcename);
-            string text = "";
-            using (var reader = new System.IO.StreamReader(stream))
+            string text;
+            using (var reader = new StreamReader(stream))
             {
                 text = reader.ReadToEnd();
             }
@@ -134,10 +153,15 @@ namespace TreeWatch
             return text;
         }
 
+        /// <summary>
+        /// Gets the coordinates from XML.
+        /// </summary>
+        /// <returns>The coordinates.</returns>
+        /// <param name="cords">Cords.</param>
         public static List<Position> GetCoordinates(IEnumerable<XElement> cords)
         {
             var listOfCords = cords.First().Value.Trim().Split(' ');
-            List<Position> posList = new List<Position>();
+            var posList = new List<Position>();
 
             foreach (var cord in listOfCords)
             {

@@ -44,7 +44,7 @@ namespace TreeWatch.iOS
         {
             if (mapView != null)
             {
-                var widthHeight = GeoHelper.CalculateWidthHeight(e.Field.BoundingCoordinates);
+                var widthHeight = GeoHelper.CalculateBoundingBox(e.Field.BoundingCoordinates);
                 var center = widthHeight.Center;
                 var coords = new CLLocationCoordinate2D(center.Latitude, center.Longitude);
                 var span = new MKCoordinateSpan(widthHeight.Width * 1.1, widthHeight.Height * 1.1);
@@ -161,7 +161,7 @@ namespace TreeWatch.iOS
                 }
 
             }
-            var query2 = new DBQuery<Heatmap>(connection);
+            var query2 = new DBQuery<HeatMap>(connection);
             var heatmaps = query2.GetAllWithChildren();
             var heatmap = heatmaps[0];
 

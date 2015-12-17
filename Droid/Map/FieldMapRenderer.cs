@@ -160,7 +160,7 @@ namespace TreeWatch.Droid
             if (Map != null)
             {
                 var builder = new LatLngBounds.Builder();
-                var whc = GeoHelper.CalculateWidthHeight(e.Field.BoundingCoordinates);
+                var whc = GeoHelper.CalculateBoundingBox(e.Field.BoundingCoordinates);
                 double width = whc.Width * 0.95;
                 double height = whc.Height * 0.59;
                 builder.Include(new LatLng(whc.Center.Latitude - width, whc.Center.Longitude - height));

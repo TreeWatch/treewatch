@@ -16,12 +16,8 @@ namespace TreeWatch
         public List<Position> BoundingCoordinates { get; set; }
 
         /// <summary>
-        /// Gets or sets the bounding cordiantes BLOB.
-        /// <remarks>
-        /// Should only be used by SQLite.
-        /// </remarks> 
+        /// Only used for SQLite. Should not be called in any way outside of SQLite methods.
         /// </summary>
-        /// <value>The bounding cordiantes serialized as BLOB.</value>
         public string BoundingCoordiantesBlob { get; set; }
     }
 }

@@ -75,8 +75,8 @@ namespace TreeWatch
 
             foreach (Field f in this.Fields)
             {
-                var whc = GeoHelper.CalculateWidthHeight(f.BoundingCoordinates);
-                double rad = (whc.WidthMeters > whc.HeightMeters) ? whc.WidthMeters : whc.HeightMeters;
+                var whc = GeoHelper.CalculateBoundingBox(f.BoundingCoordinates);
+                double rad = (whc.WidthInMeters > whc.HeightInMeters) ? whc.WidthInMeters : whc.HeightInMeters;
                 rad *= 0.5;
                 CrossGeofence.Current.StartMonitoring(new GeofenceCircularRegion(f.Name, whc.Center.Latitude, whc.Center.Longitude, rad)
                     {
