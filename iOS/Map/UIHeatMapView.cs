@@ -7,6 +7,9 @@ using MapKit;
 
 namespace TreeWatch.iOS
 {
+    /// <summary>
+    /// View for a HeatMap.
+    /// </summary>
     public class UIHeatMapView : UIImageView
     {
         /* TODO Readd LFHeatMap project first
@@ -39,6 +42,4 @@ namespace TreeWatch.iOS
         }
         */
     }
-
 }
-

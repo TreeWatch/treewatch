@@ -5,23 +5,40 @@ using MapKit;
 // Analysis disable once InconsistentNaming
 namespace TreeWatch.iOS
 {
+    /// <summary>
+    /// View for a multipolygon. 
+    /// Handles custom drawing of all polygons inside a multipolygon.
+    /// </summary>
     public class MultiPolygonView : MKOverlayRenderer
     {
+        /// <summary>
+        /// The poylgon overlay.
+        /// </summary>
+        private IMKOverlay polygonOverlay;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TreeWatch.iOS.MultiPolygonView"/> class.
+        /// </summary>
+        /// <param name="overlay">Overlay to be displayed.</param>
         public MultiPolygonView(IMKOverlay overlay)
         {
-            PoylgonOverlay = overlay;
+            this.polygonOverlay = overlay;
         }
 
-        IMKOverlay PoylgonOverlay;
-
+        /// <summary>
+        /// Draws the map rectangle.
+        /// </summary>
+        /// <param name="mapRect">Map rectangle.</param>
+        /// <param name="zoomScale">Zoom scale.</param>
+        /// <param name="context"> Graphics context.</param>
         public override void DrawMapRect(MKMapRect mapRect, nfloat zoomScale, CGContext context)
         {
             base.DrawMapRect(mapRect, zoomScale, context);
-            var multiPolygons = (MultiPolygon)PoylgonOverlay;
+            var multiPolygons = (MultiPolygon)this.polygonOverlay;
             foreach (var item in multiPolygons.Polygons)
             {
                 var path = new CGPath();
-                InvokeOnMainThread(() =>
+                this.InvokeOnMainThread(() =>
                     {
                         path = PolyPath(item.Polygon);
                     });
@@ -39,16 +56,20 @@ namespace TreeWatch.iOS
                     }
                 }
             }
-
         }
 
+        /// <summary>
+        /// Gets the poly path for a polygon.
+        /// </summary>
+        /// <returns>The path.</returns>
+        /// <param name="polygon">Polygon to get the path for.</param>
         public CGPath PolyPath(MKPolygon polygon)
         {
             var path = new CGPath();
 
             foreach (var item in polygon.InteriorPolygons)
             {
-                var interiorPath = PolyPath(item);
+                var interiorPath = this.PolyPath(item);
                 path.AddPath(interiorPath);
             }
 
@@ -56,11 +77,10 @@ namespace TreeWatch.iOS
             path.MoveToPoint(relativePoint);
             foreach (var point in polygon.Points)
             {
-                path.AddLineToPoint(PointForMapPoint(point));
+                path.AddLineToPoint(this.PointForMapPoint(point));
             }
 
             return path;
         }
-
     }
 }
