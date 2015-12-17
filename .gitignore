@@ -251,10 +251,8 @@ pythontex-files-*/
 *.ttt
 *.fff
 
-### TeX Patch ###
-# pdfcomment
-.upa
-.upb
-
-## Texpad
-.texpadtmp/
+## TeXlipse ##
+tmp
+*.project
+*.texlipse
+/finalreport/
