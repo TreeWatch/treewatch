@@ -19,9 +19,11 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 #endregion
-// Analysis disable InconsistentNaming
+[assembly: Xamarin.Forms.Dependency(typeof(TreeWatch.iOS.GeofenceImplementation))]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("StyleCop.CSharp.NamingRules", "SA1300:ElementMustBeginWithUpperCaseLetter", MessageId = "Ctl", Scope = "namespace", Target = "Assembly name", Justification = "Auto generated name")]
+
+// Analysis disable once InconsistentNaming
 namespace TreeWatch.iOS
-// Analysis restore InconsistentNaming
 {
     using System;
     using System.Collections.Generic;
@@ -35,8 +37,6 @@ namespace TreeWatch.iOS
     using TreeWatch.iOS;
 
     using UIKit;
-
-    [assembly: Xamarin.Forms.Dependency(typeof(GeofenceImplementation))]
 
     /// <summary>
     /// Geofence implementation.
@@ -186,9 +186,9 @@ namespace TreeWatch.iOS
         /// </summary>
         /// <returns>The if stayed.</returns>
         /// <param name="regionId">Region identifier.</param>
-        public async Task CheckIfStayed(string regionId)
+        public static async Task CheckIfStayed(string regionId)
         {
-            if (CrossGeofence.Current.GeofenceResults.ContainsKey(regionId) && CrossGeofence.Current.Regions.ContainsKey(regionId) && CrossGeofence.Current.Regions[regionId].NotifyOnStay && CrossGeofence.Current.GeofenceResults[regionId].Transition == GeofenceTransition.Entered && CrossGeofence.Current.Regions[regionId].StayedInThresholdDuration.TotalMilliseconds != 0)
+            if (CrossGeofence.Current.GeofenceResults.ContainsKey(regionId) && CrossGeofence.Current.Regions.ContainsKey(regionId) && CrossGeofence.Current.Regions[regionId].NotifyOnStay && CrossGeofence.Current.GeofenceResults[regionId].Transition == GeofenceTransition.Entered && Math.Abs(CrossGeofence.Current.Regions[regionId].StayedInThresholdDuration.TotalMilliseconds) > float.Epsilon)
             {
                 await Task.Delay((int)CrossGeofence.Current.Regions[regionId].StayedInThresholdDuration.TotalMilliseconds);
 
@@ -419,8 +419,8 @@ namespace TreeWatch.iOS
             lat1 = Math.PI * lat1 / 180.0; 
             lat2 = Math.PI * lat2 / 180.0; 
 
-            double a = Math.Sin(lat / 2) * Math.Sin(lat / 2) + Math.Sin(lon / 2) * Math.Sin(lon / 2) * Math.Cos(lat1) * Math.Cos(lat2);
-            double c = 2 * Math.Asin(Math.Sqrt(a));
+            double a = (Math.Sin(lat / 2) * Math.Sin(lat / 2)) + (Math.Sin(lon / 2) * Math.Sin(lon / 2) * Math.Cos(lat1) * Math.Cos(lat2));
+
             return (R * 2 * Math.Asin(Math.Sqrt(a))) * 1000; // meters
         }
 
@@ -572,7 +572,7 @@ namespace TreeWatch.iOS
             {
                 this.geofenceResults.Add(
                     region.Identifier,
-                    new GeofenceResult()
+                    new GeofenceResult
                     {
                         RegionId = region.Identifier
                     });
@@ -606,7 +606,7 @@ namespace TreeWatch.iOS
             }
 
             // Checks if device has stayed asynchronously
-            await this.CheckIfStayed(region.Identifier);
+            await GeofenceImplementation.CheckIfStayed(region.Identifier);
         }
 
         /// <summary>
@@ -632,7 +632,7 @@ namespace TreeWatch.iOS
             {
                 this.geofenceResults.Add(
                     region.Identifier, 
-                    new GeofenceResult()
+                    new GeofenceResult
                     {
                         RegionId = region.Identifier
                     });
@@ -694,15 +694,10 @@ namespace TreeWatch.iOS
         {
             CLRegion addingRegion;
 
-            if (UIDevice.CurrentDevice.CheckSystemVersion(7, 0))
-            {
-                addingRegion = new CLCircularRegion(new CLLocationCoordinate2D(region.Latitude, region.Longitude), (region.Radius > this.locationManager.MaximumRegionMonitoringDistance) ? this.locationManager.MaximumRegionMonitoringDistance : region.Radius, region.Id);
-            }
-            else
-            {
-                addingRegion = new CLRegion(new CLLocationCoordinate2D(region.Latitude, region.Longitude), (region.Radius > this.locationManager.MaximumRegionMonitoringDistance) ? this.locationManager.MaximumRegionMonitoringDistance : region.Radius, region.Id);
-            }
-
+            addingRegion = UIDevice.CurrentDevice.CheckSystemVersion(7, 0)
+                ? new CLCircularRegion(new CLLocationCoordinate2D(region.Latitude, region.Longitude), (region.Radius > this.locationManager.MaximumRegionMonitoringDistance) ? this.locationManager.MaximumRegionMonitoringDistance : region.Radius, region.Id) 
+                : new CLRegion(new CLLocationCoordinate2D(region.Latitude, region.Longitude), (region.Radius > this.locationManager.MaximumRegionMonitoringDistance) ? this.locationManager.MaximumRegionMonitoringDistance : region.Radius, region.Id);
+            
             addingRegion.NotifyOnEntry = region.NotifyOnEntry || region.NotifyOnStay;
             addingRegion.NotifyOnExit = region.NotifyOnExit;
             this.locationManager.StartMonitoring(addingRegion);
