@@ -290,13 +290,13 @@ namespace TreeWatch.iOS
             {
                 foreach (var region in regions)
                 {
-                    if (!regions.ContainsKey(region.Id))
+                    if (!this.regions.ContainsKey(region.Id))
                     {
-                        regions.Add(region.Id, region);
+                        this.regions.Add(region.Id, region);
                     }
                     else
                     {
-                        regions[region.Id] = region;
+                        this.regions[region.Id] = region;
                     }
 
                     GeofenceStore.SharedInstance.Save(region);
@@ -345,7 +345,7 @@ namespace TreeWatch.iOS
         /// <param name="regionIdentifier">Region to stop monitoring</param>
         public void StopMonitoring(string regionIdentifier)
         {
-            if (GeofenceImplementation.locationManager.IsMonitoringAvailable(typeof(CLRegion)))
+            if (CLLocationManager.IsMonitoringAvailable(typeof(CLRegion)))
             {
                 this.RemoveRegionMonitoring(regionIdentifier);
 
@@ -759,7 +759,7 @@ namespace TreeWatch.iOS
         /// </summary>
         private void RequestAlwaysAuthorization()
         {
-            CLAuthorizationStatus status = GeofenceImplementation.locationManager.Status;
+            CLAuthorizationStatus status = CLLocationManager.Status;
             if (status == CLAuthorizationStatus.AuthorizedWhenInUse || status == CLAuthorizationStatus.Denied)
             {
                 string title = (status == CLAuthorizationStatus.Denied) ? "Location services are off" : "Background location is not enabled";
@@ -772,7 +772,7 @@ namespace TreeWatch.iOS
                     if (buttonArgs.ButtonIndex == 1)
                     {
                         // Send the user to the Settings for this app
-                        NSUrl settingsUrl = new NSUrl(UIApplication.OpenSettingsUrlString);
+                        var settingsUrl = new NSUrl(UIApplication.OpenSettingsUrlString);
                         UIApplication.SharedApplication.OpenUrl(settingsUrl);
                     }
                 };
