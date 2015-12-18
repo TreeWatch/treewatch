@@ -7,3 +7,78 @@
 \subsection{Creating and Displaying HeatMaps}
 
 \subsection{Geofencing}
+
+\newpage
+\begin{tikzpicture}
+	\begin{package}{Forms}
+		\begin{class}[text width=5cm]{GeofenceCircularRegion}{0,0}
+			\attribute{Id : String}
+			\attribute{Latitude : double}
+			\attribute{Longtitude : double}
+			\attribute{Radius : double}
+			\attribute{NotifyOnEntry : bool}
+			\attribute{NotifyOnStay : bool}
+			\attribute{NotifyOnExit : bool}
+		\end{class}
+		
+		\begin{class}[text width=5cm]{GeofenceLocation}{5.5, 0}
+		\attribute{Latitude : double}
+		\attribute{Longtitude : double}
+		\attribute{Date : DateTime}
+		\attribute{Accuracy : double}
+		\end{class}
+		
+		\begin{interface}[text width=5.2cm]{IGeofence}{0,-15}
+			\attribute{Regions : IReadOnlyDictionary<string, GeofenceCircularRegion>}
+			\attribute{GeofenceResults : IReadOnlyDictionary<string, GeofenceResult>}
+			\attribute{IsMonitoring : bool}
+			\attribute{LastKnownLocation : GeofenceLocation}
+			\operation{StartMonitoring(region : GeofenceCircularRegion) : void}
+			\operation{StartMonitoring(regions : IList<GeofenceCircularRegion>) : void}
+			\operation{StopMonitoring(id : string) : void}
+			\operation{StopMonitoring(ids : IList<string>) : void}
+			\operation{StopMonitoringAllRegions() : void}
+		\end{interface}
+		
+		\begin{class}[text width=5cm]{CrossGeofence}{5.5,-7}
+			\attribute{Implementation : IGeofence}
+			\attribute{GeofenceListener : IGeofenceListener}
+			\attribute{IsInitialized : bool}
+			\attribute{Current : IGeofence}
+			
+			\operation{Initialize(GeofencePriority geofencePrioriy, float smallesDisplacement) : void}
+			\operation{CreateGeofence() : IGeofence}
+		\end{class}
+		
+		\begin{interface}[text width=5.2cm]{IGeofenceStore}{11,0}
+			\operation{GetAll() : Dictionary<string, GeofenceCircularReqgion>}
+			\operation{Get(string id) : GeofenceCircularRegion}
+			\operation{Save(GeofenceCircularRegion region) : void}
+			\operation{RemoveAll() : void}
+			\operation{Remove(string id) : void}
+		\end{interface}
+		
+		\begin{abstractclass}[text width=5cm]{BaseGeofenceStore}{11,-7}
+			\implement{IGeofenceStore}		
+			\operation{\#GetFieldKey(string id, string fieldName) : string}
+		\end{abstractclass}
+		
+		\begin{class}[text width=5cm]{CrossGeofenceListener}{0,-7}
+			\operation{OnMonitoringStarted(string region) : void}
+			\operation{OnMonitoringStopped(string region) : void}
+			\operation{OnMonitoringStopped() : void}
+			\operation{OnError(string error) : void}
+			\operation{OnRegionStateChanged( GeofenceResult result) : void}
+		\end{class}
+		
+		\begin{interface}[text width=5.2cm]{IGeofenceListener}{6,-15}
+			\operation{OnMonitoringStarted(id : string) : void}
+			\operation{OnMonitoringStopped() : void}
+			\operation{OnMonitoringStopped(id : string) : void}
+			\operation{OnRegionStateChanged(result : GeofenceResult) : void}
+			\operation{OnError(error: string) : void}
+		\end{interface}
+		
+		
+	\end{package}
+\end{tikzpicture}
