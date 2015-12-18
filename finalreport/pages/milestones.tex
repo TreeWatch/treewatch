@@ -1,0 +1,37 @@
+ \begin{ganttchart}[
+	bar top shift=.0,
+	milestone top shift=.0
+	]{1}{21}
+	\gantttitle{TreeWatch High Level Planning}{21} \\
+	\gantttitlelist{1,...,21}{1} \\
+	\ganttbar{Analysis}{1}{2}
+	\ganttmilestone{}{2}\\
+	\ganttbar{Analysis}{3}{4}\\
+	\ganttmilestone{User Stories}{4} \ganttnewline
+	\ganttmilestone{Personal development plan}{4}\ganttnewline
+	\ganttbar{Design}{5}{6} \ganttnewline
+	\ganttmilestone{Personal competence plan}{5}\ganttnewline
+	\ganttmilestone{Mockup-Design}{6} \ganttnewline
+	\ganttlinkedbar{Implementation}{7}{8}
+	\ganttmilestone{}{8}\ganttnewline
+	\ganttlinkedbar{Implementation}{9}{10}
+	\ganttmilestone{}{10}\ganttnewline
+	\ganttlinkedbar{Implementation}{11}{12}
+	\ganttmilestone{}{12}\ganttnewline
+	\ganttlinkedbar{Implementation}{13}{14}
+	\ganttmilestone{}{14}\ganttnewline
+	\ganttlinkedbar{Implementation}{15}{16}
+	\ganttmilestone{}{16}\ganttnewline
+	\ganttlinkedbar{Implementation}{17}{18}\ganttnewline
+	\ganttmilestone{Functional Prototype}{18} \ganttnewline
+	\ganttlinkedbar{Documentation}{19}{20}\ganttnewline
+	\ganttmilestone{Handover}{20}
+	\ganttlink{elem1}{elem2}
+	\ganttlink{elem2}{elem3}
+	\ganttlink[link mid=.8]{elem3}{elem5}
+	\ganttlink[link mid=.8]{elem5}{elem7}
+	\ganttlink{elem18}{elem19}
+	\ganttlink{elem20}{elem21}
+\end{ganttchart}
+
+As shown in die gantt-chart, every two weeks there is a milestones. These Milestones are the sprint-meetings in which the customer gets to see the progress.  Furthrmore all the deliverables described in the chapter before are also milestones.
