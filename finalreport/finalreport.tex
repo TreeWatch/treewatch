@@ -1,62 +1,119 @@
 \documentclass[12pt]{article}
 \usepackage[english]{babel}
+\usepackage[table,svgnames]{xcolor}
 \usepackage{url}
 \usepackage[utf8x]{inputenc}
 \usepackage{amsmath}
 \usepackage{graphicx}
-\graphicspath{{../img/}}
 \usepackage{parskip}
 \usepackage{fancyhdr}
 \usepackage{vmargin}
 \usepackage{hyperref}
 \usepackage{pgfgantt}
 \usepackage{pgf-umlcd}
+\usepackage{xparse}
+\usepackage{float}
+\usepackage{tabularx}
+\usepackage{titling}
 \usepackage[nogroupskip,toc,acronym]{glossaries}
+\usepackage{fancyhdr}
+ 
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\includegraphics[width=0.2\linewidth]{TreewatchLogo.pdf}}
+\rhead{Finalreport}
+\rfoot{Page \thepage}
+
+\graphicspath{{../img/}}
+
+\renewcommand{\arraystretch}{1.5}
+
+\DeclareDocumentCommand{\newdualentry}{ O{} O{} m m m m } {
+  \newglossaryentry{gls-#3}{name={#5},text={#5\glsadd{#3}},
+    description={#6},#1
+  }
+  \makeglossaries
+  \newacronym[see={[Glossary:]{gls-#3}},#2]{#3}{#4}{#5\glsadd{gls-#3}}
+}
+
+
 \loadglsentries{../glossary.tex}
 
 \setmarginsrb{3 cm}{2.5 cm}{3 cm}{2.5 cm}{1 cm}{1.5 cm}{1 cm}{1.5 cm}
 
-
-
 \makeglossaries
 \begin{document}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Preface of the report
 
-\title{TreeWatch}
-\author{TreeWatch}
+    \pagenumbering{roman} % Roman numerals for page counter
+    
 
+    % Title Page
+    \begin{titlingpage}
+        \begin{center}
+            \begin{minipage}{\linewidth}
+            \centering
+            %University logo
+            \includegraphics[width=0.3\linewidth]{FontysLogo.pdf}
+            \par
+            \vspace{3cm}
+            %Thesis title
+            {\uppercase
+                {\Large Final Report \\ 2015 Sofa GTL \\ TreeWatch Project
+            \par
+            \vspace{3cm}}}
+            \includegraphics[width=0.5\linewidth]{TreewatchLogo.pdf}
+            \par
+            \vspace{2cm}
+            %Author's name
+            {Jan Kerkenhoff\\ 
+	         Martijn Bonajo\\ 
+	         Max van der Linden\\ 
+	         René Karoff\\
+	         Ron Gebauer 
+	         \par}
+            \vspace{2cm}
 
-\maketitle
-\printglossary
+            %Date
+            \today
+            \end{minipage}
+        \end{center}
+    \end{titlingpage}
+    \clearpage
 
- % Title Page
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newpage
-\glsaddall
-\tableofcontents
-\pagebreak
+    \printglossary[type=\acronymtype]
+    \printglossary
+    \pagebreak
+    \listoffigures
+    \addcontentsline{toc}{section}{\listfigurename}
+    \listoftables
+    \addcontentsline{toc}{section}{\listtablename}
+    \include{pages/documentinformation}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \tableofcontents
+    \clearpage
 
-\include{pages/documentinformation}
-\include{pages/introduction}
-\include{pages/projectdefinition}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Main Part of the Report
 
-\include{pages/planning}
+    \pagenumbering{arabic}
+    \include{pages/introduction}
+    \include{pages/projectdefinition}
 
-\include{pages/analysis}
-\include{pages/requirements}
-\include{pages/design}
-\include{pages/implementation}
-\include{pages/qualitymanagement}
-\include{pages/conclusion}
-\include{pages/advice}
-\include{pages/reflection}
-\include{pages/appendix}
+    \include{pages/planning}
 
-\newpage
-\bibliographystyle{plain}
-\bibliography{biblist}
+    \include{pages/analysis}
+    \include{pages/requirements}
+    \include{pages/design}
+    \include{pages/implementation}
+    \include{pages/qualitymanagement}
+    \include{pages/conclusion}
+    \include{pages/advice}
+    \include{pages/reflection}
+    \include{pages/appendix}
+
+    \clearpage
+    \bibliographystyle{plain}
+    \bibliography{biblist}
 
 \end{document}
