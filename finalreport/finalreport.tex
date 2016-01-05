@@ -4,6 +4,7 @@
 \usepackage{url}
 \usepackage[utf8x]{inputenc}
 \usepackage[T1]{fontenc}
+\usepackage{longtable}
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage{parskip}
@@ -24,6 +25,24 @@
 \lhead{\includegraphics[width=0.2\linewidth]{TreewatchLogo.pdf}}
 \rhead{Finalreport}
 \rfoot{Page \thepage}
+
+% alternate row colors for all tables
+\let\oldtable\table
+\let\endoldtable\endtable
+\renewenvironment{table}{\rowcolors{2}{LightSkyBlue}{}\oldtable}{\endoldtable}
+
+\let\oldtabular\tabular
+\let\endoldtabular\endtabular
+\renewenvironment{tabular}{\rowcolors{2}{LightSkyBlue}{}\oldtabular}{\endoldtabular}
+
+\let\oldtabularx\tabularx
+\let\endoldtabularx\endtabularx
+\renewenvironment{tabularx}{\rowcolors{2}{LightSkyBlue}{}\oldtabularx}{\endoldtabularx}
+
+\let\oldlongtable\longtable
+\let\endoldlongtable\endlongtable
+\renewenvironment{longtable}{\rowcolors{2}{LightSkyBlue}{}\oldlongtable} {
+\endoldlongtable}
 
 \graphicspath{{../img/}}
 
@@ -83,6 +102,8 @@
     \end{titlingpage}
     \clearpage
 
+    \include{pages/documentinformation}
+
     \printglossary[type=\acronymtype]
     \printglossary
     \pagebreak
@@ -90,7 +111,6 @@
     \addcontentsline{toc}{section}{\listfigurename}
     \listoftables
     \addcontentsline{toc}{section}{\listtablename}
-    \include{pages/documentinformation}
 
     \tableofcontents
     \clearpage
