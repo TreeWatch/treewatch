@@ -20,7 +20,6 @@ After the map was implemented the next challenge we tackled was showing an overl
 		\centering
 		\includegraphics[width=0.5\textwidth,keepaspectratio=true]{BlockOverlay.png}
 		\caption{Block overlay of field Grotto}\label{blockoverlay}
-
 \end{figure}
 
 As you can see in figure~\ref{blockoverlay} a field consists of a lot individual blocks, the amount defends on the size of the filed but is somewhere in the several hundreds. This created some serious performance issues for the map. The map gets really unresponsive and slow after adding so many \glspl{polygon} to it. To reduce the stress on the map on iOS we added our own \gls{polygon} implementation that could contain many single \glspl{polygon}. This reduced the work needed by the map enormously, since the polygons for one field are drawn in one single draw and not every \gls{polygon} on his own. This made the map usable again but also introduce a delay when the polygons need be shown by the map. But this is the only working workaround for the performance problems. Further performance improvements could only be achieved by moving the map drawing to a server and only getting prerenderered map tiles to display from it.
@@ -44,10 +43,14 @@ As you can see in figure~\ref{heatmap} we implemented the heat map as just a bun
 
 \subsection{Geofencing}
 
+The Geofencing is based on the plugin which can be found at \url{https://github.com/domaven/xamarin-plugins/tree/master/Geofence}. This plugin has most of the functionality that is required in the project, however the plugin is outdated and does't work anymore. \\
+To make the most out of Xamarin most of the work should be done in the Forms application, this way code is reused for both Android and iOS. In the class diagram on the next page you can see what classes are in the Forms application. \\ The IGeofence and IGeofenceStore are interfaces that should be implemented platform specific, because they contain the actual geofences and their platform specific way of working. The IGeofenceStore interface has some methods that can be shared between the platforms, therefor an abstract class BaseGeofenceStore is created that has these methods already implemented.\\
+The CrossGeofence class is responsible for creating the actual platform specific implementation of the IGeofence interface. This is done by using \href{https://developer.xamarin.com/guides/xamarin-forms/dependency-service/}{DependencyService} to get the actual platform specific implementation. \\
+The platform specific code calls the methods in the CrossGeofenceListener class inside the Forms project, this way state changes can be handled in an universal way, instead of platform specific.
+
 \newpage
 \begin{tikzpicture}
-	\begin{package}{Forms}
-		\begin{class}[text width=5cm]{GeofenceCircularRegion}{0,0}
+		\begin{class}[text width=5cm]{GeofenceCircularRegion}{11,-14}
 			\attribute{Id : String}
 			\attribute{Latitude : double}
 			\attribute{Longtitude : double}
@@ -57,26 +60,26 @@ As you can see in figure~\ref{heatmap} we implemented the heat map as just a bun
 			\attribute{NotifyOnExit : bool}
 		\end{class}
 		
-		\begin{class}[text width=5cm]{GeofenceLocation}{5.5, 0}
-		\attribute{Latitude : double}
-		\attribute{Longtitude : double}
-		\attribute{Date : DateTime}
-		\attribute{Accuracy : double}
+		\begin{class}[text width=5cm]{GeofenceLocation}{11, -10}
+			\attribute{Latitude : double}
+			\attribute{Longtitude : double}
+			\attribute{Date : DateTime}
+			\attribute{Accuracy : double}
 		\end{class}
 		
-		\begin{interface}[text width=5.2cm]{IGeofence}{0,-15}
-			\attribute{Regions : IReadOnlyDictionary<string, GeofenceCircularRegion>}
-			\attribute{GeofenceResults : IReadOnlyDictionary<string, GeofenceResult>}
+		\begin{interface}[text width=5.2cm]{IGeofence}{0,0}
+			\attribute{Regions : IReadOnlyDictionary\textless string, GeofenceCircularRegion\textgreater}
+			\attribute{GeofenceResults : IReadOnlyDictionary\textless string, GeofenceResult\textgreater}
 			\attribute{IsMonitoring : bool}
 			\attribute{LastKnownLocation : GeofenceLocation}
 			\operation{StartMonitoring(region : GeofenceCircularRegion) : void}
-			\operation{StartMonitoring(regions : IList<GeofenceCircularRegion>) : void}
+			\operation{StartMonitoring(regions : IList \textless GeofenceCircularRegion\textgreater) : void}
 			\operation{StopMonitoring(id : string) : void}
-			\operation{StopMonitoring(ids : IList<string>) : void}
+			\operation{StopMonitoring(ids : IList\textless string\textgreater) : void}
 			\operation{StopMonitoringAllRegions() : void}
 		\end{interface}
 		
-		\begin{class}[text width=5cm]{CrossGeofence}{5.5,-7}
+		\begin{class}[text width=5cm]{CrossGeofence}{0,-14}	
 			\attribute{Implementation : IGeofence}
 			\attribute{GeofenceListener : IGeofenceListener}
 			\attribute{IsInitialized : bool}
@@ -87,7 +90,7 @@ As you can see in figure~\ref{heatmap} we implemented the heat map as just a bun
 		\end{class}
 		
 		\begin{interface}[text width=5.2cm]{IGeofenceStore}{11,0}
-			\operation{GetAll() : Dictionary<string, GeofenceCircularReqgion>}
+			\operation{GetAll() : Dictionary\textless string, GeofenceCircularReqgion\textgreater}
 			\operation{Get(string id) : GeofenceCircularRegion}
 			\operation{Save(GeofenceCircularRegion region) : void}
 			\operation{RemoveAll() : void}
@@ -99,15 +102,7 @@ As you can see in figure~\ref{heatmap} we implemented the heat map as just a bun
 			\operation{\#GetFieldKey(string id, string fieldName) : string}
 		\end{abstractclass}
 		
-		\begin{class}[text width=5cm]{CrossGeofenceListener}{0,-7}
-			\operation{OnMonitoringStarted(string region) : void}
-			\operation{OnMonitoringStopped(string region) : void}
-			\operation{OnMonitoringStopped() : void}
-			\operation{OnError(string error) : void}
-			\operation{OnRegionStateChanged( GeofenceResult result) : void}
-		\end{class}
-		
-		\begin{interface}[text width=5.2cm]{IGeofenceListener}{6,-15}
+		\begin{interface}[text width=5.2cm]{IGeofenceListener}{5.5,0}
 			\operation{OnMonitoringStarted(id : string) : void}
 			\operation{OnMonitoringStopped() : void}
 			\operation{OnMonitoringStopped(id : string) : void}
@@ -115,6 +110,11 @@ As you can see in figure~\ref{heatmap} we implemented the heat map as just a bun
 			\operation{OnError(error: string) : void}
 		\end{interface}
 		
-		
-	\end{package}
+		\begin{class}[text width=5cm]{CrossGeofenceListener}{5.5,-14}
+			\operation{OnMonitoringStarted(string region) : void}
+			\operation{OnMonitoringStopped(string region) : void}
+			\operation{OnMonitoringStopped() : void}
+			\operation{OnError(string error) : void}
+			\operation{OnRegionStateChanged( GeofenceResult result) : void}
+		\end{class}
 \end{tikzpicture}
