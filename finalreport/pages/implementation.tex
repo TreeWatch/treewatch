@@ -1,10 +1,46 @@
 \section{Implementation}
+This section gives you additional insight on part of the implementation and discusses challenges and problems encountered. Also gives information on the approaches to solve this issues.
 
 \subsection{Displaying a Map inside Xamarin Forms}
+One of the first things that was implemented in the app, after getting the basic structure of the app, was showing a map. The first implementation was really simple and just showed a map, like the default map app on a phone. Afterwards additional functionality was added.
+
+Displaying a map in \gls{XamarinForms} normally is really simple, as you can see on the Xamarin Forms Maps \cite{xamMaps} site, using the \gls{XamarinForms} map component is really simple. Just add a \gls{nuget} package to the project and then display a map with a few lines of code. This is fine if you don't need to extend it, but in our case we wanted to add additional functionality to it.
+
+After determining that something more powerful was needed, different solutions to display the map were considered. Exiting solutions like 
+OsmSharp \cite{osmsharp}, which provided a good looking map based on open street map, were considered. But they were focused on routing and didn't offer any of the features our app needed like adding custom \glspl{overlay} to a map.
+Also there are different solutions available that offer extensive server side rendering of maps containing your own data. A popular solution is Mapbox \cite{mapbox}, but using a server backend for the app was out of scope for the project so a solution was chosen that would work on the device.
+
+The only usable way we found was to implement our own custom map \gls{renderer} on each platform. This \gls{renderer} is overriding he default map \gls{renderer} on each platform and then adds the custom functionality on top of it. This approach also meant that each feature related to the map needed to be implemented two times. Once for android and once for iOS, which mean an increase in development time. This solution worked well until we added extensive data to the map, when performance hits were noticeable.
 
 \subsection{Showing Overlays on the Map}
 
+After the map was implemented the next challenge we tackled was showing an overlay of the fields on the map. A field consist of two different parts, the outer boundary of the field and also many blocks on the field. The blocks represent six rows of Trees of a specific species. But both are represented on the map as polygons, consisting of the points defining the outer boundaries of the field or block. All blocks of the same species should be easily recognizable so they are shown in the same color. 
+
+\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.5\textwidth,keepaspectratio=true]{BlockOverlay.png}
+		\caption{Block overlay of field Grotto}\label{blockoverlay}
+
+\end{figure}
+
+As you can see in figure~\ref{blockoverlay} a field consists of a lot individual blocks, the amount defends on the size of the filed but is somewhere in the several hundreds. This created some serious performance issues for the map. The map gets really unresponsive and slow after adding so many \glspl{polygon} to it. To reduce the stress on the map on iOS we added our own \gls{polygon} implementation that could contain many single \glspl{polygon}. This reduced the work needed by the map enormously, since the polygons for one field are drawn in one single draw and not every \gls{polygon} on his own. This made the map usable again but also introduce a delay when the polygons need be shown by the map. But this is the only working workaround for the performance problems. Further performance improvements could only be achieved by moving the map drawing to a server and only getting prerenderered map tiles to display from it.
+
 \subsection{Creating and Displaying HeatMaps}
+
+\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.5\textwidth,keepaspectratio=true]{HeatMap.png}
+		\caption{Heatmap inside of the iOS app}\label{heatmap}
+
+\end{figure}
+
+Another feature that was implemented for the map was the display of heat maps, these should show data like a soil scan that is not bound to specific blocks but more to specific points on the field. 
+
+The first try of implementing heat maps included displaying an image \glspl{overlay} created from the data and putting that on top of the map. For this approach we found a working Objective C Library called LFHeatMap \cite{LFHeatMaps}. To use it in our project we created a C\# Binding for it. 
+This was really easy to do following the tutorial on the Xamarin site \cite{bindingtut}. But this created heat maps based on single weighted points. Since we only got heat map data from Fleuren that contained of polygons with data, we looked for another solution.
+
+As you can see in figure~\ref{heatmap} we implemented the heat map as just a bunch of polygons. The colors of the polygons were calculated based on their data. The color moves from solid blue for the lowest values to solid red for the highest values. The heat map displayed consists of about 4000 different polygons. The approach therefore is more a proof of concept since the drawing on the map takes several seconds and doesn't even work on android.
+
 
 \subsection{Geofencing}
 
