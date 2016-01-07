@@ -1,5 +1,6 @@
 \documentclass[12pt]{article}
 \usepackage[english]{babel}
+\usepackage[iso,USenglish,cleanlook]{isodate}
 \usepackage[table,svgnames]{xcolor}
 \usepackage{url}
 \usepackage[utf8x]{inputenc}
@@ -27,22 +28,23 @@
 \rfoot{Page \thepage}
 
 % alternate row colors for all tables
+\definecolor{lightGrey}{rgb}{0.95,0.95,0.95}
+
 \let\oldtable\table
 \let\endoldtable\endtable
-\renewenvironment{table}{\rowcolors{2}{LightGreen}{}\oldtable}{\endoldtable}
+\renewenvironment{table}{\rowcolors{2}{lightGrey}{}\oldtable}{\endoldtable}
 
 \let\oldtabular\tabular
 \let\endoldtabular\endtabular
-\renewenvironment{tabular}{\rowcolors{2}{LightGreen}{}\oldtabular}{\endoldtabular}
+\renewenvironment{tabular}{\rowcolors{2}{lightGrey}{}\oldtabular}{\endoldtabular}
 
 \let\oldtabularx\tabularx
 \let\endoldtabularx\endtabularx
-\renewenvironment{tabularx}{\rowcolors{2}{LightGreen}{}\oldtabularx}{\endoldtabularx}
+\renewenvironment{tabularx}{\rowcolors{2}{lightGrey}{}\oldtabularx}{\endoldtabularx}
 
 \let\oldlongtable\longtable
 \let\endoldlongtable\endlongtable
-\renewenvironment{longtable}{\rowcolors{2}{LightGreen}{}\oldlongtable} {
-\endoldlongtable}
+\renewenvironment{longtable}{\rowcolors{2}{lightGrey}{}\oldlongtable} {\endoldlongtable}
 
 \graphicspath{{../img/}}
 
