@@ -3,9 +3,16 @@
 % Packages
 \usepackage[english]{babel}
 \usepackage[english]{isodate}
+\usepackage[table,svgnames]{xcolor}
+\usepackage{url}
 \usepackage[utf8x]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage{url}
+\usepackage{longtable}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\usepackage{vmargin}
 \usepackage{hyperref}
 \usepackage[table,svgnames]{xcolor}
 \usepackage{longtable}
@@ -18,14 +25,10 @@
 \usepackage{pgf-umlcd}
 \usepackage{xparse}
 \usepackage{float}
-\usepackage{fancyhdr}
+
+\usepackage{tabularx}
 \usepackage{titling}
-\usepackage[nogroupskip,toc,acronym]{glossaries}
-\usepackage[authoryear]{natbib}
-
-\usepackage{pdfpages}
-
-
+\usepackage{fancyhdr}
 % Global graphiscspath
 \graphicspath{{../../../img/}}
 
@@ -80,8 +83,6 @@
 		Max van der Linden\\ max.vanderlinden@student.fontys.nl\\ 2209349 \\ \\}
 \end{tabular}
 
-\printglossary[type=\acronymtype]
-\printglossary
 \pagebreak
 
 \tableofcontents
