@@ -7,14 +7,15 @@ At the highest level quality management involves planning, doing, checking, and 
 \begin{table}[htbp]
 	\begin{tabular}{ p{4cm} p{3,5cm} p{6,5cm} }
 		\textbf{Name} & \textbf{Role} & \textbf{Quality Responsibility} \\ \hline
-		Max van der Linden & Project Manager & Project Planning, External communication, Auditing \\ 
-		Martijn Bonajo & Configuration Manager & Configuration Plan, Infrastructure, Approve Packages and Pushes to Master, Auditing \\ 
-		Ron Gebauer & Scrum Master & Scrum planning, Auditing \\ 
-		Rene Karoff & Quality Manager & Quality Management Plan, Ensure use of quality guidelines, Auditing \\ 
-		Jan Kerkenhoff & Main Engineer & Main Code-Master, Auditing \\
+		Max van der Linden & Project Manager & External communication, Auditing \\
+		Martijn Bonajo & Configuration Manager & Infrastructure, source files, Software engineering documentation, auditing \\
+		Ron Gebauer & Scrum Master & Scrum planning, auditing \\
+		Rene Karoff & Quality Manager & Ensure use of quality guidelines, auditing \\
+		Jan Kerkenhoff & Main Engineer & Main Code Master, auditing \\
 	\end{tabular}
 	\caption{Group roles\label{tab:GroupRoles}}
 \end{table}
+
 \subsection{Quality Planning}
 Since this project is about programming a mobile business \gls{app}, it is highly important that the system has a minimum of bugs/errors. A good documentation is necessary too, not only because this \gls{app} will be developed by another SoFa group after our semester is over, but the customer should understand the system which is developed by us.
 \subsubsection{Define Project Quality}
@@ -26,23 +27,15 @@ Furthermore the GUI was tested using the Xamarin Testcloud which was included in
 
 In the following table it is described who reviewed which document and with what rank it was approved.
 \begin{table}[htbp]
-	\begin{tabularx}{\textwidth}{X X X X X X}
+	\begin{tabular}{ p{\textwidth} p{\textwidth} p{\textwidth} p{\textwidth} p{\textwidth} p{\textwidth} }
 		\textbf{Document name} & \textbf{Author} & \textbf{Reviewer 1} & \textbf{Rank 1} & \textbf{Reviewer 2} & \textbf{Rank 2}\\ \hline
 		User Stories & Max van der Linden & René Karoff & ++ & Martijn Bonajo & + \\
-evelopment plan & \multicolumn{5}{l}{Done individually by each student} \\
-		Personal competence plan & \multicolumn{5}{l} {Done individually by each student} \\
+		Personal development plan
+		Personal competence plan
 		Mockup Design & Group work & René Karoff & ++ & Max van der Linden & ++ \\
-		Functional Prototype & \multicolumn{5}{l}{Every implemented feature was reviewed by the QM (See Table XX)}\\
-		Handover & \multicolumn{5}{l}{The whole group checked the whole document}\\
-	\end{tabularx}
-	\caption{Document reviews\label{tab:DocumentReviews}}
-\end{table}
-
-\begin{table}[htbp]
-	\begin{tabularx}{\textwidth}{X X X}
-		\textbf{User story} & \textbf{Implemented by} & \textbf{Reviewed by}
-	\end{tabularx}
-	\caption{Implemented User story reviews}
+		Functional Prototype &
+		Handover
+	\end{tabular}
 \end{table}
 
 The code of the \gls{app} will be tested. Therefore it is a goal to get at least 90\% code coverage, better 100\%. Each evaluation criterion of the written documents will be ranked from “--“ to “++” (“--“ too bad – “++” excellent).

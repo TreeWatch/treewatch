@@ -1,0 +1,129 @@
+\documentclass[12pt]{report}
+%\documentclass[12pt]{article}
+
+% Packages
+\usepackage[english]{babel}
+\usepackage[english]{isodate}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage[table,svgnames]{xcolor}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{parskip}
+\usepackage{vmargin}
+\usepackage{pgfgantt}
+\usepackage{pgf-umlcd}
+\usepackage{xparse}
+\usepackage{float}
+\usepackage{fancyhdr}
+\usepackage{titling}
+\usepackage[nogroupskip,toc,acronym]{glossaries}
+\usepackage[authoryear]{natbib}
+
+\usepackage{pdfpages}
+
+
+% Custom commands
+
+\newcommand{\addPart}[1]
+{
+  \clearpage
+  \setlength{\voffset}{0cm}
+  \setlength{\hoffset}{0cm}
+
+  \includepdf[pages=-]{#1}
+
+  \setmarginsrb{3 cm}{2.5 cm}{3 cm}{2.5 cm}{1 cm}{1.5 cm}{1 cm}{1.5 cm}
+}
+
+
+% Global graphiscspath
+\graphicspath{{../img/}}
+
+% Styling changes
+
+%% Better margins
+\setmarginsrb{3 cm}{2.5 cm}{3 cm}{2.5 cm}{1 cm}{1.5 cm}{1 cm}{1.5 cm}
+
+%% Header and Footer
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\includegraphics[width=0.2\linewidth]{TreewatchLogo.pdf}}
+\rhead{projectdossier}
+\rfoot{Page \thepage}
+
+\begin{document}
+
+% TilePage
+
+  \begin{titlingpage}
+      \begin{center}
+          \begin{minipage}{\linewidth}
+            \centering
+            % University logo
+            \includegraphics[width=0.3\linewidth]{FontysLogo.pdf}
+            \par
+            \vspace{3cm}
+            % Title
+            {
+            \uppercase
+              {
+              \Large Project Dossier \\ 2015 Sofa GTL \\ TreeWatch Project
+              \par
+              \vspace{3cm}
+              }
+            }
+              \includegraphics[width=0.5\linewidth]{TreewatchLogo.pdf}
+              \par
+              \vspace{2cm}
+              % Author's names
+              {
+              Jan Kerkenhoff\\
+              Martijn Bonajo\\
+              Max van der Linden\\
+              René Karoff\\
+              Ron Gebauer
+              \par
+              }
+              \vspace{2cm}
+
+              %Date
+              \today
+            \end{minipage}
+          \end{center}
+        \end{titlingpage}
+        \clearpage
+
+
+% Main Document
+
+  \tableofcontents
+
+  \chapter{Configuration plan}
+
+  \chapter{Corporate identitiy}
+
+  \chapter{Class diagramm}
+
+  \chapter{Entity relationshipdiagramm}
+
+  \chapter{Native vs hybrid}
+  \addPart{parts/designdocuments/nativevshybrid.pdf}
+
+  \chapter{Finalreport}
+
+  \addPart{parts/finalreport/finalreport.pdf}
+
+  \chapter{Meetings}
+
+  \chapter{Minutes}
+
+  \chapter{Quality management plan}
+
+  \chapter{Scrum}
+
+\end{document}
