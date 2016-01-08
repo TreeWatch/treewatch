@@ -102,13 +102,15 @@
 % Main Document
 
   \tableofcontents
-  
+
   \chapter{Project plan}
   \addPart{parts/ProjectPlan.pdf}
 
   \chapter{Configuration plan}
+  \addPart{parts/configurationplan/configurationplan.pdf}
 
   \chapter{Corporate identitiy}
+  \addPart{parts/corporateidentity/corporateidentity.pdf}
 
   \chapter{Class diagramm}
   \addPart{parts/designdocuments/classdiagramm.pdf}
@@ -122,6 +124,7 @@
   \addPart{parts/finalreport/finalreport.pdf}
 
   \chapter{Meetings}
+  \addPart{parts/meetings/meetings.pdf}
 
   \chapter{Minutes}
   \addPart{parts/meetings/minutes.pdf}
@@ -129,5 +132,15 @@
   \chapter{Quality management plan}
 
   \chapter{Scrum}
+
+  \chapter{Final presentation}
+
+  \clearpage
+  \setlength{\voffset}{0cm}
+  \setlength{\hoffset}{0cm}
+
+  \includepdf[pages=-,landscape=true]{parts/SoFaPresentation.pdf}
+
+  \setmarginsrb{3 cm}{2.5 cm}{3 cm}{2.5 cm}{1 cm}{1.5 cm}{1 cm}{1.5 cm}
 
 \end{document}
