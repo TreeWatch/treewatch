@@ -1,22 +1,45 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using CoreGraphics;
-using CoreLocation;
-using MapKit;
-using ObjCRuntime;
+﻿// <copyright file="FieldMapRenderer.cs" company="TreeWatch">
+// Copyright © 2015 TreeWatch
+// </copyright>
+#region Copyright
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+#endregion
 using TreeWatch;
 using TreeWatch.iOS;
-using UIKit;
 using Xamarin.Forms;
-using Xamarin.Forms.Maps.iOS;
-using Xamarin.Forms.Platform.iOS;
 
 [assembly: ExportRenderer(typeof(FieldMap), typeof(FieldMapRenderer))]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("StyleCop.CSharp.NamingRules", "SA1300:ElementMustBeginWithUpperCaseLetter", MessageId = "Ctl", Scope = "namespace", Target = "Assembly name", Justification = "Auto generated name")]
 
 // Analysis disable once InconsistentNaming
 namespace TreeWatch.iOS
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using CoreGraphics;
+    using CoreLocation;
+    using MapKit;
+    using ObjCRuntime;
+    using UIKit;
+    using Xamarin.Forms.Maps.iOS;
+    using Xamarin.Forms.Platform.iOS;
+
     /// <summary>
     /// iOS specific MapRender
     /// </summary>
@@ -65,10 +88,10 @@ namespace TreeWatch.iOS
         }
 
         /// <summary>
-        /// Converts the coordinates from Postion to CLLocationCoordinate2D.
+        /// Converts the coordinates.
         /// </summary>
         /// <returns>The coordinates.</returns>
-        /// <param name="Coordinates">Coordinates to convert.</param>
+        /// <param name="coordinates">Coordinates of a position.</param>
         public static CLLocationCoordinate2D[] ConvertCoordinates(List<Position> coordinates)
         {
             var points = new CLLocationCoordinate2D[coordinates.Count];
@@ -80,26 +103,6 @@ namespace TreeWatch.iOS
             }
 
             return points;
-        }
-
-        /// <summary>
-        /// Calculates the zoomlevel.
-        /// </summary>
-        /// <returns>The level.</returns>
-        /// <param name="mapView">Map view.</param>
-        private static double ZoomLevel(MKMapView mapView)
-        {
-            var longitudeDelta = mapView.Region.Span.LongitudeDelta;
-            var mapWidthInPixels = mapView.Bounds.Size.Width;
-
-            double zoomScale = longitudeDelta * MercatorRadius * Math.PI / (180.0 * mapWidthInPixels);
-            double zoomLevel = MaxGoogleLevels - Math.Log(zoomScale, 2.0);
-            if (zoomLevel < 0)
-            {
-                zoomLevel = 0;
-            }
-
-            return zoomLevel;
         }
 
         /// <summary>
@@ -175,6 +178,26 @@ namespace TreeWatch.iOS
             }
         }
 
+        /// <summary>
+        /// Calculates the zoomlevel.
+        /// </summary>
+        /// <returns>The level.</returns>
+        /// <param name="mapView">Map view.</param>
+        private static double ZoomLevel(MKMapView mapView)
+        {
+            var longitudeDelta = mapView.Region.Span.LongitudeDelta;
+            var mapWidthInPixels = mapView.Bounds.Size.Width;
+
+            double zoomScale = longitudeDelta * MercatorRadius * Math.PI / (180.0 * mapWidthInPixels);
+            double zoomLevel = MaxGoogleLevels - Math.Log(zoomScale, 2.0);
+            if (zoomLevel < 0)
+            {
+                zoomLevel = 0;
+            }
+
+            return zoomLevel;
+        }
+
         /* TODO Readd LFHeatMap project first
          * Found at https://github.com/TreeWatch/LFHeatMaps
          * Code:
@@ -212,14 +235,13 @@ namespace TreeWatch.iOS
 
                 return polygonRenderer;
             }
-            else if (o is MultiPolygon)
+
+            if (o is MultiPolygon)
             {
                 return new MultiPolygonView(o);
             }
-            else
-            {
-                return null;
-            }
+
+            return null;
         }
 
         /// <summary>
@@ -325,7 +347,5 @@ namespace TreeWatch.iOS
 
             FieldHelper.Instance.MapTappedEvent(new Position(touchCoordinates.Latitude, touchCoordinates.Longitude), ZoomLevel(this.mapView));
         }
-
-
     }
 }

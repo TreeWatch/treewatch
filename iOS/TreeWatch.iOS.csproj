@@ -127,7 +127,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Geofence\GeofenceImplementation.cs" />
     <Compile Include="Geofence\GeofenceStore.cs" />
@@ -137,6 +136,7 @@
     <Compile Include="Map\MultiPolygonView.cs" />
     <Compile Include="Map\UIHeatMapView.cs" />
     <Compile Include="Map\ColorPolygon.cs" />
+    <Compile Include="Application.cs" />
   </ItemGroup>
   <ItemGroup>
     <ITunesArtwork Include="iTunesArtwork" />

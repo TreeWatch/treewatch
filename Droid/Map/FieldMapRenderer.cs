@@ -1,78 +1,158 @@
-using System;
-using System.Collections.Generic;
-using Android.Gms.Maps;
-using Android.Gms.Maps.Model;
+// <copyright file="FieldMapRenderer.cs" company="TreeWatch">
+// Copyright © 2015 TreeWatch
+// </copyright>
+#region Copyright
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+#endregion
 using TreeWatch;
 using TreeWatch.Droid;
 using Xamarin.Forms;
-using Xamarin.Forms.Maps.Android;
-using Xamarin.Forms.Platform.Android;
 
 [assembly: ExportRenderer(typeof(FieldMap), typeof(FieldMapRenderer))]
+
 namespace TreeWatch.Droid
 {
+    using System;
+    using System.Collections.Generic;
+    using Android.Gms.Maps;
+    using Android.Gms.Maps.Model;
+    using Xamarin.Forms.Maps.Android;
+    using Xamarin.Forms.Platform.Android;
+
+    /// <summary>
+    /// Field map renderer.
+    /// </summary>
     public class FieldMapRenderer : MapRenderer, IOnMapReadyCallback
     {
-        MapView mapView;
+        /// <summary>
+        /// The map view.
+        /// </summary>
+        private MapView mapView;
 
-        FieldMap myMap;
+        /// <summary>
+        /// My map.
+        /// </summary>
+        private FieldMap myMap;
 
-        FieldHelper fieldHelper;
+        /// <summary>
+        /// The field helper.
+        /// </summary>
+        private FieldHelper fieldHelper;
 
-        new public GoogleMap Map { get; private set; }
-
-        public event EventHandler MapReady;
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TreeWatch.Droid.FieldMapRenderer"/> class.
+        /// </summary>
         public FieldMapRenderer()
         {
-            fieldHelper = FieldHelper.Instance;
-            fieldHelper.FieldSelected += FieldSelected;
+            this.fieldHelper = FieldHelper.Instance;
+            this.fieldHelper.FieldSelected += this.FieldSelected;
         }
 
+        /// <summary>
+        /// Occurs when map ready.
+        /// </summary>
+        public event EventHandler MapReady;
+
+        /// <summary>
+        /// Gets the map.
+        /// </summary>
+        /// <value>The map.</value>
+        public new GoogleMap Map
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// Raises the map ready event.
+        /// </summary>
+        /// <param name="googleMap">Google map.</param>
+        public void OnMapReady(GoogleMap googleMap)
+        {
+            this.Map = googleMap;
+            this.AddFields();
+            this.Map.MapClick += this.MapClicked;
+            this.Map.MyLocationEnabled = true;
+            this.Map.UiSettings.MyLocationButtonEnabled = true;
+            this.Map.MyLocationChange += this.SetUserPositionOnce;
+            var handler = this.MapReady;
+            if (handler != null)
+            {
+                handler(this, EventArgs.Empty);
+            }
+        }
+
+        /// <summary>
+        /// Fields the selected.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">E event.</param>
+        public void FieldSelected(object sender, FieldSelectedEventArgs e)
+        {
+            if (this.Map != null)
+            {
+                var builder = new LatLngBounds.Builder();
+                var whc = GeoHelper.CalculateBoundingBox(e.Field.BoundingCoordinates);
+                double width = whc.Width * 0.95;
+                double height = whc.Height * 0.59;
+                builder.Include(new LatLng(whc.Center.Latitude - width, whc.Center.Longitude - height));
+                builder.Include(new LatLng(whc.Center.Latitude + width, whc.Center.Longitude + height));
+                var bounds = builder.Build();
+                this.Map.MoveCamera(CameraUpdateFactory.NewLatLngBounds(bounds, 0));
+            }
+        }
+
+        /// <summary>
+        /// Raises the element changed event.
+        /// </summary>
+        /// <param name="e">E event.</param>
         protected override void OnElementChanged(ElementChangedEventArgs<View> e)
         {
             base.OnElementChanged(e);
 
             if (e.OldElement == null)
             {
+                this.mapView = Control as MapView;
+                this.mapView.GetMapAsync(this);
 
-                mapView = Control as MapView;
-                mapView.GetMapAsync(this);
-
-                myMap = e.NewElement as FieldMap;
+                this.myMap = e.NewElement as FieldMap;
             }
         }
 
-        void AddFields()
+        /// <summary>
+        /// Sets the user position once.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">E event.</param>
+        protected void SetUserPositionOnce(object sender, GoogleMap.MyLocationChangeEventArgs e)
         {
-            foreach (var field in myMap.Fields)
-            {
-                var connection = new TreeWatchDatabase();
-                var query = new DBQuery<Field>(connection);
-                query.GetChildren(field);
-                if (field.Blocks.Count != 0)
-                {
-                    foreach (var block in field.Blocks)
-                    {
-                        if (block.BoundingCoordinates.Count != 0 && block.BoundingCoordinates.Count >= 3)
-                        {
-                            Map.AddPolygon(GetPolygon(FieldMapRenderer.ConvertCoordinates(block.BoundingCoordinates),
-                                    (block.TreeType.ColorProp).ToAndroid()));
-                        }
-                    }
-                }
-
-                if (field.BoundingCoordinates.Count != 0 && field.BoundingCoordinates.Count >= 3)
-                {
-                    Map.AddPolygon(GetPolygon(FieldMapRenderer.ConvertCoordinates(field.BoundingCoordinates),
-                            myMap.OverLayColor.ToAndroid(), myMap.BoundaryColor.ToAndroid()));
-                }
-
-
-            }
+            this.Map.MyLocationChange -= this.SetUserPositionOnce;
+            var latlng = new LatLng(e.Location.Latitude, e.Location.Longitude);
+            this.Map.MoveCamera(CameraUpdateFactory.NewLatLng(latlng));
         }
-            
-        static PolygonOptions GetPolygon(Java.Lang.IIterable coordinates, Android.Graphics.Color color)
+
+        /// <summary>
+        /// Gets the polygon.
+        /// </summary>
+        /// <returns>The polygon.</returns>
+        /// <param name="coordinates">Coordinates iterable.</param>
+        /// <param name="color">Android Color.</param>
+        private static PolygonOptions GetPolygon(Java.Lang.IIterable coordinates, Android.Graphics.Color color)
         {
             var polygonOptions = new PolygonOptions();
             polygonOptions.InvokeFillColor(color);
@@ -83,53 +163,62 @@ namespace TreeWatch.Droid
             return polygonOptions;
         }
 
-        static PolygonOptions GetPolygon(Java.Lang.IIterable cordinates, Android.Graphics.Color fillColor, Android.Graphics.Color boundaryColor)
+        /// <summary>
+        /// Gets the polygon.
+        /// </summary>
+        /// <returns>The polygon.</returns>
+        /// <param name="coordinates">Cordinates iterable.</param>
+        /// <param name="fillColor">Fill color.</param>
+        /// <param name="boundaryColor">Boundary color.</param>
+        private static PolygonOptions GetPolygon(Java.Lang.IIterable coordinates, Android.Graphics.Color fillColor, Android.Graphics.Color boundaryColor)
         {
             var polygonOptions = new PolygonOptions();
             polygonOptions.InvokeFillColor(fillColor);
             polygonOptions.InvokeStrokeWidth(4);
             polygonOptions.InvokeStrokeColor(boundaryColor);
-            polygonOptions.AddAll(cordinates);
+            polygonOptions.AddAll(coordinates);
 
             return polygonOptions;
         }
 
-        static Java.Util.ArrayList ConvertCoordinates(List<Position> coordinates)
+        /// <summary>
+        /// Converts the coordinates.
+        /// </summary>
+        /// <returns>The coordinates.</returns>
+        /// <param name="coordinates">Coordinates list.</param>
+        private static Java.Util.ArrayList ConvertCoordinates(List<Position> coordinates)
         {
-            var cords = new Java.Util.ArrayList();
+            var coords = new Java.Util.ArrayList();
             foreach (var pos in coordinates)
             {
-                cords.Add(new LatLng(pos.Latitude, pos.Longitude));
-
+                coords.Add(new LatLng(pos.Latitude, pos.Longitude));
             }
-            return cords;
+
+            return coords;
         }
 
-        public void OnMapReady(GoogleMap googleMap)
+        /// <summary>
+        /// Markers the clicked.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">E event.</param>
+        private static void MarkerClicked(object sender, GoogleMap.MarkerClickEventArgs e)
         {
-            Map = googleMap;
-            AddFields();
-            Map.MapClick += MapClicked;
-            Map.MyLocationEnabled = true;
-            Map.UiSettings.MyLocationButtonEnabled = true;
-            Map.MyLocationChange += SetUserPositionOnce;
-            var handler = MapReady;
-            if (handler != null)
-                handler(this, EventArgs.Empty);
+            Android.Util.Log.Verbose("Sender", sender.ToString());
+            e.Marker.ShowInfoWindow();
         }
 
-        protected void SetUserPositionOnce(object sender, GoogleMap.MyLocationChangeEventArgs e)
+        /// <summary>
+        /// Infos the window clicked.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">E event.</param>
+        private void InfoWindowClicked(object sender, GoogleMap.InfoWindowClickEventArgs e)
         {
-            Map.MyLocationChange -= SetUserPositionOnce;
-            var latlng = new LatLng(e.Location.Latitude, e.Location.Longitude);
-            Map.MoveCamera(CameraUpdateFactory.NewLatLng(latlng));
-        }
-
-        void InfoWindowClicked(object sender, GoogleMap.InfoWindowClickEventArgs e)
-        {
+            Android.Util.Log.Verbose("Sender", sender.ToString());
             Marker marker = e.Marker;
             Field field = null;
-            foreach (Field f in myMap.Fields)
+            foreach (Field f in this.myMap.Fields)
             {
                 if (f.Name.Equals(e.Marker.Title))
                 {
@@ -137,6 +226,7 @@ namespace TreeWatch.Droid
                     break;
                 }
             }
+
             if (field != null)
             {
                 var navigationPage = (NavigationPage)Application.Current.MainPage;
@@ -145,31 +235,47 @@ namespace TreeWatch.Droid
             }
         }
 
-        void MapClicked(Object sender, GoogleMap.MapClickEventArgs e)
+        /// <summary>
+        /// Adds the fields.
+        /// </summary>
+        private void AddFields()
         {
-            FieldHelper.Instance.MapTappedEvent(new Position(e.Point.Latitude, e.Point.Longitude), Map.CameraPosition.Zoom);
-        }
-
-        static void MarkerClicked(object sender, GoogleMap.MarkerClickEventArgs e)
-        {
-            e.Marker.ShowInfoWindow();
-        }
-
-        public void FieldSelected(object sender, FieldSelectedEventArgs e)
-        {
-            if (Map != null)
+            foreach (var field in this.myMap.Fields)
             {
-                var builder = new LatLngBounds.Builder();
-                var whc = GeoHelper.CalculateBoundingBox(e.Field.BoundingCoordinates);
-                double width = whc.Width * 0.95;
-                double height = whc.Height * 0.59;
-                builder.Include(new LatLng(whc.Center.Latitude - width, whc.Center.Longitude - height));
-                builder.Include(new LatLng(whc.Center.Latitude + width, whc.Center.Longitude + height));
-                var bounds = builder.Build();
-                Map.MoveCamera(CameraUpdateFactory.NewLatLngBounds(bounds, 0));
+                var connection = new TreeWatchDatabase();
+                var query = new DBQuery<Field>(connection);
+                query.GetChildren(field);
+                if (field.Blocks.Count != 0)
+                {
+                    foreach (var block in field.Blocks)
+                    {
+                        if (block.BoundingCoordinates.Count != 0 && block.BoundingCoordinates.Count >= 3)
+                        {
+                            this.Map.AddPolygon(GetPolygon(
+                                    FieldMapRenderer.ConvertCoordinates(block.BoundingCoordinates),
+                                    block.TreeType.ColorProp.ToAndroid()));
+                        }
+                    }
+                }
+
+                if (field.BoundingCoordinates.Count != 0 && field.BoundingCoordinates.Count >= 3)
+                {
+                    this.Map.AddPolygon(GetPolygon(
+                            FieldMapRenderer.ConvertCoordinates(field.BoundingCoordinates),
+                            this.myMap.OverLayColor.ToAndroid(),
+                            this.myMap.BoundaryColor.ToAndroid()));
+                }
             }
         }
 
+        /// <summary>
+        /// Maps the clicked.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">E event.</param>
+        private void MapClicked(object sender, GoogleMap.MapClickEventArgs e)
+        {
+            FieldHelper.Instance.MapTappedEvent(new Position(e.Point.Latitude, e.Point.Longitude), this.Map.CameraPosition.Zoom);
+        }
     }
-
 }
