@@ -21,9 +21,7 @@
 \usepackage[nogroupskip,toc,acronym]{glossaries}
 \usepackage{fancyhdr}
 \usepackage[authoryear]{natbib}
-\bibliographystyle{fontysIEEtranN.bst}
-
-
+\bibliographystyle{fontysIEEtranN}
 
 \pagestyle{fancy}
 \fancyhf{}
@@ -50,7 +48,7 @@
 \let\endoldlongtable\endlongtable
 \renewenvironment{longtable}{\rowcolors{2}{lightGrey}{}\oldlongtable} {\endoldlongtable}
 
-\graphicspath{{../img/finalreport/}}
+\graphicspath{{../../../img/finalreport/}}
 
 \renewcommand{\arraystretch}{1.5}
 
@@ -63,7 +61,7 @@
 }
 
 
-\loadglsentries{../glossary.tex}
+\loadglsentries{../../glossary.tex}
 
 \setmarginsrb{3 cm}{2.5 cm}{3 cm}{2.5 cm}{1 cm}{1.5 cm}{1 cm}{1.5 cm}
 
