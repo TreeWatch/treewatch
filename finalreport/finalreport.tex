@@ -20,6 +20,10 @@
 \usepackage{titling}
 \usepackage[nogroupskip,toc,acronym]{glossaries}
 \usepackage{fancyhdr}
+\usepackage[authoryear]{natbib}
+\bibliographystyle{fontysIEEtranN.bst}
+
+
 
 \pagestyle{fancy}
 \fancyhf{}
@@ -46,7 +50,7 @@
 \let\endoldlongtable\endlongtable
 \renewenvironment{longtable}{\rowcolors{2}{lightGrey}{}\oldlongtable} {\endoldlongtable}
 
-\graphicspath{{../img/}}
+\graphicspath{{../img/finalreport/}}
 
 \renewcommand{\arraystretch}{1.5}
 
@@ -138,7 +142,7 @@
     %\include{pages/appendix}
 
     \clearpage
-    \bibliographystyle{plain}
+
     \bibliography{biblist}
 
 \end{document}

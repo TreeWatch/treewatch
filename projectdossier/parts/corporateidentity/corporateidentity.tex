@@ -1,0 +1,110 @@
+\documentclass[12pt]{article}
+
+% Packages
+\usepackage[english]{babel}
+\usepackage[english]{isodate}
+\usepackage[table,svgnames]{xcolor}
+\usepackage{url}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{longtable}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\usepackage{vmargin}
+\usepackage{hyperref}
+\usepackage[table,svgnames]{xcolor}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{parskip}
+\usepackage{vmargin}
+\usepackage{pgfgantt}
+\usepackage{pgf-umlcd}
+\usepackage{xparse}
+\usepackage{float}
+
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{fancyhdr}
+% Global graphiscspath
+\graphicspath{{../../../img/}}
+
+% Styling changes
+
+%% Better margins
+\setmarginsrb{3 cm}{2.5 cm}{3 cm}{2.5 cm}{1 cm}{1.5 cm}{1 cm}{1.5 cm}
+
+\begin{document}
+	
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Preface of the report
+	
+	% Title Page
+	\begin{titlingpage}
+		\begin{center}
+			\begin{minipage}{\linewidth}
+				\centering
+				%University logo
+				\includegraphics[width=0.3\linewidth]{FontysLogo.pdf}
+				\par
+				\vspace{3cm}
+				%Thesis title
+				{\uppercase
+					{\Large Corporate Identity \\ 2015 Sofa GTL \\ TreeWatch Project
+						\par
+						\vspace{3cm}}}
+				\includegraphics[width=0.5\linewidth]{TreewatchLogo.pdf}
+				\par
+				\vspace{2cm}
+				%Author's name
+				{ Max van der Linden
+					\par}
+				\vspace{2cm}
+				
+				%Date
+				\today
+			\end{minipage}
+		\end{center}
+	\end{titlingpage}
+	\clearpage
+	
+	\section*{Document information}
+	\begin{tabular}{ll}
+		\textbf{Document name:} & Corporate Identity\\
+		\textbf{Document owner:} & Max van der Linden \\
+		\textbf{Company/Organisation:} & Fleuren Baarlo \\
+		\textbf{Contact person:} & Max van der Linden, Group leader \\
+		\textbf{Date:} & \today \\
+		\textbf{Place:} & Fontys University of Applied Science Venlo \\
+		\textbf{Authors:} & \parbox[t]{5cm}{
+			Max van der Linden\\ max.vanderlinden@student.fontys.nl\\ 2209349 \\ \\}
+	\end{tabular}
+	
+	\pagebreak
+	
+	\tableofcontents
+	\clearpage
+\section{Corporate Identity}
+As part of the SoFa it is important to act as a professional group. This acting professional also means that the group should feel as a company working for a real customer, making the project as realistic as possible. In order to achieve this a corporate identity needed to be created. The GTL SoFa project group decided to call itself TreeWatch since the app provides Fleuren with the ability to watch over their trees. The name of the group is also used as the app name. This meant that logos and a design guideline had to be created. The logo, app icon and home style can be found in the next images. When continuing the project it is recommended to keep using the home style in reporting and emailing.
+\subsection{Logo's}
+\subsubsection{Company Logo}
+\includegraphics[width=\textwidth]{TreewatchLogo.pdf}
+\subsubsection{App Logo}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.25\textwidth]{TreewatchAppLogo.pdf}
+\end{figure}
+\clearpage
+\subsection{Design Guidelines}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[height=0.93\textheight]{IdentityForm.pdf}
+\end{figure}
+
+
+
+
+\end{document}

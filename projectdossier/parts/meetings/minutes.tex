@@ -1,0 +1,361 @@
+\documentclass[12pt]{article}
+
+% Packages
+\usepackage[english]{babel}
+\usepackage[english]{isodate}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage[table,svgnames]{xcolor}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{parskip}
+\usepackage{vmargin}
+\usepackage{pgfgantt}
+\usepackage{pgf-umlcd}
+\usepackage{xparse}
+\usepackage{float}
+\usepackage{fancyhdr}
+\usepackage{titling}
+\usepackage[nogroupskip,toc,acronym]{glossaries}
+\usepackage[authoryear]{natbib}
+
+\usepackage{pdfpages}
+
+
+% Global graphiscspath
+\graphicspath{{../../../img/}}
+
+% Styling changes
+
+%% Better margins
+\setmarginsrb{3 cm}{2.5 cm}{3 cm}{2.5 cm}{1 cm}{1.5 cm}{1 cm}{1.5 cm}
+
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Preface of the report
+
+% Title Page
+\begin{titlingpage}
+	\begin{center}
+		\begin{minipage}{\linewidth}
+			\centering
+			%University logo
+			\includegraphics[width=0.3\linewidth]{FontysLogo.pdf}
+			\par
+			\vspace{3cm}
+			%Thesis title
+			{\uppercase
+				{\Large Minutes \\ 2015 Sofa GTL \\ TreeWatch Project
+					\par
+					\vspace{3cm}}}
+			\includegraphics[width=0.5\linewidth]{TreewatchLogo.pdf}
+			\par
+			\vspace{2cm}
+			%Author's name
+			{ Max van der Linden
+				\par}
+			\vspace{2cm}
+			
+			%Date
+			\today
+		\end{minipage}
+	\end{center}
+\end{titlingpage}
+\clearpage
+
+\section*{Document information}
+\begin{tabular}{ll}
+	\textbf{Document name:} & Minutes\\
+	\textbf{Document owner:} & Max van der Linden \\
+	\textbf{Company/Organisation:} & Fleuren Baarlo \\
+	\textbf{Contact person:} & Max van der Linden, Group leader \\
+	\textbf{Date:} & \today \\
+	\textbf{Place:} & Fontys University of Applied Science Venlo \\
+	\textbf{Authors:} & \parbox[t]{5cm}{
+		Max van der Linden\\ max.vanderlinden@student.fontys.nl\\ 2209349 \\ \\}
+\end{tabular}
+
+\printglossary[type=\acronymtype]
+\printglossary
+\pagebreak
+
+\tableofcontents
+\clearpage
+
+
+\newcommand{\printdatetitle}[1]{%
+	\texorpdfstring{\printdate{#1}}{#1}%
+}
+
+\section{Minutes SoFa (\printdatetitle{01.09.2015})}
+\begin{tabular}{ll}
+	\textbf{Date:} & \printdate{01.09.2015}\\
+	\textbf{Present:} & Ron, René, Jan, Martijn, Max \\
+	\textbf{Absent:} & - \\
+	\textbf{Late:} & - \\
+\end{tabular}
+
+\textbf{Decisions made:} \\
+Defined some rules and roles and set up communication network
+Everyone agreed to the rules and roles
+
+\textbf{ToDo:} \\
+Write down personal goals \\
+Argumentation for mobile or web app \\
+Create overall planning \\
+Create and send questions to Yannick \\
+Define rules and roles \\
+Create group website \\
+Project plan \\
+Configuration management plan \\
+Quality management plan \\
+
+\pagebreak
+\section{Minutes SoFa (\printdatetitle{08.09.2015})}
+\begin{tabular}{ll}
+	\textbf{Date:} & \printdate{08.09.2015}\\
+	\textbf{Present:} & Ron, René, Jan, Martijn, Max \\
+	\textbf{Absent:} & - \\
+	\textbf{Late:} & - \\
+\end{tabular}
+
+\textbf{Decisions made:} \\
+Received reply from Yannick stating that we should discuss the questions during the meeting on Wednesday ()\printdate{09.09.2015})
+
+\textbf{ToDo:} \\
+Write down personal goals \\
+Argumentation for mobile or web app \\
+Create overall planning \\
+Create group website \\
+Analyse order \\
+Project plan \\
+Corporate identity \\
+Look into multi platform development \\
+Configuration management plan \\
+Quality management plan \\
+
+\pagebreak
+\section{Minutes SoFa (\printdatetitle{15.09.2015})}
+\begin{tabular}{ll}
+	\textbf{Date:} & \printdate{15.09.2015}\\	
+	\textbf{Present:} & Ron, René, Jan, Martijn, Max \\
+	\textbf{Absent:} & - \\
+	\textbf{Late:} & - \\
+\end{tabular}
+
+\textbf{Decisions made:} \\
+
+\textbf{ToDo:} \\
+Analyse order \\
+Project plan \\
+Look into multi platform development \\
+Configuration management plan \\
+Quality management plan \\
+
+\pagebreak
+\section{Minutes SoFa (\printdatetitle{22.09.2015})}
+\begin{tabular}{ll}	
+	\textbf{Date:} & \printdate{22.09.2015}\\
+	\textbf{Present:} & Ron, René, Jan, Martijn, Max \\
+	\textbf{Absent:} & - \\
+	\textbf{Late:} & - \\
+\end{tabular}
+
+\textbf{Decisions made:} \\
+No SRS since user stories will be created\\
+
+\textbf{ToDo:} \\
+Create userstories \\
+Project plan \\
+Prepare for customer meeting \\
+Look into multi platform development \\
+Configuration management plan \\
+Quality management plan \\
+
+\pagebreak
+\section{Minutes SoFa (\printdatetitle{29.09.2015})}
+\begin{tabular}{ll}	
+	\textbf{Date:} & \printdate{29.09.2015}\\
+	\textbf{Present:} & Ron, René, Jan, Martijn, Max \\
+	\textbf{Absent:} & - \\
+	\textbf{Late:} & - \\
+\end{tabular}
+
+\textbf{Decisions made:} \\
+
+\textbf{ToDo:} \\
+Create userstories \\
+Project plan \\
+Create mockups \\
+Get mockup approval \\
+Look into multi platform development \\
+Configuration management plan \\
+Quality management plan \\
+
+\pagebreak
+\section{Minutes SoFa (\printdatetitle{06.10.2015})}
+\begin{tabular}{ll}
+	\textbf{Date:} & \printdate{06.10.2015}\\
+	\textbf{Present:} & Ron, René, Jan, Martijn, Max \\
+	\textbf{Absent:} & - \\
+	\textbf{Late:} & - \\
+\end{tabular}
+
+\textbf{Decisions made:} \\
+
+\textbf{ToDo:} \\
+Project plan \\
+Setup xamarin \\
+Setup Github \\
+Start development \\
+Configuration management plan \\
+Quality management plan \\
+
+\pagebreak
+\section{Minutes SoFa (\printdatetitle{13.10.2015})}
+\begin{tabular}{ll}
+	\textbf{Date:} & \printdate{13.10.2015}\\
+	\textbf{Present:} & Ron, René, Jan, Martijn, Max \\
+	\textbf{Absent:} & - \\
+	\textbf{Late:} & - \\
+\end{tabular}
+
+\textbf{Decisions made:} \\
+
+\textbf{ToDo:} \\
+Project plan \\
+App development \\
+Configuration management plan \\
+Quality management plan \\
+
+\pagebreak
+\section{Minutes SoFa (\printdatetitle{03.11.2015})}
+\begin{tabular}{ll}
+	\textbf{Date:} & \printdate{01.09.2015}\\
+	\textbf{Present:} & René, Jan, Martijn, Max \\
+	\textbf{Absent:} & Ron (ill) \\
+	\textbf{Late:} & - \\
+\end{tabular}
+
+\textbf{Descisions made:} \\
+
+\textbf{ToDo:} \\
+Project plan \\
+App development \\
+Create questionaires \\
+Work on personal development plan \\
+Configuration management plan \\
+Quality management plan \\
+
+\pagebreak
+\section{Minutes SoFa (\printdatetitle{10.11.2015})}
+\begin{tabular}{ll}
+	\textbf{Date:} & \printdate{10.11.2015}\\
+	\textbf{Present:} & Ron, René, Jan, Martijn, Max \\
+	\textbf{Absent:} & - \\
+	\textbf{Late:} & - \\
+\end{tabular}
+
+Ron had to leave one hour earlier for work.
+
+\textbf{Descisions made:} \\
+
+\textbf{ToDo:} \\
+App development \\
+Create database \\
+Work on personal development plan \\
+
+\pagebreak
+\section{Minutes SoFa (\printdatetitle{17.11.2015})}
+\begin{tabular}{ll}
+	\textbf{Date:} & \printdate{17.11.2015}\\
+	\textbf{Present:} & Ron, René, Jan, Martijn, Max \\
+	\textbf{Absent:} & - \\
+	\textbf{Late:} & - \\
+\end{tabular}
+
+\textbf{Decisions made:} \\
+
+\textbf{ToDo:} \\
+App development \\
+Prepare customer meeting \\
+
+\pagebreak
+\section{Minutes SoFa (\printdatetitle{24.11.2015})}
+\begin{tabular}{ll}
+	\textbf{Date:} & \printdate{24.11.2015}\\
+	\textbf{Present:} & Ron, René, Jan, Martijn, Max \\
+	\textbf{Absent:} & - \\
+	\textbf{Late:} & - \\
+\end{tabular}
+
+\textbf{Decisions made:} \\
+
+\textbf{ToDo:} \\
+App development \\
+
+\pagebreak
+\section{Minutes SoFa (\printdatetitle{01.12.2015})}
+\begin{tabular}{ll}
+	\textbf{Date:} & \printdate{01.12.2015}\\
+	\textbf{Present:} & Ron, Martijn, Max \\
+	\textbf{Absent:} & - \\
+	\textbf{Late:} & René, Jan \\
+\end{tabular}
+
+\textbf{Descisions made:} \\
+
+\textbf{ToDo:} \\
+App development \\
+Prepare customer meeting \\
+
+\pagebreak
+\section{Minutes SoFa (\printdatetitle{08.12.2015})}
+\begin{tabular}{ll}
+	\textbf{Date:} & \printdate{01.09.2015}\\
+	\textbf{Present:} & Ron, René, Jan, Martijn, Max \\
+	\textbf{Absent:} & - \\
+	\textbf{Late:} & - \\
+\end{tabular}
+
+\textbf{Descisions made:} \\
+
+\textbf{ToDo:} \\
+App development \\
+Prepare for final customer meeting \\
+
+\pagebreak
+\section{Minutes SoFa (\printdatetitle{15.12.2015})}
+\begin{tabular}{ll}
+	\textbf{Date:} & \printdate{01.09.2015}\\
+	\textbf{Present:} & Ron, René, Jan, Martijn, Max \\
+	\textbf{Absent:} & - \\
+	\textbf{Late:} & - \\
+\end{tabular}
+
+\textbf{Descisions made:} \\
+Use 2 week documenting sprint in stead of 1 \\
+
+\textbf{ToDo:} \\
+Create final report \\
+
+\pagebreak
+\section{Minutes SoFa (\printdatetitle{15.12.2015})}
+\begin{tabular}{ll}
+	\textbf{Date:} & \printdate{01.09.2015}\\
+	\textbf{Present:} & Ron, René, Jan, Martijn, Max \\
+	\textbf{Absent:} & - \\
+	\textbf{Late:} & - \\
+\end{tabular}
+
+\textbf{Descisions made:} \\
+
+\textbf{ToDo:} \\
+Create final report \\
+
+\end{document}

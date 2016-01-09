@@ -1,0 +1,269 @@
+\documentclass[12pt]{article}
+
+\usepackage[english]{babel}
+\usepackage[english]{isodate}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage[table,svgnames]{xcolor}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{parskip}
+\usepackage{vmargin}
+\usepackage{pgfgantt}
+\usepackage{pgf-umlcd}
+\usepackage{xparse}
+\usepackage{float}
+\usepackage{fancyhdr}
+\usepackage{titling}
+\usepackage[nogroupskip,toc,acronym]{glossaries}
+\usepackage[authoryear]{natbib}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+
+\usepackage{pdfpages}
+
+% Global graphiscspath
+\graphicspath{{../../../img/}}
+
+% Styling changes
+
+%% Better margins
+\setmarginsrb{3 cm}{2.5 cm}{3 cm}{2.5 cm}{1 cm}{1.5 cm}{1 cm}{1.5 cm}
+
+
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+
+\newglossaryentry{git}
+{
+	name=git,
+	description={is a widely-used version control system for software development. It is a distributed revision control system with an emphasis on speed,[7] data integrity, and support for distributed, non-linear workflows}
+}
+
+\newglossaryentry{github}
+{
+	name=github,
+	description={is a Web-based Git repository hosting service. It offers all of the distributed revision control and source code management (SCM) functionality of Git as well as adding its own features}
+}
+
+\newglossaryentry{Appveyor}
+{
+	name=Appveyor,
+	description={is a hosted, distributed continuous integration service used to build and test projects hosted at GitHub on a Microsoft Windows virtual machine.}
+}
+
+\newglossaryentry{pascalcase}
+{
+	name=PascalCase,
+	description={is the practice of writing compound words or phrases such that each word or abbreviation begins with a capital letter}
+}
+
+\makeglossaries
+
+\begin{document}
+	
+	\pagenumbering{roman} % Roman numerals for page counter
+	
+	
+	% Title Page
+	\begin{titlingpage}
+		\begin{center}
+			\begin{minipage}{\linewidth}
+				\centering
+				%University logo
+				\includegraphics[width=0.3\linewidth]{FontysLogo.pdf}
+				\par
+				\vspace{3cm}
+				%Thesis title
+				{\uppercase
+					{\Large Configuration report \\ 2015 Sofa GTL \\ TreeWatch Project
+						\par
+						\vspace{3cm}}}
+				\includegraphics[width=0.5\linewidth]{TreewatchLogo.pdf}
+				\par
+				\vspace{2cm}
+				%Author's name
+				{Martijn Bonajo
+					\par}
+				\vspace{2cm}
+				
+				%Date
+				\today
+			\end{minipage}
+		\end{center}
+	\end{titlingpage}
+	\pagenumbering{gobble}
+	
+	\section*{Revision history}
+	
+	\begin{table}[htbp]
+		\begin{tabular}{ p{3,5cm}  p{3cm}  p{1,5cm}  p{1,5cm}  p{3,5cm} }
+			\textbf{Editor} & \textbf{Date} & \textbf{Note} & \textbf{Status} \\ \hline
+			Martijn Bonajo & 2015-09-01 & Initial & Draft \\
+			René Karoff & 2015-09- & - & Review \\
+			Martijn Bonajo & 2015-10-09 & Update & Proposal \\
+			Martijn Bonajo & 2015-10-16 & Update & v0.1 \\
+			Martijn Bonajo & 2015-11-03 & Update & v0.2 \\
+			Martijn Bonajo & 2015-11-17 & Update & v0.3 \\
+			Martijn Bonajo & 2016-01-08 & Update & Final \\
+		\end{tabular}
+	\end{table}
+	
+	\clearpage
+	
+	\tableofcontents
+	
+	\clearpage
+	\pagenumbering{arabic}
+	
+	\section{Introduction}
+	
+	\subsection{Purpose}
+	
+	The purpose of this document is to give rules to the coding standard, naming conventions, layout standard that will be used in this project.
+	
+	\subsection{Scope}
+	
+	This document is about:
+	
+	\begin{itemize}
+		\item Giving naming conventions for all documents.
+		\item Environment configuration
+		\item Software configuration
+		\item Deployment pipeline
+	\end{itemize}
+	
+	
+	This document will not contain:
+	
+	\begin{itemize}
+		\item Detailed content of files
+		\item Folder structure
+	\end{itemize}
+	
+	\clearpage
+	\section{Hardware}
+	
+	The hardware used in this project are the laptops of the participants and a couple of testing devices. These devices are not necessary for the deployment of the application and will therefor be omitted from this document.
+	
+	\section{Software}
+	
+	\subsection{Version control}
+	
+	All source code, this includes the test code, will be stored under version control. The team decided to use \gls{git} as the version control system. For this project it was decided that it should be open source, so this meant we could use a public repository on \gls{github}.
+	
+	\subsection{Baselines}
+	
+	At the beginning of the project a baseline for the software was established. The baseline can be changed by new dependencies or by new versions of the software. All changes to the baseline have to be approved by the configuration manager. \\
+	Changes to the baseline should pass the automatic build test from \gls{Appveyor} on \gls{github} and manual testing before it can be added as a new baseline.
+	
+	\subsection{Change control}
+	
+	All features should be developed on their own branch on \gls{github}. This is to make sure the number of conflicts stays to a minimum. When a feature is done it should first be brought up to date with the current baseline(if it is not already). Before a feature can become a new baseline it should first be approved by the quality manager. Then it should pass the automatic build by \gls{Appveyor}. After this the new feature is merged with the current baseline and becomes the new baseline.
+	
+	\clearpage
+	\section{Environments}
+	
+	% Define block styles
+	\tikzstyle{block} = [rectangle, draw, fill=blue!20, 
+	text width=5em, text centered, rounded corners, minimum height=4em]
+	\tikzstyle{line} = [draw, -latex']
+	
+	\begin{table}[htbp]
+		\begin{tabular}{ p{2.5cm}  p{2.5cm}  p{4.5cm}  p{3cm} }
+			\textbf{Developing} & \textbf{Versioning} & \textbf{Testing} & \textbf{Version} \\ \hline
+		\end{tabular}
+	\end{table}
+	
+	\begin{tikzpicture}[node distance = 2cm, auto]
+	% Place nodes
+	\node [block] (ide) {Xamarin};
+	\node [block, right of=ide, node distance=3cm] (locgit) {Local git repository};
+	\node [block, below of=locgit, node distance=3cm] (remgit) {Remote git repository};
+	\node [block, right of=locgit, node distance=3cm] (unit) {Unit tests};
+	\node [block, right of=remgit, node distance=3cm] (appveyor) {Appveyor};
+	\node [block, right of=appveyor, node distance=5cm] (baseline) {Baseline};
+	
+	\path [line] (ide) -- (locgit);
+	\path [line] (locgit) -- node {push}(remgit);
+	\path [line] (remgit) -- node {pull}(locgit);
+	\path [line] (locgit) -- (unit);
+	\path [line] (remgit) -- (appveyor);
+	\path [line] (remgit) -- (appveyor);
+	\path [line] (unit) -- node {approved}(baseline);
+	\path [line] (appveyor) -- node {approved}(baseline);
+	
+	\end{tikzpicture}
+	
+	\section{Conventions}
+	
+	Filename conventions:
+	
+	\begin{description}
+		\item[Images] \gls{pascalcase}
+		\item[Latex] All lowercase letters
+	\end{description}
+	
+	For programming in c\# the developer should adhere to the official coding standards of Microsoft which can be found here: \url{https://msdn.microsoft.com/en-us/library/ff926074.aspx}.
+	
+	\section{Software dependencies}
+	
+	This section contains the software dependencies used in the project. The listed dependencies are are managed by the specific packages.config file for each platform. Every time an new version of a dependency is released it should be tested if it works with the current baseline before adding it to the baseline.
+	\clearpage
+	Dependencies for Forms application:
+	\begin{table}[htbp]
+		\begin{tabular}{ p{10cm}  p{2cm} }
+			\textbf{Dependency} & \textbf{Version} \\ \hline	
+			Xamarin.Forms & 2.0.0.6490	 \\
+			Xamarin.Forms.Maps & 2.0.0.6490	 \\
+			ExifLib.PCL & 1.0.1 \\
+			Newtonsoft.Json & 7.0.1 \\
+			SQLite.Net.Core-PCL & 3.1.1 \\
+			SQLite.Net-PCL & 3.1.1 \\
+			SQLiteNetExtensions & 1.3.0
+		\end{tabular}
+	\end{table}
+	
+	Dependencies for Android application:
+	\begin{table}[htbp]
+		\begin{tabular}{ p{10cm}  p{2cm} }
+			\textbf{Dependency} & \textbf{Version} \\ \hline
+			Xamarin.Forms & 2.0.0.6490	 \\
+			Xamarin.Forms.Maps & 2.0.0.6490	 \\
+			ExifLib.PCL & 1.0.1 \\
+			Newtonsoft.Json & 7.0.1 \\
+			SQLite.Net.Core-PCL & 3.1.1 \\
+			SQLite.Net-PCL & 3.1.1 \\
+			SQLiteNetExtensions & 1.3.0 \\
+			Xamarin.Android.Support.Design & 23.0.1.3\\
+			Xamarin.Android.Support.v4 & 23.0.1.3 \\
+			Xamarin.Android.Support.v7.AppCompat & 23.0.1.3 \\
+			Xamarin.Android.Support.v7.CardView & 23.0.1.3\\
+			Xamarin.Android.Support.v7.MediaRouter & 23.0.1.3\\
+		\end{tabular}
+	\end{table}
+	\clearpage
+	Dependencies for iOS application:
+	\begin{table}[htbp]
+		\begin{tabular}{ p{10cm}  p{2cm} }
+			\textbf{Dependency} & \textbf{Version} \\ \hline	
+			Xamarin.Forms & 2.0.0.6490	 \\
+			Xamarin.Forms.Maps & 2.0.0.6490	 \\
+			ExifLib.PCL & 1.0.1 \\
+			Newtonsoft.Json & 7.0.1 \\
+			SQLite.Net.Core-PCL & 3.1.1 \\
+			SQLite.Net-PCL & 3.1.1 \\
+			SQLiteNetExtensions & 1.3.0 \\
+			Xamarin.TestCloud.Agent & 0.17.0
+		\end{tabular}
+	\end{table}
+	
+	
+	\clearpage
+	\printglossaries
+	
+\end{document}

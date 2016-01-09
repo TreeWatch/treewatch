@@ -1,0 +1,41 @@
+\documentclass[12pt]{article}
+\usepackage[english]{babel}
+\usepackage[english]{isodate}
+\usepackage[table,svgnames]{xcolor}
+\usepackage{url}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{longtable}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\usepackage{vmargin}
+\usepackage{hyperref}
+\usepackage{pgfgantt}
+\usepackage{pgf-umlcd}
+\usepackage{xparse}
+\usepackage{float}
+\usepackage{pdfpages}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{fancyhdr}
+
+% Global graphiscspath
+\graphicspath{{../../../img/}}
+
+% Styling changes
+
+%% Better margins
+\setmarginsrb{3 cm}{2.5 cm}{3 cm}{2.5 cm}{1 cm}{1.5 cm}{1 cm}{1.5 cm}
+
+
+\begin{document}
+
+\begin{center}
+	\includegraphics[width=\textwidth]{cumulativeflow}
+	\includegraphics[width=\textwidth]{timebyperson}
+	\includepdf[pages=-,offset=3cm -2.5cm]{timesheet}
+\end{center}
+
+\end{document}
