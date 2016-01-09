@@ -21,7 +21,6 @@
 #endregion
 namespace TreeWatch
 {
-    using System;
     using System.Collections.Generic;
     using SQLiteNetExtensions.Attributes;
 
