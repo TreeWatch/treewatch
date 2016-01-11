@@ -20,6 +20,9 @@
 \usepackage{titling}
 \usepackage{fancyhdr}
 \usepackage{rotating}
+\usepackage{lscape}
+\usepackage[landscape]{geometry}
+
 
 % Global graphiscspath
 \graphicspath{{../../../img/}}
@@ -27,37 +30,44 @@
 % Styling changes
 
 %% Better margins
-\setmarginsrb{3 cm}{2.5 cm}{3 cm}{2.5 cm}{1 cm}{1.5 cm}{1 cm}{1.5 cm}
+%\setmarginsrb{1 cm}{1 cm}{1 cm}{1 cm}{0 cm}{0 cm}{0 cm}{0 cm}
 
 
 \begin{document}
+\pagestyle{empty}
 
-  \begin{sidewaysfigure}[ht]
+  \begin{figure}[ht]
 
-  	\centering
-  	\includegraphics[width=\paperwidth, keepaspectratio=true]{ClassDiagram1-part1.pdf}
+  	\begin{center}
+  	
+  	
+  	\includegraphics[width=0.9\paperwidth, keepaspectratio=true]{ClassDiagram1-part1.pdf}
   	\caption{Classdiagramm forms part1}\label{classdiagram}\
-  \end{sidewaysfigure}
-  
-  \begin{sidewaysfigure}[ht]
+  	\end{center}
+  \end{figure}
+
+
+  \begin{figure}[ht]
 
   	\centering
-  	\includegraphics[width=\paperwidth, keepaspectratio=true]{ClassDiagram1-part2.pdf}
+  	\includegraphics[width=0.9\paperwidth, keepaspectratio=true]{ClassDiagram1-part2.pdf}
   	\caption{Classdiagramm forms part2}\label{classdiagram}\
-  \end{sidewaysfigure}
+  \end{figure}
+  
+  \clearpage
 
-  \begin{sidewaysfigure}[ht]
+  \begin{figure}[ht]
 
   	\centering
-  	\includegraphics[width=\paperwidth, keepaspectratio=true]{ClassDiagramiOS.pdf}
+  	\includegraphics[width=0.9\paperwidth, keepaspectratio=true]{ClassDiagramiOS.pdf}
   	\caption{Classdiagramm ios}\label{classdiagram}\
-  \end{sidewaysfigure}
+  \end{figure}
 
-  \begin{sidewaysfigure}[ht]
+  \begin{figure}[ht]
 
   	\centering
-  	\includegraphics[width=\paperwidth, keepaspectratio=true]{ClassDiagramForms.pdf}
+  	\includegraphics[width=0.9\paperwidth, keepaspectratio=true]{ClassDiagramForms.pdf}
   	\caption{Classdiagramm Forms}\label{classdiagram}\
-  \end{sidewaysfigure}
+  \end{figure}
 
 \end{document}

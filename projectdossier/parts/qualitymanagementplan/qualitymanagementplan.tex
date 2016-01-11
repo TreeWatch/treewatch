@@ -30,8 +30,15 @@
 %% Better margins
 \setmarginsrb{3 cm}{2.5 cm}{3 cm}{2.5 cm}{1 cm}{1.5 cm}{1 cm}{1.5 cm}
 
+%% Header and Footer
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\includegraphics[width=0.2\linewidth]{TreewatchLogo.pdf}}
+\rhead{Quality Management Plan}
+\rfoot{Page \thepage}
 
 \begin{document}
+\pagenumbering{roman}
 	\begin{titlingpage}
 		\begin{center}
 			\begin{minipage}{\linewidth}
@@ -65,7 +72,7 @@
 	\clearpage
 \section*{Document information}
 \begin{tabular}{ll}
-	\textbf{Document name:} & Quality Management Report\\
+	\textbf{Document name:} & Quality Management Plan\\
 	\textbf{Document owner:} & TreeWatch \\
 	\textbf{Company/Organisation:} & Fleuren Baarlo \\
 	\textbf{Contact person:} & Max van der Linden, Group leader \\
@@ -87,7 +94,7 @@
 
 \tableofcontents
 \clearpage
-
+\pagenumbering{arabic}
 \section{Introduction}
 This quality management plan describes the necessary information needed to manage the project quality from the project planning to the delivery to the customer. Within this document the quality policies, procedures, roles, responsibilities and authorities are defined.
 \clearpage
