@@ -53,11 +53,11 @@
 \pagestyle{fancy}
 \fancyhf{}
 \lhead{\includegraphics[width=0.2\linewidth]{TreewatchLogo.pdf}}
-\rhead{projectdossier}
+\rhead{Projectdossier}
 \rfoot{Page \thepage}
 
 \begin{document}
-
+\pagestyle{fancy}
 % TilePage
 
   \begin{titlingpage}
@@ -101,6 +101,24 @@
 
 % Main Document
 
+  \section*{Document information}
+\addcontentsline{toc}{section}{Document information}
+	\begin{tabular}{ll}
+		\textbf{Document name:} & Final Report\\
+		\textbf{Document owner:} & TreeWatch \\
+		\textbf{Company/Organisation:} & Fleuren Baarlo \\
+		\textbf{Contact person:} & Max van der Linden, Group leader \\
+		\textbf{Date:} & \today \\
+		\textbf{Place:} & Fontys University of Applied Science Venlo \\
+		\textbf{Authors:} & \parbox[t]{5cm}{
+		Jan Kerkenhoff\\ j.kerkenhoff@student.fontys.nl\\ 2197164 \\ \\
+		Martijn Bonajo\\ m.bonajo@student.fontys.nl\\ 2213297 \\ \\
+		Max van der Linden\\ max.vanderlinden@student.fontys.nl\\ 2209349 \\ \\
+		René Karoff\\ r.karoff@student.fontys.nl\\ 2198664 \\ \\
+		Ron Gebauer\\ r.gebauer@student.fontys.nl\\ 2153294 \\ }
+	\end{tabular}
+
+
   \tableofcontents
 
   \chapter{Project plan}
@@ -130,9 +148,10 @@
   \addPart{parts/meetings/minutes.pdf}
 
   \chapter{Quality management plan}
+  \addPart{parts/qualitymanagementplan/qualitymanagementplan.pdf}
 
   \chapter{Scrum}
-
+  \addPart{parts/scrum/scrum.pdf}
   \chapter{Final presentation}
 
   \clearpage
