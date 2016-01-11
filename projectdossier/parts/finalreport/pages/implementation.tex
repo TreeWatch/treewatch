@@ -43,7 +43,7 @@ As you can see in figure~\ref{fig:Heatmap} we implemented the heat map as just a
 
 \subsection{Importing KML files into the app}
 Fleuren supplied us with various datasets from their fields, to test our implementation with real data, especially the amount of data, we implemented a mechanism to read these files. The data we got was mostly shapefiles, since there is no easy way to read these we converted them to 
-\gls{kml} files. \gls{kml} is basically just a version of \gls{xml} which is designed for geospatial data. To convert the files we used 
+\gls{kml} files. \gls{kml} is basically just a version of \gls{xml} which is designed for geospatial data. To convert the files we used the .Net xml parsing library. 
 
 \subsection{Geofencing}
 
