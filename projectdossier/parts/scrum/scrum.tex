@@ -30,11 +30,84 @@
 \setmarginsrb{3 cm}{2.5 cm}{3 cm}{2.5 cm}{1 cm}{1.5 cm}{1 cm}{1.5 cm}
 
 
+%% Header and Footer
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\includegraphics[width=0.2\linewidth]{TreewatchLogo.pdf}}
+\rhead{Scrum}
+\rfoot{Page \thepage}
+
 \begin{document}
+\pagestyle{fancy}
+% TilePage
+
+  \begin{titlingpage}
+      \begin{center}
+          \begin{minipage}{\linewidth}
+            \centering
+            % University logo
+            \includegraphics[width=0.3\linewidth]{FontysLogo.pdf}
+            \par
+            \vspace{3cm}
+            % Title
+            {
+            \uppercase
+              {
+              \Large Scrum \\ 2015 Sofa GTL \\ TreeWatch Project
+              \par
+              \vspace{3cm}
+              }
+            }
+              \includegraphics[width=0.5\linewidth]{TreewatchLogo.pdf}
+              \par
+              \vspace{2cm}
+              % Author's names
+              {
+              Jan Kerkenhoff\\
+              Martijn Bonajo\\
+              Max van der Linden\\
+              René Karoff\\
+              Ron Gebauer
+              \par
+              }
+              \vspace{2cm}
+
+              %Date
+              \today
+            \end{minipage}
+          \end{center}
+        \end{titlingpage}
+        \clearpage
+
+
+% Main Document
+	\pagenumbering{roman}
+  \section*{Document information}
+\addcontentsline{toc}{section}{Document information}
+	\begin{tabular}{ll}
+		\textbf{Document name:} & Scrum\\
+		\textbf{Document owner:} & TreeWatch \\
+		\textbf{Company/Organisation:} & Fleuren Baarlo \\
+		\textbf{Contact person:} & Max van der Linden, Group leader \\
+		\textbf{Date:} & \today \\
+		\textbf{Place:} & Fontys University of Applied Science Venlo \\
+		\textbf{Authors:} & \parbox[t]{5cm}{
+		Ron Gebauer\\ r.gebauer@student.fontys.nl\\ 2153294 \\ }
+	\end{tabular}
+
+  \clearpage
+  \tableofcontents
+  \clearpage
+  \pagenumbering{arabic}
 
 \begin{center}
+    \section{Cumulative flow}
 	\includegraphics[width=\textwidth]{cumulativeflow}
+	\clearpage
+	\section{Time by person}
 	\includegraphics[width=\textwidth]{timebyperson}
+	\clearpage
+	\section{Time sheet}
 	\includepdf[pages=-,offset=3cm -2.5cm]{timesheet}
 \end{center}
 

@@ -37,12 +37,20 @@
 %% Better margins
 \setmarginsrb{3 cm}{2.5 cm}{3 cm}{2.5 cm}{1 cm}{1.5 cm}{1 cm}{1.5 cm}
 
+%% Header and Footer
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\includegraphics[width=0.2\linewidth]{TreewatchLogo.pdf}}
+\rhead{Customer meetings}
+\rfoot{Page \thepage}
+
 \begin{document}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Preface of the report
 
 % Title Page
+\pagenumbering{roman}
 \begin{titlingpage}
 	\begin{center}
 		\begin{minipage}{\linewidth}
@@ -72,6 +80,7 @@
 \clearpage
 
 \section*{Document information}
+\addcontentsline{toc}{section}{Document information}
 \begin{tabular}{ll}
 	\textbf{Document name:} & Customer Meetings\\
 	\textbf{Document owner:} & Max van der Linden \\
@@ -91,7 +100,7 @@
 \newcommand{\printdatetitle}[1]{%
 	\texorpdfstring{\printdate{#1}}{#1}%
 }
-
+\pagenumbering{arabic}
 \section{Customer meeting (\printdatetitle{09.09.2015})}
 \begin{tabular}{ll}
 	\textbf{Date:} & \printdate{09.09.2015} \\

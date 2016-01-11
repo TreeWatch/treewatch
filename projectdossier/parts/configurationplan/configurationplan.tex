@@ -106,7 +106,7 @@
 	%\pagenumbering{gobble}
 	
 	 \section*{Document information}
-\addcontentsline{toc}{section}{Document information}
+	\addcontentsline{toc}{section}{Document information}
 	\begin{tabular}{ll}
 		\textbf{Document name:} & Configuration report\\
 		\textbf{Document owner:} & TreeWatch \\
@@ -144,6 +144,9 @@
 
 	\tableofcontents
 
+	\clearpage
+	\printglossaries
+	
 	\clearpage
 	\pagenumbering{arabic}
 
@@ -288,9 +291,16 @@
 			Xamarin.TestCloud.Agent & 0.17.0
 		\end{tabular}
 	\end{table}
-
+	
+	\subsection{Google maps}
+	
+	The Google maps needs an api key and fingerprints to work on Android.
+	In order to get the Google maps to work, you need to follow the following steps:
+	\begin{itemize}
+		\item Determine your MD5 or SHA1 signature, as shown \href{https://developer.xamarin.com/guides/android/deployment,_testing,_and_metrics/MD5_SHA1/}{here}.
+		\item Add fingerprint to existing key or create a new key and add fingerprint to it. As shown \href{https://developers.google.com/maps/documentation/android-api/signup#get_an_android_api_key}{here}.
+		\item Replace the key in the AndoirdManifest.xml, which can be found at \\ \mbox{Droid/Properties/AndroidManifest.xml}.
+	\end{itemize}
 
 	\clearpage
-	
-
 \end{document}

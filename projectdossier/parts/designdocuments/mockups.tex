@@ -43,7 +43,7 @@
 
 
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Preface of the report
-
+	\pagenumbering{roman}
 	% Title Page
 	\begin{titlingpage}
 		\begin{center}
@@ -72,7 +72,7 @@
 		\end{center}
 	\end{titlingpage}
 	\clearpage
-
+    
 	\section*{Document information}
 	\begin{tabular}{ll}
 		\textbf{Document name:} & Mockups \& Screenshots\\
@@ -85,10 +85,14 @@
 			Max van der Linden\\ max.vanderlinden@student.fontys.nl\\ 2209349 \\ \\}
 	\end{tabular}
 
-	\pagebreak
+	\clearpage
+	 \listoffigures
+    \addcontentsline{toc}{section}{\listfigurename}
+    \clearpage
 
 	\tableofcontents
 	\clearpage
+	\pagenumbering{arabic}
 
 \section{Mockups \& Screenshot comparisson}
 This document contains an overview of the mockups and how they eventually turned out when implemented.
