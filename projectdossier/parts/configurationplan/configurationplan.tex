@@ -29,6 +29,13 @@
 % Global graphiscspath
 \graphicspath{{../../../img/}}
 
+%% Header and Footer
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\includegraphics[width=0.2\linewidth]{TreewatchLogo.pdf}}
+\rhead{Configuration report}
+\rfoot{Page \thepage}
+
 % Styling changes
 
 %% Better margins
@@ -65,10 +72,10 @@
 \makeglossaries
 
 \begin{document}
-	
+
 	\pagenumbering{roman} % Roman numerals for page counter
-	
-	
+
+
 	% Title Page
 	\begin{titlingpage}
 		\begin{center}
@@ -90,16 +97,32 @@
 				{Martijn Bonajo
 					\par}
 				\vspace{2cm}
-				
+
 				%Date
 				\today
 			\end{minipage}
 		\end{center}
 	\end{titlingpage}
-	\pagenumbering{gobble}
+	%\pagenumbering{gobble}
 	
+	 \section*{Document information}
+\addcontentsline{toc}{section}{Document information}
+	\begin{tabular}{ll}
+		\textbf{Document name:} & Configuration report\\
+		\textbf{Document owner:} & TreeWatch \\
+		\textbf{Company/Organisation:} & Fleuren Baarlo \\
+		\textbf{Contact person:} & Max van der Linden, Group leader \\
+		\textbf{Date:} & \today \\
+		\textbf{Place:} & Fontys University of Applied Science Venlo \\
+		\textbf{Authors:} & \parbox[t]{5cm}{
+		Martijn Bonajo\\ m.bonajo@student.fontys.nl\\ 2213297 \\ \\
+		René Karoff\\ r.karoff@student.fontys.nl\\ 2198664 \\ \\ }
+	\end{tabular}
+
+
 	\section*{Revision history}
-	
+	\addcontentsline{toc}{section}{Revision history}
+
 	\begin{table}[htbp]
 		\begin{tabular}{ p{3,5cm}  p{3cm}  p{1,5cm}  p{1,5cm}  p{3,5cm} }
 			\textbf{Editor} & \textbf{Date} & \textbf{Note} & \textbf{Status} \\ \hline
@@ -114,71 +137,75 @@
 	\end{table}
 	
 	\clearpage
-	
+	\printglossary[type=\acronymtype]
+    \printglossary
+
+	\clearpage
+
 	\tableofcontents
-	
+
 	\clearpage
 	\pagenumbering{arabic}
-	
+
 	\section{Introduction}
-	
+
 	\subsection{Purpose}
-	
+
 	The purpose of this document is to give rules to the coding standard, naming conventions, layout standard that will be used in this project.
-	
+
 	\subsection{Scope}
-	
+
 	This document is about:
-	
+
 	\begin{itemize}
 		\item Giving naming conventions for all documents.
 		\item Environment configuration
 		\item Software configuration
 		\item Deployment pipeline
 	\end{itemize}
-	
-	
+
+
 	This document will not contain:
-	
+
 	\begin{itemize}
 		\item Detailed content of files
 		\item Folder structure
 	\end{itemize}
-	
+
 	\clearpage
 	\section{Hardware}
-	
+
 	The hardware used in this project are the laptops of the participants and a couple of testing devices. These devices are not necessary for the deployment of the application and will therefor be omitted from this document.
-	
+
 	\section{Software}
-	
+
 	\subsection{Version control}
-	
+
 	All source code, this includes the test code, will be stored under version control. The team decided to use \gls{git} as the version control system. For this project it was decided that it should be open source, so this meant we could use a public repository on \gls{github}.
-	
+
 	\subsection{Baselines}
-	
+
 	At the beginning of the project a baseline for the software was established. The baseline can be changed by new dependencies or by new versions of the software. All changes to the baseline have to be approved by the configuration manager. \\
 	Changes to the baseline should pass the automatic build test from \gls{Appveyor} on \gls{github} and manual testing before it can be added as a new baseline.
-	
+
 	\subsection{Change control}
-	
+
 	All features should be developed on their own branch on \gls{github}. This is to make sure the number of conflicts stays to a minimum. When a feature is done it should first be brought up to date with the current baseline(if it is not already). Before a feature can become a new baseline it should first be approved by the quality manager. Then it should pass the automatic build by \gls{Appveyor}. After this the new feature is merged with the current baseline and becomes the new baseline.
-	
+
 	\clearpage
 	\section{Environments}
-	
+
 	% Define block styles
-	\tikzstyle{block} = [rectangle, draw, fill=blue!20, 
+	\tikzstyle{block} = [rectangle, draw, fill=blue!20,
 	text width=5em, text centered, rounded corners, minimum height=4em]
 	\tikzstyle{line} = [draw, -latex']
-	
+
 	\begin{table}[htbp]
 		\begin{tabular}{ p{2.5cm}  p{2.5cm}  p{4.5cm}  p{3cm} }
 			\textbf{Developing} & \textbf{Versioning} & \textbf{Testing} & \textbf{Version} \\ \hline
 		\end{tabular}
 	\end{table}
-	
+
 	\begin{tikzpicture}[node distance = 2cm, auto]
 	% Place nodes
 	\node [block] (ide) {Xamarin};
@@ -187,7 +214,7 @@
 	\node [block, right of=locgit, node distance=3cm] (unit) {Unit tests};
 	\node [block, right of=remgit, node distance=3cm] (appveyor) {Appveyor};
 	\node [block, right of=appveyor, node distance=5cm] (baseline) {Baseline};
-	
+
 	\path [line] (ide) -- (locgit);
 	\path [line] (locgit) -- node {push}(remgit);
 	\path [line] (remgit) -- node {pull}(locgit);
@@ -196,28 +223,28 @@
 	\path [line] (remgit) -- (appveyor);
 	\path [line] (unit) -- node {approved}(baseline);
 	\path [line] (appveyor) -- node {approved}(baseline);
-	
+
 	\end{tikzpicture}
-	
+
 	\section{Conventions}
-	
+
 	Filename conventions:
-	
+
 	\begin{description}
 		\item[Images] \gls{pascalcase}
 		\item[Latex] All lowercase letters
 	\end{description}
-	
+
 	For programming in c\# the developer should adhere to the official coding standards of Microsoft which can be found here: \url{https://msdn.microsoft.com/en-us/library/ff926074.aspx}.
-	
+
 	\section{Software dependencies}
-	
+
 	This section contains the software dependencies used in the project. The listed dependencies are are managed by the specific packages.config file for each platform. Every time an new version of a dependency is released it should be tested if it works with the current baseline before adding it to the baseline.
 	\clearpage
 	Dependencies for Forms application:
 	\begin{table}[htbp]
 		\begin{tabular}{ p{10cm}  p{2cm} }
-			\textbf{Dependency} & \textbf{Version} \\ \hline	
+			\textbf{Dependency} & \textbf{Version} \\ \hline
 			Xamarin.Forms & 2.0.0.6490	 \\
 			Xamarin.Forms.Maps & 2.0.0.6490	 \\
 			ExifLib.PCL & 1.0.1 \\
@@ -227,7 +254,7 @@
 			SQLiteNetExtensions & 1.3.0
 		\end{tabular}
 	\end{table}
-	
+
 	Dependencies for Android application:
 	\begin{table}[htbp]
 		\begin{tabular}{ p{10cm}  p{2cm} }
@@ -250,7 +277,7 @@
 	Dependencies for iOS application:
 	\begin{table}[htbp]
 		\begin{tabular}{ p{10cm}  p{2cm} }
-			\textbf{Dependency} & \textbf{Version} \\ \hline	
+			\textbf{Dependency} & \textbf{Version} \\ \hline
 			Xamarin.Forms & 2.0.0.6490	 \\
 			Xamarin.Forms.Maps & 2.0.0.6490	 \\
 			ExifLib.PCL & 1.0.1 \\
@@ -261,9 +288,9 @@
 			Xamarin.TestCloud.Agent & 0.17.0
 		\end{tabular}
 	\end{table}
-	
-	
+
+
 	\clearpage
-	\printglossaries
 	
+
 \end{document}
