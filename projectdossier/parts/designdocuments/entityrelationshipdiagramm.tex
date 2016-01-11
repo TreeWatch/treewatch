@@ -19,6 +19,7 @@
 \usepackage{tabularx}
 \usepackage{titling}
 \usepackage{fancyhdr}
+\usepackage{pdflscape}
 
 % Global graphiscspath
 \graphicspath{{../../../img/}}
@@ -31,6 +32,13 @@
 
 
 \begin{document}
-
+	\begin{landscape}
+		\begin{figure}[htbp]
+			\centering
+			\includegraphics[width=\paperwidth, keepaspectratio=true]{../img/ERTreeWatch.png}
+			\hfill
+			\caption{ER Diagram SQLite}
+		\end{figure}
+	\end{landscape}
 
 \end{document}
