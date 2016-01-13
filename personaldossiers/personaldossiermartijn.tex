@@ -144,8 +144,7 @@
     \section{Improving programming skills}
 	\subsection{SMART learning goal}
 	\begin{SMART}
-	    \item[Specific] As a software engineer on this project I want to improve my programming skills. For this project this means I want to improve 
-	    my web based programming skills.
+	    \item[Specific] As a software engineer on this project I want to improve my programming skills. For this project this means I want to improve my web based programming skills.
 	    \item[Measurable] Errors per kilo lines of code.
 	    \item[Attainable] There are a lot of resources online on how to do the basic stuff.
 	    \item[Relevant] This will improve my programming skills in web based applications, which will be useful when searching for a job as a software engineer.
@@ -153,12 +152,15 @@
 	    \item[My complete goal] To improve my web based application development skills.
 	\end{SMART}
 	
+	This requirement was drafted when we thought we were going to develop using web technology and not via xamarin. So the requirement has changed from web based development to normal software development. \\
+	I choose this one, because as a software engineer it is always good to keep improving your software skills, especially in new environments. For me it was new to develop for multi platform, so there is a lot to learn.
+	
 	\subsection{STAR Analysis}
 	\begin{STAR}
-	    \item[Situation]
-	    \item[Task]
-	    \item[Action]
-	    \item[Result]
+	    \item[Situation] We used Xamarin to create our multi platform application. For this project I was going to be one of the main developers. 
+	    \item[Task] I wanted to improve my programming skills. Mainly on the multi platform aspect of this project. 
+	    \item[Action] I worked on different features of our application during this project. From the shared code base in the Xamarin Forms, to the Android and iOS application. The first part I worked on was the field menu and the search bar inside the field menu. This is done by using the MVVM pattern to split GUI, program logic and data. The view can be found at CODEREF-MAPMENUVIEW and the the viewmodel can be found at CODEREF-MAPMENUVIEWMODEL. After this I started working on adding annotations and info windows on top of the map. This functionality is removed in a later stage of the application, because it was no longer needed. I continued working on the map, this time I wrote code that would zoom in when a specific field was selected, so that it was completely visible in the view and took up most of the view. The code for this can be found at CODEREF-MAPRENDERER. After this i started working on the Notes page inside our application, for this I added a plugin from Xamarin Forms Lab, which can be found at \url{https://github.com/XLabs/Xamarin-Forms-Labs/wiki/Camera}. This functionality has not yet been added to the master branch, because it has not been tested. After a little detour to the Notes page I went back to the map to add functionality to center on user position when a button is clicked and when the map is loaded for the first time. The code for this can be found in CODEREF-MAPRENDERER. For the biggest part I worked the Geofencing part of the application. First I made my own design to get geofencing to work cross platform, but after some testing I couldn't get it to work. After some research I found a plugin which had multi platform support for geofencing. This plugin is however outdated, but the design was still useful for me. The code for geofencing can be found at CODEREF-GEOFENCING.
+	    \item[Result] I learned a lot by developing for multiple platforms. The measurement as can be seen in figure ~\ref{} there is no real improvement at the beginning of the application, because there still was a lot of new concepts everytime. But after about half way through the project there is a slight improvement in the errors per 100 lines of code.
 	\end{STAR}
 	
 	\section{Improve software design skills}
