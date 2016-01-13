@@ -1,0 +1,208 @@
+\documentclass[12pt]{article}
+\usepackage[english]{babel}
+\usepackage[english]{isodate}
+\usepackage[table,svgnames]{xcolor}
+\usepackage{url}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{longtable}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\usepackage{vmargin}
+\usepackage{hyperref}
+\usepackage{pgfgantt}
+\usepackage{pgf-umlcd}
+\usepackage{xparse}
+\usepackage{float}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage[nogroupskip,toc,acronym]{glossaries}
+\usepackage{fancyhdr}
+\usepackage[authoryear]{natbib}
+\usepackage{enumitem}
+%\bibliographystyle{fontysIEEtranN}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\includegraphics[width=0.2\linewidth]{TreewatchLogo.pdf}}
+\rhead{Personal dossier Martijn Bonajo}
+\rfoot{Page \thepage}
+
+% alternate row colors for all tables
+\definecolor{lightGrey}{rgb}{0.95,0.95,0.95}
+
+\let\oldtable\table
+\let\endoldtable\endtable
+\renewenvironment{table}{\rowcolors{2}{lightGrey}{}\oldtable}{\endoldtable}
+
+\let\oldtabular\tabular
+\let\endoldtabular\endtabular
+\renewenvironment{tabular}{\rowcolors{2}{lightGrey}{}\oldtabular}{\endoldtabular}
+
+\let\oldtabularx\tabularx
+\let\endoldtabularx\endtabularx
+\renewenvironment{tabularx}{\rowcolors{2}{lightGrey}{}\oldtabularx}{\endoldtabularx}
+
+\let\oldlongtable\longtable
+\let\endoldlongtable\endlongtable
+\renewenvironment{longtable}{\rowcolors{2}{lightGrey}{}\oldlongtable} {\endoldlongtable}
+
+\graphicspath{{../img/}}
+
+\renewcommand{\arraystretch}{1.5}
+
+\DeclareDocumentCommand{\newdualentry}{ O{} O{} m m m m } {
+  \newglossaryentry{gls-#3}{name={#5},text={#5\glsadd{#3}},
+    description={#6},#1
+  }
+  \makeglossaries
+  \newacronym[see={[Glossary:]{gls-#3}},#2]{#3}{#4}{#5\glsadd{gls-#3}}
+}
+
+
+\newlist{SMART}{description}{2}
+\setlist[SMART]{leftmargin=12em,style=nextline}
+
+\newlist{STAR}{description}{2}
+\setlist[STAR]{leftmargin=8em,style=nextline}
+
+
+%\loadglsentries{../glossary.tex}
+
+\setmarginsrb{3 cm}{2.5 cm}{3 cm}{2.5 cm}{1 cm}{1.5 cm}{1 cm}{1.5 cm}
+
+%\makeglossaries
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Preface of the report
+
+    \pagenumbering{roman} % Roman numerals for page counter
+
+
+    % Title Page
+    \begin{titlingpage}
+        \begin{center}
+            \begin{minipage}{\linewidth}
+            \centering
+            %University logo
+            \includegraphics[width=0.3\linewidth]{FontysLogo.pdf}
+            \par
+            \vspace{3cm}
+            %Thesis title
+            {\uppercase
+                {\Large Personal dossier\\ Martijn Bonajo \\ 2015 Sofa GTL \\ TreeWatch Project
+            \par
+            \vspace{3cm}}}
+            \includegraphics[width=0.5\linewidth]{TreewatchLogo.pdf}
+            \par
+            \vspace{2cm}
+            %Author's name
+            {Martijn Bonajo\\
+	         \par}
+            \vspace{2cm}
+
+            %Date
+            \today
+            \end{minipage}
+        \end{center}
+    \end{titlingpage}
+    \clearpage
+
+    \section*{Document information}
+\addcontentsline{toc}{section}{Document information}
+\renewenvironment{tabular}{\oldtabular}{\endoldtabular}
+	\begin{tabular}{ll}
+		\textbf{Document name:} & Personal dossier Martijn Bonajo\\
+		\textbf{Document owner:} & Martijn Bonajo \\
+		\textbf{Company/Organisation:} & Fleuren Baarlo \\
+		\textbf{Contact person:} & Jan Kerkenhoff \\
+		\textbf{Date:} & \today \\
+		\textbf{Place:} & Fontys University of Applied Science Venlo \\
+		\textbf{Author:} & \parbox[t]{5cm}{
+		Martijn Bonajo\\ m.bonajo@student.fontys.nl\\ 2197164 \\}
+	\end{tabular}
+\renewenvironment{tabular}{\rowcolors{2}{lightGrey}{}\oldtabular}{\endoldtabular}
+
+    %\printglossary[type=\acronymtype]
+    %\printglossary
+    \pagebreak
+
+    %\listoffigures
+    %\addcontentsline{toc}{section}{\listfigurename}
+    %\listoftables
+    %\addcontentsline{toc}{section}{\listtablename}
+    %\pagebreak
+
+    \tableofcontents
+    \clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Main Part of the Report
+
+    \pagenumbering{arabic}
+    
+    \section{A-Competencies}
+\subsection{SMART Learning Goal 1}
+\begin{SMART}
+    \item[Specific] As the head developer for this Sofa I want to get more experience developing applications for mobile systems like Android and iOS. Specializing in a framework for running web apps native on different mobile systems
+    \item[Measurable] To measure this learning goal I will take into account the number of errors per lines of code.
+    \item[Attainable] The topic is widely described in the internet, there are many useful tutorials and guides available, also an extensive documentation is provide for almost all technologies
+Relevant
+    \item[Relevant] In my future career, in which I want to become a application developer mobile development is often demanded skill.
+    \item[Time-limited] By January 2016, this project will be closed, Therefore I will be able to develop mobile for the project until then.
+    \item[My complete goal] To improve my mobile development experience by January 2016.
+\end{SMART}
+
+\subsection{STAR Analysis 1}
+\begin{STAR}
+    \item[Situation]
+    \item[Task]
+    \item[Action]
+    \item[Result]
+\end{STAR}
+
+\subsection{SMART Learning Goal 2}
+\begin{SMART}
+    \item[Specific] I wanna improve my skills in presenting my ideas to people.
+    \item[Measurable] To measure this learning goal I will take into account the number of different documents, meetings and presentations done for the project.
+    \item[Attainable] I already learned a lot in previous projects and the internship. I will try to use the gained knowledge and use that to improve my presentations.
+    \item[Relevant] Expressing your thoughts and ideas to other people is always needed in software development.
+    \item[Time-limited] By January 2016, this project will be closed, Therefore I will be able improve my communication until then.
+    \item[My complete goal] To improve the way I express ideas and thoughts by January 2016.
+\end{SMART}
+
+\subsection{STAR Analysis 2}
+\begin{STAR}
+    \item[Situation]
+    \item[Task]
+    \item[Action]
+    \item[Result]
+\end{STAR}
+
+\section{B-Competencies}
+
+\subsection{SMART Learning Goal 3}
+\begin{SMART}
+    \item[Specific] I wanna improve my skills in presenting my ideas to people.
+    \item[Measurable] To measure this learning goal I will take into account the number of different documents, meetings and presentations done for the project.
+    \item[Attainable] I already learned a lot in previous projects and the internship. I will try to use the gained knowledge and use that to improve my presentations.
+    \item[Relevant] Expressing your thoughts and ideas to other people is always needed in software development.
+    \item[Time-limited] By January 2016, this project will be closed, Therefore I will be able improve my communication until then.
+    \item[My complete goal] To improve the way I express ideas and thoughts by January 2016.
+\end{SMART}
+
+\subsection{STAR Analysis 3}
+\begin{STAR}
+    \item[Situation]
+    \item[Task]
+    \item[Action]
+    \item[Result]
+\end{STAR}
+
+
+%\clearpage
+
+%\bibliography{biblist}
+
+\end{document}
