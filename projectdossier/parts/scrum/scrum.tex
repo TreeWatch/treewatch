@@ -20,6 +20,7 @@
 \usepackage{tabularx}
 \usepackage{titling}
 \usepackage{fancyhdr}
+\usepackage{pdflscape}
 
 % Global graphiscspath
 \graphicspath{{../../../img/}}
@@ -97,18 +98,22 @@
 
   \clearpage
   \tableofcontents
-  \clearpage
   \pagenumbering{arabic}
 
-\begin{center}
-    \section{Cumulative flow}
-	\includegraphics[width=\textwidth]{cumulativeflow}
+    \begin{landscape}
+		\section{Cumulative flow}
+		\includegraphics[width=1.25\textwidth]{cumulativeflow}
+    \end{landscape}
 	\clearpage
-	\section{Time by person}
-	\includegraphics[width=\textwidth]{timebyperson}
+	
+	\begin{landscape}
+		\section{Time by person}
+		\vspace*{0.15\paperheight}
+		\includegraphics[width=1.25\textwidth]{timebyperson}
+	\end{landscape}
 	\clearpage
+	
 	\section{Time sheet}
 	\includepdf[pages=-,offset=3cm -2.5cm]{timesheet}
-\end{center}
 
 \end{document}
