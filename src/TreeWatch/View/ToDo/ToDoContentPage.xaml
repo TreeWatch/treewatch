@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+    xmlns ="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="TreeWatch.ToDoContentPage"
+    Title  ="ToDo"
+    StyleId="TodoView">
+    <ContentPage.Padding>
+        <OnPlatform
+            x:TypeArguments="Thickness"
+            iOS            ="0,20,0,0" />
+    </ContentPage.Padding>
+    <ContentPage.Icon>
+        <OnPlatform
+            x:TypeArguments="FileImageSource"
+            iOS            ="Icons/ToDoTabBarIcon.png" />
+    </ContentPage.Icon>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout
+                VerticalOptions  ="CenterAndExpand"
+                HorizontalOptions="CenterAndExpand"
+                Orientation      ="Vertical"
+                Spacing          ="15">
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

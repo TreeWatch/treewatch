@@ -1,0 +1,18 @@
+<kml
+    xmlns="http://earth.google.com/kml/2.1">
+    <Folder>
+        <name />
+        <Placemark>
+            <name>Sligro</name>
+            <MultiGeometry>
+                <Polygon>
+                    <outerBoundaryIs>
+                        <LinearRing>
+                            <coordinates>6.0178047,51.4075415,1 6.0154361,51.4073364,1 6.0151652,51.4085472,1 6.0148753,51.4098304,1 6.0149593,51.4098345,1 6.0149737,51.4098359,1 6.0150902,51.4098475,1 6.0151337,51.4098519,1 6.0153873,51.4098876,1 6.0159748,51.4099957,1 6.0164948,51.4100816,1 6.0167255,51.4101092,1 6.0169568,51.4101244,1 6.0172007,51.4101375,1 6.0178047,51.4075415,1</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </MultiGeometry>
+        </Placemark>
+    </Folder>
+</kml>
