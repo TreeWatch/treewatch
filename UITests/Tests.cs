@@ -62,7 +62,7 @@ namespace TreeWatch.UITests
         }
 
         /// <summary>
-        /// Maps the displayed.
+        /// Maps are displayed.
         /// </summary>
         [Test]
         public void MapDisplayed()
@@ -74,7 +74,19 @@ namespace TreeWatch.UITests
         }
 
         /// <summary>
-        /// Histories the displayed.
+        /// MapMenu is displayed.
+        /// </summary>
+        [Test]
+        public void MapMenuDisplayed()
+        {
+            this.app.Tap("Map");
+            this.app.WaitForElement(c => c.Marked("MapView"));
+
+            this.app.Tap("MapMenuView");
+        }
+
+        /// <summary>
+        /// Histories are displayed.
         /// </summary>
         [Test]
         public void HistoryDisplayed()
@@ -86,7 +98,7 @@ namespace TreeWatch.UITests
         }
 
         /// <summary>
-        /// Todos the displayed.
+        /// Todos are displayed.
         /// </summary>
         [Test]
         public void TodoDisplayed()
@@ -98,7 +110,7 @@ namespace TreeWatch.UITests
         }
 
         /// <summary>
-        /// Settingses the displayed.
+        /// Settingses are displayed.
         /// </summary>
         [Test]
         public void SettingsDisplayed()
@@ -115,7 +127,7 @@ namespace TreeWatch.UITests
         }
 
         /// <summary>
-        /// Notes the displayed.
+        /// Notes are displayed.
         /// </summary>
         [Test]
         public void NoteDisplayed()
@@ -127,7 +139,7 @@ namespace TreeWatch.UITests
         }
 
         /// <summary>
-        /// Maps the master detail menu is diplayed.
+        /// The master detail menu is diplayed.
         /// </summary>
         [Test]
         public void MapMasterDetailMenuIsDiplayed()
