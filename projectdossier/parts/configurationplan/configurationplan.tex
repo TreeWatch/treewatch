@@ -229,6 +229,30 @@
 	\path [line] (appveyor) -- node {approved}(baseline);
 
 	\end{tikzpicture}
+	
+	\subsection{GIT structure}
+	
+	
+	All documentation can be found in the doc branch.\\
+	The project can be in the master branch.\\
+	The website can be found in the website branch.\\
+	
+	\begin{tikzpicture}[node distance = 2cm, auto]
+	\node [block] (git) {GIT};
+	\node [block, right of=git, node distance=3cm] (master) {Master branch};
+	\node [block, right of=master, node distance=7cm] (ios) {iOS project};
+	\node [block, below of=ios, node distance=3cm] (droid) {Forms project};
+	\node [block, above of=ios, node distance=3cm] (forms) {Droid project};
+	\node [block, below of=master, node distance=3cm] (doc) {Doc branch};
+	\node [block, above of=master, node distance=3cm] (website) {Website branch};
+	
+	\path [line] (git) -- (master);
+	\path [line] (git) -- (doc);
+	\path [line] (git) -- (website);
+	\path [line] (master) -- node {Shared code}(forms);
+	\path [line] (master) -- node {iOS code}(ios);
+	\path [line] (master) -- node {Android code}(droid);
+	\end{tikzpicture}
 
 	\section{Conventions}
 
