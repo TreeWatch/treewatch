@@ -10,7 +10,7 @@
     <AssemblyName>TreeWatch</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Profile78</TargetFrameworkProfile>
-    <ReleaseVersion>0.2</ReleaseVersion>
+    <ReleaseVersion>0.4</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -21,6 +21,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
+    <DocumentationFile>bin\Debug\TreeWatch.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>full</DebugType>
@@ -31,7 +32,6 @@
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="TreeWatch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\Map\Field\Field.cs" />
     <Compile Include="View\CustomTabbedPage.cs" />
@@ -62,7 +62,6 @@
     <Compile Include="Model\Note.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Utils\FieldHelper.cs" />
-    <Compile Include="Database\DBHelper.cs" />
     <Compile Include="Database\DBQuery.cs" />
     <Compile Include="Utils\MockDataProvider.cs" />
     <Compile Include="Database\TreeWatchDatabase.cs" />
@@ -80,9 +79,6 @@
     </Compile>
     <Compile Include="ViewModels\Map\InformationViewModel.cs" />
     <Compile Include="View\Map\MapNavigationPage.cs" />
-    <Compile Include="Utils\MapTappedEventArgs.cs" />
-    <Compile Include="Utils\BlockSelectedEventArgs.cs" />
-    <Compile Include="Utils\FieldSelectedEventArgs.cs" />
     <Compile Include="View\Map\DetailedInformation\BlocksInformationContentPage.xaml.cs">
       <DependentUpon>BlocksInformationContentPage.xaml</DependentUpon>
     </Compile>
@@ -109,6 +105,12 @@
     </Compile>
     <Compile Include="Model\Map\Field\HeatmapPoint.cs" />
     <Compile Include="Model\Map\Field\Heatmap.cs" />
+    <Compile Include="App.cs" />
+    <Compile Include="Utils\Events\BlockSelectedEventArgs.cs" />
+    <Compile Include="Utils\Events\FieldSelectedEventArgs.cs" />
+    <Compile Include="Utils\Events\MapTappedEventArgs.cs" />
+    <Compile Include="Database\BlockToDo.cs" />
+    <Compile Include="Database\DatabaseConfig.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.0.0.6490\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.0.0.6490\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
@@ -135,6 +137,7 @@
     <Folder Include="KML\Fields\" />
     <Folder Include="Geofence\" />
     <Folder Include="KML\Heatmaps\" />
+    <Folder Include="Utils\Events\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="SQLiteNetExtensions">

@@ -1,40 +1,88 @@
-using Xamarin.Forms;
-using Xamarin.Forms.Maps;
-
+// <copyright file="MapContentPage.xaml.cs" company="TreeWatch">
+// Copyright © 2015 TreeWatch
+// </copyright>
+#region Copyright
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+#endregion
 namespace TreeWatch
 {
+    using Xamarin.Forms;
+    using Xamarin.Forms.Maps;
+
+    /// <summary>
+    /// Map content page.
+    /// </summary>
     public partial class MapContentPage : ContentPage
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TreeWatch.MapContentPage"/> class.
+        /// </summary>
+        /// <param name="mapViewModel">Map view model.</param>
         public MapContentPage(MapViewModel mapViewModel)
         {
-            // initialize this page
-            InitializeComponent();
+            this.InitializeComponent();
 
             if (TargetPlatform.Android == Device.OS)
             {
-                Title = "Map";
+                this.Title = "Map";
             }
 
             // add view model
-            BindingContext = mapViewModel;
+            this.BindingContext = mapViewModel;
 
-            setupMapContentView();
+            this.SetupMapContentView();
 
-            setupToolbarItems();
+            this.SetupToolbarItems();
         }
 
-        /**
-         * This method configurate the field map view inside the xaml
-         */
-        internal void setupMapContentView()
+        /// <summary>
+        /// Gets my location toolbar item.
+        /// </summary>
+        /// <returns>The my location toolbar item.</returns>
+        internal static ToolbarItem GetMyLocationToolbarItem()
         {
-            // Get binding context of this view
-            var viewModel = BindingContext as MapViewModel;
+            var myLocationToolBarItem = new ToolbarItem();
+
+            // Set clicked event
+            myLocationToolBarItem.Clicked += (sender, e) => FieldHelper.Instance.CenterUserPostionEvent();
+
+            // Design Toolbar Item
+            myLocationToolBarItem.Icon = Device.OS == TargetPlatform.iOS ? "Icons/MyLocationIcon.png" : "MyLocationIcon.png";
+
+            // Set style id for ui testing
+            myLocationToolBarItem.StyleId = "MMyLocationButton";
+
+            return myLocationToolBarItem;
+        }
+
+        /// <summary>
+        /// Setups the map content view.
+        /// </summary>
+        internal void SetupMapContentView()
+        {
             // Get current position
-            var currentLocation = viewModel.getCurrentDevicePosition();
+            var currentLocation = MapViewModel.GetCurrentDevicePosition();
 
             // Jump to the current location inside the map
             fieldMap.MoveToRegion(MapSpan.FromCenterAndRadius(currentLocation, Distance.FromKilometers(1)));
+
+            // Get binding context of this view
+            var viewModel = BindingContext as MapViewModel;
 
             // Add all fields into the map
             fieldMap.Fields = viewModel.Fields;
@@ -43,34 +91,18 @@ namespace TreeWatch
             fieldMap.MapType = MapType.Hybrid;
 
             // set binding context of field map view to the same of this view
-            fieldMap.BindingContext = BindingContext;
+            fieldMap.BindingContext = this.BindingContext;
         }
 
-        /**
-         * This method create and configurate all toolbar items
-         */
-        internal void setupToolbarItems()
+        /// <summary>
+        /// Setups the toolbar items.
+        /// </summary>
+        internal void SetupToolbarItems()
         {
             if (TargetPlatform.iOS == Device.OS)
             {
-                ToolbarItems.Insert(0, getMyLocationToolbarItem());
+                ToolbarItems.Insert(0, GetMyLocationToolbarItem());
             }
-        }
-
-        /**
-         * This method create the toolbar item that should jump the map view to current location
-         */
-        internal static ToolbarItem getMyLocationToolbarItem()
-        {
-            var myLocationToolBarItem = new ToolbarItem();
-
-            // Design Toolbar Item
-            myLocationToolBarItem.Icon = Device.OS == TargetPlatform.iOS ? "Icons/MyLocationIcon.png" : "MyLocationIcon.png";
-
-            // Set clicked event
-            myLocationToolBarItem.Clicked += (sender, e) => FieldHelper.Instance.CenterUserPostionEvent();
-
-            return myLocationToolBarItem;
         }
     }
 }

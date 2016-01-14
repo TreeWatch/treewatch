@@ -1,17 +1,18 @@
-<kml xmlns='http://earth.google.com/kml/2.1'>
-  <Folder>
-    <name/>
-    <Placemark>
-      <name>Grutto</name>
-      <MultiGeometry>
-        <Polygon>
-          <outerBoundaryIs>
-            <LinearRing>
-              <coordinates>6.0476651,51.3896597,1 6.0473710,51.3918162,1 6.0495220,51.3919244,1 6.0495271,51.3920493,1 6.0509313,51.3920026,1 6.0510568,51.3919528,1 6.0512439,51.3919579,1 6.0511644,51.3905310,1 6.0476651,51.3896597,1</coordinates>
-            </LinearRing>
-          </outerBoundaryIs>
-        </Polygon>
-      </MultiGeometry>
-    </Placemark>
-  </Folder>
+<kml
+    xmlns="http://earth.google.com/kml/2.1">
+    <Folder>
+        <name />
+        <Placemark>
+            <name>Grutto</name>
+            <MultiGeometry>
+                <Polygon>
+                    <outerBoundaryIs>
+                        <LinearRing>
+                            <coordinates>6.0476651,51.3896597,1 6.0473710,51.3918162,1 6.0495220,51.3919244,1 6.0495271,51.3920493,1 6.0509313,51.3920026,1 6.0510568,51.3919528,1 6.0512439,51.3919579,1 6.0511644,51.3905310,1 6.0476651,51.3896597,1</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </MultiGeometry>
+        </Placemark>
+    </Folder>
 </kml>

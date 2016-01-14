@@ -3,12 +3,13 @@
     xmlns ="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="TreeWatch.BlocksInformationContentPage"
-    StyleId="BlocksInformation"
+    StyleId="BlocksInformationView"
     Padding="0, 0, 0, 0">
     <ContentPage.Content>
         <ListView
             ItemsSource    ="{Binding Variety}"
             SelectedItem   ="{Binding Block}"
+            StyleId        ="BIVListView"
             VerticalOptions="FillAndExpand"
             x:Name         ="blockView">
             <ListView.Header>
@@ -17,7 +18,8 @@
             </ListView.Header>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <ViewCell>
+                    <ViewCell
+                        StyleId="BIVLVBlock">
                         <StackLayout
                             Orientation="Horizontal"
                             Padding    ="30, 0">

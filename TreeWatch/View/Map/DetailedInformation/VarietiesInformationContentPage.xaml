@@ -3,12 +3,13 @@
     xmlns ="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="TreeWatch.VarietiesInformationContentPage"
-    StyleId="VarietyInformation"
+    StyleId="VarietyInformationView"
     Padding="0, 0, 0, 0">
     <ContentPage.Content>
         <ListView
             ItemsSource    ="{Binding VarietyGroups}"
             SelectedItem   ="{Binding Variety}"
+            StyleId        ="VIVListView"
             VerticalOptions="FillAndExpand"
             x:Name         ="varietiesView">
             <ListView.Header>
@@ -17,7 +18,8 @@
             </ListView.Header>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <ViewCell>
+                    <ViewCell
+                        StyleId="VIVLVVariety">
                         <StackLayout
                             Orientation="Horizontal"
                             Padding    ="30, 0">
