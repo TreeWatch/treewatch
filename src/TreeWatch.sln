@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TreeWatch.UITests", "UITest
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TreeWatch.Tests", "TreeWatch.Tests\TreeWatch.Tests.csproj", "{7534BBB4-7D17-444E-BA97-4E38B4EDB3C6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TreeWatch.iOS.Tests", "TreeWatch.iOS.Tests\TreeWatch.iOS.Tests.csproj", "{19164FB7-0C1E-4716-92A4-13B3CD351FFC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,18 @@ Global
 		Debug|iPhone = Debug|iPhone
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{19164FB7-0C1E-4716-92A4-13B3CD351FFC}.Debug|Any CPU.ActiveCfg = Debug|iPhoneSimulator
+		{19164FB7-0C1E-4716-92A4-13B3CD351FFC}.Debug|Any CPU.Build.0 = Debug|iPhoneSimulator
+		{19164FB7-0C1E-4716-92A4-13B3CD351FFC}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{19164FB7-0C1E-4716-92A4-13B3CD351FFC}.Debug|iPhone.Build.0 = Debug|iPhone
+		{19164FB7-0C1E-4716-92A4-13B3CD351FFC}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{19164FB7-0C1E-4716-92A4-13B3CD351FFC}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{19164FB7-0C1E-4716-92A4-13B3CD351FFC}.Release|Any CPU.ActiveCfg = Release|iPhone
+		{19164FB7-0C1E-4716-92A4-13B3CD351FFC}.Release|Any CPU.Build.0 = Release|iPhone
+		{19164FB7-0C1E-4716-92A4-13B3CD351FFC}.Release|iPhone.ActiveCfg = Release|iPhone
+		{19164FB7-0C1E-4716-92A4-13B3CD351FFC}.Release|iPhone.Build.0 = Release|iPhone
+		{19164FB7-0C1E-4716-92A4-13B3CD351FFC}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{19164FB7-0C1E-4716-92A4-13B3CD351FFC}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
 		{47160693-92B1-4AC0-9B0D-943733F41043}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{47160693-92B1-4AC0-9B0D-943733F41043}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{47160693-92B1-4AC0-9B0D-943733F41043}.Debug|iPhone.ActiveCfg = Debug|Any CPU

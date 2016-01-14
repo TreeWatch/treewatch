@@ -39,5 +39,20 @@ namespace TreeWatch.Tests
             Assert.AreEqual(ColorHelper.ToHex(Color.FromHex("#FF6082B6")), "#FF6082B6");
             Assert.AreEqual(ColorHelper.ToHex(Color.Red), "#FFFF0000");
         }
+
+        /// <summary>
+        /// Tests  if random colors are returned.
+        /// </summary>
+        [Test]
+        public void TestRandomColor()
+        {
+            for (int i = 0; i < 50; i++)
+            {
+                
+                Assert.IsTrue(ColorHelper.RandomColor().Equals(ColorHelper.RandomColor()));
+            }
+           
+        }
+            
     }
 }
