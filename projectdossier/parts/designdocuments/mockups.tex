@@ -39,6 +39,12 @@
 %% Better margins
 \setmarginsrb{3 cm}{2.5 cm}{3 cm}{2.5 cm}{1 cm}{1.5 cm}{1 cm}{1.5 cm}
 
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\includegraphics[width=0.2\linewidth]{TreewatchLogo.pdf}}
+\rhead{Corporate Identity}
+\rfoot{Page \thepage}
+
 \begin{document}
 
 
@@ -73,7 +79,9 @@
 	\end{titlingpage}
 	\clearpage
     
+    \setmarginsrb{3 cm}{2.5 cm}{3 cm}{2.5 cm}{1.5 cm}{1.5 cm}{1 cm}{1.5 cm}
 	\section*{Document information}
+	\addcontentsline{toc}{section}{Document information}
 	\begin{tabular}{ll}
 		\textbf{Document name:} & Mockups \& Screenshots\\
 		\textbf{Document owner:} & Max van der Linden \\
