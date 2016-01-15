@@ -23,8 +23,6 @@
 \usepackage{fancyhdr}
 \usepackage{rotating}
 \usepackage{lscape}
-\usepackage[landscape]{geometry}
-
 
 % Global graphiscspath
 \graphicspath{{../../../img/}}
@@ -36,13 +34,9 @@
 
 
 \begin{document}
-  
-  \begin{figure}[ht]
-  	
-  	\begin{center}
-  		\includegraphics[width=0.9\paperwidth,keepaspectratio=true]{../../../img/GeofenceDiagram.pdf}
-  		\caption{Geofence diagram}\label{geofence}\
-  	\end{center}
-  \end{figure}
-
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=\textheight,keepaspectratio=true,angle=90]{../../../img/GeofenceDiagram.pdf}
+  		\caption{Geofence diagram\label{fig:geofence}}
+	\end{figure}
 \end{document}

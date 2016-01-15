@@ -5,7 +5,7 @@ to the customer. Within this document the quality policies, procedures, roles, r
 At the highest level quality management involves planning, doing, checking, and acting to improve project quality standards. Project quality management is therefore split into three categories: quality planning, quality assurance and quality control.
 \subsection{Organization and Responsibilities}
 \begin{table}[htbp]
-	\begin{tabular}{ p{4cm} p{3,5cm} p{6,5cm} }
+	\begin{tabular}{ p{4cm} p{3.5cm} p{6cm} }
 		\textbf{Name} & \textbf{Role} & \textbf{Quality Responsibility} \\ \hline
 		Max van der Linden & Project Manager & External communication, Auditing \\
 		Martijn Bonajo & Configuration Manager & Infrastructure, source files, Software engineering documentation, auditing \\
@@ -25,18 +25,18 @@ Most of the code of this \gls{app} was tested, but since we have a lot of \gls{g
 
 Furthermore the GUI was tested using the Xamarin Testcloud which was included in our Academic license which represents the Xamarin Business license. Since we had the Business license, we were allowed to use the Xamarin Testcloud for one hour per month. But since we had 5 licenses this expanded to 5 hours per month.
 
-In the following table it is described who reviewed which document and with what rank it was approved.
-\begin{table}[htbp]
-	\begin{tabular}{ p{\textwidth} p{\textwidth} p{\textwidth} p{\textwidth} p{\textwidth} p{\textwidth} }
-		\textbf{Document name} & \textbf{Author} & \textbf{Reviewer 1} & \textbf{Rank 1} & \textbf{Reviewer 2} & \textbf{Rank 2}\\ \hline
+In table \ref{tab:documentReview} it is described who reviewed which document and with what rank it was approved.
+\begin{sidewaystable}
+	\begin{tabular}[htbp]{ p{7cm} *{5}{l} }
+		\textbf{Document name} & \textbf{Author} & \textbf{Reviewer 1} & \textbf{Rank 1} & \textbf{Reviewer 2} & \textbf{Rank 2} \\ \hline
 		User Stories & Max van der Linden & René Karoff & ++ & Martijn Bonajo & + \\
 		Personal development plan
 		Personal competence plan
 		Mockup Design & Group work & René Karoff & ++ & Max van der Linden & ++ \\
-		Functional Prototype &
-		Handover
+		Functional Prototype & Handover &  &  &  &  \\
 	\end{tabular}
-\end{table}
+	\captionof{table}{Document Review\label{tab:documentReview}}
+\end{sidewaystable}
 
 The code of the \gls{app} will be tested. Therefore it is a goal to get at least 90\% code coverage, better 100\%. Each evaluation criterion of the written documents will be ranked from “--“ to “++” (“--“ too bad – “++” excellent).
 

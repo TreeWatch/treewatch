@@ -14,6 +14,7 @@
 \usepackage{hyperref}
 \usepackage{pgfgantt}
 \usepackage{pgf-umlcd}
+\usepackage{caption}
 \usepackage{xparse}
 \usepackage{float}
 \usepackage{tabularx}
@@ -40,7 +41,7 @@
 \rfoot{Page \thepage}
 
 \begin{document}
-\pagenumbering{roman}
+\pagenumbering{Roman}
 	\begin{titlingpage}
 		\begin{center}
 			\begin{minipage}{\linewidth}
@@ -122,17 +123,15 @@ This quality management plan describes the necessary information needed to manag
 \section{Organization and Responsibilities}
 The SoFa Group consists of five people. Since the SoFa Group should act as a company roles and responsibilities have to be defined.\\
 The following table shows every group member with his role and the responsibilities.
-\begin{table}[htbp]
-	\begin{tabularx}{\textwidth}{ X X X }
-		\textbf{Name} & \textbf{Role} & \textbf{Quality Responsibility} \\ \hline
-		Max van der Linden & Project Manager & Project Planning, External communication, Auditing \\ 
-		Martijn Bonajo & Configuration Manager & Configuration Plan, Infrastructure, Approve Packages and Pushes to Master, Auditing \\ 
-		Ron Gebauer & Scrum Master & Scrum planning, Auditing \\ 
-		Rene Karoff & Quality Manager & Quality Management Plan, Ensure use of quality guidelines, Auditing \\ 
-		Jan Kerkenhoff & Main Engineer & Main Code-Master, Auditing \\
-	\end{tabularx}
-	\caption{Group roles\label{tab:GroupRoles}}
-\end{table}
+\begin{tabularx}{\textwidth}{ X X X }
+	\textbf{Name} & \textbf{Role} & \textbf{Quality Responsibility} \\ \hline
+	Max van der Linden & Project Manager & Project Planning, External communication, Auditing \\ 
+	Martijn Bonajo & Configuration Manager & Configuration Plan, Infrastructure, Approve Packages and Pushes to Master, Auditing \\ 
+	Ron Gebauer & Scrum Master & Scrum planning, Auditing \\ 
+	Rene Karoff & Quality Manager & Quality Management Plan, Ensure use of quality guidelines, Auditing \\ 
+	Jan Kerkenhoff & Main Engineer & Main Code-Master, Auditing \\
+\end{tabularx}
+\captionof{table}{Group roles\label{tab:GroupRoles}}
 Besides his role, the group will work together on several tasks (e.g. User Stories, Design or Implementation).
 \clearpage
 \section{Quality Planning}
@@ -186,14 +185,13 @@ Since the code is tested, this will show the group if the quality goal is achiev
 		\section{Quality Control}
 		To verify that the quality of every document and every feature matches the introduced standard they were reviewed by at least one group member, therefore the review process shown in Figure~\ref{reviewProcess} was introduced. In the review process the term 'document' is defined as either a .PDF-document or a feature.
 		\begin{figure}[htpb]
-			\minipage{\textwidth}
-			\includegraphics[width=\linewidth, keepaspectratio=true]{./img/CheckQuality.png}
-			\caption{Review Process}\label{reviewProcess}
-			\endminipage\hfill
+			\centering
+			\includegraphics[width=.98\linewidth,keepaspectratio=true,angle=90]{./img/CheckQuality.png}
+			\caption{Review Process\label{reviewProcess}}
 		\end{figure}
 		\clearpage
 \bibliography{biblist}
 \clearpage
-%\section{Appendix}
-\include{DocumentsReviewed}
+
+\input{DocumentsReviewed}
 \end{document}
