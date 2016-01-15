@@ -82,38 +82,37 @@
 
 
 % Main Document
-	\pagenumbering{roman}
-  \section*{Document information}
-\addcontentsline{toc}{section}{Document information}
-	\begin{tabular}{ll}
-		\textbf{Document name:} & Scrum\\
-		\textbf{Document owner:} & TreeWatch \\
-		\textbf{Company/Organisation:} & Fleuren Baarlo \\
-		\textbf{Contact person:} & Max van der Linden, Group leader \\
-		\textbf{Date:} & \today \\
-		\textbf{Place:} & Fontys University of Applied Science Venlo \\
-		\textbf{Authors:} & \parbox[t]{5cm}{
-		Ron Gebauer\\ r.gebauer@student.fontys.nl\\ 2153294 \\ }
-	\end{tabular}
-
-  \clearpage
-  \tableofcontents
-  \pagenumbering{arabic}
-
-    \begin{landscape}
-		\section{Cumulative flow}
-		\includegraphics[width=1.25\textwidth]{cumulativeflow}
-    \end{landscape}
-	\clearpage
+	\pagenumbering{Roman}
 	
-	\begin{landscape}
-		\section{Time by person}
-		\vspace*{0.15\paperheight}
-		\includegraphics[width=1.25\textwidth]{timebyperson}
-	\end{landscape}
+	\section*{Document information}
+	\addcontentsline{toc}{section}{Document information}
+	
+		\begin{tabular}{ll}
+			\textbf{Document name:} & Scrum\\
+			\textbf{Document owner:} & TreeWatch \\
+			\textbf{Company/Organisation:} & Fleuren Baarlo \\
+			\textbf{Contact person:} & Max van der Linden, Group leader \\
+			\textbf{Date:} & \today \\
+			\textbf{Place:} & Fontys University of Applied Science Venlo \\
+			\textbf{Authors:} & \parbox[t]{5cm}{
+			Ron Gebauer\\ r.gebauer@student.fontys.nl\\ 2153294 \\ }
+		\end{tabular}
+		\clearpage
+
+	\tableofcontents
 	\clearpage
+	\pagenumbering{arabic}
+
+	\section{Cumulative flow}
+		\includegraphics[width=1.25\textwidth,angle=90]{cumulativeflow}
+		\clearpage
+	
+	\section{Time by person}
+		\hspace*{0.20\paperheight}
+		\includegraphics[width=1.25\textwidth,angle=90]{timebyperson}
+		\clearpage
 	
 	\section{Time sheet}
-	\includepdf[pages=-,offset=3cm -2.5cm]{timesheet}
+		\includepdf[pages=-,offset=3cm -2.5cm]{timesheet}
 
 \end{document}
