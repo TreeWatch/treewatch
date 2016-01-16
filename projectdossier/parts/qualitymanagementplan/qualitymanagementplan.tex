@@ -1,6 +1,6 @@
 \documentclass[12pt]{article}
 \usepackage[english]{babel}
-\usepackage[english]{isodate}
+\usepackage[iso,english]{isodate}
 \usepackage[table,svgnames]{xcolor}
 \usepackage{url}
 \usepackage[utf8x]{inputenc}
@@ -97,15 +97,15 @@
 \begin{table}[htbp]
 	\begin{tabularx}{\textwidth}{ X X X X }
 		\textbf{Editor} & \textbf{Date} & \textbf{Note} & \textbf{Status} \\ \hline
-		Rene Karoff & 2015-09-04 & Initial & Draft \\
-		Max van der Linden & 2015-09-04 & Review & Draft\\
-		Rene Karoff & 2015-09-24 & Update & Draft\\
-		Rene Karoff & 2015-10-02 & Update & v0.1\\
-		Max van der Linden & 2015-10-02 & Review & v0.1\\
-		Rene Karoff & 2015-10-16 & Update & v0.2\\
-		Rene Karoff & 2015-11-13 & Update & v0.3\\
-		Rene Karoff & 2015-12-10 & Update & Final\\
-		Max van der Linden & 2015-12-10 & Review & Final\\
+		Rene Karoff & \printdate{2015-09-04} & Initial & Draft \\
+		Max van der Linden & \printdate{2015-09-04} & Review & Draft\\
+		Rene Karoff & \printdate{2015-09-24} & Update & Draft\\
+		Rene Karoff & \printdate{2015-10-02} & Update & v0.1\\
+		Max van der Linden & \printdate{2015-10-02} & Review & v0.1\\
+		Rene Karoff & \printdate{2015-10-16} & Update & v0.2\\
+		Rene Karoff & \printdate{2015-11-13} & Update & v0.3\\
+		Rene Karoff & \printdate{2015-12-10} & Update & Final\\
+		Max van der Linden & \printdate{2015-12-10} & Review & Final\\
 	\end{tabularx}
 \end{table}
 \listoffigures

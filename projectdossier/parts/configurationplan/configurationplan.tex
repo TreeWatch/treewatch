@@ -1,7 +1,7 @@
 \documentclass[12pt]{article}
 
 \usepackage[english]{babel}
-\usepackage[english]{isodate}
+\usepackage[iso,english]{isodate}
 \usepackage[utf8x]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{cmbright}
@@ -128,14 +128,14 @@
 	\begin{table}[htbp]
 		\begin{tabular}{ p{3,5cm}  p{3cm}  p{1,5cm}  p{1,5cm}  p{3,5cm} }
 			\textbf{Editor} & \textbf{Date} & \textbf{Note} & \textbf{Status} \\ \hline
-			Martijn Bonajo & 2015-09-01 & Initial & Draft \\
-			René Karoff & 2015-09- & - & Review \\
-			Martijn Bonajo & 2015-10-09 & Update & Proposal \\
-			Martijn Bonajo & 2015-10-16 & Update & v0.1 \\
-			Martijn Bonajo & 2015-11-03 & Update & v0.2 \\
-			Martijn Bonajo & 2015-11-17 & Update & v0.3 \\
-			Martijn Bonajo & 2016-01-08 & Update & Final\\
-			Rene Karoff & 2016-01-08 & Review & Final \\
+			Martijn Bonajo & \printdate{2015-09-01} & Initial & Draft \\
+			René Karoff & \printdate{2015-09-02} & - & Review \\
+			Martijn Bonajo & \printdate{2015-10-09} & Update & Proposal \\
+			Martijn Bonajo & \printdate{2015-10-16} & Update & v0.1 \\
+			Martijn Bonajo & \printdate{2015-11-03} & Update & v0.2 \\
+			Martijn Bonajo & \printdate{2015-11-17} & Update & v0.3 \\
+			Martijn Bonajo & \printdate{2016-01-08} & Update & Final\\
+			Rene Karoff & \printdate{2016-01-08} & Review & Final \\
 		\end{tabular}
 	\end{table}
 	
