@@ -2,8 +2,9 @@
 
 % Packages
 \usepackage[english]{babel}
-\usepackage[english]{isodate}
+\usepackage[iso,english]{isodate}
 \usepackage[table,svgnames]{xcolor}
+\usepackage{cmbright}
 \usepackage{url}
 \usepackage[utf8x]{inputenc}
 \usepackage[T1]{fontenc}
@@ -49,7 +50,7 @@
 	
 	
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Preface of the report
-	\pagenumbering{roman}
+	\pagenumbering{Roman}
 	% Title Page
 	\begin{titlingpage}
 		\begin{center}
@@ -79,7 +80,9 @@
 	\end{titlingpage}
 	\clearpage
 	
+	\setmarginsrb{3 cm}{2.5 cm}{3 cm}{2.5 cm}{1.5 cm}{1.5 cm}{1 cm}{1.5 cm}
 	\section*{Document information}
+	\addcontentsline{toc}{section}{Document information}
 	\begin{tabular}{ll}
 		\textbf{Document name:} & Corporate Identity\\
 		\textbf{Document owner:} & Max van der Linden \\
@@ -100,11 +103,11 @@
 As part of the SoFa it is important to act as a professional group. This acting professional also means that the group should feel as a company working for a real customer, making the project as realistic as possible. In order to achieve this a corporate identity needed to be created. The GTL SoFa project group decided to call itself TreeWatch since the app provides Fleuren with the ability to watch over their trees. The name of the group is also used as the app name. This meant that logos and a design guideline had to be created. The logo, app icon and home style can be found in the next images. When continuing the project it is recommended to keep using the home style in reporting and emailing.
 \subsection{Logo's}
 \subsubsection{Company Logo}
-\includegraphics[width=\textwidth]{TreewatchLogo.pdf}
+\includegraphics[width=.9\textwidth]{TreewatchLogo.pdf}
 \subsubsection{App Logo}
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.25\textwidth]{TreewatchAppLogo.pdf}
+	\includegraphics[width=0.15\textwidth]{TreewatchAppLogo.pdf}
 \end{figure}
 \clearpage
 \subsection{Design Guidelines}
@@ -112,8 +115,5 @@ As part of the SoFa it is important to act as a professional group. This acting 
 	\centering
 	\includegraphics[height=0.93\textheight]{IdentityForm.pdf}
 \end{figure}
-
-
-
 
 \end{document}

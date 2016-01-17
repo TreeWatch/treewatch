@@ -1,6 +1,6 @@
 \documentclass[12pt]{article}
 \usepackage[english]{babel}
-\usepackage[english]{isodate}
+\usepackage[iso,english]{isodate}
 \usepackage[table,svgnames]{xcolor}
 \usepackage{url}
 \usepackage[utf8x]{inputenc}
@@ -14,6 +14,7 @@
 \usepackage{hyperref}
 \usepackage{pgfgantt}
 \usepackage{pgf-umlcd}
+\usepackage{caption}
 \usepackage{xparse}
 \usepackage{float}
 \usepackage{tabularx}
@@ -21,12 +22,30 @@
 \usepackage{fancyhdr}
 \usepackage{listings}
 \usepackage{pdflscape}
+\usepackage{rotating}
 \bibliographystyle{fontysIEEtranN}
 
 % Global graphiscspath
 \graphicspath{{../../../img/}}
 
 % Styling changes
+\definecolor{lightGrey}{rgb}{0.95,0.95,0.95}
+
+\let\oldtable\table
+\let\endoldtable\endtable
+\renewenvironment{table}{\rowcolors{2}{lightGrey}{}\oldtable}{\endoldtable}
+
+\let\oldtabular\tabular
+\let\endoldtabular\endtabular
+\renewenvironment{tabular}{\rowcolors{2}{lightGrey}{}\oldtabular}{\endoldtabular}
+
+\let\oldtabularx\tabularx
+\let\endoldtabularx\endtabularx
+\renewenvironment{tabularx}{\rowcolors{2}{lightGrey}{}\oldtabularx}{\endoldtabularx}
+
+\let\oldlongtable\longtable
+\let\endoldlongtable\endlongtable
+\renewenvironment{longtable}{\rowcolors{2}{lightGrey}{}\oldlongtable} {\endoldlongtable}
 
 %% Better margins
 \setmarginsrb{3 cm}{2.5 cm}{3 cm}{2.5 cm}{1 cm}{1.5 cm}{1 cm}{1.5 cm}
@@ -39,7 +58,7 @@
 \rfoot{Page \thepage}
 
 \begin{document}
-\pagenumbering{roman}
+\pagenumbering{Roman}
 	\begin{titlingpage}
 		\begin{center}
 			\begin{minipage}{\linewidth}
@@ -71,7 +90,11 @@
 		\end{center}
 	\end{titlingpage}
 	\clearpage
+	
+\setmarginsrb{3 cm}{2.5 cm}{3 cm}{2.5 cm}{1.5 cm}{1.5 cm}{1 cm}{1.5 cm}
 \section*{Document information}
+\addcontentsline{toc}{section}{Document information}
+\renewenvironment{tabular}{\oldtabular}{\endoldtabular}
 \begin{tabular}{ll}
 	\textbf{Document name:} & Quality Management Plan\\
 	\textbf{Document owner:} & TreeWatch \\
@@ -86,22 +109,24 @@
 		René Karoff\\ r.karoff@student.fontys.nl\\ 2198664 \\ \\
 		Ron Gebauer\\ r.gebauer@student.fontys.nl\\ 2153294 \\ }
 \end{tabular}
+\renewenvironment{tabular}{\rowcolors{2}{lightGrey}{}\oldtabular}{\endoldtabular}
 \clearpage
 \section*{Revision history}
 \addcontentsline{toc}{section}{Revision history}
 
 \begin{table}[htbp]
-	\begin{tabularx}{\textwidth}{ X X X X }
-		\textbf{Editor} & \textbf{Date} & \textbf{Note} & \textbf{Status} \\ \hline
-		Rene Karoff & 2015-09-04 & Initial & Draft \\
-		Max van der Linden & 2015-09-04 & Review & Draft\\
-		Rene Karoff & 2015-09-24 & Update & Draft\\
-		Rene Karoff & 2015-10-02 & Update & v0.1\\
-		Max van der Linden & 2015-10-02 & Review & v0.1\\
-		Rene Karoff & 2015-10-16 & Update & v0.2\\
-		Rene Karoff & 2015-11-13 & Update & v0.3\\
-		Rene Karoff & 2015-12-10 & Update & Final\\
-		Max van der Linden & 2015-12-10 & Review & Final\\
+	\begin{tabularx}{\textwidth}{ l *{3}{X} }
+		\textbf{Editor} & \textbf{Date} & \textbf{Note} & \textbf{Status} \\
+		\hline
+		Rene Karoff & \printdate{2015-09-04} & Initial & Draft \\
+		Max van der Linden & \printdate{2015-09-04} & Review & Draft\\
+		Rene Karoff & \printdate{2015-09-24} & Update & Draft\\
+		Rene Karoff & \printdate{2015-10-02} & Update & v0.1\\
+		Max van der Linden & \printdate{2015-10-02} & Review & v0.1\\
+		Rene Karoff & \printdate{2015-10-16} & Update & v0.2\\
+		Rene Karoff & \printdate{2015-11-13} & Update & v0.3\\
+		Rene Karoff & \printdate{2015-12-10} & Update & Final\\
+		Max van der Linden & \printdate{2015-12-10} & Review & Final\\
 	\end{tabularx}
 \end{table}
 \listoffigures
@@ -119,17 +144,15 @@ This quality management plan describes the necessary information needed to manag
 \section{Organization and Responsibilities}
 The SoFa Group consists of five people. Since the SoFa Group should act as a company roles and responsibilities have to be defined.\\
 The following table shows every group member with his role and the responsibilities.
-\begin{table}[htbp]
-	\begin{tabularx}{\textwidth}{ X X X }
-		\textbf{Name} & \textbf{Role} & \textbf{Quality Responsibility} \\ \hline
-		Max van der Linden & Project Manager & Project Planning, External communication, Auditing \\ 
-		Martijn Bonajo & Configuration Manager & Configuration Plan, Infrastructure, Approve Packages and Pushes to Master, Auditing \\ 
-		Ron Gebauer & Scrum Master & Scrum planning, Auditing \\ 
-		Rene Karoff & Quality Manager & Quality Management Plan, Ensure use of quality guidelines, Auditing \\ 
-		Jan Kerkenhoff & Main Engineer & Main Code-Master, Auditing \\
-	\end{tabularx}
-	\caption{Group roles\label{tab:GroupRoles}}
-\end{table}
+\begin{tabularx}{\textwidth}{ X X X }
+	\textbf{Name} & \textbf{Role} & \textbf{Quality Responsibility} \\ \hline
+	Max van der Linden & Project Manager & Project Planning, External communication, Auditing \\ 
+	Martijn Bonajo & Configuration Manager & Configuration Plan, Infrastructure, Approve Packages and Pushes to Master, Auditing \\ 
+	Ron Gebauer & Scrum Master & Scrum planning, Auditing \\ 
+	Rene Karoff & Quality Manager & Quality Management Plan, Ensure use of quality guidelines, Auditing \\ 
+	Jan Kerkenhoff & Main Engineer & Main Code-Master, Auditing \\
+\end{tabularx}
+\captionof{table}{Group roles\label{tab:GroupRoles}}
 Besides his role, the group will work together on several tasks (e.g. User Stories, Design or Implementation).
 \clearpage
 \section{Quality Planning}
@@ -145,22 +168,22 @@ During the implementation every implemented feature needs to be reviewed by anot
 
 In the Appendix is a table which contains the description which document was reviewed by whom and what grade (from \textcolor{red}{- -} to \textcolor{green}{++}) it got when it was approved.
 
-The code of the application will be tested. Therefore it is a goal to get at least 90\% code coverage, better 100\%. 
+The code of the application should be tested. Therefore it is a goal to get a code coverage 80\%.
 \clearpage
 \section{Quality Assurance}
-Since the code is tested, this will show the group if the quality goal is achieved. Furthermore the written documents will be audited by at least one group member and the project quality manager. This chapter also contains the Writing guidelines as well as the used coding convention.
+Since the code is tested, this will show the group if the quality goal is achieved. Furthermore the written documents will be audited by at least one group member. This chapter also contains the Writing guidelines as well as the used coding convention.
 \subsection{Writing Guidelines}
 \begin{description}
 	\item[General] Each document which will be created shall be created using LaTeX
 	\item[Template] Every document which will be created shall use a Template containing:
 	\subitem Titlepage
 	\subitem Document information
-	\item[Fontsize] The Font size for default text is 12pt, LaTeX scales the headings according to the default text size.
+	\item[Font size] The Font size for default text is 12pt, LaTeX scales the headings according to the default text size.
 	\item[Date format] The Date in every documents to be written in according to ISO 8601
 	\subitem use \verb|\today| or \verb|\printdate{dd.mm.yyyy}|
 	\item[Tables \& Figures] Tables and Figures shall be marked as what they are
 	\subitem use \verb|\caption{Guidelines \label{tab:Guidelines}}|
-	\item[Images] Images inside a document shall be readable when printed, if images are to big, the have to be in the appendix
+	\item[Images] Images inside a document shall be readable when printed, if images are to big, they have to be in the appendix
 	\item[Documents to be delivered] Every document which is sent to anyone, will be exported as a .PDF-File
 	\item[Citations] Citations are to be done with the IEEE standard which is also used within the Fontys Internship reports and the Graduation reports
 	
@@ -170,27 +193,26 @@ Since the code is tested, this will show the group if the quality goal is achiev
 		To keep the code readable and understandable it is important that every programmer uses the same coding convention which is hereby defined as the official Microsoft C\# Coding Conventions. \cite{Microsoft}
 		
 		\section{Analyze Project Quality}
-		Since this project is this application is implemented with Xamarin, the group wasn't able to find a suitable possibility to measure the code coverage, however within Xamarin it should be possible somehow to introduce code coverage measurements since it uses the Mono-framework but due to several forums (e.g. \cite{CodeCoverage}) It would take a lot of effort and consume a lot of time which the group prefers to spend on the solution. Furthermore the writer of a document will receive feedback of the auditing persons, so he can improve on his writing too.
+		Since this project is this application is implemented with Xamarin, the group wasn't able to find a suitable possibility to measure the code coverage, however within Xamarin it should be possible somehow to introduce code coverage measurements since it uses the Mono-framework but due to several forums (e.g. \cite{CodeCoverage}) It would take a lot of effort and consume a lot of time which the group prefers to spend on the solution. Furthermore the writer of a document will receive feedback of the auditing person, so he can improve on his writing too.
 		\clearpage
 		\section{Improve Project Quality}
 		To improve the quality of code the following tools were used:
 		\begin{description}
 			\item[Pair programming] Writing code with the 4-eyes-principle helps preventing errors especially with complicated algorithms.
-			\item[Feature-driven development] Every developer o devloper pair implements one feature and only if this feature works correctly the next feature will be implemented.
-			\item[Test-driven devlopment] In order to have the code working properly, the code was tested using unit-testing
+			\item[Feature-driven development] Every developer pair implements one feature and only if this feature works correctly the next feature will be implemented.
+			\item[Test-driven development] In order to have the code working properly, the code should be tested using unit-tests.
 		\end{description}
 		\clearpage
 		\section{Quality Control}
 		To verify that the quality of every document and every feature matches the introduced standard they were reviewed by at least one group member, therefore the review process shown in Figure~\ref{reviewProcess} was introduced. In the review process the term 'document' is defined as either a .PDF-document or a feature.
 		\begin{figure}[htpb]
-			\minipage{\textwidth}
-			\includegraphics[width=\linewidth, keepaspectratio=true]{./img/CheckQuality.png}
-			\caption{Review Process}\label{reviewProcess}
-			\endminipage\hfill
+			\centering
+			\includegraphics[width=.98\linewidth,keepaspectratio=true,angle=90]{./img/CheckQuality.png}
+			\caption{Review Process\label{reviewProcess}}
 		\end{figure}
 		\clearpage
 \bibliography{biblist}
 \clearpage
-\section{Appendix}
-\include{DocumentsReviewed}
+
+\input{DocumentsReviewed}
 \end{document}

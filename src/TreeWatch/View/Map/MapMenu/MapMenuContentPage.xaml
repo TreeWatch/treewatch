@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+    xmlns     ="http://xamarin.com/schemas/2014/forms"
+    xmlns:x    ="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class    ="TreeWatch.MapMenuContentPage"
+    xmlns:local="clr-namespace:TreeWatch;assembly=TreeWatch"
+    Title      ="Map Menu"
+    StyleId    ="MapMenuView">
+    <ContentPage.Icon>
+        <OnPlatform
+            x:TypeArguments="FileImageSource"
+            iOS            ="Icons/HamburgerMenuIcon.png"
+            Android        ="HamburgerMenuIcon.png" />
+    </ContentPage.Icon>
+    <ContentPage.Padding>
+        <OnPlatform
+            x:TypeArguments="Thickness"
+            iOS            ="0, 20, 0, 0" />
+    </ContentPage.Padding>
+    <ContentPage.Content>
+        <StackLayout
+            VerticalOptions  ="CenterAndExpand"
+            HorizontalOptions="FillAndExpand"
+            Orientation      ="Vertical"
+            Spacing          ="15">
+            <SearchBar
+                Placeholder  ="Search"
+                Text         ="{Binding SearchText}"
+                SearchCommand="{Binding SearchCommand}"
+                StyleId      ="MMSearchBar" />
+            <ListView
+                x:Name      ="fieldView"
+                ItemsSource ="{Binding FilteredFields}"
+                SelectedItem="{Binding SelectedField}"
+                StyleId     ="MMListView">
+                <ListView.Header>
+                    <StackLayout>
+                    </StackLayout>
+                </ListView.Header>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell
+                            StyleId="MMLVField">
+                            <StackLayout
+                                Orientation="Horizontal"
+                                Padding    ="20,0">
+                                <Label
+                                    Text           ="{Binding Name}"
+                                    TextColor      ="#000000"
+                                    VerticalOptions="Center" />
+                                <Button
+                                    Clicked          ="InfoButtonClicked"
+                                    CommandParameter ="{Binding Name}"
+                                    HorizontalOptions="EndAndExpand"
+                                    VerticalOptions  ="Center"
+                                    WidthRequest     ="50">
+                                    <Button.BackgroundColor>
+                                        <OnPlatform
+                                            x:TypeArguments="Color"
+                                            Android        ="Transparent" />
+                                    </Button.BackgroundColor>
+                                    <Button.Image>
+                                        <OnPlatform
+                                            x:TypeArguments="FileImageSource"
+                                            iOS            ="Icons/InfoIcon.png"
+                                            Android        ="InfoIcon.png" />
+                                    </Button.Image>
+                                </Button>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

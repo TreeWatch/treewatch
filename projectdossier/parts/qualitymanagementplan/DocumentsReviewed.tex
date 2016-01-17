@@ -1,6 +1,18 @@
-\begin{landscape}
-	\section*{Testplan}
-	\begin{longtable}[htbp]{ l l l l l l l }
-		\textbf{Document} & \textbf{Author} & \textbf{Reviewer 1} & \textbf{Reviewer 2} & \textbf{Grade 1} & \textbf{Grade 2} & \textbf{Approval}\\ \hline
-	\end{longtable}
-\end{landscape}
+\begin{sidewaystable}
+	\section*{Appendix}
+	\subsection*{Reviewed Documents}
+		\begin{longtable}[htbp]{ l p{3.7cm} *{2}{l} p{3.7cm} l}
+			\textbf{Document} & \textbf{Author} & \textbf{Reviewer} & \textbf{Grade} & \textbf{Remark} & \textbf{Approval}\\ \hline
+			Native vs Hybrid & Rene Karoff \& Martijn Bonajo & Jan Kerkenhoff &+& & yes\\
+			SCRUM Planning & Ron Gebauer & & & & \\
+			Quality Management Plan & Rene Karoff & Max van der Linden &-&  Add reviewed documents& no \\
+			Quality Management Plan & Rene Karoff & Max van der Linden &+& & yes \\
+			Configuration Plan & Martijn Bonajo & Jan Kerkenhoff &-& Add Git-Structure & no\\
+			Configuration Plan & Martijn Bonajo & Jan Kerkenhoff &+&  & yes\\
+			ER Diagram & Rene Karoff & Martijn Bonajo & - & Spelling Error& No\\
+			ER Diagram & Rene Karoff & Martijn Bonajo &++&& Yes\\
+			User Stories & Max van der Linden & Group \& Customer & ++ & & yes \\
+			Mockups & Groupwork & Customer & 0 & No grade given &  yes\\
+		\end{longtable}
+		\captionof{table}{All Reviewed Documents\label{tab:ReviewedDocuments}}
+\end{sidewaystable}

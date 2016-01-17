@@ -2,8 +2,9 @@
 
 % Packages
 \usepackage[english]{babel}
-\usepackage[english]{isodate}
+\usepackage[iso,english]{isodate}
 \usepackage[table,svgnames]{xcolor}
+\usepackage{cmbright}
 \usepackage{url}
 \usepackage[utf8x]{inputenc}
 \usepackage[T1]{fontenc}
@@ -50,7 +51,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Preface of the report
 
 % Title Page
-\pagenumbering{roman}
+\pagenumbering{Roman}
 \begin{titlingpage}
 	\begin{center}
 		\begin{minipage}{\linewidth}
@@ -79,6 +80,7 @@
 \end{titlingpage}
 \clearpage
 
+\setmarginsrb{3 cm}{2.5 cm}{3 cm}{2.5 cm}{1.5 cm}{1.5 cm}{1 cm}{1.5 cm}
 \section*{Document information}
 \addcontentsline{toc}{section}{Document information}
 \begin{tabular}{ll}
@@ -135,10 +137,10 @@ Yannick neemt contact op met Randy voor een demo van het programma wat we willen
 Elke 2 weken communicatie over status \\
 Tussendoor met kritieke punten 
 
-17 Sept tot 17 Okt = Yannick will be on holiday
+\printdate{2015-9-17} tot \printdate{2015-10-17} = Yannick will be on holiday
 \clearpage
 
-\includegraphics[height=\textwidth, angle=-90]{CustMeeting1.jpg}
+\includegraphics[height=.99\textwidth,angle=-90]{CustMeeting1.jpg}
 
 \clearpage
 \section{Customer meeting (\printdatetitle{17.09.2015})}
@@ -174,7 +176,7 @@ The system shown by Jacob seems to be the exact thing we are supposed to create 
 How to continue with the project since it already exists for 90\% as crop-r
 
 \textbf{Notes:} \\
-The meeting was organised to see how to continue with the project after seeing that Jacob van den Borne was already using an app with almost all the required functionality. \\
+The meeting was organized to see how to continue with the project after seeing that Jacob van den Borne was already using an app with almost all the required functionality. \\
 We cleared up the possible conflict of interest and asked Randy to provide us with technical information. We also clarified who the customer is and what the goals are for each party participating in the project. And why crop-r is not a problem but more an idea of in which direction our application should go. Further more Han gave some motivational speeches to get the team a bit more focussed.
 
 \clearpage
@@ -204,12 +206,12 @@ Agenda \\
 *   Whats next? 
 
 Discussion \\
-*   There was a discussion about what icons should be used, this however didn't seem to have a high priority. \\
+*   There was a discussion about what icons should be used, this however did not seem to have a high priority. \\
 *   When taking a picture on the field the accuracy should be shown and stored. \\
 *   When taking a picture on the field the coordinates should be stored. \\
 *   Randy pointed out that he was satisfied with the progress so far. \\
-*   For the next sprint the focus will be on overlaying fields on the map and finalising the map menu. \\
-*   Small meetings like this are more efficient trough Skype since it doesn't involve traveling. 
+*   For the next sprint the focus will be on overlaying fields on the map and finalizing the map menu. \\
+*   Small meetings like this are more efficient trough Skype since it does not involve traveling. 
 
 Action points \\
 *   Continue the development of the app with focus on overlaying the fields on the map \\
@@ -233,7 +235,7 @@ He was really satisfied and surprised with the progress we had made so far.
 \section{Customer meeting (\printdatetitle{08.12.2015})}
 \begin{tabular}{ll}
 	\textbf{Date:} & \printdate{08.12.2015} \\
-	\textbf{Present:} & Yannick Smedts (skype), Han Fleuren(skype), Randy Wilbrink (skype) René, Jan, Martijn, Max, Ron \\
+	\textbf{Present:} & \parbox{12.5cm}{Yannick Smedts (skype), Han Fleuren (skype), Randy Wilbrink (skype), René, Jan, Martijn, Max, Ron} \\
 	\textbf{Location:} & Fontys \\
 \end{tabular}
 
@@ -241,10 +243,10 @@ He was really satisfied and surprised with the progress we had made so far.
 Demo and status update
 
 \textbf{Notes:} \\
-Show the last touches to the development of the app. //
-All stakeholders were very satisfied with the result. //
-Received applause from Yannick and Han //
-Descision was made to do a 2 week document sprint in stead of 1 because Han, Yannick and Randy were already satisfied with the implementation of the app. \\
+Show the last touches to the development of the app. \\
+All stakeholders were very satisfied with the result. \\
+Received applause from Yannick and Han \\
+Decision was made to do a 2 week document sprint in stead of 1 because Han, Yannick and Randy were already satisfied with the implementation of the app. \\
 Han told us that a golf ball has 320 dimples and weighs 45 grams. \\
 
 \end{document}

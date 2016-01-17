@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+    xmlns ="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="TreeWatch.BlocksInformationContentPage"
+    StyleId="BlocksInformationView"
+    Padding="0, 0, 0, 0">
+    <ContentPage.Content>
+        <ListView
+            ItemsSource    ="{Binding Variety}"
+            SelectedItem   ="{Binding Block}"
+            StyleId        ="BIVListView"
+            VerticalOptions="FillAndExpand"
+            x:Name         ="blockView">
+            <ListView.Header>
+                <StackLayout>
+                </StackLayout>
+            </ListView.Header>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell
+                        StyleId="BIVLVBlock">
+                        <StackLayout
+                            Orientation="Horizontal"
+                            Padding    ="30, 0">
+                            <RelativeLayout
+                                HorizontalOptions="Start"
+                                VerticalOptions  ="Center">
+                                <Label
+                                    Text           ="{Binding TreeType.Name}"
+                                    TextColor      ="Black"
+                                    VerticalOptions="Center" />
+                                <Label
+                                    Opacity        ="0.75"
+                                    Text           ="{Binding TreeType.Name}"
+                                    TextColor      ="{Binding TreeType.ColorProp}"
+                                    VerticalOptions="Center" />
+                            </RelativeLayout>
+                            <Image
+                                HorizontalOptions="EndAndExpand"
+                                VerticalOptions  ="Center">
+                                <Image.Source>
+                                    <OnPlatform
+                                        x:TypeArguments="ImageSource"
+                                        iOS            ="Icons/ArrowRightIcon.png"
+                                        Android        ="ArrowRightIcon.png" />
+                                </Image.Source>
+                            </Image>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </ContentPage.Content>
+</ContentPage>

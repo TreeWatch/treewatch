@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+    xmlns ="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="TreeWatch.VarietiesInformationContentPage"
+    StyleId="VarietyInformationView"
+    Padding="0, 0, 0, 0">
+    <ContentPage.Content>
+        <ListView
+            ItemsSource    ="{Binding VarietyGroups}"
+            SelectedItem   ="{Binding Variety}"
+            StyleId        ="VIVListView"
+            VerticalOptions="FillAndExpand"
+            x:Name         ="varietiesView">
+            <ListView.Header>
+                <StackLayout>
+                </StackLayout>
+            </ListView.Header>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell
+                        StyleId="VIVLVVariety">
+                        <StackLayout
+                            Orientation="Horizontal"
+                            Padding    ="30, 0">
+                            <RelativeLayout
+                                HorizontalOptions="Start"
+                                VerticalOptions  ="Center">
+                                <Label
+                                    Text           ="{Binding Variety}"
+                                    TextColor      ="Black"
+                                    VerticalOptions="Center" />
+                                <Label
+                                    Opacity        ="0.75"
+                                    Text           ="{Binding Variety}"
+                                    TextColor      ="{Binding Color}"
+                                    VerticalOptions="Center" />
+                            </RelativeLayout>
+                            <Label
+                                HorizontalOptions="EndAndExpand"
+                                Text             ="{Binding Count}"
+                                TextColor        ="#8E8F93"
+                                VerticalOptions  ="Center" />
+                            <Image
+                                VerticalOptions="Center">
+                                <Image.Source>
+                                    <OnPlatform
+                                        x:TypeArguments="ImageSource"
+                                        iOS            ="Icons/ArrowRightIcon.png"
+                                        Android        ="ArrowRightIcon.png" />
+                                </Image.Source>
+                            </Image>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </ContentPage.Content>
+</ContentPage>

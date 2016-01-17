@@ -1,7 +1,9 @@
 \documentclass[12pt]{article}
+
 \usepackage[english]{babel}
-\usepackage[english]{isodate}
+\usepackage[iso,english]{isodate}
 \usepackage[table,svgnames]{xcolor}
+\usepackage{cmbright}
 \usepackage{url}
 \usepackage[utf8x]{inputenc}
 \usepackage[T1]{fontenc}
@@ -9,6 +11,7 @@
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage{parskip}
+\usepackage{caption}
 \usepackage{fancyhdr}
 \usepackage{vmargin}
 \usepackage{hyperref}
@@ -20,28 +23,31 @@
 \usepackage{tabularx}
 \usepackage{titling}
 \usepackage{fancyhdr}
+\usepackage{pdflscape}
 
 % Global graphiscspath
 \graphicspath{{../../../img/}}
 
 % Styling changes
+\definecolor{lightGrey}{rgb}{0.95,0.95,0.95}
+
+\let\oldlongtable\longtable
+\let\endoldlongtable\endlongtable
+\renewenvironment{longtable}{\rowcolors{2}{lightGrey}{}\oldlongtable} {\endoldlongtable}
 
 %% Better margins
 \setmarginsrb{3 cm}{2.5 cm}{3 cm}{2.5 cm}{1 cm}{1.5 cm}{1 cm}{1.5 cm}
 
-
 %% Header and Footer
-\pagestyle{fancy}
 \fancyhf{}
 \lhead{\includegraphics[width=0.2\linewidth]{TreewatchLogo.pdf}}
 \rhead{Scrum}
 \rfoot{Page \thepage}
 
 \begin{document}
-\pagestyle{fancy}
-% TilePage
-
-  \begin{titlingpage}
+	% TitlePage
+	\pagestyle{fancy}
+	\begin{titlingpage}
       \begin{center}
           \begin{minipage}{\linewidth}
             \centering
@@ -77,38 +83,46 @@
             \end{minipage}
           \end{center}
         \end{titlingpage}
-        \clearpage
+        \clearpage						
 
 
 % Main Document
-	\pagenumbering{roman}
-  \section*{Document information}
-\addcontentsline{toc}{section}{Document information}
-	\begin{tabular}{ll}
-		\textbf{Document name:} & Scrum\\
-		\textbf{Document owner:} & TreeWatch \\
-		\textbf{Company/Organisation:} & Fleuren Baarlo \\
-		\textbf{Contact person:} & Max van der Linden, Group leader \\
-		\textbf{Date:} & \today \\
-		\textbf{Place:} & Fontys University of Applied Science Venlo \\
-		\textbf{Authors:} & \parbox[t]{5cm}{
-		Ron Gebauer\\ r.gebauer@student.fontys.nl\\ 2153294 \\ }
-	\end{tabular}
+	\pagenumbering{Roman}
+	\setmarginsrb{3 cm}{2.5 cm}{3 cm}{2.5 cm}{1.5 cm}{1.5 cm}{1 cm}{1.5 cm}
+	
+	\section*{Document information}
+	\addcontentsline{toc}{section}{Document information}
+	
+		\begin{tabular}{ll}
+			\textbf{Document name:} & Scrum\\
+			\textbf{Document owner:} & TreeWatch \\
+			\textbf{Company/Organisation:} & Fleuren Baarlo \\
+			\textbf{Contact person:} & Max van der Linden, Group leader \\
+			\textbf{Date:} & \today \\
+			\textbf{Place:} & Fontys University of Applied Science Venlo \\
+			\textbf{Authors:} & \parbox[t]{5cm}{
+			Ron Gebauer\\ r.gebauer@student.fontys.nl\\ 2153294 \\ }
+		\end{tabular}
+		\clearpage
 
-  \clearpage
-  \tableofcontents
-  \clearpage
-  \pagenumbering{arabic}
+	\tableofcontents
+	\clearpage
+	\pagenumbering{arabic}
 
-\begin{center}
-    \section{Cumulative flow}
-	\includegraphics[width=\textwidth]{cumulativeflow}
-	\clearpage
-	\section{Time by person}
-	\includegraphics[width=\textwidth]{timebyperson}
-	\clearpage
-	\section{Time sheet}
-	\includepdf[pages=-,offset=3cm -2.5cm]{timesheet}
-\end{center}
+	\include{sprintPlanning}
+
+	\include{userStories}
+	
+	\section{Cumulative Flow}
+		\includegraphics[width=1.25\textwidth,angle=90]{cumulativeflow}
+		\clearpage
+	
+	\section{Working Time}
+		\subsection{Time by Person}
+			\hspace*{0.20\paperheight}
+			\includegraphics[width=1.2\textwidth,angle=90]{timebyperson}
+		\clearpage
+
+	\include{timesheet}
 
 \end{document}

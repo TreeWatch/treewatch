@@ -1,6 +1,6 @@
 \documentclass[12pt]{article}
 \usepackage[english]{babel}
-\usepackage[english]{isodate}
+\usepackage[iso,english]{isodate}
 \usepackage[table,svgnames]{xcolor}
 \usepackage{url}
 \usepackage[utf8x]{inputenc}
@@ -77,7 +77,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Preface of the report
 
-    \pagenumbering{roman} % Roman numerals for page counter
+    \pagenumbering{Roman} % Roman numerals for page counter
 
 
     % Title Page
@@ -109,6 +109,7 @@
     \end{titlingpage}
     \clearpage
 
+\setmarginsrb{3 cm}{2.5 cm}{3 cm}{2.5 cm}{1.5 cm}{1.5 cm}{1 cm}{1.5 cm}
     \section*{Document information}
 \addcontentsline{toc}{section}{Document information}
 \renewenvironment{tabular}{\oldtabular}{\endoldtabular}
@@ -161,10 +162,22 @@
 	    \item[Situation] We used Xamarin to create our multi platform application. For this project I was going to be one of the main developers. 
 	    \item[Task] I wanted to improve my programming skills. Mainly on the multi platform aspect of this project. 
 	    \item[Action] I worked on different features of our application during this project. From the shared code base in the Xamarin Forms, to the Android and iOS application. The first part I worked on was the field menu and the search bar inside the field menu. This is done by using the MVVM pattern to split GUI, program logic and data. The view can be found at CODEREF-MAPMENUVIEW and the the viewmodel can be found at CODEREF-MAPMENUVIEWMODEL. After this I started working on adding annotations and info windows on top of the map. This functionality is removed in a later stage of the application, because it was no longer needed. I continued working on the map, this time I wrote code that would zoom in when a specific field was selected, so that it was completely visible in the view and took up most of the view. The code for this can be found at CODEREF-MAPRENDERER. After this i started working on the Notes page inside our application, for this I added a plugin from Xamarin Forms Lab, which can be found at \url{https://github.com/XLabs/Xamarin-Forms-Labs/wiki/Camera}. This functionality has not yet been added to the master branch, because it has not been tested. After a little detour to the Notes page I went back to the map to add functionality to center on user position when a button is clicked and when the map is loaded for the first time. The code for this can be found in CODEREF-MAPRENDERER. For the biggest part I worked the Geofencing part of the application. First I made my own design to get geofencing to work cross platform, but after some testing I couldn't get it to work. After some research I found a plugin which had multi platform support for geofencing. This plugin is however outdated, but the design was still useful for me. The code for geofencing can be found at CODEREF-GEOFENCING.
-	    \item[Result] I learned a lot by developing for multiple platforms. The measurement as can be seen in figure ~\ref{} there is no real improvement at the beginning of the application, because there still was a lot of new concepts everytime. But after about half way through the project there is a slight improvement in the errors per 100 lines of code.
+	    \item[Result] I learned a lot by developing for multiple platforms. The measurement as can be seen in figure ~\ref{lgprogramming} there is no real improvement at the beginning of the application, because there still was a lot of new concepts every time. But after about half way through the project there is a slight improvement in the errors per 100 lines of code.
+	    \item[Reflection] I think I did a good job on the programming part. I learned a lot about coding for different platforms, looking at the different api's and try to get most of it to work in an uniform way.
 	\end{STAR}
 	
+	\begin{figure}[ht]
+		
+		\centering
+		\includegraphics[width=\textwidth, keepaspectratio=true]{personaldossiers/LearningGoalProgrammingMartijn.png}
+		\caption{Learning goal programming progress}\label{lgprogramming}
+	\end{figure}
+	
+	\clearpage
 	\section{Improve software design skills}
+	
+	I want to improve my software design skills, because a lot of the time while programming I get lost in my own code, because there is no overview. To help with this problem diagrams can be really useful. It also helps with creating the bigger picture before you actually starts programming.
+	
 	\subsection{SMART learning goal}
 	\begin{SMART}
 	    \item[Specific] I want to improve my software design skills in this project.
@@ -177,13 +190,17 @@
 	
 	\subsection{STAR Analysis}
 	\begin{STAR}
-	    \item[Situation]
-	    \item[Task]
-	    \item[Action]
-	    \item[Result]
+	    \item[Situation] We used Xamarin to create a multi platform application, this meant that the code should be able to run on both Android and iOS. Making designs for the code could help in these scenario to understand better what should be done for each platform.
+	    \item[Task] I want to improve my design skills during this project. Both for code and database.
+	    \item[Action] For this project we used the MVVM pattern, which is a software design pattern. An example of code I worked can be found at CODEREF-MAPMENUVIEW. For the database I helped working on the design for the database. The design for the database can be found at ER-DIAGRAM. Finally I made a design for the geofencing part of the application. Which can be found at GEOFENCE-DIAGRAM.
+	    \item[Result] The GUI part of the application has where possible been done with the MVVM pattern. The database design is in use by the application. The geofencing design is implemented in the application and in use.
+	    \item[Reflection] Most of the code has been written without first creating some kind of design, so there is still a lot of room for improving my design skills. I think the designs that have been made are of good quality.
 	\end{STAR}
 	
+	\clearpage
 	\section{Improve logging skills}
+	
+	I want to improve my logging skills, because in previous projects and in my internship I always forgot to do that. This lead to a lot of problems at the end of the project, because I forgot what I worked on and for how long I worked on it. This is quite vital information, especially on important projects.
 	
 	\subsection{SMART Learning Goal 3}
 	\begin{SMART}
@@ -197,12 +214,18 @@
 	
 	\subsection{STAR Analysis 3}
 	\begin{STAR}
-	    \item[Situation]
-	    \item[Task]
-	    \item[Action]
-	    \item[Result]
+	    \item[Situation] During the project it is important to log all the work that has been done. For this we use a scrum tool where we can fill in our hours that we worked and assign them to a certain task.
+	    \item[Task] My task was to improve my logging skills.
+	    \item[Action] For this project we used a online scrum tool, which made it easy to track what you did and for how long you did it. 
+	    \item[Result] As you can see in figure ~\ref{lglogging}, I forgot to log/was too late to log a lot of the time. After the midterm assessment with Jan Jacobs I really got my act together and started to log my work everyday.
+	    \item[Reflection] I'm not satisfied with how I started logging for this project. But at the end of the project I really got my act together and started to log every time and I am quite content with the end result.
 	\end{STAR}
 	
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=\textwidth, keepaspectratio=true]{personaldossiers/LearningGoalLoggingMartijn.png}
+		\caption{Learning goal programming progress}\label{lglogging}
+	\end{figure}
 	
 	%\clearpage
 	

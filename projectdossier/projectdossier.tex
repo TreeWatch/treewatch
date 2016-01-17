@@ -3,9 +3,10 @@
 
 % Packages
 \usepackage[english]{babel}
-\usepackage[english]{isodate}
+\usepackage[iso,english]{isodate}
 \usepackage[utf8x]{inputenc}
 \usepackage[T1]{fontenc}
+\usepackage{cmbright}
 \usepackage{url}
 \usepackage{hyperref}
 \usepackage[table,svgnames]{xcolor}
@@ -45,6 +46,23 @@
 \graphicspath{{../img/}}
 
 % Styling changes
+\definecolor{lightGrey}{rgb}{0.95,0.95,0.95}
+
+\let\oldtable\table
+\let\endoldtable\endtable
+\renewenvironment{table}{\rowcolors{2}{lightGrey}{}\oldtable}{\endoldtable}
+
+\let\oldtabular\tabular
+\let\endoldtabular\endtabular
+\renewenvironment{tabular}{\rowcolors{2}{lightGrey}{}\oldtabular}{\endoldtabular}
+
+\let\oldtabularx\tabularx
+\let\endoldtabularx\endtabularx
+\renewenvironment{tabularx}{\rowcolors{2}{lightGrey}{}\oldtabularx}{\endoldtabularx}
+
+\let\oldlongtable\longtable
+\let\endoldlongtable\endlongtable
+\renewenvironment{longtable}{\rowcolors{2}{lightGrey}{}\oldlongtable} {\endoldlongtable}
 
 %% Better margins
 \setmarginsrb{3 cm}{2.5 cm}{3 cm}{2.5 cm}{1 cm}{1.5 cm}{1 cm}{1.5 cm}
@@ -100,9 +118,11 @@
 
 
 % Main Document
-	\pagenumbering{roman}
+	\pagenumbering{Roman}
+	\setmarginsrb{3 cm}{2.5 cm}{3 cm}{2.5 cm}{1.5 cm}{1.5 cm}{1 cm}{1.5 cm}
   \section*{Document information}
 \addcontentsline{toc}{section}{Document information}
+\renewenvironment{tabular}{\oldtabular}{\endoldtabular}
 	\begin{tabular}{ll}
 		\textbf{Document name:} & Final Report\\
 		\textbf{Document owner:} & TreeWatch \\
@@ -117,7 +137,7 @@
 		René Karoff\\ r.karoff@student.fontys.nl\\ 2198664 \\ \\
 		Ron Gebauer\\ r.gebauer@student.fontys.nl\\ 2153294 \\ }
 	\end{tabular}
-
+\renewenvironment{tabular}{\rowcolors{2}{lightGrey}{}\oldtabular}{\endoldtabular}
 
   \tableofcontents
   
@@ -125,63 +145,60 @@
   \chapter{Introduction}
   This is the project dossier for the SoftwareFactory project of the GreenTech Lab also known as Tree Watch. As part of this document all the documents produced during the runtime of the project are included. Below you will find a brief explanation of what each included document is about.
   
-  \textbf{Project plan}\\
-  The project plan is about the project itself. The initiation and the planning of the project in general are described. This document has been written by VAA ICT and was already produced before te start of the SoFa project. The document being produced by VAA is also the reason that it is written in Dutch
+  \paragraph*{The Project Plan} is about the project itself. The initiation and the planning of the project in general are described. This document has been written by VAA ICT and was already produced before the start of the SoFa project. The document being produced by VAA is also the reason that it is written in Dutch
     
-  \textbf{Configuration plan}\\
+  \paragraph*{The Configuration Plan} is the document created by the configuration manager. It shows dependencies, version control, change control and conventions.
+  
+  \paragraph*{The Corporate Identity} document gives insight into how the TreeWatch company should profile itself. With for instance what color code and what icons.
+  
+  \paragraph*{The Class Diagram} gives an overview of what classes are used within the app and how they are related to each other.
+  
+  \paragraph*{The Entity Relationship Diagram} document explains the structure of the database which is used by the app.
+  
+  \paragraph*{The Native vs Hybrid} document was produced to be able to decide if we were to develop each app separately (being android and IOS) or one hybrid app. The Native vs hybrid document is basically about weighing the pros and cons of each method of development.
+  
+  \paragraph*{The Handover Document} is like a final report. It describes everything that anyone would need to know about the project in a summarized way.
   
   
-  \textbf{Corporate identity}\\
-  The Corporate identity document gives insight into how the TreeWatch company should profile itself. With for instance what colorcode and what icons.
+  \paragraph*{The Meetings} document is a bundle of all the notes which have been taken of the customer meetings. It gives insight into what was discussed during these meetings, who was present and when it took place.
   
-  \textbf{Class diagram}\\
-  The Class diagram gives an overview of what classes are used within the app and how they are related to each other.
+  \paragraph*{The Minutes} document is a bundle of the minutes which were taken every week. It shows presence, decisions and what to do for that week.
   
-  \textbf{Entity relationshipdiagram}\\
-  The Entity relationshipdocument explains the structure of the database which is used by the app.
+  \paragraph*{The Quality Management Plan} is a plan about how to ensure the quality of the documents and products produced within the SoFa.
   
-  \textbf{Native vs hybrid}\\
-  This document was produced to be able to decide if we were to develop each app seperately (being android and IOS) or one hybrid app. The Native vs hybrid document is basically about weighing the pros and cons of each method of development.
-  
-  \textbf{Finalreport}\\
-  
-  
-  \textbf{Meetings}\\
-  The meetings document is a bundle of all the notes which have been taken of the customer meetings. It gives insight into what was discussed during these meetings, who was present and when it took place.
-  
-  \textbf{Minutes}\\
-  The minutes document is a bundle of the minutes which were taken every week. It shows presence, decisions and what ToDo for that week
-  
-  \textbf{Quality management plan}\\
-  The Quality management plan is a plan about how to ensure the quality of the documents and products produced within the SoFa.
-  
-  \textbf{Scrum}\\
-  
-  \textbf{Final presentation}\\
-  
+  \paragraph*{The Scrum} plan contains all the planning and results of the development process.
+      
+  \paragraph*{The Final Presentation} chapter contains the slides of the final presentation so that future groups can use the same style when presenting.
   
   
   \clearpage
-  \chapter{Project plan}
+  
+  \chapter{Handover Document}
+  \addPart{parts/handoverdocument/handoverdocument.pdf}
+  
+  \chapter{Project Plan}
   \addPart{parts/ProjectPlan.pdf}
+  
+  \chapter{Quality Management Plan}
+  \addPart{parts/qualitymanagementplan/qualitymanagementplan.pdf}
 
-  \chapter{Configuration plan}
+  \chapter{Configuration Plan}
   \addPart{parts/configurationplan/configurationplan.pdf}
 
-  \chapter{Corporate identitiy}
+  \chapter{Corporate Identity}
   \addPart{parts/corporateidentity/corporateidentity.pdf}
-
-  \chapter{Class diagram}
-  \addPart{parts/designdocuments/classdiagramm.pdf}
-
-  \chapter{Entity relationshipdiagramm}
-  \addPart{parts/designdocuments/entityrelationshipdiagramm.pdf}
-
-  \chapter{Native vs hybrid}
+  
+  \chapter{Native vs. Hybrid}
   \addPart{parts/designdocuments/nativevshybrid.pdf}
 
-  \chapter{Handoverdocument}
-  \addPart{parts/finalreport/finalreport.pdf}
+  \chapter{Class Diagram}
+  \addPart{parts/designdocuments/classdiagramm.pdf}
+  
+  \chapter{Geofence Class Diagram}
+  \addPart{parts/designdocuments/geofencediagram.pdf}
+
+  \chapter{Entity Relationship Diagram}
+  \addPart{parts/designdocuments/entityrelationshipdiagramm.pdf}
 
   \chapter{Meetings}
   \addPart{parts/meetings/meetings.pdf}
@@ -189,12 +206,10 @@
   \chapter{Minutes}
   \addPart{parts/meetings/minutes.pdf}
 
-  \chapter{Quality management plan}
-  \addPart{parts/qualitymanagementplan/qualitymanagementplan.pdf}
-
   \chapter{Scrum}
   \addPart{parts/scrum/scrum.pdf}
-  \chapter{Final presentation}
+  
+  \chapter{Final Presentation}
 
   \clearpage
   \setlength{\voffset}{0cm}
@@ -205,5 +220,7 @@
   \setmarginsrb{3 cm}{2.5 cm}{3 cm}{2.5 cm}{1 cm}{1.5 cm}{1 cm}{1.5 cm}
   
   \chapter{Important Code}
+  \addPart{parts/importantcode/importantcode.pdf}
+
 
 \end{document}

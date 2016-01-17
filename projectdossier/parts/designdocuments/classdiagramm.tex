@@ -1,4 +1,5 @@
 \documentclass[12pt]{article}
+
 \usepackage[english]{babel}
 \usepackage[english]{isodate}
 \usepackage[table,svgnames]{xcolor}
@@ -21,8 +22,6 @@
 \usepackage{fancyhdr}
 \usepackage{rotating}
 \usepackage{lscape}
-\usepackage[landscape]{geometry}
-
 
 % Global graphiscspath
 \graphicspath{{../../../img/}}
@@ -32,42 +31,33 @@
 %% Better margins
 %\setmarginsrb{1 cm}{1 cm}{1 cm}{1 cm}{0 cm}{0 cm}{0 cm}{0 cm}
 
-
 \begin{document}
-\pagestyle{empty}
+	\pagestyle{empty}
 
-  \begin{figure}[ht]
+	\begin{figure}[ht]
+  		\centering
+	  	\includegraphics[width=\textheight,keepaspectratio,angle=90]{ClassDiagram1-part1.pdf}
+	  	\caption{Class Diagramm Forms Part 1\label{fig:ClassDiagramPart1}}
+	\end{figure}
 
-  	\begin{center}
-  	
-  	
-  	\includegraphics[width=0.9\paperwidth, keepaspectratio=true]{ClassDiagram1-part1.pdf}
-  	\caption{Classdiagramm forms part1}\label{classdiagram}\
-  	\end{center}
-  \end{figure}
-
-
-  \begin{figure}[ht]
-
-  	\centering
-  	\includegraphics[width=0.9\paperwidth, keepaspectratio=true]{ClassDiagram1-part2.pdf}
-  	\caption{Classdiagramm forms part2}\label{classdiagram}\
-  \end{figure}
+	\begin{figure}[ht]
+	  	\centering
+	  	\includegraphics[width=\textheight,keepaspectratio,angle=90]{ClassDiagram1-part2.pdf}
+	  	\caption{Class Diagramm Forms Part 2\label{fig:ClassDiagramPart2}}
+	\end{figure}
   
   \clearpage
 
-  \begin{figure}[ht]
+	\begin{figure}[ht]
+	  	\centering
+	  	\includegraphics[width=\textheight,keepaspectratio,angle=90]{ClassDiagramiOS.pdf}
+	  	\caption{Class Diagramm iOS\label{fig:ClassDiagramIos}}
+	\end{figure}
 
-  	\centering
-  	\includegraphics[width=0.9\paperwidth, keepaspectratio=true]{ClassDiagramiOS.pdf}
-  	\caption{Classdiagramm ios}\label{classdiagram}\
-  \end{figure}
-
-  \begin{figure}[ht]
-
-  	\centering
-  	\includegraphics[width=0.9\paperwidth, keepaspectratio=true]{ClassDiagramForms.pdf}
-  	\caption{Classdiagramm Forms}\label{classdiagram}\
-  \end{figure}
+	\begin{figure}[ht]
+		\centering
+	  	\includegraphics[width=\textheight,keepaspectratio,angle=90]{ClassDiagramForms.pdf}
+	  	\caption{Class Diagramm Forms\label{fig:ClassDiagramForms}}
+	\end{figure}
 
 \end{document}

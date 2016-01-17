@@ -1,0 +1,56 @@
+\section{Manual}
+\subsection{Credentials}
+To continue working on this project you need the following credentials:
+\begin{itemize}
+\item Access to the Github repository
+\item License for Xamarin 
+\item Optional: Google Account that contains the API Key
+\end{itemize}
+
+\subsection{General setup}
+If you want to checkout the project read access to the repository and a trial xamarin license is fine.
+
+\textbf{Important}\\
+If you do not have access to the Google account that belongs to the API key used, then you need to exchange the GoogleMaps API Key in the `AndroidManifest.xml`, which is explained in detail later on.
+
+\subsection{Getting the project running}
+\begin{itemize}
+\item Install Xamarin Studio \url{https://xamarin.com/download}
+\item Install Xcode and the latest iOS SDK
+\item Install Xamarin Android Player \url{https://xamarin.com/android-player}
+\item Download an android device in Xamarin Android Player
+\item Install Google Play Services for the emulator \url{https://university.xamarin.com/resources/how-to-install-google-play-on-android-emulator}
+\item Checkout git repository
+\item Open project in Xamarin Studio
+\item  Add your android app fingerprint to the Google Maps API key:
+\subitem How to determine your MD5 or SHA1 signature \url{https://developer.xamarin.com/guides/android/deployment,_testing,_and_metrics/MD5_SHA1/}
+\subitem This \url{https://developers.google.com/maps/documentation/android-api/signup#get_an_android_api_key} explains how you can add a fingerprint to an existing key or how to create a new key and add it to the app.
+\subitem If you want to exchange the key, the android manifest is located at \linebreak \texttt{Droid/Properties/AndroidManifest.xml}
+\item  You can now run the project from Xamarin Studio on an emulator
+
+\end{itemize}
+ 
+\subsection{Running on a Device}
+
+\subsubsection{iOS}
+\begin{itemize}
+\item Get a valid development certificate for iOS development
+\item Get a valid provisioning profile for the app including the device you want to run on
+\item Connect the device
+\item Select the device inside of Xamarin Studio
+\item Deploy the app to the device
+\end{itemize}
+\subsubsection{Android}
+\begin{itemize}
+\item Connect the device
+\item Select the device inside of Xamarin Studio
+\item Deploy the app to the device
+\end{itemize}
+
+
+\section{Conclusion}
+The TreeWatch app has come a long way but still has a long way to go. A lot of the basic functionality has been implemented. The app can already be used to visualize where all the fields are located on the map and is also able to show overlays such as the block data and biomass.
+
+VAA ICT Consultancy will need to continue the development of the app in order to make it practically usable. This means that a web based database needs to be added which contains all the info. For now the information about the fields is still stored locally on the device. Furthermore also the history and todo parts of the app should be implemented.
+
+

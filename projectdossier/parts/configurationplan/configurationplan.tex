@@ -1,9 +1,10 @@
 \documentclass[12pt]{article}
 
 \usepackage[english]{babel}
-\usepackage[english]{isodate}
+\usepackage[iso,english]{isodate}
 \usepackage[utf8x]{inputenc}
 \usepackage[T1]{fontenc}
+\usepackage{cmbright}
 \usepackage{url}
 \usepackage{hyperref}
 \usepackage[table,svgnames]{xcolor}
@@ -37,6 +38,23 @@
 \rfoot{Page \thepage}
 
 % Styling changes
+\definecolor{lightGrey}{rgb}{0.95,0.95,0.95}
+
+\let\oldtable\table
+\let\endoldtable\endtable
+\renewenvironment{table}{\rowcolors{2}{lightGrey}{}\oldtable}{\endoldtable}
+
+\let\oldtabular\tabular
+\let\endoldtabular\endtabular
+\renewenvironment{tabular}{\rowcolors{2}{lightGrey}{}\oldtabular}{\endoldtabular}
+
+\let\oldtabularx\tabularx
+\let\endoldtabularx\endtabularx
+\renewenvironment{tabularx}{\rowcolors{2}{lightGrey}{}\oldtabularx}{\endoldtabularx}
+
+\let\oldlongtable\longtable
+\let\endoldlongtable\endlongtable
+\renewenvironment{longtable}{\rowcolors{2}{lightGrey}{}\oldlongtable} {\endoldlongtable}
 
 %% Better margins
 \setmarginsrb{3 cm}{2.5 cm}{3 cm}{2.5 cm}{1 cm}{1.5 cm}{1 cm}{1.5 cm}
@@ -73,7 +91,7 @@
 
 \begin{document}
 
-	\pagenumbering{roman} % Roman numerals for page counter
+	\pagenumbering{Roman} % Roman numerals for page counter
 
 
 	% Title Page
@@ -105,8 +123,10 @@
 	\end{titlingpage}
 	%\pagenumbering{gobble}
 	
+	 \setmarginsrb{3 cm}{2.5 cm}{3 cm}{2.5 cm}{1.5 cm}{1.5 cm}{1 cm}{1.5 cm}
 	 \section*{Document information}
 	\addcontentsline{toc}{section}{Document information}
+\renewenvironment{tabular}{\oldtabular}{\endoldtabular}
 	\begin{tabular}{ll}
 		\textbf{Document name:} & Configuration report\\
 		\textbf{Document owner:} & TreeWatch \\
@@ -118,6 +138,7 @@
 		Martijn Bonajo\\ m.bonajo@student.fontys.nl\\ 2213297 \\ \\
 		René Karoff\\ r.karoff@student.fontys.nl\\ 2198664 \\ \\ }
 	\end{tabular}
+\renewenvironment{tabular}{\rowcolors{2}{lightGrey}{}\oldtabular}{\endoldtabular}
 
 
 	\section*{Revision history}
@@ -126,14 +147,14 @@
 	\begin{table}[htbp]
 		\begin{tabular}{ p{3,5cm}  p{3cm}  p{1,5cm}  p{1,5cm}  p{3,5cm} }
 			\textbf{Editor} & \textbf{Date} & \textbf{Note} & \textbf{Status} \\ \hline
-			Martijn Bonajo & 2015-09-01 & Initial & Draft \\
-			René Karoff & 2015-09- & - & Review \\
-			Martijn Bonajo & 2015-10-09 & Update & Proposal \\
-			Martijn Bonajo & 2015-10-16 & Update & v0.1 \\
-			Martijn Bonajo & 2015-11-03 & Update & v0.2 \\
-			Martijn Bonajo & 2015-11-17 & Update & v0.3 \\
-			Martijn Bonajo & 2016-01-08 & Update & Final\\
-			Rene Karoff & 2016-01-08 & Review & Final \\
+			Martijn Bonajo & \printdate{2015-09-01} & Initial & Draft \\
+			René Karoff & \printdate{2015-09-02} & - & Review \\
+			Martijn Bonajo & \printdate{2015-10-09} & Update & Proposal \\
+			Martijn Bonajo & \printdate{2015-10-16} & Update & v0.1 \\
+			Martijn Bonajo & \printdate{2015-11-03} & Update & v0.2 \\
+			Martijn Bonajo & \printdate{2015-11-17} & Update & v0.3 \\
+			Martijn Bonajo & \printdate{2016-01-08} & Update & Final\\
+			Rene Karoff & \printdate{2016-01-08} & Review & Final \\
 		\end{tabular}
 	\end{table}
 	
@@ -228,6 +249,30 @@
 	\path [line] (unit) -- node {approved}(baseline);
 	\path [line] (appveyor) -- node {approved}(baseline);
 
+	\end{tikzpicture}
+	
+	\subsection{GIT structure}
+	
+	
+	All documentation can be found in the doc branch.\\
+	The project can be in the master branch.\\
+	The website can be found in the website branch.\\
+	
+	\begin{tikzpicture}[node distance = 2cm, auto]
+	\node [block] (git) {GIT};
+	\node [block, right of=git, node distance=3cm] (master) {Master branch};
+	\node [block, right of=master, node distance=7cm] (ios) {iOS project};
+	\node [block, below of=ios, node distance=3cm] (droid) {Forms project};
+	\node [block, above of=ios, node distance=3cm] (forms) {Droid project};
+	\node [block, below of=master, node distance=3cm] (doc) {Doc branch};
+	\node [block, above of=master, node distance=3cm] (website) {Website branch};
+	
+	\path [line] (git) -- (master);
+	\path [line] (git) -- (doc);
+	\path [line] (git) -- (website);
+	\path [line] (master) -- node {Shared code}(forms);
+	\path [line] (master) -- node {iOS code}(ios);
+	\path [line] (master) -- node {Android code}(droid);
 	\end{tikzpicture}
 
 	\section{Conventions}
