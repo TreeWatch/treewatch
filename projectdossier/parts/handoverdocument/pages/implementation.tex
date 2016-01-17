@@ -56,7 +56,7 @@ The platform specific code calls the methods in the CrossGeofenceListener class 
 \newpage
 \begin{figure}
 	\begin{tikzpicture}
-			\begin{class}[text width=5cm]{GeofenceCircularRegion}{11,-14}
+			\begin{class}[text width=4.5cm]{GeofenceCircularRegion}{10.2,-14}
 				\attribute{Id : String}
 				\attribute{Latitude : double}
 				\attribute{Longtitude : double}
@@ -66,14 +66,14 @@ The platform specific code calls the methods in the CrossGeofenceListener class 
 				\attribute{NotifyOnExit : bool}
 			\end{class}
 
-			\begin{class}[text width=5cm]{GeofenceLocation}{11, -10}
+			\begin{class}[text width=4.5cm]{GeofenceLocation}{10.2, -10.2}
 				\attribute{Latitude : double}
 				\attribute{Longtitude : double}
 				\attribute{Date : DateTime}
 				\attribute{Accuracy : double}
 			\end{class}
 
-			\begin{interface}[text width=5cm]{IGeofence}{0,0}
+			\begin{interface}[text width=4.5cm]{IGeofence}{0,0}
 				\attribute{Regions : IReadOnlyDictionary\textless string, GeofenceCircularRegion\textgreater}
 				\attribute{GeofenceResults : IReadOnlyDictionary\textless string, GeofenceResult\textgreater}
 				\attribute{IsMonitoring : bool}
@@ -82,10 +82,10 @@ The platform specific code calls the methods in the CrossGeofenceListener class 
 				\operation{StartMonitoring(regions : IList \textless GeofenceCircularRegion\textgreater) : void}
 				\operation{StopMonitoring(id : string) : void}
 				\operation{StopMonitoring(ids : IList\textless string\textgreater) : void}
-				\operation{StopMonitoringAllRegions() : void}
+				\operation{StopMonitoringAll\-Regions() : void}
 			\end{interface}
 
-			\begin{class}[text width=5cm]{CrossGeofence}{0,-14}
+			\begin{class}[text width=4.5cm]{CrossGeofence}{0,-14}
 				\attribute{Implementation : IGeofence}
 				\attribute{GeofenceListener : IGeofenceListener}
 				\attribute{IsInitialized : bool}
@@ -95,20 +95,20 @@ The platform specific code calls the methods in the CrossGeofenceListener class 
 				\operation{CreateGeofence() : IGeofence}
 			\end{class}
 
-			\begin{interface}[text width=5cm]{IGeofenceStore}{11,0}
-				\operation{GetAll() : Dictionary\textless string, GeofenceCircularReqgion\textgreater}
+			\begin{interface}[text width=4.5cm]{IGeofenceStore}{10.2,0}
+				\operation{GetAll() : Dictionary\textless string, GeofenceCircularRegion\textgreater}
 				\operation{Get(string id) : GeofenceCircularRegion}
-				\operation{Save(GeofenceCircularRegion region) : void}
+				\operation{Save(GeofenceCircular\-Region region) : void}
 				\operation{RemoveAll() : void}
 				\operation{Remove(string id) : void}
 			\end{interface}
 
-			\begin{abstractclass}[text width=5cm]{BaseGeofenceStore}{11,-7}
+			\begin{abstractclass}[text width=4.5cm]{BaseGeofenceStore}{10.2,-6.7}
 				\implement{IGeofenceStore}
 				\operation{\#GetFieldKey(string id, string fieldName) : string}
 			\end{abstractclass}
 			
-			\begin{interface}[text width=5cm]{IGeofenceListener}{5.5,0}
+			\begin{interface}[text width=4.5cm]{IGeofenceListener}{5.1,0}
 				\operation{OnMonitoringStarted(id : string) : void}
 				\operation{OnMonitoringStopped() : void}
 				\operation{OnMonitoringStopped(id : string) : void}
@@ -116,9 +116,9 @@ The platform specific code calls the methods in the CrossGeofenceListener class 
 				\operation{OnError(error: string) : void}
 			\end{interface}
 
-			\begin{class}[text width=5cm]{CrossGeofenceListener}{5.5,-14}
-				\operation{OnMonitoringStarted(string region) : void}
-				\operation{OnMonitoringStopped(string region) : void}
+			\begin{class}[text width=4.5cm]{CrossGeofenceListener}{5.1,-14}
+				\operation{OnMonitoringStarted(\-string region) : void}
+				\operation{OnMonitoringStopped(\-string region) : void}
 				\operation{OnMonitoringStopped() : void}
 				\operation{OnError(string error) : void}
 				\operation{OnRegionStateChanged( GeofenceResult result) : void}

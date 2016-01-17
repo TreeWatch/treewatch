@@ -29,6 +29,23 @@
 \graphicspath{{../../../img/}}
 
 % Styling changes
+\definecolor{lightGrey}{rgb}{0.95,0.95,0.95}
+
+\let\oldtable\table
+\let\endoldtable\endtable
+\renewenvironment{table}{\rowcolors{2}{lightGrey}{}\oldtable}{\endoldtable}
+
+\let\oldtabular\tabular
+\let\endoldtabular\endtabular
+\renewenvironment{tabular}{\rowcolors{2}{lightGrey}{}\oldtabular}{\endoldtabular}
+
+\let\oldtabularx\tabularx
+\let\endoldtabularx\endtabularx
+\renewenvironment{tabularx}{\rowcolors{2}{lightGrey}{}\oldtabularx}{\endoldtabularx}
+
+\let\oldlongtable\longtable
+\let\endoldlongtable\endlongtable
+\renewenvironment{longtable}{\rowcolors{2}{lightGrey}{}\oldlongtable} {\endoldlongtable}
 
 %% Better margins
 \setmarginsrb{3 cm}{2.5 cm}{3 cm}{2.5 cm}{1 cm}{1.5 cm}{1 cm}{1.5 cm}
@@ -76,6 +93,8 @@
 	
 \setmarginsrb{3 cm}{2.5 cm}{3 cm}{2.5 cm}{1.5 cm}{1.5 cm}{1 cm}{1.5 cm}
 \section*{Document information}
+\addcontentsline{toc}{section}{Document information}
+\renewenvironment{tabular}{\oldtabular}{\endoldtabular}
 \begin{tabular}{ll}
 	\textbf{Document name:} & Quality Management Plan\\
 	\textbf{Document owner:} & TreeWatch \\
@@ -90,13 +109,15 @@
 		René Karoff\\ r.karoff@student.fontys.nl\\ 2198664 \\ \\
 		Ron Gebauer\\ r.gebauer@student.fontys.nl\\ 2153294 \\ }
 \end{tabular}
+\renewenvironment{tabular}{\rowcolors{2}{lightGrey}{}\oldtabular}{\endoldtabular}
 \clearpage
 \section*{Revision history}
 \addcontentsline{toc}{section}{Revision history}
 
 \begin{table}[htbp]
-	\begin{tabularx}{\textwidth}{ X X X X }
-		\textbf{Editor} & \textbf{Date} & \textbf{Note} & \textbf{Status} \\ \hline
+	\begin{tabularx}{\textwidth}{ l *{3}{X} }
+		\textbf{Editor} & \textbf{Date} & \textbf{Note} & \textbf{Status} \\
+		\hline
 		Rene Karoff & \printdate{2015-09-04} & Initial & Draft \\
 		Max van der Linden & \printdate{2015-09-04} & Review & Draft\\
 		Rene Karoff & \printdate{2015-09-24} & Update & Draft\\

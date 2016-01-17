@@ -46,6 +46,23 @@
 \graphicspath{{../img/}}
 
 % Styling changes
+\definecolor{lightGrey}{rgb}{0.95,0.95,0.95}
+
+\let\oldtable\table
+\let\endoldtable\endtable
+\renewenvironment{table}{\rowcolors{2}{lightGrey}{}\oldtable}{\endoldtable}
+
+\let\oldtabular\tabular
+\let\endoldtabular\endtabular
+\renewenvironment{tabular}{\rowcolors{2}{lightGrey}{}\oldtabular}{\endoldtabular}
+
+\let\oldtabularx\tabularx
+\let\endoldtabularx\endtabularx
+\renewenvironment{tabularx}{\rowcolors{2}{lightGrey}{}\oldtabularx}{\endoldtabularx}
+
+\let\oldlongtable\longtable
+\let\endoldlongtable\endlongtable
+\renewenvironment{longtable}{\rowcolors{2}{lightGrey}{}\oldlongtable} {\endoldlongtable}
 
 %% Better margins
 \setmarginsrb{3 cm}{2.5 cm}{3 cm}{2.5 cm}{1 cm}{1.5 cm}{1 cm}{1.5 cm}
@@ -105,6 +122,7 @@
 	\setmarginsrb{3 cm}{2.5 cm}{3 cm}{2.5 cm}{1.5 cm}{1.5 cm}{1 cm}{1.5 cm}
   \section*{Document information}
 \addcontentsline{toc}{section}{Document information}
+\renewenvironment{tabular}{\oldtabular}{\endoldtabular}
 	\begin{tabular}{ll}
 		\textbf{Document name:} & Final Report\\
 		\textbf{Document owner:} & TreeWatch \\
@@ -119,7 +137,7 @@
 		René Karoff\\ r.karoff@student.fontys.nl\\ 2198664 \\ \\
 		Ron Gebauer\\ r.gebauer@student.fontys.nl\\ 2153294 \\ }
 	\end{tabular}
-
+\renewenvironment{tabular}{\rowcolors{2}{lightGrey}{}\oldtabular}{\endoldtabular}
 
   \tableofcontents
   
