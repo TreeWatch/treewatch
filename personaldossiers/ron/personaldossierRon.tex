@@ -1,6 +1,7 @@
 \documentclass[12pt]{article}
+
 \usepackage[english]{babel}
-\usepackage[english]{isodate}
+\usepackage[iso,english]{isodate}
 \usepackage[table,svgnames]{xcolor}
 \usepackage{url}
 \usepackage[utf8x]{inputenc}
@@ -50,7 +51,7 @@
 \let\endoldlongtable\endlongtable
 \renewenvironment{longtable}{\rowcolors{2}{lightGrey}{}\oldlongtable} {\endoldlongtable}
 
-\graphicspath{{../img/}{../img/personaldossiers/}}
+\graphicspath{{../../img/}{../img/personaldossiers/ron/}}
 
 \renewcommand{\arraystretch}{1.5}
 
@@ -116,7 +117,7 @@
 \addcontentsline{toc}{section}{Document information}
 \renewenvironment{tabular}{\oldtabular}{\endoldtabular}
 	\begin{tabular}{ll}
-		\textbf{Document name:} & Personal dossier Ron Gebauer\\
+		\textbf{Document name:} & Personal Dossier Ron Gebauer\\
 		\textbf{Document owner:} & Ron Gebauer \\
 		\textbf{Company/Organisation:} & Fleuren Baarlo \\
 		\textbf{Contact person:} & Ron Gebauer \\
@@ -147,71 +148,11 @@
 
     \pagenumbering{arabic}
    
-	\section{Improve Programming Skills}
-		\subsection{Reason to Choose}
-			
+	\include{programmingSkills}
 	
-	    \subsection{SMART}
-			\begin{SMART}
-			    \item[Specific] As my personal learning goal I want to improve my knowledge of the program language used in the project. The programming language used is not yet clear.
-			    \item[Measurable] This is measured by the result of the division of compiler errors by lines of code.				\item[Attainable] Information about the programming language used may be found on the Internet but also in various books or ebooks.				\item[Relevant] There are many programming languages but they can not all mastered. To have many options after graduation, you should have a lot of them already programmed.
-			    \item[Time-limited] The semester ends in January 2016 which is why I will have reached my goal by the end of January.			\end{SMART}
+	\include{scrumMasterSkills}
 
-		\subsection{STAR}
-			\begin{STAR}
-			    \item[Situation] 
-			    \item[Task] 
-			    \item[Action] 
-			    \item[Result] 
-			\end{STAR}
-	\pagebreak
-
-	\section{Improve Skills of a Scrum Master}
-		\subsection{Reason to Choose}
-			
-	
-		\subsection{SMART}
-		\begin{SMART}
-		    \item[Specific] As the Scrum Master in our project, I want to improve my skills for this task.
-		    \item[Measurable] This competence can be measured using a small questionnaire, because my team members can tell the best if I have made myself well.
-		    \item[Attainable] To improve my skills in this area, I can find lots of information on the Internet but also benefit from the experience of my group.
-		    \item[Relevant] Scrum is a methodology in many software projects of small and large companies.
-		    \item[Time-limited] The semester ends in January 2016 which is why I will have reached my goal by the end of January.
-		\end{SMART}
-		
-		\subsection{STAR}
-		\begin{STAR}
-		    \item[Situation] 
-		    \item[Task] 
-		    \item[Action] 
-		    \item[Result] 
-		\end{STAR}
-	\pagebreak
-
-	\section{Improve a Proactive}
-		\subsection{Reason to Choose}
-			
-	
-		\subsection{SMART}
-			\begin{SMART}
-			    \item[Specific] A proactive for me is to be present and on time. That's one of my biggest weaknesses.
-			    \item[Measurable] This can be measured by a statistical comparison of the times when I was on time and unpunctual. In addition, you can compare my arrival and absent-ness percentage together.
-			    \item[Attainable] In the present time appointments, work schedules and events are an integral part and therefore time management is a very important issue.
-			    \item[Relevant] This is a very relevant issue, as it could cost me my job if I am too often absent or late.
-			    \item[Time-limited] The semester ends in January 2016 which is why I will have reached my goal by the end of January.
-			\end{SMART}
-		
-		\subsection{STAR}
-			\begin{STAR}
-			    \item[Situation] 
-			    \item[Task] 
-			    \item[Action] 
-			    \item[Result] 
-			\end{STAR}
-			
-			\begin{figure}[htbp]
-				\includegraphics[width=\textwidth]{../img/inTimeDiagramm}
-			\end{figure}
+	\include{proactivSkill}
 
 %\clearpage
 
