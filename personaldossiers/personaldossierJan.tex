@@ -2,6 +2,7 @@
 \usepackage[english]{babel}
 \usepackage[iso,english]{isodate}
 \usepackage[table,svgnames]{xcolor}
+\usepackage{cmbright}
 \usepackage{url}
 \usepackage[utf8x]{inputenc}
 \usepackage[T1]{fontenc}
@@ -151,8 +152,10 @@
   	    \caption{Learning goal progress}\label{lgp}
     \end{sidewaysfigure}
     
-    \section{A-Competencies}
-        \subsection{SMART Learning Goal 1}
+    \section{Improve mobile development skills}
+    
+    I choose this learning goal, since I always wanted to learn more about app programming. I strongly look for a future career app development, since this is a really interesting and fast moving field. Since our project consists of creating a app for our customer, this was a great opportunity to improve my knowledge about app development. 
+        \subsection{SMART Learning Goal}
 \begin{SMART}
     \item[Specific] As the head developer for this Sofa I want to get more experience developing applications for mobile systems like Android and iOS. specializing in a framework for running web apps native on different mobile systems
     \item[Measurable] To measure this learning goal I will take into account the number of errors per lines of code.
@@ -162,19 +165,28 @@
     \item[My complete goal] To improve my mobile development experience by January 2016.
 \end{SMART}
 
-\subsection{STAR Analysis 1}
+\subsection{STAR Analysis}
 \begin{STAR}
     \item[Situation] We used Xamarin and the Xamarin Forms SDK to create our cross platform application. I was responsible for coordinating the development across the team, also researched and picked out the dependencies we used. The accompanying learning goal is learning goal 1.
     \item[Task] I wanted to improve my experience with developing mobile apps. Especially with Xamarin Forms and Xamarin in general, since it was used in the project.
     \item[Action] I worked on several different parts of the application.
-    The first part was showing a map on iOS and Android. This was accomplished by writing a custom renderer as seen in CODEREF-MAPRENDERER. This render used the platform native app implementations to show the map.
-    We later added the functionality to add overlays of the field to the map and last but not least we added heat map overlays too. This is also done in the aforementioned renderer, specific for each platform. The heat map part was only done on iOS, because we encountered severe performance issues. To combat these issues I created a new Polygon class on iOS that can draw multiple polygons at once, this can be see in CODEREF-MULTIPOLYGON. 
-    I also worked together with René Karoff on the KML part of our application. This was done to load real data from our customer in the app. For this we created a kml-parser as seen in CODEREF-KMLParser. This allowed us to read in real data about the field from fleuren, like the different blocks, the field boundaries or heat maps.
+    The first part was showing a map on iOS and Android. This was accomplished by writing a custom renderer as seen in the project dossier chapter 15 section 36 and section 38. This render used the platform native app implementations to show the map.
+    We later added the functionality to add overlays of the field to the map and last but not least we added heat map overlays too. This is also done in the aforementioned renderer, specific for each platform. The heat map part was only done on iOS, because we encountered severe performance issues. To combat these issues I created a new Polygon class on iOS that can draw multiple polygons at once, this can be see in the project dossier chapter 15 section 37. 
+    I also worked together with René Karoff on the KML part of our application. This was done to load real data from our customer in the app. For this we created a kml-parser as seen in the project dossier chapter 15 section 42. This allowed us to read in real data about the field from fleuren, like the different blocks, the field boundaries or heat maps.
+    Last but not least I also worked on our data storage inside the app, together with René Karoff we picked out SQLite as an easy to use library during the development of the app. Later on this could be extended to a real database backend running on a server at the customers location. SQLite helped us getting data in and out of the app fast and easy. It handles most of the data persistence part itself, using annotations to properties, so only methods to retrieve the data had to be added. Since methods had to be created for each model in the app and tended to exactly the same, we choose to write these in a generic manner to cut down on duplicate code.
+    
      
     \item[Result] I learned a lot about developing mobile apps with Xamarin Forms, also gained additional knowledge with C\# which is used by Xamarin. As can seen in figure~\ref{lgp} the measurement for the accompanying learning goal, the errors per 50 Lines of code, also declined through out the project.
+    \item[Reflection]
+    As already outlined in the result, I did gain a lout of knowledge about developing mobile apps. I think I did a good job getting many things done in the app. A lot of things looked easier at the start of the project and I was surprised how much time it took us to implement several features like the map, but in the end we implemented many things and the customer was really surprised how much we actually got, which was i was really glad to hear. 
 \end{STAR}
 
-\subsection{SMART Learning Goal 2}
+\clearpage
+
+\section{Improve knowledge about Test Driven Development}
+I choose this learning goal since Test Driven Development is a really good way to improve the quality of your code and catch bugs early. Also it helps to stop regression bugs introduced through refactoring. I also learned how bad it is to not use any form of automated testing during my internship project.
+
+\subsection{SMART Learning Goal}
 \begin{SMART}
     \item[Specific] I want to get more experience in doing test driven development. This project is involving different technologies for mobile development and web development, I want to learn more about testing for the web and mobile devices. Including but not limited to regression testing and maybe some kind of fuzzing.
     \item[Measurable] To measure this learning goal I will take into account the number of tests if have written and executed this number will be delivered by the number of tests that actually break the software.
@@ -184,17 +196,20 @@
     \item[My complete goal] To improve my testing  experience by January 2016.
 \end{SMART}
 
-\subsection{STAR Analysis 2}
+\subsection{STAR Analysis}
 \begin{STAR}
     \item[Situation] We decided to use Test Driven Development as part of our quality management. 
     \item[Task] I wanted to gain more knowledge about TDD with mobile and about TDD in general. 
-    \item[Action] I researched a lot about the technologies that could have been used for TDD with Xamarin. I always worked together closely with our quality manager in this tasks. We use normal unit tests via the NUnit library for everything that is non GUI. For functional GUI tests we choose xamarin own UiTest library. This allowed us to test both backed and fronted of our application. I have written several unit tests for our utility classes like the one for the CODEREF-UNITTESTS. I also did our first batch of UiTests for the basic functions at the start of the project. You seen an example of UiTests in CODEREF-UITests I refined these throughout the project together with the other team members to test additional GUI elements. I also setup our Continues integration environment with AppVeyor, which always compiled our project and executed the unittests. UiTests were not support by AppVeyor and we executed them manually locally, since we did not have subscription to the Xamarin Test Cloud.
+    \item[Action] I researched a lot about the technologies that could have been used for TDD with Xamarin. I always worked together closely with our quality manager in this tasks. We use normal unit tests via the NUnit library for everything that is non GUI. For functional GUI tests we choose xamarin own UiTest library. This allowed us to test both backed and fronted of our application. I have written several unit tests for our utility classes like the one in the project dossier chapter 15 section 40. I also did our first batch of UiTests for the basic functions at the start of the project. You seen an example of UiTests in the project dossier chapter 15 section 39. I refined these throughout the project together with the other team members to test additional GUI elements. I also setup our Continues integration environment with AppVeyor, which always compiled our project and executed the unittests. UiTests were not support by AppVeyor and we executed them manually locally, since we did not have subscription to the Xamarin Test Cloud. You can see the AppVeyor config in the project dossier chapter 15 section 41.
     \item[Result] I learned a lot about the NUnit and UiTests libraries. 
     As can seen in figure~\ref{lgp} the measurements for the accompanying learning goal increased over time. If have written more tests and some even detected hidden flaws in the application we didn't notice before this is counted in "Tests breaking the app". I also learned that it is hard to motivate people to do TDD. A lot of my group members tended to forget about writing tests, I even sometimes forgot it myself while fixing bugs.
     \item[Reflection] I learned a lot about TDD development, but still failed to get the group to continuously use TDD for every step. This is also partly related to the fact that we had a hard time figuring out who to even test certain parts of the app.
 \end{STAR}
 
-\section{B-Competencies}
+\clearpage
+
+\section{Improve communication of ideas}
+I choose this learning goal since I always have problems communicating clearly enough so other people get the ideas I want to present to them. Also i wated  
 
 \subsection{SMART Learning Goal 3}
 \begin{SMART}

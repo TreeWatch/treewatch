@@ -3,12 +3,14 @@
 \usepackage[english]{babel}
 \usepackage[iso,english]{isodate}
 \usepackage[table,svgnames]{xcolor}
+\usepackage{cmbright}
 \usepackage{url}
 \usepackage[utf8x]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{longtable}
 \usepackage{amsmath}
 \usepackage{graphicx}
+\usepackage{pdfpages}
 \usepackage{parskip}
 \usepackage{fancyhdr}
 \usepackage{vmargin}
@@ -17,6 +19,7 @@
 \usepackage{pgf-umlcd}
 \usepackage{xparse}
 \usepackage{float}
+\usepackage{tikz}
 \usepackage{tabularx}
 \usepackage{titling}
 \usepackage[nogroupskip,toc,acronym]{glossaries}
@@ -65,10 +68,10 @@
 
 
 \newlist{SMART}{description}{2}
-\setlist[SMART]{leftmargin=12em,style=nextline}
+\setlist[SMART]{leftmargin=6.5em,style=nextline}
 
-\newlist{STAR}{description}{2}
-\setlist[STAR]{leftmargin=8em,style=nextline}
+\newlist{STARR}{description}{2}
+\setlist[STARR]{leftmargin=5.5em,style=nextline}
 
 
 %\loadglsentries{../glossary.tex}
@@ -153,6 +156,14 @@
 	\include{scrumMasterSkills}
 
 	\include{proactivSkill}
+	
+	\includepdf[pages=-,offset=72 -72]{questionnaire}
+	
+	\includepdf[pages=-,offset=72 -72]{answer1}
+	
+	\includepdf[pages=-,offset=72 -72]{answer21}
+	\includepdf[pages=-,offset=72 -72]{answer22}
+	\includepdf[pages=-,offset=72 -72]{answer23}
 
 %\clearpage
 
